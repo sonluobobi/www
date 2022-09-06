@@ -1,0 +1,77 @@
+<div id="bodyTitle">商城赠送日志</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  <div class="bodyContentBody">
+  <div class="bodyContentHead" style="text-align:center">
+	<form method="post" id="myform" name="myform" action="?act=Log.getMallGiftList" onsubmit="pageGo(1);return false;">
+		&nbsp;<{$lang.SelectServers}>：<{include file="Common_server.list.html"}> &nbsp;
+		<{$lang.selectUserType}>：<select id="user_type" name="user_type">
+		<{assign var='t' value=$smarty.post.user_type}>
+			<option value="0" <{if $t == '0'}>selected="true"<{/if}>><{$lang.plaseClew}></option>
+			<option value="1" <{if $t == '1'}>selected="true"<{/if}>>赠送者角色ID</option>
+			<option value="2" <{if $t == '2'}>selected="true"<{/if}>>赠送者角色名</option>			
+			<option value="3" <{if $t == '3'}>selected="true"<{/if}>>受赠者角色ID</option>	
+			<option value="4" <{if $t == '4'}>selected="true"<{/if}>>受赠者角色名</option>		
+		</select>
+		<input id="user_value" name="user_value" type="text" value="<{$smarty.post.user_value}>" />
+		&nbsp;<{include file="Page.Show.html"}>
+		<br><br>
+		<{$lang.beginDate}>：<input id="begTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.begTime}>" style="width: 200px;" name="begTime" realvalue=""/> 
+		<{$lang.endDate}>：<input type="text" class="Wdate" name="endTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width: 200px;" value="<{$smarty.post.endTime}>" realvalue="" />
+<!-- p 为分页页码 -->
+<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+		&nbsp;&nbsp;&nbsp;<input type="submit" class="submit" name="search" id="search" value="<{$lang.search}>" />
+	</form>
+	</div>
+		<table width="98%" class="tableContent" align="center" id="myTable">
+  <thead>
+			<tr>
+              <th>记录ID</th>
+              <th>状态</th>
+              <th>赠送者角色ID</th>
+			  <th>赠送者角色昵称</th>
+			  <th>受赠者角色ID</th>
+			  <th>受赠者角色昵称</th>
+			  <th>赠送的道具ID</th>
+			  <th>赠送的道具数量</th>
+			  <th>赠送的道具名</th>
+			  <th>赠送的元宝值</th>
+			  <th>赠言</th>
+			  <th>答谢语</th>
+			  <th>时间</th>
+          </tr>
+		</thead>
+		<tbody>
+        <{foreach key=k item=v from=$dataList}>
+		<tr align="center">
+			<td><{$v.id}></td>
+			<td>
+				<{if $v.status == 0}>
+					<font color="red">已发起赠送</font>
+				<{elseif $v.status == 1}>
+					<font color="red">受赠角色已领取且答谢</font>
+				<{elseif $v.status == 2}>
+					<font color="red">答谢已阅</font>
+				<{else}>
+					<font color="red">未知状态</font>
+				<{/if}>	
+			</td>
+			<td><{$v.donate_cid}></td>
+			<td><{$v.donate_nick}></td>
+			<td><{$v.donee_cid}></td>
+			<td><{$v.donee_nick}></td>
+			<td><{$v.equip_id}></td>
+			<td><{$v.equip_num}></td>
+			<td><{$v.equip_title}></td>
+			<td><{$v.gold}></td>
+			<td><{$v.donate_msg}></td>
+			<td><{$v.donee_msg}></td>
+			<td><{$v.updated}></td>
+        </tr>
+        <{foreachelse}>
+		<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+		<{/foreach}>
+		</tbody>
+		</table>
+  </div>
+<div class="pages"><{$pages}></div>
+</div>

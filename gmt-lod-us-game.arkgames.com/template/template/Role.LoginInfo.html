@@ -1,0 +1,62 @@
+<div id="bodyTitle">
+<{$lang.roleGetLoginInfo}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+  		<div class="bodyContentHead" style="text-align:left">
+  			<form id="myform" name="myform" action="./?act=Role.getLoginInfo" onsubmit="pageGo(1); return false;" method="post">
+			<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+			<select  name='opt_type'>
+				<option value='1' <{if $smarty.post.opt_type==1}>selected=selected<{/if}>><{$lang.roleId}></option>	
+				<option value='2' <{if $smarty.post.opt_type==2}>selected=selected<{/if}>><{$lang.roleName}></option>
+			</select>
+			&nbsp;&nbsp;
+                     	<input type='text' name='opt_value'  value='<{$smarty.post.opt_value}>'>&nbsp;&nbsp;
+			ip:<input type='text' name='ip'  value='<{$smarty.post.ip}>'><br/>
+			<{$lang.machineCode}>:<input type='text' name='machine'  value='<{$smarty.post.machine}>'>&nbsp;&nbsp;
+                        <{$lang.macAddress}>:<input type='text' name='mac'  value='<{$smarty.post.mac}>'>&nbsp;&nbsp;
+			<{$lang.loginTime}>:<input id="inBegTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.inBegTime}>" style="width: 200px;" name="inBegTime" realvalue=""/>
+  			-- <input id="inEndTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.inEndTime}>" style="width: 200px;" name="inEndTime" realvalue=""/><br/>
+			<{$lang.logoutTime}>:<input id="outBegTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.outBegTime}>" style="width: 200px;" name="outBegTime" realvalue=""/>
+                        -- <input id="outEndTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.outEndTime}>" style="width: 200px;" name="outEndTime" realvalue=""/>&nbsp;&nbsp;
+			<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+			<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+  			</form>
+		</div>
+		<table width="98%" class="tableContent" align="center">
+    		<thead>
+    			<tr align="center">
+				<th><{$lang.No}></th>
+				<th><{$lang.server}></th>
+				<th><{$lang.roleName}></th>
+				<th><{$lang.roleId}></th>
+				<th>IP</th>
+                                <th><{$lang.machineCode}></th>
+                                <th><{$lang.macAddress}></th>
+				<th><{$lang.loginTime}></th>
+                                <th><{$lang.logoutTime}></th>
+			</tr>
+    		</thead>
+    		<tbody>
+			<{if $data}>
+			<{foreach key=k item=v from=$data}>
+    			<tr align="center">
+				<td><{$v.no}></td>
+				<td><{$v.servername}></td>
+				<td><{$v.role_name}></td>
+				<td><{$v.role_id}></td>
+                                <td><{$v.ip}></td>
+				<td><{$v.machine}></td>
+                                <td><{$v.mac}></td>
+				<td><{$v.login_time}></td>
+				<td><{$v.logout_time}></td>
+			</tr>
+			<{/foreach}>
+			<{else}>
+			<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+    			<{/if}>
+    		</tbody>
+		</table>
+		<div class="pages"><{$pages}></div>
+	</div>
+</div>

@@ -1,0 +1,11 @@
+<select name="server_id" id="server_id">
+<{assign var='s' value=$smarty.request.server_id}>
+	<option value=""><{$lang.SelectServers}></option>
+    <{if $server_all == true}>
+	<option value="9999" <{if $s == 9999}>selected="true"<{/if}>>—<{$lang.selectAll}>—</option>
+    <{/if}>
+    <{section name=i loop=$init.serverList}>
+	<option value="<{$init.serverList[i].Server_id}>" <{if $s == $init.serverList[i].Server_id}>selected="true"<{/if}>><{$init.serverList[i].Server_name}>
+    </option>
+	<{/section}>
+</select>

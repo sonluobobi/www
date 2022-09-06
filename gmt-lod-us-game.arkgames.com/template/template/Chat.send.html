@@ -1,0 +1,49 @@
+<div id="bodyTitle"><{$lang.chat_title}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+    <iframe id="iframeload" name="iframeload" src="/img/1.gif" style="width:0px; height:0px; display:none" frameborder="0" scrolling="no"></iframe>
+  <div class="bodyContentHead">
+
+  <form  method="post"  target="iframeload"  id="myform" action="./?act=Chat.send" enctype="multipart/form-data" >
+	<input type="hidden" value="9900000" name="MAX_FILE_SIZE"/>
+	<table align="center" cellspacing="1" cellpadding="0" class="userTable" style="width:80%;" id="tbl">
+    <tr>
+      <td align="right"><{$lang.SelectServers}>：</td>
+      <td align="left"><{include file="Common_server.list.html"}></td>
+    </tr>
+	<tr>  
+	<td align="right"><{$lang.receiverType}>：</td>
+	<td align="left">
+		<select id="receiverType" name="receiverType">
+			<option value="1" selected="selected"><{$lang.roleId}></option>
+			<option value="2"><{$lang.roleName}></option>
+		</select>
+	</td>  
+	</tr>
+    <tr>
+      <td align="right"><{$lang.receiver}>：</td>
+      <td align="left">	
+	  	<input id="type" name="type" type="radio" value="1" checked="checked" onclick="changeSendType(this.value,'<{$lang.inputCaption}>')"/>
+		<{$lang.input}> &nbsp;
+		<input id="type" name="type" type="radio" value="2" onclick="changeSendType(this.value,'<{$lang.uploadCaption}>')"/>
+		<{$lang.upload}>
+		<br />	
+		<input type="text" id="rids" name="rids" value="" style="width:250px"/>
+		<input type="file" id="excleFile" name="excleFile"  value=""  style="display:none">
+		<input type="submit" class="submit" name="is_check_role_name"  value="<{$lang.checkRoleName}>">
+		<span id="caption"><{$lang.inputCaption}></span>	
+		</td>
+    </tr>	
+		<tr>
+			<td align="right"><{$lang.content}>：</td>
+			<td align="left">
+			<textarea id="contents" name="content" rows="6" cols="40"><{$content}></textarea>
+			</td>  
+		</tr>
+	<tr>
+	<td></td>
+	<td><input type="submit" class="submit"  value="<{$lang.Submit}>"></td>
+	</tr>
+	</table>
+  </form>
+</div>
+</div>

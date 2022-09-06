@@ -1,0 +1,114 @@
+ -- [2020-10-20 10:04:14] -- cai -- in_call_1
+ -- [2020-10-20 10:04:14] -- cai -- "Rest_deleteNotice"
+ -- [2020-10-20 10:04:14] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:04:14] -- cai -- {"id":"100000"}
+ -- [2020-10-20 10:04:36] -- cai -- in_call_1
+ -- [2020-10-20 10:04:36] -- cai -- "Rest_deleteNotice"
+ -- [2020-10-20 10:04:36] -- cai -- "t5.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:04:36] -- cai -- {"id":"100001"}
+ -- [2020-10-20 10:05:59] -- cai -- in_call_1
+ -- [2020-10-20 10:05:59] -- cai -- "Rest_setNotice"
+ -- [2020-10-20 10:05:59] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:05:59] -- cai -- {"title":"\u6d4b\u8bd5\u591a\u8bed\u8a00","type":"1","author":" sanxiao","begTime":"2020-10-20 00:00:00","endTime":"2020-10-20 10:13:59","tollgate_id":1,"content":"123456","cycle":"15","pictureUrl":"","status":"1","ext":"","id":"100000","act_type":"add"}
+ -- [2020-10-20 10:05:59] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:05:59] -- cai -- {"title":"\u6d4b\u8bd5\u591a\u8bed\u8a00","type":"1","author":" sanxiao","begTime":"2020-10-20 00:00:00","endTime":"2020-10-20 10:13:59","tollgate_id":1,"content":"123456","cycle":"15","pictureUrl":"","status":"1","ext":"","id":"100000","act_type":"add"}
+ -- [2020-10-20 10:06:10] -- cai -- in_call_1
+ -- [2020-10-20 10:06:10] -- cai -- "Rest_getNoticeList"
+ -- [2020-10-20 10:06:10] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:06:10] -- cai -- {"id":"","type":"","opType":"","opValue":"","begTime":"","endTime":"","page":"1","pagecount":"30"}
+ -- [2020-10-20 10:06:23] -- cai -- in_call_1
+ -- [2020-10-20 10:06:23] -- cai -- "Rest_getNoticeList"
+ -- [2020-10-20 10:06:23] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:06:23] -- cai -- {"id":"100000","type":"","opType":"","opValue":"","begTime":"","endTime":"","page":1,"pagecount":10}
+ -- [2020-10-20 10:23:59] -- cai -- in_call_1
+ -- [2020-10-20 10:23:59] -- cai -- "Rest_deleteNotice"
+ -- [2020-10-20 10:23:59] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:23:59] -- cai -- {"id":"100000"}
+ -- [2020-10-20 10:38:03] -- cai -- in_call_1
+ -- [2020-10-20 10:38:03] -- cai -- "Rest_setNotice"
+ -- [2020-10-20 10:38:03] -- cai -- "t0.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:38:03] -- cai -- {"title":"\u6d4b\u8bd5\u591a\u8bed\u8a00","type":"1","author":" sanxiao","begTime":"2020-10-20 00:00:00","endTime":"2020-10-20 11:59:59","tollgate_id":1,"content":"{\"cn\":\"202010201037\",\"en\":\"202010201037\",\"default\":\"202010201037\"}","cycle":"15","pictureUrl":"","status":"1","ext":"","id":"100000","act_type":"add"}
+ -- [2020-10-20 10:40:18] -- cai -- in_call_1
+ -- [2020-10-20 10:40:18] -- cai -- "Rest_deleteNotice"
+ -- [2020-10-20 10:40:18] -- cai -- "t0.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:40:18] -- cai -- {"id":"100000"}
+ -- [2020-10-20 10:40:44] -- cai -- in_call_1
+ -- [2020-10-20 10:40:44] -- cai -- "Rest_setNotice"
+ -- [2020-10-20 10:40:44] -- cai -- "t0.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:40:44] -- cai -- {"title":"\u6d4b\u8bd5\u591a\u8bed\u8a00","type":"1","author":" sanxiao","begTime":"2020-10-20 00:00:00","endTime":"2020-10-20 23:59:59","tollgate_id":0,"content":"{\"cn\":\"1234444444\",\"en\":\"1234444444\",\"default\":\"1234444444\"}","cycle":"15","pictureUrl":"","status":"1","ext":"","id":"100000","act_type":"add"}
+ -- [2020-10-20 10:41:11] -- cai -- in_call_1
+ -- [2020-10-20 10:41:11] -- cai -- "Rest_deleteNotice"
+ -- [2020-10-20 10:41:11] -- cai -- "t0.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:41:11] -- cai -- {"id":"100000"}
+ -- [2020-10-20 10:41:26] -- cai -- in_call_1
+ -- [2020-10-20 10:41:26] -- cai -- "Rest_setNotice"
+ -- [2020-10-20 10:41:26] -- cai -- "t0.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:41:26] -- cai -- {"title":"\u6d4b\u8bd5\u591a\u8bed\u8a00","type":"1","author":" sanxiao","begTime":"2020-10-20 00:00:00","endTime":"2020-10-20 23:59:59","tollgate_id":1,"content":"{\"cn\":\"22223333\",\"en\":\"22223333\",\"default\":\"22223333\"}","cycle":"15","pictureUrl":"","status":"1","ext":"","id":"100000","act_type":"add"}
+ -- [2020-10-20 10:43:09] -- cai -- in_call_1
+ -- [2020-10-20 10:43:09] -- cai -- "Rest_deleteNotice"
+ -- [2020-10-20 10:43:09] -- cai -- "t0.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:43:09] -- cai -- {"id":"100000"}
+ -- [2020-10-20 10:45:28] -- cai -- in_call_1
+ -- [2020-10-20 10:45:28] -- cai -- "Rest_setNotice"
+ -- [2020-10-20 10:45:28] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:45:28] -- cai -- {"title":"\u6d4b\u8bd5\u591a\u8bed\u8a00","type":"1","author":" sanxiao","begTime":"2020-10-20 00:00:00","endTime":"2020-10-20 23:59:59","tollgate_id":0,"content":"{\"cn\":\"\\u6d4b\\u8bd5\\u591a\\u8bed\\u8a00\",\"en\":\"\\u6d4b\\u8bd5\\u591a\\u8bed\\u8a00\",\"default\":\"\\u6d4b\\u8bd5\\u591a\\u8bed\\u8a00\"}","cycle":"15","pictureUrl":"","status":"1","ext":"","id":"100000","act_type":"add"}
+ -- [2020-10-20 10:54:03] -- cai -- in_call_1
+ -- [2020-10-20 10:54:03] -- cai -- "Rest_deleteNotice"
+ -- [2020-10-20 10:54:03] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:54:03] -- cai -- {"id":"100000"}
+ -- [2020-10-20 10:54:19] -- cai -- in_call_1
+ -- [2020-10-20 10:54:19] -- cai -- "Rest_setNotice"
+ -- [2020-10-20 10:54:19] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:54:19] -- cai -- {"title":"\u6d4b\u8bd5\u591a\u8bed\u8a00","type":"1","author":" sanxiao","begTime":"2020-10-20 00:00:00","endTime":"2020-10-20 23:59:59","tollgate_id":1,"content":"{\"cn\":\"123\",\"en\":\"123\",\"default\":\"123\"}","cycle":"15","pictureUrl":"","status":"1","ext":"","id":"100000","act_type":"add"}
+ -- [2020-10-20 10:54:19] -- cai -- in_call_1
+ -- [2020-10-20 10:54:19] -- cai -- "Rest_setNotice"
+ -- [2020-10-20 10:54:19] -- cai -- "t0.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:54:19] -- cai -- {"title":"\u6d4b\u8bd5\u591a\u8bed\u8a00","type":"1","author":" sanxiao","begTime":"2020-10-20 00:00:00","endTime":"2020-10-20 23:59:59","tollgate_id":1,"content":"{\"cn\":\"123\",\"en\":\"123\",\"default\":\"123\"}","cycle":"15","pictureUrl":"","status":"1","ext":"","id":"100000","act_type":"add"}
+ -- [2020-10-20 10:56:23] -- cai -- in_call_1
+ -- [2020-10-20 10:56:23] -- cai -- "Rest_deleteNotice"
+ -- [2020-10-20 10:56:23] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:56:23] -- cai -- {"id":"100000"}
+ -- [2020-10-20 10:56:24] -- cai -- in_call_1
+ -- [2020-10-20 10:56:24] -- cai -- "Rest_deleteNotice"
+ -- [2020-10-20 10:56:24] -- cai -- "t0.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:56:24] -- cai -- {"id":"100000"}
+ -- [2020-10-20 10:56:41] -- cai -- in_call_1
+ -- [2020-10-20 10:56:41] -- cai -- "Rest_setNotice"
+ -- [2020-10-20 10:56:41] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 10:56:41] -- cai -- {"title":"\u6d4b\u8bd5\u591a\u8bed\u8a00","type":"1","author":" sanxiao","begTime":"2020-10-20 00:00:00","endTime":"2020-10-20 23:59:59","tollgate_id":0,"content":"{\"cn\":\"1234\",\"en\":\"1234\",\"default\":\"1234\"}","cycle":"15","pictureUrl":"","status":"1","ext":"","id":"100000","act_type":"add"}
+ -- [2020-10-20 11:01:18] -- cai -- in_call_1
+ -- [2020-10-20 11:01:18] -- cai -- "Rest_deleteNotice"
+ -- [2020-10-20 11:01:18] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 11:01:18] -- cai -- {"id":"100000"}
+ -- [2020-10-20 11:01:33] -- cai -- in_call_1
+ -- [2020-10-20 11:01:33] -- cai -- "Rest_setNotice"
+ -- [2020-10-20 11:01:33] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 11:01:33] -- cai -- {"title":"\u6d4b\u8bd5\u591a\u8bed\u8a00","type":"1","author":" sanxiao","begTime":"2020-10-20 00:00:00","endTime":"2020-10-20 23:59:59","tollgate_id":1,"content":"{\"cn\":\"134\",\"en\":\"134\",\"default\":\"134\"}","cycle":"15","pictureUrl":"","status":"1","ext":"","id":"100000","act_type":"add"}
+ -- [2020-10-20 11:12:43] -- cai -- in_call_1
+ -- [2020-10-20 11:12:43] -- cai -- "Rest_deleteNotice"
+ -- [2020-10-20 11:12:43] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 11:12:43] -- cai -- {"id":"100000"}
+ -- [2020-10-20 11:12:57] -- cai -- in_call_1
+ -- [2020-10-20 11:12:57] -- cai -- "Rest_setNotice"
+ -- [2020-10-20 11:12:57] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 11:12:57] -- cai -- {"title":"\u6d4b\u8bd5\u591a\u8bed\u8a00","type":"1","author":" sanxiao","begTime":"2020-10-20 00:00:00","endTime":"2020-10-20 23:59:59","tollgate_id":0,"content":"{\"cn\":\"\\u6d4b\\u8bd5\\u591a\\u8bed\\u8a00\",\"en\":\"\\u6d4b\\u8bd5\\u591a\\u8bed\\u8a00\",\"default\":\"\\u6d4b\\u8bd5\\u591a\\u8bed\\u8a00\"}","cycle":"15","pictureUrl":"","status":"1","ext":"","id":"100000","act_type":"add"}
+ -- [2020-10-20 13:48:46] -- cai -- in_call_1
+ -- [2020-10-20 13:48:46] -- cai -- "Rest_deleteNotice"
+ -- [2020-10-20 13:48:46] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 13:48:46] -- cai -- {"id":"100000"}
+ -- [2020-10-20 13:49:40] -- cai -- in_call_1
+ -- [2020-10-20 13:49:40] -- cai -- "Rest_setNotice"
+ -- [2020-10-20 13:49:40] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 13:49:40] -- cai -- {"title":"\u6d4b\u8bd5\u591a\u8bed\u8a00","type":"1","author":" sanxiao","begTime":"2020-10-20 00:00:00","endTime":"2020-10-20 23:59:59","tollgate_id":1,"content":"{\"cn\":\"\\u6d4b\\u8bd5\\u591a\\u8bed\\u8a002\",\"en\":\"\\u6d4b\\u8bd5\\u591a\\u8bed\\u8a002\",\"default\":\"cn\"}","cycle":"15","pictureUrl":"","status":"1","ext":"","id":"100000","act_type":"add"}
+ -- [2020-10-20 13:52:10] -- cai -- in_call_1
+ -- [2020-10-20 13:52:10] -- cai -- "Rest_deleteNotice"
+ -- [2020-10-20 13:52:10] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 13:52:10] -- cai -- {"id":"100000"}
+ -- [2020-10-20 13:52:26] -- cai -- in_call_1
+ -- [2020-10-20 13:52:26] -- cai -- "Rest_setNotice"
+ -- [2020-10-20 13:52:26] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 13:52:26] -- cai -- {"title":"\u6d4b\u8bd5\u591a\u8bed\u8a00","type":"1","author":" sanxiao","begTime":"2020-10-20 00:00:00","endTime":"2020-10-20 23:59:59","tollgate_id":1,"content":"{\"cn\":\"\\u6d4b\\u8bd5\\u591a\\u8bed\\u8a002\",\"en\":\"\\u6d4b\\u8bd5\\u591a\\u8bed\\u8a002\",\"default\":\"cn\"}","cycle":"15","pictureUrl":"","status":"1","ext":"","id":"100000","act_type":"add"}
+ -- [2020-10-20 14:04:25] -- cai -- in_call_1
+ -- [2020-10-20 14:04:25] -- cai -- "Rest_getRewardList"
+ -- [2020-10-20 14:04:25] -- cai -- "t0.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-10-20 14:04:25] -- cai -- {"pid":"2150","rid":"2150777","opType":"0","opValue":"","begtime":"","endtime":"","module_id":"","status":0,"all":"1","page":"1","pagecount":"30"}

@@ -1,0 +1,42 @@
+<div  id="bodyTitle"><{$lang.systemLogManage}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  <div class="bodyContentBody">
+  <div class="bodyContentHead" style="text-align:center">
+  <form name="myform" id="myform" action="?act=Log.LogCommonList" method="post" onsubmit="FS('myform',pt.writeBody); return false;" >
+ 	<{$lang.ManageName}>：<input type="text" name="fullname" value="<{$smarty.post.fullname}>" />
+  <{$lang.beginDate}>：<input id="sdate" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.beginDate}>" style="width: 200px;" name="beginDate" realvalue=""/>
+  <{$lang.endDate}>：<input id="sdate" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.endDate}>" style="width: 200px;" name="endDate" realvalue=""/>
+  <{include file="Page.Show.html"}>
+  <input id="p" name="p" type="hidden" value="1" />
+  <input name="submit" type="submit" class="submit"  value="<{$lang.search}>" />
+  </form>
+</div>
+<table width="98%" class="tableContent" align="center">
+    <thead>
+    <tr align="center">
+	<th><{$lang.ID}></th>
+	<th><{$lang.ManageName}></th>
+	<th><{$lang.ManageLoginName}></th>
+	<th><{$lang.handler}></th>
+	<th><{$lang.Ip}></th>
+	<th><{$lang.DateTime}></th>
+	</tr>
+    </thead>
+    <tbody>
+<{if $dataList}>
+    <{foreach key=k from=$dataList key=k item=v}>
+    <tr align="center">
+	<td><{$v.id}></td>
+	<td><{$v.fullname}></td>
+	<td><{$v.username}></td>
+	<td><{$v.content}></td>
+	<td><{$v.ip}></td>
+	<td><{$v.logDate}></td>
+	</tr>
+    <{/foreach}>
+<{/if}>
+    </tbody>
+</table>
+<div class="pages"><{$pages}></div>
+</div>
+</div>

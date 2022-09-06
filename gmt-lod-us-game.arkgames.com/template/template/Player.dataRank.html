@@ -1,0 +1,47 @@
+<div id="bodyTitle"><{$lang.ServerDataRank}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  	<div class="bodyContentBody">
+  	<div id="bodyContentHead" class="bodyContentHead" style="text-align:left">
+  	<form method="POST" name="myform" id="myform" action="./?act=Player.getDataRank" onsubmit="pageGo(1);return false;">
+  	<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+	<{$lang.rankType}> : <select id="rankField" name="rankField">
+				<{foreach from=$lang.rankFiedls  key=k item=rank}>
+				<option value="<{$k}>" <{if $smarty.post.rankField == $k}>selected="true"<{/if}>><{$rank}></option>
+				<{/foreach}>
+						 </select>
+	&nbsp;&nbsp;			
+  	<{include file="Page.Show.html"}>					
+	&nbsp;&nbsp;
+	  <!-- p 为分页页码 -->
+  	<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+  	<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+  </form>
+</div>
+<table width="98%" class="tableContent" align="center">
+    <thead>
+    <tr align="center">
+	<th><{$lang.passportId}></th>
+	<th><{$lang.roleName}></th>
+	<th><{$lang.roleId}></th>
+	<th><{$lang.rankFiedls[$smarty.post.rankField]}></th>		
+	</tr>
+    </thead>
+    <tbody>
+    <{foreach key=k item=v from=$data}>
+    <tr align="center">
+	<td><{$v.account_id}></td>
+	<td><{$v.name}></td>
+	<td><{$v.id}></td>	
+	<td><{$v[$smarty.post.rankField]}></td>	
+	</tr>
+	<{foreachelse}>
+	<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+    <{/foreach}>
+    </tbody>
+</table>
+<{if $data}>
+<div class="pages"><{$pages}></div>
+<{/if}>
+</div>
+</div>
+<div id="listForm" style="display:none"></div>

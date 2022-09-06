@@ -1,0 +1,12 @@
+<{$lang.selectUserType}>(search by)：<select id="user_type" name="user_type">
+<{assign var='t' value=$smarty.post.user_type}>
+<{assign var='p' value=$smarty.post.isPay}>
+<{assign var='s' value=$smarty.post.status}>
+	<option value="0" <{if $t == '0'}>selected="true"<{/if}>><{$lang.plaseClew}></option>
+	<option value="1" <{if $t == '1'}>selected="true"<{/if}>><{$lang.pid}>(UID)</option>
+	<option value="3" <{if $t == '3'}>selected="true"<{/if}>><{$lang.roleId}>(character id)</option>
+	<option value="4" <{if $t == '4'}>selected="true"<{/if}>><{$lang.roleName}>(ign)</option>			
+</select>
+<input id="user_value" name="user_value" type="text" value="<{$smarty.post.user_value}>" />
+&nbsp;&nbsp;
+			  

@@ -1,0 +1,341 @@
+<div align="center">
+<form id="subform" name="subform" method="post" action="./?act=Player.setGm">
+<table width="98%" class="tableContent" align="center" >
+	<tr>
+		<td><{$lang.pid}></td><td><{$data.chinfo.player_id}></td>
+		<td><{$lang.account}></td><td><{$data.chinfo.account}></td>
+		<td><{$lang.roleId}></td><td><{$data.chinfo.id}></td>
+		<td><{$lang.nick}></td><td><{$data.chinfo.nick}></td>
+	</tr>
+
+	<tr>
+		<td><{$lang.level}></td><td><{$data.chinfo.level}></td>
+		<td><{$lang.gender}></td><td><{$data.chinfo.gender}></td>
+		<td><{$lang.prof}></td><td><{$data.chinfo.prof}></td>
+		<td><{$lang.vip}></td><td><{$data.chinfo.vip}></td>
+	</tr>
+
+	<tr>
+		<td><{$lang.created_time}></td><td><{$data.chinfo.created}></td>
+		<td><{$lang.lastLoginTime}></td><td><{$data.chinfo.now_login_time}></td>
+		<td><{$lang.lastLoginIp}></td><td><{$data.chinfo.now_login_ip}></td>
+		<td><{$lang.logout_time}></td><td><{$data.chinfo.logout_time}></td>
+	</tr>
+
+	<tr>
+		<td><{$lang.silver}></td><td><{$data.chinfo.silver}></td>
+		<td><{$lang.vit}></td><td><{$data.chinfo.vit}></td>
+		<td><{$lang.endurance}></td><td><{$data.chinfo.endurance}></td>
+		<td><{$lang.contribute}></td><td><{$data.chinfo.contribute}></td>
+	</tr>
+	<tr>
+		<td><{$lang.hornor}></td><td><{$data.chinfo.hornor}></td>
+		<td><{$lang.shouhun}></td><td><{$data.chinfo.shouhun}></td>
+		<td><{$lang.gang_title}></td><td><{$data.chinfo.gang_title}></td>
+		<td><{$lang.gang_job}></td><td><{$data.chinfo.gang_job}></td>
+	</tr>
+	<tr>
+		<td><{$lang.lover_nick}></td><td><{$data.chinfo.lover_nick}></td>
+		<td><{$lang.hidden_lover_nick}></td><td><{if $data.chinfo.hidden_lover_nick == 1}><{$lang.yes}><{else}><{$lang.no}><{/if}></td>
+	</tr>
+</table>
+
+<br><br><strong><{$lang.fightDetail}></strong><br>
+<table width="98%" class="tableContent" align="center">
+	<tr>
+		<td><{$lang.hp}></td><td><{$data.chinfo.hp}></td>
+		<td><{$lang.max_hp}></td><td><{$data.chinfo.max_hp}></td>
+		<td><{$lang.base_max_hp}></td><td><{$data.chinfo.base_max_hp}></td>
+	</tr>
+	
+	<tr>
+		<td><{$lang.hp2}></td><td><{$data.chinfo.hp2}></td>
+		<td><{$lang.max_hp2}></td><td><{$data.chinfo.max_hp2}></td>
+		<td><{$lang.hp3}></td><td><{$data.chinfo.hp3}></td>
+		<td><{$lang.max_hp3}></td><td><{$data.chinfo.max_hp3}></td>
+	</tr>
+
+	<tr>
+		<td><{$lang.min_attack}></td><td><{$data.chinfo.min_attack}></td>
+		<td><{$lang.base_min_attack}></td><td><{$data.chinfo.base_min_attack}></td>
+		<td><{$lang.max_attack}></td><td><{$data.chinfo.max_attack}></td>
+		<td><{$lang.base_max_attack}></td><td><{$data.chinfo.base_max_attack}></td>
+	</tr>
+
+	<tr>
+		<td><{$lang.defence_phy}></td><td><{$data.chinfo.defence_phy}></td>
+		<td><{$lang.base_defence_phy}></td><td><{$data.chinfo.base_defence_phy}></td>
+		<td><{$lang.defence_magic}></td><td><{$data.chinfo.defence_magic}></td>
+		<td><{$lang.base_defence_magic}></td><td><{$data.chinfo.base_defence_magic}></td>
+	</tr>
+	
+	<tr>
+		<td><{$lang.douzhi}></td><td><{$data.chinfo.douzhi}></td>
+		<td><{$lang.base_douzhi}></td><td><{$data.chinfo.base_douzhi}></td>
+		<td><{$lang.dodge}></td><td><{$data.chinfo.dodge}></td>
+		<td><{$lang.base_dodge}></td><td><{$data.chinfo.base_dodge}></td>
+	</tr>
+
+	<tr>
+		<td><{$lang.critical_hit}></td><td><{$data.chinfo.critical_hit}></td>
+		<td><{$lang.base_critical_hit}></td><td><{$data.chinfo.base_critical_hit}></td>
+		<td><{$lang.parry}></td><td><{$data.chinfo.parry}></td>
+		<td><{$lang.base_parry}></td><td><{$data.chinfo.base_parry}></td>
+	</tr>
+
+	<tr>
+		<td><{$lang.luck}></td><td><{$data.chinfo.luck}></td>
+		<td><{$lang.base_luck}></td><td><{$data.chinfo.base_luck}></td>
+	</tr>
+	
+	<tr>
+		<td><{$lang.addi_harm}></td><td><{$data.chinfo.addi_harm}></td>
+		<td><{$lang.addi_harm_perc}></td><td><{$data.chinfo.addi_harm_perc}></td>
+		<td><{$lang.reduce_harm}></td><td><{$data.chinfo.reduce_harm}></td>
+		<td><{$lang.reduce_harm_perc}></td><td><{$data.chinfo.reduce_harm_perc}></td>
+	</tr>
+
+	<tr>
+		<td><{$lang.kill_force}></td><td><{$data.chinfo.kill_force}></td>
+		<td><{$lang.fight_capacity}></td><td><{$data.chinfo.fight_capacity}></td>
+		<td><{$lang.top_fight_capacity}></td><td><{$data.chinfo.top_fight_capacity}></td>
+	</tr>
+</table>
+
+<br><br><strong><{$lang.babelDetail}></strong><br>
+<table width="98%" class="tableContent" align="center">
+	<tr>
+		<th><{$lang.max_babel_id}></th>
+		<th><{$lang.now_babel_id}></th>
+		<th><{$lang.is_fetch_rewrad}></th>
+		<th><{$lang.now_level_arrive_time}></th>
+	</tr>
+	<{if $data.babel}>
+	<tr>
+		<td><{$data.babel.max_babel_id}></td>
+		<td><{$data.babel.now_babel_id}></td>
+		<td><{$data.babel.is_fetch_rewrad}></td>
+		<td><{$data.babel.now_level_arrive_time}></td>
+	</tr>
+	<{/if}>
+</table>
+
+<br><br><strong><{$lang.chTitles}></strong><br>
+<table width="98%" class="tableContent" align="center">
+	<tr>
+		<th><{$lang.title_id}></th>
+		<th><{$lang.title_name}></th>
+		<th><{$lang.title_expire}></th>
+		<th><{$lang.title_is_show}></th>
+		<th><{$lang.title_is_active}></th>
+	</tr>
+	<{if $data.chtitles}>
+	<{foreach from=$data.chtitles key=k item=v}>
+	<tr>
+		<td><{$v.id}></td>
+		<td><{$v.title}></td>
+		<td><{$v.expire}></td>
+
+		<{if $v.is_show == 1}>
+		<td><{$lang.title_show}></td>
+		<{else}>
+		<td><{$lang.title_not_show}></td>
+		<{/if}>
+
+		<{if $v.is_active == 1}>
+		<td><{$lang.title_active}></td>
+		<{else}>
+		<td><{$lang.title_not_active}></td>
+		<{/if}>
+
+	</tr>
+	<{/foreach}>
+	<{/if}>
+</table>
+
+<br><br><strong><{$lang.chshenbing}></strong><br>
+<table width="98%" class="tableContent" align="center">
+	<tr>
+		<th><{$lang.shenbing_level}></th>
+		<th><{$lang.shenbing_element_one}></th>
+		<th><{$lang.shenbing_element_two}></th>
+		<th><{$lang.shenbing_element_three}></th>
+	</tr>
+	<tr>
+		<td><{$data.shenbing_level}></td>
+		<{if $data.shenbing_elements}>
+		<{foreach from=$data.shenbing_elements key=k item=v}>
+			<td><{$v.star}></td>
+		<{/foreach}>
+		<{/if}>
+	</tr>
+</table>
+
+<{if $data.shenbing_xilians}>
+<br><br><strong><{$lang.shenbing_xilians}></strong><br>
+<table width="98%" class="tableContent" align="center">
+	<tr>
+		<th><{$lang.shenbing_sort_id}></th>
+		<th><{$lang.shenbing_effect_type}></th>
+		<th><{$lang.quality}></th>
+		<th><{$lang.shenbing_effect_value}></th>
+		<th><{$lang.shenbing_own}></th>
+	</tr>
+	 <{foreach from=$data.shenbing_xilians key=k item=v}>
+	<tr>
+		<td><{$v.sort_id}></td>
+		<td><{$v.effect_type}></td>
+		<td><{$v.quality}></td>
+		<td><{$v.effect_value}></td>
+
+		<{if $v.own == 1}>
+		<td><{$lang.shenbing_own_one}></td>
+		<{elseif $v.own == 2}>
+		<td><{$lang.shenbing_own_two}></td>
+		<{elseif $v.own == 3}>
+		<td><{$lang.shenbing_own_three}></td>
+		<{elseif $v.own == 4}>
+		<td><{$lang.shenbing_own_four}></td>
+		<{else}>
+		<td><{$v.own}></td>
+		<{/if}>
+
+	</tr>
+	<{/foreach}>
+</table>
+<{/if}>
+
+<br><br><strong><{$lang.chgoddess}></strong><br>
+<table width="98%" class="tableContent" align="center">
+	<tr>
+		<th><{$lang.goddess_id}></th>
+		<th><{$lang.goddess_name}></th>
+		<th><{$lang.goddess_level}></th>
+	</tr>
+	<{if $data.goddess_info}>
+    <{foreach from=$data.goddess_info key=k item=v}>
+	<tr>
+		<td><{$v.goddess_id}></td>
+		<td><{$v.goddess_name}></td>
+		<td><{$v.level}></td>
+	</tr>
+	<{/foreach}>
+	<{/if}>
+
+</table>
+
+<br><br><strong><{$lang.chdragon}></strong><br>
+<table width="98%" class="tableContent" align="center">
+	<tr>
+		<th><{$lang.dragon_id}></th>
+		<th><{$lang.dragon_star}></th>
+		<th><{$lang.level}></th>
+		<th><{$lang.fight_capacity}></th>
+	</tr>
+	<{if $data.chdragons}>
+    <{foreach from=$data.chdragons key=k item=v}>
+	<tr>
+		<td><{$v.id}></td>
+		<td><{$v.star}></td>
+		<td><{$v.level}></td>
+		<td><{$v.fight_capacity}></td>
+	</tr>
+	<{/foreach}>
+	<{/if}>
+
+</table>
+
+<br><br><strong><{$lang.zhuangbeiDetail}></strong><br>
+<table width="98%" class="tableContent" align="center">
+	<tr>
+		<th><{$lang.order_by}></th>
+		<th><{$lang.equip_title}></th>
+		<th><{$lang.equip_id}></th>
+		<th><{$lang.getDetail}></th>
+	</tr>
+	<{if $data.zhuangbei}>
+    <{foreach from=$data.zhuangbei key=k item=v}>
+	<tr>
+		<td><{$v.order_by}></td>
+		<td><{$v.equip_title}></td>
+		<td><{$v.equip_id}></td>
+		<td><a href="javascript:void(0);" onclick="RQ('./?act=Notice.getEquipDetail&server_id=<{$smarty.request.server_id}>&equipId=<{$v.equip_id}>',getEquipDetail,'',0);"><{$lang.getDetail}></a></td>
+	</tr>
+	<{/foreach}>
+	<{/if}>
+
+</table>
+
+<br><br><strong><{$lang.itemsDetail}></strong><br>
+<table width="98%" class="tableContent" align="center">
+	<tr>
+		<th><{$lang.order_by}></th>
+		<th><{$lang.equip_title}></th>
+		<th><{$lang.equip_id}></th>
+		<th><{$lang.ch_equip_id}></th>
+		<th><{$lang.stack_num}></th>
+		<th><{$lang.getDetail}></th>
+	</tr>
+	<{if $data.chitems}>
+    <{foreach from=$data.chitems key=k item=v}>
+	<tr>
+		<td><{$v.order_by}></td>
+		<td><{$v.title}></td>
+		<td><{$v.equip_id}></td>
+		<td><{$v.ch_equip_id}></td>
+		<td><{$v.stack_num}></td>
+		<!--<td><a href="javascript:void(0);" onclick="RQ('./?act=Notice.getEquip&single=1&isGm=0&server_id=<{$smarty.request.server_id}>&roleId=<{$v.roleId}>&roleName=<{$v.roleName}>',setGm,'',0);"><{$lang.getDetail}></a></td>-->
+		<td><a href="javascript:void(0);" onclick="RQ('./?act=Notice.getEquipDetail&server_id=<{$smarty.request.server_id}>&equipId=<{$v.equip_id}>',getEquipDetail,'',0);"><{$lang.getDetail}></a></td>
+	</tr>
+	<{/foreach}>
+	<{/if}>
+
+</table>
+<br><br><strong><{$lang.petDetail}></strong><br>
+<table width="98%" class="tableContent" align="center">
+	<thead>
+	<tr>
+		<th><{$lang.nick}></th>
+		<th><{$lang.id}></th>
+		<th><{$lang.base_id}></th>
+		<th><{$lang.level}></th>
+		<th><{$lang.douzhi}></th>
+		<th><{$lang.critical_hit}></th>
+		<th><{$lang.dodge}></th>
+		<th><{$lang.parry}></th>
+		<th><{$lang.fight_capacity}></th>
+		<th><{$lang.luck}></th>
+		<th><{$lang.kill_force}></th>
+		<th><{$lang.jieshu}></th>
+		<th><{$lang.huanhua_num}></th>
+	</tr>
+	</thead>
+	<{if $data.chpets}>
+    <{foreach from=$data.chpets key=k item=v}>
+	<tr>
+		<td><{$v.nick}></td>
+		<td><{$v.id}></td>
+		<td><{$v.base_id}></td>
+		<td><{$v.level}></td>
+		<td><{$v.douzhi}></td>
+		<td><{$v.critical_hit}></td>
+		<td><{$v.dodge}></td>
+		<td><{$v.parry}></td>
+		<td><{$v.fight_capacity}></td>
+		<td><{$v.luck}></td>
+		<td><{$v.kill_force}></td>
+		<td><{$v.jieshu}></td>
+		<td><{$v.huanhua_num}></td>
+	</tr>
+	<{/foreach}>
+	<{/if}>
+</table>
+<!--
+<input type="hidden" id="server_ids[]" name="server_ids[]" value="<{$smarty.get.server_id}>"/>
+<input type="hidden" id="server_id" name="server_id" value="<{$smarty.get.server_id}>"/>
+<input type="hidden" id="roleId" name="roleId" value="<{$smarty.get.roleId}>" />
+<input type="hidden" id="isGm" name="isGm" value="<{$smarty.get.isGm}>"/>
+-->
+</form>
+
+</div>

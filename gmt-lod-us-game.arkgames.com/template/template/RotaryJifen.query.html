@@ -1,0 +1,12 @@
+
+<{include file="Base.Query.html"}>
+
+<br><br>
+<{$lang.rotary_jifen_sort_id}>：<select name="sort_id" id="sort_id">
+<{assign var='s' value=$smarty.request.sort_id}>
+	<option value=""><{$lang.please_select}></option>
+	<{foreach key=k item=i from=$lang.rotary_jifen_sort_id_map}>
+		<option value="<{$k}>" <{if $s == $k}>selected="true"<{/if}>><{$i}>
+	<{/foreach}>
+</select>
+

@@ -1,0 +1,46 @@
+<div id="bodyTitle"><{$lang.ActionAuth}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+<div class="bodyContentHead" id="userActionList">
+<form id="subform" name="subform" onsubmit="FS('subform',pt.writeBody); return false;" method="post" action="./?act=Auth.action"> 
+<div style="height:30px">
+<{$lang.accountName}> :<select name="account" id="account" onchange="auth_load(this)">
+	<option value=""><{$lang.plaseClew}></option>
+	<{section name=i loop=$internal_account}>
+	<option value="<{$internal_account[i]}>" ><{$internal_account[i]}></option>
+    <{/section}>
+</select>
+
+</div>
+<{section name=ii loop=$menuTree}>
+<{assign var="root_it" value=$menuTree[ii].ActRoot.id}>
+<div style="height:20px;height:30px;"><b><{$menuTree[ii].ActRoot.acttitle}></b>&nbsp;&nbsp;<input  id="<{$menuTree[ii].ActRoot.id}>" pid="<{$menuTree[ii].ActRoot.pid}>" type="checkbox" name="actions[]" value="<{$menuTree[ii].ActRoot.actkey}>" onclick="do_check(this);"/></div>
+	<{section name=mm loop=$menuTree[ii].ActFirst}>
+
+		<{assign var="id" value=$menuTree[ii].ActFirst[mm].id}>
+
+		<{if $menuTree[ii].ActSecond[$id] neq ""}>
+			<div style="padding-left:20px;height:30px;"><i><b><{$menuTree[ii].ActFirst[mm].acttitle}></b></i>&nbsp;&nbsp;<input type="checkbox" id="<{$id}>" name="actions[]" pid="<{$menuTree[ii].ActRoot.id}>" value="<{$menuTree[ii].ActFirst[mm].actkey}>" onclick="do_check(this);"/></div>
+
+			<{section name=nn loop=$menuTree[ii].ActSecond[$id]}>
+				<div style="padding-left:40px; height:25px"><{$menuTree[ii].ActSecond[$id][nn].acttitle}>&nbsp;&nbsp;<input type="checkbox" name="actions[]" id="<{$menuTree[ii].ActSecond[$id][nn].id}>" pid="<{$id}>" value="<{$menuTree[ii].ActSecond[$id][nn].actkey}>" onclick="do_check(this);"/>
+				<{assign var="itt" value=$menuTree[ii].ActSecond[$id][nn].id}>
+				<{if $menuItem[$itt] neq ""}><{section name=itti loop=$menuItem[$itt]}>
+				&nbsp;&nbsp; <{$menuItem[$itt][itti].acttitle}>&nbsp;&nbsp;<input id="<{$menuItem[$itt][itti].id}>" pid="<{$menuTree[ii].ActSecond[$id][nn].id}>" type="checkbox" name="actions[]" value="<{$menuItem[$itt][itti].actkey}>"  onclick="do_check(this);"/>
+				<{/section}><{/if}></div>
+			<{/section}>
+
+		<{else}>
+			<div style="padding-left:20px; height:30px;"><i><b><{$menuTree[ii].ActFirst[mm].acttitle}></b></i>&nbsp;&nbsp;<input type="checkbox" name="actions[]" pid="<{$root_it}>" value="<{$menuTree[ii].ActFirst[mm].actkey}>"  onclick="do_check(this);"/>
+			</div>
+		<{/if}>
+
+	<{/section}>
+<{/section}>
+
+<div style="width:50%;margin:auto;padding:20px;">  
+<input name="submit" type="submit" class="submit" value="<{$lang.Submit}>" />&nbsp;&nbsp;
+<input name="reset" type="reset" class="submit" value="<{$lang.Reset}>" />&nbsp;&nbsp;
+</div> 
+
+</form>
+</div></div>

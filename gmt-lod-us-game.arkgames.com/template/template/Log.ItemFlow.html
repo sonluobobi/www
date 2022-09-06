@@ -1,0 +1,89 @@
+<div id="bodyTitle"><{$lang.logItemFlow}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  <div class="bodyContentBody">
+  <div class="bodyContentHead" style="text-align:center">
+	<form method="post" id="myform" name="myform" action="?act=Log.LogItemFlow" onsubmit="pageGo(1);return false;">
+		&nbsp;<{$lang.SelectServers}>：<{include file="Common_server.list.html"}> &nbsp; 
+		<select name="userType">
+			<option value="1" <{if $smarty.post.userType == 1}>selected="true"<{/if}> ><{$lang.roleName}></option>
+			<option value="2" <{if $smarty.post.userType == 2}>selected="true"<{/if}> ><{$lang.roleId}></option>
+			<option value="3" <{if $smarty.post.userType == 3}>selected="true"<{/if}> ><{$lang.userId}></option>
+                        <option value="4" <{if $smarty.post.userType == 4}>selected="true"<{/if}> ><{$lang.goodsName}></option>
+		</select>
+		<input type="text" name="userValue" value="<{$smarty.post.userValue}>">
+		&nbsp;
+		<{$lang.goodsId}>
+		<input type="text" name="entry_id" value="<{$smarty.post.entry_id}>">
+		&nbsp;
+		<{$lang.handlerResult}>：
+		<select name="op">
+                        <option value="" <{if $smarty.post.op == ''}>selected="true"<{/if}> ><{$lang.plaseClew}></option>
+                        <{foreach from=$lang.handlerTypes key=k item=tp}>
+                        <option value="<{$k}>" <{if $smarty.post.op == $k}>selected="true"<{/if}> ><{$tp}></option>
+                        <{/foreach}>
+                </select>
+		<br />
+                <{$lang.logSort}>：
+                <select name="log_type">
+                        <option value="" <{if $smarty.post.log_type == ''}>selected="true"<{/if}> ><{$lang.plaseClew}></option>
+                        <{foreach from=$lang.logTypes key=k item=tp}>
+                        <option value="<{$k}>" <{if $smarty.post.log_type == $k}>selected="true"<{/if}> ><{$tp}></option>
+                        <{/foreach}>
+                </select>
+		&nbsp;
+	<{$lang.type}>：<select name="result">
+                                <{foreach key=k item=v from=$cache.optType}>
+                                        <option value='<{$v}>' <{if $v==$smarty.post.result}>selected=selected<{/if}> ><{if $v}><{$v}><{else}>请选择<{/if}></option>
+                                <{/foreach}>
+			</select>
+        <{$lang.beginDate}>：<input id="begTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.begTime}>" style="width: 200px;" name="begTime" realvalue=""/>
+        <{$lang.endDate}>：<input id="endTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.endTime}>" style="width: 200px;" name="endTime" realvalue=""/>	
+		&nbsp;<{include file="Page.Show.html"}>
+<!-- p 为分页页码 -->
+<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+		&nbsp;&nbsp;&nbsp;<input type="submit" class="submit" name="search" id="search" value="<{$lang.search}>" />
+	</form>
+	</div>
+		<table width="98%" class="tableContent" align="center" id="myTable">
+  <thead>
+			<tr>
+              <th>ID</th>
+	      <th><{$lang.userId}></th>
+              <th><{$lang.roleId}></th>
+	      <th><{$lang.roleName}></th>
+	      <th><{$lang.goodsId}></th>
+	      <th><{$lang.goodsName}></th>
+	      <th><{$lang.optIp}></th>
+	      <th><{$lang.optNum}></th>
+	      <th><{$lang.dst_role_id}></th>
+	      <th><{$lang.dst_account_id}></th>
+	      <th><{$lang.dst_role_name}></th>
+	      <th><{$lang.handler}></th>
+	      <th><{$lang.handlerResult}></th>
+	      <th><{$lang.created}></th>
+          </tr>
+		</thead>
+		<tbody>
+        <{section name="ii" loop=$dataList}>
+		<tr align="center">
+	  <td><{$dataList[ii].id}></td>
+	  <td><{$dataList[ii].account_id}></td>
+	  <td><{$dataList[ii].role_id}></td>
+          <td><{$dataList[ii].role_name}></td>
+	  <td><{$dataList[ii].entry_id}></td>
+	  <td><{$dataList[ii].entry_name}></td>
+	  <td><{$dataList[ii].ip}></td>
+	  <td><{$dataList[ii].number}></td>
+	  <td><{$dataList[ii].dst_role_id}></td>
+	  <td><{$dataList[ii].dst_account_id}></td>
+	  <td><{$dataList[ii].dst_role_name}></td>
+	  <td><{$dataList[ii].note}></td>
+	  <td><{$lang.handlerTypes[$dataList[ii].op]}></td>
+	  <td><{$dataList[ii].created}></td>
+        </tr>
+		<{/section}>
+		</tbody>
+		</table>
+  </div>
+<div class="pages"><{$pages}></div>
+</div>

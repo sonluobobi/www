@@ -1,0 +1,16 @@
+<div id="bodyTitle"><{$lang.$lang_title}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  <div class="bodyContentBody">
+  <div class="bodyContentHead" style="text-align:center">
+	<form method="post" id="myform" name="myform" action="?act=<{$act}>" onsubmit="pageGo(1);return false;">
+		<{include file="$tpl_query"}>
+		<!-- p 为分页页码 -->
+		<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+		&nbsp;&nbsp;&nbsp;<input type="submit" class="submit" name="search" id="search" value="<{$lang.search}>" />
+	</form>
+	</div>
+	
+	<{include file="$tpl_data"}>
+  	</div>
+	<div class="pages"><{$pages}></div>
+</div>

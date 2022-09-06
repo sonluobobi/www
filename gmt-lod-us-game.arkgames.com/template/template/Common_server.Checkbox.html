@@ -1,0 +1,10 @@
+<table cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="5"><input type="checkbox" onclick="sameIp_select2('server_ids[]');" id="serv_select_all"><label for="serv_select_all"><{$lang.selectAll}></label></td>
+	</tr>
+    <{section name=i loop=$init.serverList}>
+    	<{if $smarty.section.i.index % 5 == 0}><tr><{/if}>
+    <td><input name="server_ids[]" type="checkbox" value="<{$init.serverList[i].Server_id}>" id="serv_<{$serverList[i].Server_id}>" /> <label for="mm_serv_<{$serverList[i].Server_id}>"><{$init.serverList[i].Server_name}></label> &nbsp; &nbsp; </td>
+    	<{if $smarty.section.i.index+1 % 5 == 0}></tr><{/if}>
+	<{/section}>
+</table>    

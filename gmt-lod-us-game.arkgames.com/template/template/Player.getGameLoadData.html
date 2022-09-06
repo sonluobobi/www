@@ -1,0 +1,47 @@
+<div id="bodyTitle">游戏加载数据查询</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  	<div class="bodyContentBody">
+  	<div class="bodyContentHead" style="text-align:left">
+	<form method="POST" name="myform" id="myform" action="./?act=Player.getGameLoadData" onsubmit="pageGo(1);return false;">
+		<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+		日期:<input id="begTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<{$smarty.post.begTime}>" style="width: 200px;" name="begTime" realvalue=""/> 
+  		-- <input id="endTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<{$smarty.post.endTime}>" style="width: 200px;" name="endTime" realvalue=""/>
+  		 &nbsp;&nbsp;
+    		<{include file="Page.Show.html"}>
+	  
+	  			
+	  	<!-- p 为分页页码 -->
+	  	<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+  		&nbsp;&nbsp;
+  		<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+  	</form>
+</div>
+<table width="98%" class="tableContent" align="center">
+    <thead>
+    <tr align="center">
+    <!--
+	<th><input id="checkAll" name="checkAll" type="checkbox" value="" onclick="checkAlls();"/></th>
+	-->
+	<th>日期</th>
+	<th>第一次加载游戏玩家数</th>
+	
+  </tr>
+    </thead>
+    <tbody>
+    <{foreach key=k item=v from=$list}>
+    <tr align="center">
+     
+	<td><{$v.date}></td>
+	<td><{$v.num}></td>
+	
+	</tr>
+	<{foreachelse}>
+	<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+    <{/foreach}>
+    </tbody>
+</table>
+<{if $list}>
+<div class="pages"><{$pages}></div>
+<{/if}>
+</div>
+</div>

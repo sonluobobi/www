@@ -1,0 +1,54 @@
+<div id="bodyTitle"><{$lang.logEnergyQuery}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  <div class="bodyContentBody">
+  <div class="bodyContentHead" style="text-align:center">
+	<form method="post" id="myform" name="myform" action="?act=Log.getEnergyLog" onsubmit="pageGo(1);return false;">
+		&nbsp;<{$lang.SelectServers}>：<{include file="Common_server.list.html"}> &nbsp; 
+		<select name="userType">
+			<option value="1" <{if $smarty.post.userType == 1}>selected="true"<{/if}> ><{$lang.roleName}></option>
+			<option value="2" <{if $smarty.post.userType == 2}>selected="true"<{/if}> ><{$lang.roleId}></option>
+			<option value="3" <{if $smarty.post.userType == 3}>selected="true"<{/if}> ><{$lang.userId}></option>
+		</select>
+		<input type="text" name="userValue" value="<{$smarty.post.userValue}>">&nbsp;<{include file="Page.Show.html"}>
+<!-- p 为分页页码 -->
+<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+		&nbsp;&nbsp;&nbsp;<input type="submit" class="submit" name="search" id="search" value="<{$lang.search}>" />
+	</form>
+	</div>
+		<table width="98%" class="tableContent" align="center" id="myTable">
+  <thead>
+			<tr>
+              <th>ID</th>
+              <th><{$lang.userId}></th>
+	      <th><{$lang.roleId}></th>
+	      <th><{$lang.roleName}></th>
+	      <th><{$lang.handleTopEnergy}></th>
+	      <th><{$lang.handleNowEnergy}></th>
+	      <th><{$lang.handler}></th>
+	      <th><{$lang.taskHandler}></th>
+	      <th><{$lang.created}></th>
+          </tr>
+		</thead>
+		<tbody>
+        <{section name="ii" loop=$dataList}>
+		<tr align="center">
+          <td><{$dataList[ii].id}></td>
+	  <td><{$dataList[ii].account_id}></td>
+          <td><{$dataList[ii].role_id}></td>
+	  <td><{$dataList[ii].role_name}></td>
+	  <td><{$dataList[ii].old_energy}></td>
+	  <td><{$dataList[ii].op_energy}></td>
+	  <td>
+<{foreach key=k item=i from=$lang.handlerType}>
+        <{if $dataList[ii].op == $k}><{$i}><{/if}>
+<{/foreach}>
+</td>
+	  <td><{$dataList[ii].note}></td>
+	  <td><{$dataList[ii].created}></td>
+        </tr>
+		<{/section}>
+		</tbody>
+		</table>
+  </div>
+<div class="pages"><{$pages}></div>
+</div>

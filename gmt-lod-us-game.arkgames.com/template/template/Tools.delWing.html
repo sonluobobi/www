@@ -1,0 +1,49 @@
+<div id="bodyTitle">
+<{$lang.tools_del_wing_title}>
+</div>
+
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+	<div class="bodyContentHead" style="text-align:left">
+		<font color="red"><strong><{$lang.tools_restore_title_desc}></strong></font><br />
+		<form method="POST" name="myform" id="myform" action="./?act=Tools.delWing" onsubmit="pageGo(1);return false;">
+	  	<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;&nbsp;&nbsp;
+		<{$lang.roleId}>: <input id="cid" name="cid" value="<{$smarty.post.cid}>" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<{$lang.tools_del_wing_equip_id}>: <input id="equip_id" name="equip_id" value="<{$smarty.post.equip_id}>" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+  		&nbsp;&nbsp;
+		<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+		</form>
+	</div>
+	</div>
+</div>
+<{if $retmsg}>
+<div id="bodyTitle">
+<{$retmsg}>
+</div>
+<{/if}>
+<{if $data}>
+<table width="98%" class="tableContent" align="center">
+	<tr>
+		<th><{$lang.roleId}></th>
+		<th><{$lang.pid}></th>
+		<th><{$lang.roleName}></th>
+		<th><{$lang.handler}></td>	
+	</tr>
+    <{foreach from=$data key=k item=v}>
+	<tr>
+		<td><{$v.id}></td>
+		<td><{$v.player_id}></td>
+		<td><{$v.nick}></td>
+		<td>
+		<{if $v.in_ban == 1}>
+			<a href="javascript:void(0);" onclick="undoBlockGag('<{$lang.nocheck}>',1,<{$v.id}>)"><{$lang.undoBlock}></a> 
+			&nbsp;&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Tools.delWing&type=1&server_id=<{$smarty.request.server_id}>&equip_id=<{$smarty.post.equip_id}>&cid=<{$v.id}>',setGm,'',0);"><{$lang.tools_del_wing_handle}><font color="red"><strong><{$smarty.post.equip_id}></strong></font></a>
+		<{else}>
+			<a href="javascript:void(0);" onclick="subBlockGag('<{$lang.nocheck}>',1,<{$v.id}>)"><{$lang.block}></a> 
+		<{/if}>
+		</td>
+	</tr>
+	<{/foreach}>
+</table>
+<{/if}>

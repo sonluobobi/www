@@ -1,0 +1,43 @@
+<div align="center">
+<table width="98%" class="tableContent" align="center">
+	<tr>
+		<th><{$lang.counter_base_id}></th>
+		<th><{$lang.now_storeup_count}></th>
+		<th><{$lang.counter_count}></th>
+		<th><{$lang.updated}></th>
+		<th><{$lang.counter_history}></th>
+	</tr>
+	<{if $data}>
+    <{foreach from=$data key=k item=v}>
+	<tr>
+		<td><{$v.base_id}></td>
+		<td><{$v.now_storeup_count}></td>
+		<td><{$v.count}></td>
+		<td><{$v.updated}></td>
+		<td>
+			<{if $v.history}>
+			<a href="javascript:void(0);" onclick="pt.divToggle('history_<{$v.base_id}>');"><{$lang.counter_history}></a>
+			</td>
+			</tr>
+			<tr>
+			<td colspan="4">
+				<div id="history_<{$v.base_id}>" style="display:none">
+				<table width="98%" class="tableContent" align="center">
+					<tr>
+						<td><{$lang.counter_history_date}></td>
+						<td><{$lang.counter_history_cnt}></td>
+					</tr>
+				<{foreach from=$v.history key=k2 item=v2}>
+					<tr>
+						<td><{$v2.date}></td>
+						<td><{$v2.count}></td>
+					</tr>
+				<{/foreach}>
+				</table>
+				</div>
+			<{/if}>
+		</td>
+	</tr>
+	<{/foreach}>
+	<{/if}>
+</table>

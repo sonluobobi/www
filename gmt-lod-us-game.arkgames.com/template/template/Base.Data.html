@@ -1,0 +1,21 @@
+
+<table width="98%" class="tableContent" align="center" id="myTable">
+  	<thead>
+		<tr>
+			<!-- 字段标题 -->
+			<{foreach key=k item=v from=$titles}>
+			<th ><{$lang.$v}></th>		
+			<{/foreach}>
+        </tr>
+	</thead>
+	<tbody>
+        <{section name="ii" loop=$dataList}>
+		<tr align="center">
+			<{foreach key=j item=f from=$fields}>
+			<td><{$dataList[ii].$f}></td>
+			<{/foreach}>
+        </tr>
+		<{/section}>
+	</tbody>
+</table>
+

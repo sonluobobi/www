@@ -1,0 +1,33 @@
+203.69.146.11 -- [2020-07-13 09:50:47] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+203.69.146.11 -- [2020-07-13 09:50:47] -- global_webproxy -- backendGM-- response => {"retmsg":"请先退出军团","data":[],"retcode":1}
+203.69.146.11 -- [2020-07-13 09:50:47] -- global_webproxy -- backendGM-- result => array (
+  'retmsg' => '请先退出军团',
+  'data' => 
+  array (
+  ),
+  'retcode' => 1,
+) ---- end
+203.69.146.11 -- [2020-07-13 09:51:44] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+203.69.146.11 -- [2020-07-13 09:51:45] -- global_webproxy -- backendGM-- response => {"retmsg":"请先退出军团","data":[],"retcode":1}
+203.69.146.11 -- [2020-07-13 09:51:45] -- global_webproxy -- backendGM-- result => array (
+  'retmsg' => '请先退出军团',
+  'data' => 
+  array (
+  ),
+  'retcode' => 1,
+) ---- end
+203.69.146.11 -- [2020-07-13 09:51:52] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+203.69.146.11 -- [2020-07-13 09:51:53] -- global_webproxy -- backendGM-- response => {"retmsg":"请先退出军团","data":[],"retcode":1}
+203.69.146.11 -- [2020-07-13 09:51:53] -- global_webproxy -- backendGM-- result => array (
+  'retmsg' => '请先退出军团',
+  'data' => 
+  array (
+  ),
+  'retcode' => 1,
+) ---- end
+203.69.146.11 -- [2020-07-13 09:52:24] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+203.69.146.11 -- [2020-07-13 09:53:55] -- global_webproxy -- backendGM-- response => 
+203.69.146.11 -- [2020-07-13 09:53:55] -- global_webproxy --  ---- end
+203.69.146.11 -- [2020-07-13 09:54:02] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+203.69.146.11 -- [2020-07-13 09:55:33] -- global_webproxy -- backendGM-- response => 
+203.69.146.11 -- [2020-07-13 09:55:33] -- global_webproxy --  ---- end

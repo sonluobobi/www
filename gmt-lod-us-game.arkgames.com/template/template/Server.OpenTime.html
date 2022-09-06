@@ -1,0 +1,12 @@
+<div id="bodyTitle">
+<{$lang.serviceSetOpenTime}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+  		<div class="bodyContentHead" style="text-align:left">
+			<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+                     	<input id="time" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.time}>" style="width: 200px;" name="time" realvalue=""/>&nbsp;&nbsp;
+			<input name="search" type="button" class="submit" value="<{$lang.openSet}>" onclick="setOpenTime()" />
+		</div>
+	</div>
+</div>

@@ -1,0 +1,8 @@
+113.108.187.154 -- [2020-01-06 15:16:12] -- func_requestUrl -- http://t2-kf-sanxiao-zh.game.kunlun.com/for_backend/index.php?c=ServerLog&a=FightError&t=1578294972&s=a86861ea2e2c7c7cf9933afab8475cd9
+113.108.187.154 -- [2020-01-06 15:16:12] -- func_requestUrl -- [2020-01-06 15:16:12]t2-kf-sanxiao-zh.game.kunlun.com/for_backend/index.php?c=ServerLog&a=FightError -- result= -- fail
+113.108.187.154 -- [2020-01-06 15:24:06] -- func_requestUrl -- http://t2-kf-sanxiao-zh.game.kunlun.com/for_backend/index.php?c=ServerLog&a=FightError&t=1578295446&s=48c9507bc2d406b73c00b3e1781372b4
+113.108.187.154 -- [2020-01-06 15:24:07] -- func_requestUrl -- [2020-01-06 15:24:06]t2-kf-sanxiao-zh.game.kunlun.com/for_backend/index.php?c=ServerLog&a=FightError -- result= -- fail
+113.108.187.154 -- [2020-01-06 15:24:07] -- func_requestUrl -- http://t2-kf-sanxiao-zh.game.kunlun.com/for_backend/index.php?c=ServerLog&a=FightError&t=1578295447&s=6f7e8747d2caf26eb708f473cdc11084
+113.108.187.154 -- [2020-01-06 15:24:08] -- func_requestUrl -- [2020-01-06 15:24:07]t2-kf-sanxiao-zh.game.kunlun.com/for_backend/index.php?c=ServerLog&a=FightError -- result= -- fail
+113.108.187.154 -- [2020-01-06 15:24:09] -- func_requestUrl -- http://t2-kf-sanxiao-zh.game.kunlun.com/for_backend/index.php?c=ServerLog&a=FightError&t=1578295449&s=703d418accf13fd0db9f4310b1eb1a38
+113.108.187.154 -- [2020-01-06 15:24:09] -- func_requestUrl -- [2020-01-06 15:24:09]t2-kf-sanxiao-zh.game.kunlun.com/for_backend/index.php?c=ServerLog&a=FightError -- result= -- fail

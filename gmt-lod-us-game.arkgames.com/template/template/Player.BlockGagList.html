@@ -1,0 +1,86 @@
+<div id="bodyTitle">
+<{if $smarty.get.act == 'Player.listBlock'}>
+<{$lang.blockListTitle}>
+<{elseif $smarty.get.act == 'Player.listGag'}>
+<{$lang.gagListTitle}>
+<{/if}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  	<div class="bodyContentBody">
+  	<div class="bodyContentHead" style="text-align:left">
+  	<form method="POST" name="myform" id="myform" action="./?act=Player.list<{$type|capitalize}>" onsubmit="pageGo(1);return false;">
+  	<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+  	<{$lang.selectUserType}>：<select id="user_type" name="user_type">
+		<{assign var='t' value=$smarty.post.user_type}>
+		<{assign var='p' value=$smarty.post.isPay}>
+			<option value="0" <{if $t == '0'}>selected="true"<{/if}>><{$lang.plaseClew}></option>
+			<option value="1" <{if $t == '1'}>selected="true"<{/if}>><{$lang.pid}></option>
+		<!--	<option value="2" <{if $t == '2'}>selected="true"<{/if}>><{$lang.passPortName}></option> -->
+			<option value="3" <{if $t == '3'}>selected="true"<{/if}>><{$lang.roleId}></option>
+			<option value="4" <{if $t == '4'}>selected="true"<{/if}>><{$lang.roleName}></option>			
+		</select>
+	<input id="user_value" name="user_value" type="text" value="<{$smarty.post.user_value}>" />
+	&nbsp;&nbsp;					
+  	<{include file="Page.Show.html"}>					
+	<br />
+  	<{$lang.beginDate}>：<input id="begTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.begTime}>" style="width: 200px;" name="begTime" realvalue=""/> 
+  	<{$lang.endDate}>：<input id="endTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.endTime}>" style="width: 200px;" name="endTime" realvalue=""/> 
+	&nbsp;&nbsp;
+	  <!-- p 为分页页码 -->
+  	<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+  	<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+  </form>
+</div>
+<table width="98%" class="tableContent" align="center">
+    <thead>
+    <tr align="center">
+	<th><input id="checkAll" name="checkAll" type="checkbox" value="" onclick="checkAlls();"/></th>
+	<!-- <th><{$lang.passportName}></th> -->
+	<th><{$lang.passportId}></th>
+	<th><{$lang.roleName}></th>
+	<th><{$lang.roleId}></th>
+	<th><{if $type == 'block'}><{$lang.blockTime}><{elseif $type == 'gag'}><{$lang.gagTime}><{/if}></th>
+	<th><{$lang.author}></th>		
+	<th><{if $type == 'block'}><{$lang.blockReason}><{elseif $type == 'gag'}><{$lang.gagReason}><{/if}></th>		
+	<th><{$lang.userType}></td>	
+	<th><{$lang.handler}></td>	
+	</tr>
+    </thead>
+    <tbody>
+    <{foreach key=k item=v from=$list}>
+    <tr align="center">
+	<td><input name="select[]" id="select[]" type="checkbox" value="<{$v.roleId}>" onclick="checkOne()"/></td>
+	<!-- <td><{$v.passportName}></td> -->
+	<td><{$v.passportId}></td>
+	<td><{$v.roleName}></td>
+	<td><{$v.roleId}></td>
+	<td><{$v.endTime}></td>	
+	<td><{$v.author}></td>	
+	<td><{$v.reason}></td>	
+	<td><{if $v.isPay == '0'}><{$lang.free}><{elseif $v.isPay == '1'}><{$lang.pay}><{else}>--<{/if}></td>	
+	<td>
+		<{if $type == 'block'}>
+			<a href="javascript:void(0);" onclick="undoBlockGag('<{$lang.nocheck}>',1,<{$v.roleId}>)"><{$lang.undoBlock}></a>
+		<{elseif $type == 'gag'}>
+			<a href="javascript:void(0);" onclick="undoBlockGag('<{$lang.nocheck}>',2,<{$v.roleId}>)"><{$lang.undoGag}></a>
+		<{/if}> 
+	</td>	
+	</tr>
+	<{foreachelse}>
+	<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+    <{/foreach}>
+    </tbody>
+</table>
+<{if $list}>
+<div>
+&nbsp;&nbsp;
+<{if $smarty.get.act == 'Player.listBlock'}>
+<input type="button" onclick="undoBlockGag('<{$lang.nocheck}>',1)" value="<{$lang.undoBlock}>" />
+<{elseif $smarty.get.act == 'Player.listGag'}>
+<input type="button" onclick="undoBlockGag('<{$lang.nocheck}>',2)" value="<{$lang.undoGag}>" />
+<{/if}>
+</div>
+<div class="pages"><{$pages}></div>
+<{/if}>
+</div>
+</div>

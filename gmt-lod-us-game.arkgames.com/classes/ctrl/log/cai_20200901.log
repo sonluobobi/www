@@ -1,0 +1,12 @@
+ -- [2020-09-01 15:17:26] -- cai -- in_1234
+ -- [2020-09-01 15:17:26] -- cai -- INSERT INTO `gm_queue` (`interfaceName`,`serverList`,`dataResult`,`status`,`queueDate`,`serverGroup`,`productId`) VALUES (:interfaceName, :serverList, :dataResult, :status, :queueDate, :serverGroup, :productId)
+ -- [2020-09-01 15:18:01] -- cai -- in_call_1
+ -- [2020-09-01 15:18:01] -- cai -- "Rest_Awards"
+ -- [2020-09-01 15:18:01] -- cai -- "t5.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-09-01 15:18:01] -- cai -- {"uid":"","expire":1601536631,"cid":"991","title":"1","content":"1","reason":"1","author":"sanxiao","gift":"W3siZ2lmdCI6IjIxMDIwMDAxIiwibmFtZSI6Ilx1NmNiYlx1NzU5N1x1NjcyZlx1NTM3N1x1OGY3NCIsIm51bSI6MSwiZXh0IjoxfV0=","record":{"id":"187","interfaceName":"Rest_Awards","serverList":"9000994","dataResult":"a:8:{s:3:\"uid\";s:0:\"\";s:6:\"expire\";i:1601536631;s:3:\"cid\";s:3:\"991\";s:5:\"title\";s:1:\"1\";s:7:\"content\";s:1:\"1\";s:6:\"reason\";s:1:\"1\";s:6:\"author\";s:7:\"sanxiao\";s:4:\"gift\";s:104:\"W3siZ2lmdCI6IjIxMDIwMDAxIiwibmFtZSI6Ilx1NmNiYlx1NzU5N1x1NjcyZlx1NTM3N1x1OGY3NCIsIm51bSI6MSwiZXh0IjoxfV0=\";}","description":"","serverGroup":"2150","productId":"2150","queueDate":"2020-09-01 15:17:26","status":"0"}}
+ -- [2020-09-01 15:18:39] -- cai -- in_1234
+ -- [2020-09-01 15:18:39] -- cai -- INSERT INTO `gm_queue` (`interfaceName`,`serverList`,`dataResult`,`status`,`queueDate`,`serverGroup`,`productId`) VALUES (:interfaceName, :serverList, :dataResult, :status, :queueDate, :serverGroup, :productId)
+ -- [2020-09-01 15:18:52] -- cai -- in_call_1
+ -- [2020-09-01 15:18:52] -- cai -- "Rest_Awards"
+ -- [2020-09-01 15:18:52] -- cai -- "t5.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-09-01 15:18:52] -- cai -- {"uid":"","expire":1601536685,"cid":"991","title":"1","content":"1","reason":"1","author":"sanxiao","gift":"W3siZ2lmdCI6IjEwMDExMDAxIiwibmFtZSI6Ilx1OTRhMlx1OTRjMVx1OTdmNVx1NWY4YiIsIm51bSI6MSwiZXh0IjoxfV0=","record":{"id":"188","interfaceName":"Rest_Awards","serverList":"9000994","dataResult":"a:8:{s:3:\"uid\";s:0:\"\";s:6:\"expire\";i:1601536685;s:3:\"cid\";s:3:\"991\";s:5:\"title\";s:1:\"1\";s:7:\"content\";s:1:\"1\";s:6:\"reason\";s:1:\"1\";s:6:\"author\";s:7:\"sanxiao\";s:4:\"gift\";s:96:\"W3siZ2lmdCI6IjEwMDExMDAxIiwibmFtZSI6Ilx1OTRhMlx1OTRjMVx1OTdmNVx1NWY4YiIsIm51bSI6MSwiZXh0IjoxfV0=\";}","description":"","serverGroup":"2150","productId":"2150","queueDate":"2020-09-01 15:18:39","status":"0"}}

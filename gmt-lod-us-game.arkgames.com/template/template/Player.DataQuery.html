@@ -1,0 +1,136 @@
+<div id="bodyTitle"><{$lang.playerDataTitle}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  	<div class="bodyContentBody">
+  	<div class="bodyContentHead" style="text-align:left">
+	<form method="POST" name="myform" id="myform" action="./?act=Player.DataQuery" onsubmit="pageGo(1);return false;">
+		<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+		<{include file="User_Type.Select.html"}>
+		
+		<br /><br />
+		<{$lang.level_range_search}>：<input id="level_begin" name="level_begin" type="text" value="<{$smarty.post.level_begin}>" /> - <input id="level_end" name="level_end" type="text" value="<{$smarty.post.level_end}>" />&nbsp;&nbsp;
+
+	  	<{$lang.lastLoginIp}>：<input id="lastLoginIp" name="lastLoginIp" type="text" value="<{$smarty.post.lastLoginIp}>" />	
+	  	&nbsp;&nbsp;unique_key: <input id="unique_key" name="unique_key" type="text" value="<{$smarty.post.unique_key}>" />	
+    	
+    	<{include file="Page.Show.html"}>
+	  	
+	  	<!--
+	  	<{$lang.lastLoginTime}>：<{include file="Date.Select.html"}> &nbsp;&nbsp;		
+	       -->
+  		<!-- p 为分页页码 -->
+	  	<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+  		&nbsp;&nbsp;
+  		<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+  	</form>
+</div>
+<table width="98%" class="tableContent" align="center">
+    <thead>
+    <tr align="center">
+	<th><input id="checkAll" name="checkAll" type="checkbox" value="" onclick="checkAlls();"/></th>
+	<th><{$lang.passportId}></th>
+	<th><{$lang.passportName}></th>
+	<th><{$lang.roleId}></th>
+	<th><{$lang.roleName}></th>
+
+	<th><{$lang.userStat}></th>	
+	<th>战力</th>
+	<th>钻石</th>
+	<th><{$lang.created_time}></th>
+	<th><{$lang.lastLoginTime}></th>
+	<th><{$lang.lastLoginIp}></th>
+	<th><{$lang.logout_time}></th>
+	<th><{$lang.isGm}></th>
+	<th><{$lang.getDetail}></th>
+	<!--<th><{$lang.createTime}></th>-->
+	<th><{$lang.handler}></td>	
+	</tr>
+    </thead>
+    <tbody>
+    <{foreach key=k item=v from=$list}>
+    <tr align="center">
+	<td><input name="select[]" id="select[]" type="checkbox" value="<{$v.roleId}>" onclick="checkOne()"/></td>
+	<td><{$v.player_id}></td>
+	<td><{$v.account}></td>
+	<td><{$v.character_id}></td>
+	<td><{$v.nick}></td>
+	<td>
+		<{if $v.is_ban == 2}>
+			<font color="red"><{$lang.gag}></font>
+		<{elseif $v.is_ban == 1}>
+			<font color="red"><{$lang.block}>(<{$v.ban_expire}>)</font>
+		<{else}>
+			<{$lang.normal}></font>
+	    <{/if}>
+	</td>	
+	<td><{$v.fightPower}></td>
+	<td><{$v.game_gold}></td>
+	<td><{$v.created}></td>
+	<td><{$v.now_login_time}></td>	
+	<td><{$v.now_login_ip}></td>	
+	<td><{$v.logout_time}></td>
+	<{if $v.is_gm < 1}>
+	<td><{$lang.no}></td>	
+	<{else}>
+	<td><{$lang.yes}></td>	
+	<{/if}>
+	<td><a href="javascript:void(0);" onclick="RQ('./?act=Player.getChDetail&server_id=<{$smarty.request.server_id}>&roleId=<{$v.character_id}>&roleName=<{$v.nick}>',getChDetail,'',0);"><{$lang.getDetail}></a></td>	
+	<!--<td><{$v.createTime}></td>-->
+	<td>
+		
+		<{if $v.is_ban == 1}>
+		    <a href="javascript:void(0);" onclick="undoBlockGag('<{$lang.nocheck}>',1,<{$v.character_id}>)"><{$lang.undoBlock}></a> 
+		
+		<{elseif $v.is_forbid_talk == 1}>
+			<a href="javascript:void(0);" onclick="subBlockGag('<{$lang.nocheck}>',1,<{$v.character_id}>)"><{$lang.block}></a> 
+			<a href="javascript:void(0);" onclick="undoBlockGag('<{$lang.nocheck}>',2,<{$v.character_id}>)"><{$lang.undoGag}></a> 
+		<{else}>
+			<a href="javascript:void(0);" onclick="subBlockGag('<{$lang.nocheck}>',1,<{$v.character_id}>)"><{$lang.block}></a> 
+			<a href="javascript:void(0);" onclick="subBlockGag('<{$lang.nocheck}>',2,<{$v.character_id}>)"><{$lang.gag}></a>
+		<{/if}>
+		
+		<{if $v.is_gm < 1}>
+		<a href="javascript:void(0);" onclick="RQ('./?act=Player.setGm&single=1&isGm=1&server_id=<{$smarty.request.server_id}>&roleId=<{$v.character_id}>&roleName=<{$v.nick}>',setGm,'',0);"><{$lang.setGm}></a>
+		<{else}>
+		<a href="javascript:void(0);" onclick="RQ('./?act=Player.setGm&single=1&isGm=0&server_id=<{$smarty.request.server_id}>&roleId=<{$v.character_id}>&roleName=<{$v.nick}>',setGm,'',0);"><{$lang.unsetGm}></a>
+		<{/if}>
+
+		<a href="javascript:void(0);" onclick="RQ('./?act=Player.setOffLine&server_id=<{$smarty.request.server_id}>&roleId=<{$v.character_id}>&roleName=<{$v.nick}>',setGm,'',0);"><{$lang.setOffLine}></a>
+
+		<{if $v.is_gm < 0}>
+		<a href="javascript:void(0);" onclick="RQ('./?act=Player.setOffRank&isOff=0&server_id=<{$smarty.request.server_id}>&roleId=<{$v.character_id}>&roleName=<{$v.nick}>',setGm,'',0);"><{$lang.setOnRank}></a>
+		<{else}>
+		<a href="javascript:void(0);" onclick="RQ('./?act=Player.setOffRank&isOff=1&server_id=<{$smarty.request.server_id}>&roleId=<{$v.character_id}>&roleName=<{$v.nick}>',setGm,'',0);"><{$lang.setOffRank}></a>
+		<{/if}>
+		<!--
+		<a href="javascript:void(0);" onclick="RQ('./?act=Notice.sendMail&single=1&server_id=<{$smarty.request.server_id}>&roleId=<{$v.character_id}>&roleName=<{$v.nick}>',singleSendMail,'',0);">发邮件</a>
+		-->
+		
+		<!--  
+		<a href="javascript:void(0);" onclick="subBlockGag('<{$lang.nocheck}>',1,<{$v.roleId}>)"><{$lang.block}></a> 
+		<a href="javascript:void(0);" onclick="undoBlockGag('<{$lang.nocheck}>',1,<{$v.roleId}>)"><{$lang.undoBlock}></a>
+		-->
+				
+		
+		<!--  
+		<{if $v.status == 0}><a href="javascript:void(0);" onclick="subBlockGag('<{$lang.nocheck}>',1,<{$v.roleId}>)"><{$lang.block}></a> <a href="javascript:void(0);" onclick="subBlockGag('<{$lang.nocheck}>',2,<{$v.roleId}>)"><{$lang.gag}></a>
+		<{elseif $v.status == 1}><a href="javascript:void(0);" onclick="undoBlockGag('<{$lang.nocheck}>',1,<{$v.roleId}>)"><{$lang.undoBlock}></a>
+		<{elseif $v.status == 2}><a href="javascript:void(0);" onclick="undoBlockGag('<{$lang.nocheck}>',2,<{$v.roleId}>)"><{$lang.undoGag}></a><{/if}> 
+		
+		-->
+	</td>	
+	</tr>
+	<{foreachelse}>
+	<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+    <{/foreach}>
+    </tbody>
+</table>
+<{if $list}>
+<div>
+&nbsp;&nbsp;
+<input type="button" onclick="subBlockGag('<{$lang.nocheck}>',1)" value="<{$lang.block}>" />&nbsp;&nbsp;
+<input type="button" onclick="subBlockGag('<{$lang.nocheck}>',2)" value="<{$lang.gag}>" />
+</div>
+<div class="pages"><{$pages}></div>
+<{/if}>
+</div>
+</div>

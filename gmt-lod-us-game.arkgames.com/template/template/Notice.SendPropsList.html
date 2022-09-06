@@ -1,0 +1,104 @@
+<div  id="bodyTitle"><{$lang.SendPropsList}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  <div class="bodyContentBody" style="height:500px; overflow:scroll; ">
+  <div class="bodyContentHead" style="text-align:center">
+  <form name="myform" id="myform" action="?act=Notice.sendPropsList" method="post" onsubmit="FS('myform',pt.writeBody); return false;" >
+  <!--<input type='radio' name='type' value='1' <{if $smarty.post.type==1}>checked<{/if}>>已发送&nbsp;&nbsp; -->
+  <input type='radio' name='type' value='3' <{if $smarty.post.type==3}>checked<{/if}>><{$lang.noSendPropsInfo}>&nbsp;&nbsp;
+  <input type='radio' name='type' value='2' <{if $smarty.post.type==2}>checked<{/if}>><{$lang.SentPropsInfo}>&nbsp;&nbsp;
+  <input type='radio' name='type' value='1' <{if $smarty.post.type==1}>checked<{/if}>><{$lang.propsSendFail}>&nbsp;&nbsp;
+   <input type='radio' name='type' value='4' <{if $smarty.post.type==4}>checked<{/if}>><{$lang.propsSendRecall}>&nbsp;&nbsp;
+  <{include file="Page.Show.html"}>
+  <input id="p" name="p" type="hidden" value="1" />
+  <input name="submit" type="submit" class="submit"  value="<{$lang.search}>" />
+  </form>
+</div>
+<table width="98%" class="tableContent" align="center">
+    <thead>
+    <tr>
+    <th><input id="checkAll" name="checkAll" type="checkbox" value="" onclick="checkAlls();"/></th>
+	<th><{$lang.gameServerList}></th>
+	<th><{$lang.title}></th>
+	<th><{$lang.reason}></th>
+	<th><{$lang.author}></th>
+	<th>queue_id</th>
+	<th><{$lang.expire}></th>
+	</tr>
+    </thead>
+    <tbody>
+<{if $list}>
+    <{foreach key=k from=$list key=k item=v}>
+    <tr>
+    <td><input name="select[]" id="select[]" type="checkbox" value="<{$v.queue_id}>" onclick="checkOne()"/></td>
+	<td><{$v.severlist}></td>
+	<td><{$v.title}></td>
+	<td><{$v.reason}></td>
+	<td><{$v.author}></td>
+	<td><{$v.queue_id}>
+		<{if $v.status<3}>
+		(<input type="button" onclick="confirmClew('<{$lang.confirmRecall}>','RQ(\'./?act=Notice.sendPropsRecal&queue_id=<{$v.queue_id}>\',pt.writeBody)')" value="<{$lang.recall}>"/>)
+		<{/if}>
+	</td>
+	<td><font color="red"><{$v.expire}></font></td>
+	
+	</tr>
+	<tr>
+	<td><{$lang.receiver}></td>
+	<td colspan="8" style="text-align:left;"><{$v.receiver}></td>
+	<!--
+	<{if $v.status==3}>
+		<td><input type="button" onclick="confirmClew('<{$lang.confirmNoticeSend}>','RQ(\'./?act=Notice.sendPropsConfirm&queue_id=<{$v.queue_id}>\',pt.writeBody)')" value="<{$lang.ConfirmSendProps}>"/>&nbsp;&nbsp;
+	        <input type="button" onclick="confirmClew('<{$lang.confirmNoticeDel}>','RQ(\'./?act=Notice.sendPropsDel&queue_id=<{$v.queue_id}>\',pt.writeBody)')" value="<{$lang.drop}>"/>&nbsp;&nbsp;
+	    </td>
+	<{else}>
+		<td>
+		 <input type="button" onclick="confirmClew('<{$lang.confirmNoticeDel}>','RQ(\'./?act=Notice.sendPropsDel&queue_id=<{$v.queue_id}>\',pt.writeBody)')" value="<{$lang.drop}>"/>&nbsp;&nbsp;
+	    </td>
+	<{/if}>
+	-->
+	</tr>
+	<tr>
+	<td><{$lang.content}></td>
+	<td colspan="7" style="text-align:left;"><{$v.content}></td>
+	</tr>
+	<tr>
+	<td><{$lang.SendPropsInfo}></td>
+	<td colspan="7" style="text-align:left;"><{$v.SendPropsInfo}></td>
+	</tr>
+	<{if $smarty.post.type!=3}>
+	<tr>
+	<td><{$lang.status}></td>
+	<td colspan="7" style="text-align:left;"><{$v.description}></td>
+	</tr>
+	<{/if}>
+	<tr>
+	<td colspan="8"></td>
+	</tr>
+
+    <{/foreach}>
+<{/if}>
+    </tbody>
+</table>
+
+<{if $list}>
+	<{if $smarty.post.type==3}>
+		<div>
+		&nbsp;&nbsp;
+		<td><input type="button" onclick="confirmClew('<{$lang.confirmNoticeSend}>','sendPropsConfirm()')" value="批量确认发送"/>&nbsp;&nbsp;
+			 <input type="button" onclick="confirmClew('<{$lang.confirmNoticeDel}>','sendPropsDel()')" value="批量确认删除"/>&nbsp;&nbsp;
+		</td>
+		</div>
+	
+	<{elseif $smarty.post.type==1}>
+		<div>
+		&nbsp;&nbsp;
+		<td><input type="button" onclick="confirmClew('<{$lang.confirmNoticeSend}>','sendPropsConfirm()')" value="批量确认发送"/>&nbsp;&nbsp;
+			 <input type="button" onclick="confirmClew('<{$lang.confirmNoticeDel}>','sendPropsDel()')" value="批量确认删除"/>&nbsp;&nbsp;
+		</td>
+		</div>
+	<{/if}>
+<{/if}>	
+
+<div class="pages"><{$pages}></div>
+</div>
+</div>

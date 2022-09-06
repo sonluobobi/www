@@ -1,0 +1,16 @@
+<div align="center">
+<form id="blockform" onSubmit="return false" method="post" action="./ban/blockingUser" >
+封禁时间1：<input type="text" class="Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" id="blockTime" value="" style="width: 200px;" name="blockTime" realvalue=""/><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+理由：<textarea name="blockContent" id="blockContent" rows="4" cols="21"></textarea>
+<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+封禁类型：<select name="blockType" onChange="changeBlock(this.value)">
+			<option value="1">passportId</option>
+			<option value="3">roleId</option>
+			<option value="5">ip Addr</option>						
+		</select>
+<input style="display:none" id="ipAddr" name="ipAddr" value=""/> 
+<input type="hidden" id="server_id" name="server_id" value="<{$smarty.get.server_id}>">
+<input type="hidden" id="passportId" name="passportId" value="<{$smarty.get.passportId}>" />
+<input type="hidden" id="roleId" name="roleId" value="<{$smarty.get.roleId}>" />
+</form>
+</div>

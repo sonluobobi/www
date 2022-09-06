@@ -1,0 +1,177 @@
+<div id="bodyTitle">
+<{$lang.tools_restore_title}>
+</div>
+
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+	<div class="bodyContentHead" style="text-align:left">
+		<font color="red"><strong><{$lang.tools_restore_title_desc}></strong></font><br />
+		<form method="POST" name="myform" id="myform" action="./?act=Tools.restore" onsubmit="pageGo(1);return false;">
+	  	<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;&nbsp;&nbsp;
+		<{$lang.roleId}>: <input id="cid" name="cid" value="<{$smarty.post.cid}>" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<{$lang.accountId}>: <input id="pid" name="pid" value="<{$smarty.post.pid}>" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+  		&nbsp;&nbsp;
+		<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+		</form>
+	
+	<{if $data.cid}>
+		<{if $data.in_ban == 1}>
+		<a href="javascript:void(0);" onclick="undoBlockGag('<{$lang.nocheck}>',1,<{$data.cid}>)"><{$lang.undoBlock}></a> 
+		<{else}>
+		<a href="javascript:void(0);" onclick="subBlockGag('<{$lang.nocheck}>',1,<{$data.cid}>)"><{$lang.block}></a> 
+		<{/if}>
+	<{/if}>
+	</div>
+	</div>
+</div>
+<{if $data.in_ban == 1}>
+<div id="bodyTitle">
+<{$lang.tools_restore_gold}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+	<div class="bodyContentHead">
+		<{$lang.restore_order_id}>: <input id="order_id" name="order_id" size="40" value="" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="restoreOrderId(<{$data.cid}>, <{$data.pid}>);"><{$lang.handler}></a>
+	</div>
+	</div>
+</div>
+
+<div id="bodyTitle">
+<{$lang.tools_restore_equip_title}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+	<div class="bodyContentHead">
+		<{$lang.equip_id}>: <input id="equip_id" name="equip_id" size="40" value="" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<{$lang.equip_num}>: <input id="equip_num" name="equip_num" value="" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="restoreEquip(<{$data.cid}>, <{$data.pid}>);"><{$lang.handler}></a>
+	</div>
+	</div>
+</div>
+
+<div id="bodyTitle">
+<{$lang.tools_del_shouhun_title}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+	<div class="bodyContentHead">
+		<{$lang.cur_shouhun_num}>: <{$data.shouhun}>&nbsp;&nbsp;&nbsp;&nbsp;
+		<{$lang.restore_shouhun_num}>: <input id="shouhun_num" name="shouhun_num" value="" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="restoreShouhun(<{$data.cid}>, <{$data.pid}>);"><{$lang.handler}></a>
+	</div>
+	</div>
+</div>
+
+<div id="bodyTitle">
+<{$lang.tools_restore_itembar_equip_title}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+	<div class="bodyContentHead">
+		<{$lang.tools_del_itembar_equip_id}>: <input id="itembar_equip_id" name="itembar_equip_id" size="40" value="" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="restoreItemBarEquip(<{$data.cid}>, <{$data.pid}>);"><{$lang.handler}></a>
+	</div>
+	</div>
+</div>
+
+<div id="bodyTitle">
+<{$lang.tools_restore_itembar_equip_jl_lev_title}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+	<div class="bodyContentHead">
+		<{$lang.tools_set_itembar_equip_id}>: <input id="del_itembarequip_id" name="del_itembarequip_id" size="40" value="" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<{$lang.jl_lev}>: <input id="jl_lev" name="jl_lev" value="" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="restoreItemBarEquipJlLev(<{$data.cid}>, <{$data.pid}>);"><{$lang.handler}></a>
+	</div>
+	</div>
+</div>
+
+<div id="bodyTitle">
+<{$lang.tools_restore_del_game_gold_title}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+	<div class="bodyContentHead">
+		<{$lang.cur_game_gold}>: <{$data.game_gold}>&nbsp;&nbsp;&nbsp;&nbsp;
+		<{$lang.del_game_gold_num}>: <input id="game_gold" name="game_gold" value="" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="restoreGameGold(<{$data.cid}>, <{$data.pid}>);"><{$lang.handler}></a>
+	</div>
+	</div>
+</div>
+
+<div id="bodyTitle">
+<{$lang.tools_restore_del_silver_title}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+	<div class="bodyContentHead">
+		<{$lang.cur_silver}>: <{$data.silver}>&nbsp;&nbsp;&nbsp;&nbsp;
+		<{$lang.del_silver}>: <input id="silver" name="silver" value="" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="restoreSilver(<{$data.cid}>, <{$data.pid}>);"><{$lang.handler}></a>
+	</div>
+	</div>
+</div>
+
+<div id="bodyTitle">
+<{$lang.tools_restore_other}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+	<div class="bodyContentHead">
+		<table width="98%" class="tableContent" align="center">
+			<tr>
+				<td colspan="10"><font color="red"><strong><{$lang.tools_other_note}></strong></font></td>
+			</tr>
+			<tr>
+			<td><a style="font-size:20px;" href="javascript:void(0);" onclick="restoreOther(<{$data.cid}>, <{$data.pid}>, 8, '<{$lang.tools_del_title_monthcard}>');"><{$lang.tools_del_title_monthcard}></a></td>
+			<td><a style="font-size:20px;" href="javascript:void(0);" onclick="restoreOther(<{$data.cid}>, <{$data.pid}>, 9, '<{$lang.tools_del_title_lifelongcard}>');"><{$lang.tools_del_title_lifelongcard}></a></td>
+			<td><a style="font-size:20px;" href="javascript:void(0);" onclick="restoreOther(<{$data.cid}>, <{$data.pid}>, 10, '<{$lang.tools_del_title_fund}>');"><{$lang.tools_del_title_fund}></a></td>
+			<td><a style="font-size:20px;" href="javascript:void(0);" onclick="restoreOther(<{$data.cid}>, <{$data.pid}>, 12, '<{$lang.tools_del_title_magic_pea}>');"><{$lang.tools_del_title_magic_pea}></a></td>
+			</tr>
+		</table>
+	</div>
+	</div>
+</div>
+<{/if}>
+
+<{if $data}>
+<br><br><strong><{$lang.itemsDetail}></strong><br>
+<table width="98%" class="tableContent" align="center">
+	<tr>
+		<th><{$lang.equip_title}></th>
+		<th><{$lang.equip_id}></th>
+		<th><{$lang.equip_num}></th>
+	</tr>
+	<{if $data.chitems}>
+    <{foreach from=$data.chitems key=k item=v}>
+	<tr>
+		<td><{$v.title}></td>
+		<td><{$v.equip_id}></td>
+		<td><{$v.stack_num}></td>
+	</tr>
+	<{/foreach}>
+	<{/if}>
+</table>
+
+<{if $data.chstorages}>
+<br><br><strong><{$lang.storagesDetail}></strong><br>
+<table width="98%" class="tableContent" align="center">
+	<tr>
+		<th><{$lang.equip_title}></th>
+		<th><{$lang.equip_id}></th>
+		<th><{$lang.equip_num}></th>
+	</tr>
+    <{foreach from=$data.chstorages key=k2 item=v2}>
+	<tr>
+		<td><{$v2.title}></td>
+		<td><{$v2.equip_id}></td>
+		<td><{$v2.stack_num}></td>
+	</tr>
+	<{/foreach}>
+</table>
+<{/if}>
+
+<{/if}>

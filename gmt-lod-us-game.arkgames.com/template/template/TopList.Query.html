@@ -1,0 +1,13 @@
+
+<{include file="Base.Query.html"}>
+
+&nbsp;<{$lang.toplist_type}>：<select name="toplist_type" id="toplist_type">
+<{assign var='s' value=$smarty.request.toplist_type}>
+	<{foreach key=k item=i from=$lang.toplist_type_map}>
+		<option value="<{$k}>" <{if $s == $k}>selected="true"<{/if}>><{$i}>
+	<{/foreach}>
+</select>
+
+
+
+

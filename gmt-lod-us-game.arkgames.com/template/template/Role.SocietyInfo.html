@@ -1,0 +1,47 @@
+<div id="bodyTitle">
+<{$lang.roleGetSocietyInfo}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+  		<div class="bodyContentHead" style="text-align:left">
+  			<form id="myform" name="myform" action="./?act=Role.getSocietyInfo" onsubmit="FS('myform',pt.writeBody); return false;" method="post">
+			<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+			<select  name='opt_type'>
+				<option value='1' <{if $smarty.post.opt_type==1}>selected=selected<{/if}>><{$lang.roleId}></option>	
+				<option value='2' <{if $smarty.post.opt_type==2}>selected=selected<{/if}>><{$lang.roleName}></option>
+			</select>
+			&nbsp;&nbsp;
+                     	<input type='text' name='opt_value'  value='<{$smarty.post.opt_value}>'>&nbsp;&nbsp;
+			<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+  			</form>
+		</div>
+		<table width="98%" class="tableContent" align="center">
+    		<thead>
+    			<tr align="center">
+				<th><{$lang.server}></th>
+				<th><{$lang.roleName}></th>
+				<th><{$lang.roleId}></th>
+				<th><{$lang.inFaction}></th>
+				<th><{$lang.inSwornRelationshipIp}></th>
+                                <th><{$lang.friendCount}></th>
+                                <th><{$lang.loverName}></th>
+			</tr>
+    		</thead>
+    		<tbody>
+			<{if $data}>
+    			<tr align="center">
+				<td><{$data.servername}></td>
+				<td><{$data.name}></td>
+				<td><{$data.id}></td>
+                                <td><{$data.factionName}></td>
+				<td><{$data.sponsorId}></td>
+                                <td><{$data.friendCount}></td>
+				<td><{$data.loverName}></td>
+			</tr>
+			<{else}>
+			<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+    			<{/if}>
+    		</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,56 @@
+113.108.187.154 -- [2020-08-28 10:27:17] -- cai -- in
+113.108.187.154 -- [2020-08-28 11:32:03] -- cai -- in
+113.108.187.154 -- [2020-08-28 11:40:18] -- cai -- in_123
+113.108.187.154 -- [2020-08-28 11:42:24] -- cai -- in_1234
+113.108.187.154 -- [2020-08-28 11:46:15] -- cai -- in_1234
+113.108.187.154 -- [2020-08-28 11:46:15] -- cai -- {"uid":"","expire":1601264536,"cid":"54542","title":"\u6d4b\u8bd5","content":"\u6d4b\u8bd5","reason":"\u6d4b\u8bd5","author":"sanxiao","gift":[{"gift":"21020006","name":"\u55dc\u8840\u672f\u5377\u8f74","num":2,"ext":1}]}
+113.108.187.154 -- [2020-08-28 11:46:15] -- cai -- in_12345
+ -- [2020-08-28 11:50:02] -- cai -- in_1234
+ -- [2020-08-28 11:50:02] -- cai -- {}
+ -- [2020-08-28 11:55:01] -- cai -- in_1234
+ -- [2020-08-28 11:55:01] -- cai -- INSERT INTO `gm_queue` (`interfaceName`,`serverList`,`dataResult`,`status`,`queueDate`,`serverGroup`,`productId`) VALUES (:interfaceName, :serverList, :dataResult, :status, :queueDate, :serverGroup, :productId)
+ -- [2020-08-28 11:55:01] -- cai -- {}
+ -- [2020-08-28 12:04:11] -- cai -- in_1234
+ -- [2020-08-28 12:04:11] -- cai -- INSERT INTO `gm_queue` (`interfaceName`,`serverList`,`dataResult`,`status`,`queueDate`,`serverGroup`,`productId`) VALUES (:interfaceName, :serverList, :dataResult, :status, :queueDate, :serverGroup, :productId)
+ -- [2020-08-28 12:04:11] -- cai -- {}
+ -- [2020-08-28 13:45:15] -- cai -- in_1234
+ -- [2020-08-28 13:45:15] -- cai -- INSERT INTO `gm_queue` (`interfaceName`,`serverList`,`dataResult`,`status`,`queueDate`,`serverGroup`,`productId`) VALUES (:interfaceName, :serverList, :dataResult, :status, :queueDate, :serverGroup, :productId)
+ -- [2020-08-28 13:45:15] -- cai -- {}
+ -- [2020-08-28 14:07:46] -- cai -- in_1234
+ -- [2020-08-28 14:07:46] -- cai -- INSERT INTO `gm_queue` (`interfaceName`,`serverList`,`dataResult`,`status`,`queueDate`,`serverGroup`,`productId`) VALUES (:interfaceName, :serverList, :dataResult, :status, :queueDate, :serverGroup, :productId)
+ -- [2020-08-28 16:08:41] -- cai -- in_1234
+ -- [2020-08-28 16:08:41] -- cai -- INSERT INTO `gm_queue` (`interfaceName`,`serverList`,`dataResult`,`status`,`queueDate`,`serverGroup`,`productId`) VALUES (:interfaceName, :serverList, :dataResult, :status, :queueDate, :serverGroup, :productId)
+ -- [2020-08-28 16:13:05] -- cai -- in_1234
+ -- [2020-08-28 16:13:05] -- cai -- INSERT INTO `gm_queue` (`interfaceName`,`serverList`,`dataResult`,`status`,`queueDate`,`serverGroup`,`productId`) VALUES (:interfaceName, :serverList, :dataResult, :status, :queueDate, :serverGroup, :productId)
+ -- [2020-08-28 17:36:15] -- cai -- in_1234
+ -- [2020-08-28 17:36:15] -- cai -- INSERT INTO `gm_queue` (`interfaceName`,`serverList`,`dataResult`,`status`,`queueDate`,`serverGroup`,`productId`) VALUES (:interfaceName, :serverList, :dataResult, :status, :queueDate, :serverGroup, :productId)
+ -- [2020-08-28 17:37:03] -- cai -- in_1234
+ -- [2020-08-28 17:37:03] -- cai -- INSERT INTO `gm_queue` (`interfaceName`,`serverList`,`dataResult`,`status`,`queueDate`,`serverGroup`,`productId`) VALUES (:interfaceName, :serverList, :dataResult, :status, :queueDate, :serverGroup, :productId)
+ -- [2020-08-28 17:46:05] -- cai -- in_1234
+ -- [2020-08-28 17:46:05] -- cai -- INSERT INTO `gm_queue` (`interfaceName`,`serverList`,`dataResult`,`status`,`queueDate`,`serverGroup`,`productId`) VALUES (:interfaceName, :serverList, :dataResult, :status, :queueDate, :serverGroup, :productId)
+ -- [2020-08-28 18:32:00] -- cai -- in_call
+ -- [2020-08-28 18:32:16] -- cai -- in_call
+ -- [2020-08-28 18:32:54] -- cai -- in_call
+ -- [2020-08-28 18:32:55] -- cai -- in_call
+ -- [2020-08-28 18:33:00] -- cai -- in_call
+ -- [2020-08-28 18:33:01] -- cai -- in_call
+ -- [2020-08-28 18:33:07] -- cai -- in_call
+ -- [2020-08-28 18:33:07] -- cai -- in_call
+ -- [2020-08-28 18:33:08] -- cai -- in_call
+ -- [2020-08-28 18:33:21] -- cai -- in_call
+ -- [2020-08-28 18:33:22] -- cai -- in_call
+ -- [2020-08-28 18:33:32] -- cai -- in_call
+ -- [2020-08-28 18:33:33] -- cai -- in_call
+ -- [2020-08-28 18:33:33] -- cai -- in_call
+ -- [2020-08-28 18:33:34] -- cai -- in_call
+ -- [2020-08-28 18:33:34] -- cai -- in_call
+ -- [2020-08-28 18:33:35] -- cai -- in_call
+ -- [2020-08-28 18:33:36] -- cai -- in_call
+ -- [2020-08-28 18:43:59] -- cai -- in_call
+ -- [2020-08-28 18:44:00] -- cai -- in_add_notice
+ -- [2020-08-28 18:46:08] -- cai -- in_call
+ -- [2020-08-28 18:46:08] -- cai -- "t0.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-08-28 18:46:08] -- cai -- {"title":"\u6d4b\u8bd52","type":"1","author":" sanxiao","begTime":"2020-08-28 00:00:00","endTime":"2020-08-28 23:59:59","tollgate_id":0,"content":"\u6d4b\u8bd52","cycle":"15","pictureUrl":"","status":"1","ext":"","id":"100004","act_type":"add"}
+ -- [2020-08-28 18:46:14] -- cai -- in_call
+ -- [2020-08-28 18:46:17] -- cai -- in_call
+ -- [2020-08-28 18:46:21] -- cai -- in_call

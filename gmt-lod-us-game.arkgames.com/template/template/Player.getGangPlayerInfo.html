@@ -1,0 +1,71 @@
+<div id="bodyTitle"><{$lang.gangSearch}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  	<div class="bodyContentBody">
+  	<div class="bodyContentHead" style="text-align:left">
+	<form method="POST" name="myform" id="myform" action="./?act=Player.getGangPlayerInfo" onsubmit="pageGo(1);return false;">
+		<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+		<{include file="User_Type.Select_2.html"}>
+    	<{include file="Page.Show.html"}>
+	  	<br />
+	  	<{$lang.rechargeTime}>:<input id="begTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.begTime}>" style="width: 200px;" name="begTime" realvalue=""/> 
+  		-- <input id="endTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.endTime}>" style="width: 200px;" name="endTime" realvalue=""/>
+  		 &nbsp;&nbsp;		
+	  	<!-- p 为分页页码 -->
+	  	<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+  		&nbsp;&nbsp;
+  		<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+  	</form>
+</div>
+<table width="98%" class="tableContent" align="center">
+    <thead>
+    <tr align="center">
+    <!--
+	<th><input id="checkAll" name="checkAll" type="checkbox" value="" onclick="checkAlls();"/></th>
+	-->
+	<th><{$lang.passportId}></th>
+	<th><{$lang.passportName}></th>
+	<th><{$lang.roleId}></th>
+	<th><{$lang.roleName}></th>
+	<th><{$lang.level}></th>
+	
+	<th><{$lang.rechargeMoney}></th>
+	<th><{$lang.consumeGold}></th>
+	<th><{$lang.gang_title}></th>
+	<th><{$lang.lastLoginTime}></th>
+	<th><{$lang.dragon_award_level}></th>
+	<th><{$lang.handler}></th>
+  </tr>
+    </thead>
+    <tbody>
+    <{foreach key=k item=v from=$list}>
+    <tr align="center">
+     <!--
+	<td><input name="select[]" id="select[]" type="checkbox" value="<{$v.roleId}>" onclick="checkOne()"/></td>
+	-->
+	<td><{$v.player_id}></td>
+	<td><{$v.account}></td>
+	<td><{$v.character_id}></td>
+	<td><{$v.nick}></td>
+	<td><{$v.level}></td>
+	<td><{$v.total_pay}></td>
+	<td><{$v.total_consume}></td>
+	<td><{$v.gang_title}></td>
+	<td><{$v.now_login_time}></td>
+	<td><{$v.dragon_award_level}></td>
+	<td>
+		<{if $v.gang_title}>
+		<a href="javascript:void(0);" onclick="RQ('./?act=Player.disbandGang&server_id=<{$smarty.request.server_id}>&character_id=<{$v.character_id}>&gang_title=<{$v.gang_title}>',disbandGang,'',1);"><{$lang.disbandGang}></a> 
+		<{/if}>
+	</td>	
+	
+	</tr>
+	<{foreachelse}>
+	<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+    <{/foreach}>
+    </tbody>
+</table>
+<{if $list}>
+<div class="pages"><{$pages}></div>
+<{/if}>
+</div>
+</div>

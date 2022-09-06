@@ -1,0 +1,16 @@
+ -- [2021-01-27 13:55:37] -- cai -- in_call_1
+ -- [2021-01-27 13:55:37] -- cai -- "Rest_setNotice"
+ -- [2021-01-27 13:55:37] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2021-01-27 13:55:37] -- cai -- {"title":"\u6d4b\u8bd5","type":"1","author":" sanxiao","begTime":"2021-01-27 00:00:00","endTime":"2021-01-27 23:59:59","tollgate_id":1,"content":"{\"default\":\"en\",\"en\":\"\\u6d4b\\u8bd5\",\"cn\":\"\\u6d4b\\u8bd5cn\"}","cycle":"15","pictureUrl":"","status":"1","ext":"","id":"100003","act_type":"add"}
+ -- [2021-01-27 13:56:01] -- cai -- in_call_1
+ -- [2021-01-27 13:56:01] -- cai -- "Rest_getNoticeList"
+ -- [2021-01-27 13:56:01] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2021-01-27 13:56:01] -- cai -- {"id":"","type":"","opType":"","opValue":"","begTime":"","endTime":"","page":"1","pagecount":"30"}
+ -- [2021-01-27 13:56:17] -- cai -- in_call_1
+ -- [2021-01-27 13:56:17] -- cai -- "Rest_getNoticeList"
+ -- [2021-01-27 13:56:17] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2021-01-27 13:56:17] -- cai -- {"id":"","type":"","opType":"1","opValue":"","begTime":"2020-09-28 00:00:00","endTime":"2020-09-28 10:53:22","page":"1","pagecount":"30"}
+ -- [2021-01-27 13:57:01] -- cai -- in_call_1
+ -- [2021-01-27 13:57:01] -- cai -- "Rest_deleteNotice"
+ -- [2021-01-27 13:57:01] -- cai -- "t2.sm2.kunlun.com\/platform\/index.php"
+ -- [2021-01-27 13:57:01] -- cai -- {"id":"100003"}

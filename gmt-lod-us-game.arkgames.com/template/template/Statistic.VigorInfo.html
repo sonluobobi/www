@@ -1,0 +1,36 @@
+<div id="bodyTitle">
+<{$lang.statisticGetVigorInfo}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+  		<div class="bodyContentHead" style="text-align:left">
+  			<form id="myform" name="myform" action="./?act=Statistic.getVigorInfo" onsubmit="FS('myform',pt.writeBody); return false;" method="post">
+			<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+                     	<{$lang.taskDate}>：<{include file="Date.Select.html"}> &nbsp;&nbsp;
+			<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+  			</form>
+		</div>
+		<table width="98%" class="tableContent" align="center">
+    		<thead>
+    			<tr align="center">
+				<th><{$lang.taskDate}></th>
+				<th><{$lang.server}></th>
+				<th><{$lang.normalEnergyConsumption}></th>
+				<th><{$lang.advanceEnergyConsumption}></th>
+			</tr>
+    		</thead>
+    		<tbody>
+			<{if $data}>
+    			<tr align="center">
+				<td><{$data.begTime}>-<{$data.endTime}></td>
+				<td><{$data.servername}></td>
+				<td><{$data.normal}></td>
+				<td><{$data.effect}></td>
+			</tr>
+			<{else}>
+			<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+    			<{/if}>
+    		</tbody>
+		</table>
+	</div>
+</div>

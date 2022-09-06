@@ -1,0 +1,47 @@
+<div id="bodyTitle">添加全服邮件</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+<div class="bodyContentHead" style="text-align:left">
+<iframe id="iframeload" name="iframeload" src="/img/1.gif" style="width:0px; height:0px; display:none" frameborder="0" scrolling="no">
+</iframe>	
+<form id="myform" name="myform" method="post" action="./?act=Notice.sendSysMail" target="iframeload" onsubmit="return confirm('<{$lang.emailConfirmAdd}>')">  
+<table align="center" cellspacing="1" cellpadding="0" class="userTable" style="width:80%;" id="tbl">  
+<tr>  
+<td align="right"><{$lang.ServerName}>：</td>
+<td align="left">
+<{if $smarty.get.id > 0}>
+<{$server_text}>
+<input type="hidden" id="id" name="id" value="<{$id}>" />
+<input type="hidden" id="server_ids[]" name="server_ids[]" value="<{$server_id}>" /> 
+<{else}>
+	
+	<{include file="Common_server.Checkbox.html"}>
+	
+<{/if}>
+</td>
+</tr>
+<br />
+<tr>  
+	<td align="right">过期时间：</td>  
+	<td align="left"><input type="text" name="expired_date" style="width:200px" value="<{$expired_date}>" id="expired_date" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate" >
+	</td>
+</tr>  
+
+<tr>  
+	<td align="right"><{$lang.title}>：</td>  
+	<td align="left"><input type="text" name="title" value="<{$title}>" id="title" style="width:300px" /></td>  
+</tr>
+
+<tr>  
+	<td align="right"><{$lang.content}>：</td>
+	<td align="left"><textarea id="content_mail" name="content_mail" rows="6" cols="40"><{$content}></textarea></td>  
+</tr>  
+
+</table>  
+<div style="width:50%;margin:auto;padding:20px;">  
+<input type="hidden" value="9900000" name="MAX_FILE_SIZE" />
+<input name="submit" type="submit" class="submit" value="<{$lang.Submit}>" />&nbsp;&nbsp;
+<input name="reset" type="reset" class="submit" value="<{$lang.Reset}>" />
+</div> 
+</form> 
+</div>
+</div>

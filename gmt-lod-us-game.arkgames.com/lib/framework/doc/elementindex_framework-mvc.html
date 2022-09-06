@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title></title>
+			<link rel="stylesheet" href="media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+						<a name="top"></a>
+<h2>[framework-mvc] element index</h2>
+	<h3>Package indexes</h3>
+	<ul>
+				<li><a href="elementindex_framework-core.html">framework-core</a></li>
+					<li><a href="elementindex_framework-data-memcached.html">framework-data-memcached</a></li>
+					<li><a href="elementindex_framework-data-pdo.html">framework-data-pdo</a></li>
+					<li><a href="elementindex_framework-data-tt.html">framework-data-tt</a></li>
+					<li><a href="elementindex_framework-i18n.html">framework-i18n</a></li>
+					<li><a href="elementindex_framework-mvc-dispatcher.html">framework-mvc-dispatcher</a></li>
+							<li><a href="elementindex_framework-mvc-view.html">framework-mvc-view</a></li>
+					<li><a href="elementindex_framework-mvc-view-smarty.html">framework-mvc-view-smarty</a></li>
+					<li><a href="elementindex_framework-util.html">framework-util</a></li>
+			</ul>
+<a href="elementindex.html">All elements</a>
+<br />
+<div class="index-letter-menu">
+	<a class="index-letter" href="elementindex_framework-mvc.html#a">a</a>
+	<a class="index-letter" href="elementindex_framework-mvc.html#b">b</a>
+	<a class="index-letter" href="elementindex_framework-mvc.html#d">d</a>
+	<a class="index-letter" href="elementindex_framework-mvc.html#i">i</a>
+	<a class="index-letter" href="elementindex_framework-mvc.html#s">s</a>
+</div>
+
+	<a name="a"></a>
+	<div class="index-letter-section">
+		<div style="float: left" class="index-letter-title">a</div>
+		<div style="float: right"><a href="#top">top</a></div>
+		<div style="clear: both"></div>
+	</div>
+	<dl>
+			<dt class="field">
+						<span class="method-title">afterFilter</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="framework-mvc/IController.html#methodafterFilter">IController::afterFilter()</a> in IController.php</div>
+							<div class="index-item-description">在执行控制器方法之后执行，无论beforeFilter是否返回为true，该方法都会得到执行。</div>
+					</dd>
+		</dl>
+	<a name="b"></a>
+	<div class="index-letter-section">
+		<div style="float: left" class="index-letter-title">b</div>
+		<div style="float: right"><a href="#top">top</a></div>
+		<div style="clear: both"></div>
+	</div>
+	<dl>
+			<dt class="field">
+						<span class="method-title">beforeFilter</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="framework-mvc/IController.html#methodbeforeFilter">IController::beforeFilter()</a> in IController.php</div>
+							<div class="index-item-description">在执行控制器方法之前执行的过滤方法，该方法返回布尔类型值，当返回结果为true时，继续执行请求的方法，当返回结果为false时，终端请求的执行。</div>
+					</dd>
+		</dl>
+	<a name="d"></a>
+	<div class="index-letter-section">
+		<div style="float: left" class="index-letter-title">d</div>
+		<div style="float: right"><a href="#top">top</a></div>
+		<div style="clear: both"></div>
+	</div>
+	<dl>
+			<dt class="field">
+						<span class="method-title">dispatch</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="framework-mvc/IRequestDispatcher.html#methoddispatch">IRequestDispatcher::dispatch()</a> in IRequestDispatcher.php</div>
+							<div class="index-item-description">分发请求,该方法实现具体的Controller的执行。</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">display</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="framework-mvc/IView.html#methoddisplay">IView::display()</a> in IView.php</div>
+							<div class="index-item-description">展示视图，</div>
+					</dd>
+		</dl>
+	<a name="i"></a>
+	<div class="index-letter-section">
+		<div style="float: left" class="index-letter-title">i</div>
+		<div style="float: right"><a href="#top">top</a></div>
+		<div style="clear: both"></div>
+	</div>
+	<dl>
+			<dt class="field">
+						IController
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="framework-mvc/IController.html">IController</a> in IController.php</div>
+							<div class="index-item-description">控制器接口，控制器直接接收处理来自用户的请求，并且将处理结果交给View进行反馈给用户</div>
+					</dd>
+			<dt class="field">
+						IRequestDispatcher
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="framework-mvc/IRequestDispatcher.html">IRequestDispatcher</a> in IRequestDispatcher.php</div>
+							<div class="index-item-description">请求分发器，用于将用户的请求分配给Controller类及其方法进行执行处理，实现该接口主要是实现Controller的类和方法的查找规则。</div>
+					</dd>
+			<dt class="field">
+						IView
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="framework-mvc/IView.html">IView</a> in IView.php</div>
+							<div class="index-item-description">视图接口，视图用于在Controller方法执行之后，反馈或展示处理结果给用户。</div>
+					</dd>
+			<dt class="field">
+						<span class="include-title">IController.php</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="framework-mvc/_mvc---IController.php.html">IController.php</a> in IController.php</div>
+					</dd>
+			<dt class="field">
+						<span class="include-title">IRequestDispatcher.php</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="framework-mvc/_mvc---IRequestDispatcher.php.html">IRequestDispatcher.php</a> in IRequestDispatcher.php</div>
+					</dd>
+			<dt class="field">
+						<span class="include-title">IView.php</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="framework-mvc/_mvc---IView.php.html">IView.php</a> in IView.php</div>
+					</dd>
+		</dl>
+	<a name="s"></a>
+	<div class="index-letter-section">
+		<div style="float: left" class="index-letter-title">s</div>
+		<div style="float: right"><a href="#top">top</a></div>
+		<div style="clear: both"></div>
+	</div>
+	<dl>
+			<dt class="field">
+						<span class="method-title">setDispatcher</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="framework-mvc/IController.html#methodsetDispatcher">IController::setDispatcher()</a> in IController.php</div>
+							<div class="index-item-description">设置请求分发器</div>
+					</dd>
+		</dl>
+
+<div class="index-letter-menu">
+	<a class="index-letter" href="elementindex_framework-mvc.html#a">a</a>
+	<a class="index-letter" href="elementindex_framework-mvc.html#b">b</a>
+	<a class="index-letter" href="elementindex_framework-mvc.html#d">d</a>
+	<a class="index-letter" href="elementindex_framework-mvc.html#i">i</a>
+	<a class="index-letter" href="elementindex_framework-mvc.html#s">s</a>
+</div>	</body>
+</html>

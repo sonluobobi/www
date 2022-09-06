@@ -1,0 +1,11 @@
+<select name="logActkey" id="logActkey">
+<{assign var='s' value=$smarty.request.logActkey}>
+	<option value=""><{$lang.ActkeyTitle}></option>
+    <{if $logActkey_all == true}>
+	<option value="9999" <{if $s == 9999}>selected="true"<{/if}>><{$lang.selectAll}></option>
+    <{/if}>
+    <{section name=i loop=$actionList}>
+	<option value="<{$actionList[i].actkey}>" <{if $s == $actionList[i].actkey}>selected="true"<{/if}>><{$actionList[i].acttitle}>
+    </option>
+	<{/section}>
+</select>

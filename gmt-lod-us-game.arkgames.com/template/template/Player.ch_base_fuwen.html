@@ -1,0 +1,33 @@
+<div align="center">
+<table width="98%" class="tableContent" align="center">
+	<tr>
+		<th><{$lang.pet_bar}></th>
+		<th><{$lang.order_by}></th>
+		<th><{$lang.rune_equip_id}></th>
+		<th><{$lang.rune_title}></th>
+		<th><{$lang.rune_quality}></th>
+		<th><{$lang.jl_level}></th>
+	</tr>
+	<{if $data}>
+    <{foreach from=$data key=k item=v}>
+	<tr>
+		<td>
+			<{if $v.bar_id == '1'}>
+				<{$lang.bar_type_1}>
+			<{elseif $v.bar_id == '2'}>
+				<{$lang.bar_type_2}>
+			<{elseif $v.bar_id == '3'}>
+				<{$lang.bar_type_3}>
+			<{else}>
+				<{$v.bar_id}>
+			<{/if}>
+		</td>
+		<td><{$v.order_by}></td>
+		<td><{$v.equip_id}></td>
+		<td><{$v.equip_title}></td>
+		<td><{$v.quality}></td>
+		<td><{$v.level}></td>
+	</tr>
+	<{/foreach}>
+	<{/if}>
+</table>

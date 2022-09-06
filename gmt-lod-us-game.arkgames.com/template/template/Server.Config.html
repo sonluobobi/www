@@ -1,0 +1,45 @@
+<div  id="bodyTitle"><{$lang.gameServerConfect}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+ <div class="bodyContentHead">
+ <table width="90%"  class="tableContent">
+  <tr>
+  <td width="48%">服务器名称</td>
+  <td width="52%"><{$serverName}></td>
+  </tr>
+  <tr>
+  <td width="48%">注册人数</td>
+  <td width="52%"><{$smarty.get.Register}></td>
+  </tr>
+  </table>
+  <br /><br />
+  <form id="myform" name="myform" action="./?act=Service.SetServerConfig" onsubmit="FS('myform',pt.writeBody); return false;" method="post">
+  <table width="90%"  class="tableContent">
+  <{foreach item=data from=$dataList}>
+  <tr>
+  <td width="48%"><{$data.describe}></td>
+  <td width="52%">
+  <{if $data.dataType == 'datetime'}>
+  <input type="text" realvalue="" name="configInfo[<{$data.name}>]" style="width: 200px;" value="<{$data.value}>" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate" id="sdate"/>
+  <{elseif $data.dataType == 'radio'}>
+  <input type="radio" name="configInfo[<{$data.name}>]" value="1" <{if $data.value}>checked="checked"<{/if}> />开
+  <input type="radio" name="configInfo[<{$data.name}>]" value="0" <{if !$data.value}>checked="checked"<{/if}>  />关
+  <{elseif $data.dataType == "text"}>
+  <input type="text" name="configInfo[<{$data.name}>]" value="<{$data.value}>" size="50" />
+  <{elseif $data.dataType == "textarea"}>
+  <textarea name="configInfo[<{$data.name}>]"><{$data.value}></textarea>
+    <{/if}>
+  
+  </td>
+  </tr>
+  <{/foreach}>
+  <tr>
+  <td>操作</td>
+  <td><input type="hidden" name="server_id" value="<{$smarty.get.server_id}>">
+  <input type="submit" class="submit" name="submit" value="<{$lang.Submit}>">　
+  <input type="reset" class="submit" name="reset" value="<{$lang.Reset}>" />
+  </td>
+  </tr>
+  </table>
+  </form>
+</div>
+</div>

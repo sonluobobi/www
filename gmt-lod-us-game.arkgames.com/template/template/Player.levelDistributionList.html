@@ -1,0 +1,39 @@
+<div  id="bodyTitle"><{$lang.levelDistributionTitle}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  <div class="bodyContentBody">
+  <div class="bodyContentHead" style="text-align:center">
+  <form name="myform" id="myform" action="?act=Player.getLevelDistributionList" method="post" onsubmit="FS('myform',pt.writeBody); return false;" >
+ 	<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+  <{include file="Page.Show.html"}>
+  <input id="p" name="p" type="hidden" value="1" />
+  <input name="submit" type="submit" class="submit"  value="<{$lang.search}>" />
+  </form>
+</div>
+		<table class="tableContent">
+		<thead>
+			<tr>
+              <th><{$lang.level}></th>
+              <th><{$lang.ch_count}></th>
+              <!--th><{$lang.fame_count}></th>
+              <th><{$lang.zhenqi_count}></th>
+              <th><{$lang.contribute_count}></th>
+			  <th><{$lang.silver_count}></th-->
+            </tr>
+		</thead>
+		<tbody>
+        <{section name="ii" loop=$dataList}>
+		<tr>
+          <td><{$dataList[ii].level}></td>
+          <td><{$dataList[ii].ch_count}></td>
+          <!--td><{$dataList[ii].fame_count}></td>
+          <td><{$dataList[ii].zhenqi_count}></td>
+		  <td><{$dataList[ii].contribute_count}></td>
+		  <td><{$dataList[ii].silver_count}></td-->
+        </tr>
+		<{/section}>
+		</tbody>
+		</table>
+
+<div class="pages"><{$pages}></div>
+  </div>
+</div>

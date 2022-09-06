@@ -1,0 +1,28 @@
+
+<table width="98%" class="tableContent" align="center" id="myTable">
+  	<thead>
+		<tr>
+			<!-- 字段标题 -->
+			<{foreach key=k item=v from=$titles}>
+			<th ><{$lang.$v}></th>		
+			<{/foreach}>
+			<th ><{$lang.handler}></th>
+        </tr>
+	</thead>
+	<tbody>
+        <{section name="ii" loop=$dataList}>
+		<tr align="center">
+			<{foreach key=j item=f from=$fields}>
+			<td><{$dataList[ii].$f}></td>
+			<{/foreach}>
+
+			<td>
+			<{if isset($dataList[ii].id) and $dataList[ii].id > 0 and $dataList[ii].state !=1}>
+				<a href="javascript:void();"><{$lang.bufa}></a>
+			<{/if}>
+			</td>
+        </tr>
+		<{/section}>
+	</tbody>
+</table>
+

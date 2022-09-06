@@ -1,0 +1,21 @@
+<div align="center">
+<br><br><strong><{$lang.chdragon}></strong><br>
+<table width="98%" class="tableContent" align="center">
+	<tr>
+		<th><{$lang.dragon_id}></th>
+		<th><{$lang.dragon_star}></th>
+		<th><{$lang.level}></th>
+		<th><{$lang.fight_capacity}></th>
+	</tr>
+	<{if $data.chdragons}>
+    <{foreach from=$data.chdragons key=k item=v}>
+	<tr>
+		<td><{$v.id}></td>
+		<td><{$v.star}></td>
+		<td><{$v.level}></td>
+		<td><{$v.fight_capacity}></td>
+	</tr>
+	<{/foreach}>
+	<{/if}>
+</table>
+</div>

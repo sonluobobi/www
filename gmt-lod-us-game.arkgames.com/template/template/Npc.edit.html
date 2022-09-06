@@ -1,0 +1,92 @@
+<div id="bodyTitle">
+<{if $smarty.get.data_id > 0}>
+	<{$lang.activityNpcEdit}>
+<{else}>
+	<{$lang.activityNpcAdd}>
+<{/if}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+<div class="bodyContentHead" style="text-align:left">
+<iframe id="iframeload" name="iframeload" src="/img/1.gif" style="width:0px; height:0px; display:none" frameborder="0" scrolling="no">
+</iframe>	
+<form id="subform" name="subform" method="post" action="./?act=Npc.modifyGameNpc" target="iframeload">  
+<table align="center" cellspacing="1" cellpadding="0" class="userTable" style="width:80%;" id="gallery-table">  
+<tr>  
+<td align="right"><{$lang.ServerName}>：</td>  
+<td align="left">
+<{include file="Common_server.list.html"}>
+</td>
+</tr>
+<tr>  
+	<td align="right" width="200"><{$lang.npcName}>：</td>  
+	<td align="left"><input type="text" name="npc_name" value="<{$npc_name}>" id="npc_name" style="width:200px" /></td>  
+</tr>
+<tr>  
+	<td align="right">NPCId：</td>  
+	<td align="left"><input type="text" name="npc_id" value="<{$npc_id}>" id="npc_id" style="width:200px" /></td>  
+</tr>
+<tr>  
+	<td align="right"><{$lang.npcImage}>：</td>  
+	<td align="left"><input type="text" name="npc_image" value="<{$npc_image}>" id="npc_image" style="width:200px" /></td>  
+</tr>
+<tr>  
+	<td align="right"><{$lang.npcMapId}>：</td>  
+	<td align="left"><input type="text" name="map_id" value="<{$map_id}>" id="map_id" style="width:200px" /></td>  
+</tr>
+<tr>  
+	<td align="right"><{$lang.npcMapXY}>：</td>  
+	<td align="left">X<input type="text" name="coordinate_x" value="<{$coordinate_x}>" id="coordinate_x" style="width:80px" />
+			Y<input type="text" name="coordinate_y" value="<{$coordinate_y}>" id="coordinate_y" style="width:80px" />
+	</td>  
+</tr>
+<tr>
+	<td align="right"><{$lang.type}>：</td>  
+	<td align="left"><select name="display">
+			<option value="" ><{$lang.plaseClew}></option>	
+		<{foreach from=$lang.npcDisplayTypes key=k item=types}>
+                                <option value="<{$k}>" <{if $k == $display && $display != ""}>selected="true"<{/if}>><{$types}></option>
+                        <{/foreach}>
+			</select>
+	</td>  
+</tr>
+<tr>
+	<td align="right"><{$lang.beginDate}>：</td>  
+	<td align="left"><input type="text" name="begTime" style="width:200px" value="<{$startTime}>" id="begTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:00'})" class="Wdate" >
+	</td>  
+</tr>  
+<tr>  
+	<td align="right"><{$lang.endDate}>：</td>  <td align="left"><input type="text" name="endTime" style="width:200px" value="<{$endTime}>" id="endTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:00'})" class="Wdate" >
+	</td>  
+</tr>  
+	<{if $opList}>
+		<{foreach from=$opList key=kp item=op}>
+		<tr>
+        <td align="right"><{$lang.awardOption}>：</td>
+         <td>
+              <{$lang.awardDialog}> <input type="text" name="awardDialog[]" value="<{$op}>" size="30" /><{$lang.eventId}> <input type="text" name="eventId[]" size="10" value="<{$kp}>" />
+        </td>
+        </tr>
+		<{/foreach}>
+	<{/if}>
+	<tr>
+	<td align="right"><{$lang.awardOption}>：</td>
+         <td>
+              <a href="javascript:;" onclick="addImg(this,'gallery-table')">[+]</a>
+              <{$lang.awardDialog}> <input type="text" name="awardDialog[]" size="30" /><{$lang.eventId}> <input type="text" name="eventId[]" size="10" />
+        </td>
+	</tr>
+	<tr>  
+	<td align="right"><{$lang.NPCdialogue}>：</td>  
+	<td align="left">
+	<textarea id="contents" name="fixed_dialog" rows="6" cols="40"><{$fixed_dialog}></textarea>
+	</td>  
+</tr>  
+</table>  
+<div style="width:50%;margin:auto;padding:20px;">  
+<input type="hidden" id="data_id" name="data_id" value="<{$id}>" />
+<input name="submit" type="submit" class="submit" value="<{$lang.Submit}>" />&nbsp;&nbsp;
+<input name="reset" type="reset" class="submit" value="<{$lang.Reset}>" />&nbsp;&nbsp;
+</div> 
+</form> 
+</div>
+</div>

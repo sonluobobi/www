@@ -1,0 +1,80 @@
+<div  id="bodyTitle"><{$lang.equipFlowTitle}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  <div class="bodyContentBody">
+  <div class="bodyContentHead" style="text-align:center">
+	<form method="POST" name="myform" id="myform" action="./?act=Player.getEquipFlowList" onsubmit="pageGo(1);return false;">
+
+ 	<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+	<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+	<{include file="User_Type.Select.html"}>
+	<{$lang.equip_id}>：<input type="text" name="equipId" value="<{$smarty.post.equipId}>" />
+	<{$lang.equipTitle}>：<input type="text" name="equipTitle" value="<{$smarty.post.equipTitle}>" />
+  <br><br>
+	<{$lang.op_id}>：<{include file="Common_logOpId.list.html"}>&nbsp;&nbsp;
+    <{$lang.beginDate}>：<input id="sdate" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.beginDate}>" style="width: 200px;" name="beginDate" realvalue=""/>
+  <{$lang.endDate}>：<input id="sdate" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.endDate}>" style="width: 200px;" name="endDate" realvalue=""/>
+   <br><br>
+   <{$lang.sourceDirect}>：<select name="source_direct" id="source_direct">
+	<{assign var='source_direct_v' value=$smarty.request.source_direct}>
+		<option value="0"><{$lang.plaseClew}></option>
+		<option value="1" <{if $source_direct_v == '1'}>selected="true"<{/if}>><{$lang.sourceGet}></option>
+		<option value="2" <{if $source_direct_v == '2'}>selected="true"<{/if}>><{$lang.sourceLose}></option>	
+	</select>
+	<{include file="Page.Show.html"}>
+
+  <input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+  </form>
+</div>
+<div class="bodyContentHead" style="color:red;">
+</div>
+<div class="bodyContentHead" style="color:red;">
+</div>
+		<table class="tableContent">
+		<thead>
+			<tr>
+              <th><{$lang.equip_title}></th>
+              <th><{$lang.equip_id}></th>
+              <th><{$lang.equipNum}></th>
+              <th><{$lang.roleName}></th>
+              <th><{$lang.roleId}></th>
+              <th><{$lang.accountId}></th>
+			  <th><{$lang.sourceDirect}></th>
+              <th><{$lang.op_id}></th>
+			  <th><{$lang.awardSource}></th>
+			  <th><{$lang.targetNick}></th>
+              <th><{$lang.targetCid}></th>
+			  <th><{$lang.scene_id}></th>
+			  <th><{$lang.created}></th>
+			   <th>params</th>
+            </tr>
+		</thead>
+		<tbody>
+        <{section name="ii" loop=$dataList}>
+		<tr>
+	          <td><{$dataList[ii].equip_title}></td>
+	          <td><{$dataList[ii].equip_id}></td>
+	          <td><{$dataList[ii].equip_num}></td>
+	          <td><{$dataList[ii].master_nick}></td>
+	          <td><{$dataList[ii].master_cid}></td>
+			  <td><{$dataList[ii].master_pid}></td>
+			  <td>	
+			  	<{if $dataList[ii].is_get == 1}> <{$lang.sourceGet}>
+			  	<{else}><{$lang.sourceLose}>
+			  	<{/if}>
+			  	
+			  </td>
+			  <td><{$dataList[ii].op_title}></td>
+			  <td><{$dataList[ii].reward_module_title}></td>
+			  <td><{$dataList[ii].slave_nick}></td>
+	          <td><{$dataList[ii].slave_cid}></td>
+			  <td><{$dataList[ii].scene_id}></td>
+			  <td><{$dataList[ii].created}></td>
+			  <td><{$dataList[ii].params}></td>
+        </tr>
+		<{/section}>
+		</tbody>
+		</table>
+
+	<div class="pages"><{$pages}></div>
+</div>
+</div>

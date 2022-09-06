@@ -1,0 +1,59 @@
+<div  id="bodyTitle"><{$lang.equipFlowStatsTitle}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  <div class="bodyContentBody">
+  <div class="bodyContentHead" style="text-align:center">
+	<form method="POST" name="myform" id="myform" action="./?act=Player.getEquipFlowStats" onsubmit="pageGo(1);return false;">
+
+ 	<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+	<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+	<{include file="User_Type.Select.html"}>
+	<{$lang.equip_id}>：<input type="text" name="equipId" value="<{$smarty.post.equipId}>" />
+	<{$lang.equipTitle}>：<input type="text" name="equipTitle" value="<{$smarty.post.equipTitle}>" />
+  <br><br>
+	<{$lang.op_id}>：<{include file="Common_logOpId.list.html"}>&nbsp;&nbsp;
+	<{$lang.sourceDirect}>：<select name="source_direct" id="source_direct">
+	<{assign var='source_direct_v' value=$smarty.request.source_direct}>
+		<option value="1" <{if $source_direct_v == '1'}>selected="true"<{/if}>><{$lang.sourceGet}></option>
+		<option value="2" <{if $source_direct_v == '2'}>selected="true"<{/if}>><{$lang.sourceLose}></option>	
+	</select>
+	<br><br>
+    <{$lang.beginDate}>：<input id="sdate" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.beginDate}>" style="width: 200px;" name="beginDate" realvalue=""/>
+  <{$lang.endDate}>：<input id="sdate" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.endDate}>" style="width: 200px;" name="endDate" realvalue=""/>
+ &nbsp;&nbsp; <input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+	<br><br>
+	<{$lang.equipFlowStatsDesc}>
+
+  </form>
+</div>
+		<table class="tableContent">
+		<thead>
+			<tr>
+              <th><{$lang.DateTime}></th>
+              <th><{$lang.pid}></th>
+              <th><{$lang.roleId}></th>
+              <th><{$lang.roleName}></th>
+              <th><{$lang.equip_id}></th>
+              <th><{$lang.equip_title}></th>
+              <th><{$lang.equipNum}></th>
+            </tr>
+		</thead>
+		<tbody>
+        <{section name="ii" loop=$dataList}>
+		<tr>
+			  <td><a href="javascript:void(0);" onclick="RQ('./?act=Player.getEquipFlowDetail&server_id=<{$smarty.request.server_id}>&roleId=<{$dataList[ii].master_cid}>&equip_id=<{$dataList[ii].equip_id}>&source_direct=<{$smarty.request.source_direct}>&op_id=<{$smarty.request.op_id}>&date_time=<{$dataList[ii].date_time}>',getChDetail,'',0);"><{$dataList[ii].date_time}></a></td>	
+
+			  <td><{$dataList[ii].master_pid}></td>
+	          <td><{$dataList[ii].master_cid}></td>
+	          <td><{$dataList[ii].master_nick}></td>
+	          <td><{$dataList[ii].equip_id}></td>
+	          <td><{$dataList[ii].equip_title}></td>
+	          <td><{$dataList[ii].equip_num}></td>
+			  <td></td>
+        </tr>
+		<{/section}>
+		</tbody>
+		</table>
+
+	<div class="pages"><{$pages}></div>
+</div>
+</div>

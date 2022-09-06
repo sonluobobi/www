@@ -1,0 +1,33 @@
+<div id="bodyTitle"><{$lang.onlineLogQuery}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  <div class="bodyContentBody">
+  <div class="bodyContentHead" style="text-align:center">
+  <form name="myform" id="myform" action="./?act=Log.EveryDayOnline" method="post" onsubmit="FS('myform',pt.writeBody); return false;" >
+  <!--<form name="myform" id="myform" action="?act=Log.EveryDayOnline" method="post" onsubmit="pageGo(1);return false;" >-->
+  <{$lang.SelectServers}>：<{include file="Common_server.list.html"}>
+  <{$lang.DateTime}>：<input id="sdate" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyyMMdd'})" value="<{if $smarty.post.OnlineDate}><{$smarty.post.OnlineDate}><{else}><{$smarty.now|date_format:'%Y%m%d'}><{/if}>" style="width: 200px;" name="OnlineDate" realvalue=""/>
+  <input name="search" type="submit" class="submit"  value="<{$lang.search}>"/>
+  </form>
+</div>
+<table width="98%" class="tableContent" align="center">
+    <thead>
+    <tr align="center">
+	<th><{$lang.DateTime}></th>
+	<th><{$lang.OnlineNums}></th>
+	<th><{$lang.RegisterNums}></th>
+	</tr>
+    </thead>
+    <tbody>
+<{if $dataList}>
+    <{foreach key=k from=$dataList key=k item=v}>
+    <tr align="center">
+	<td><{$v.0}></td>
+	<td><{$v.1}></td>
+	<td><{$v.2}></td>
+	</tr>
+    <{/foreach}>
+<{/if}>
+    </tbody>
+</table>
+</div>
+</div>

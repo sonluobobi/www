@@ -1,0 +1,52 @@
+<div  id="bodyTitle"><{$lang.discardEquip}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  <div class="bodyContentBody">
+  <div class="bodyContentHead" style="text-align:center">
+  <form name="myform" id="myform" action="?act=Notice.getDiscardEquipList" method="post" onsubmit="FS('myform',pt.writeBody); return false;" >
+ 	<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+	<input id="p" name="p" type="hidden" value="1" />
+	<{$lang.roleName}>：<input type="text" name="roleName" value="<{$smarty.post.roleName}>" />
+	<{$lang.equipTitle}>：<input type="text" name="equipTitle" value="<{$smarty.post.equipTitle}>" />
+	<{include file="Page.Show.html"}>
+  <br><br>
+    <{$lang.beginDate}>：<input id="sdate" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.beginDate}>" style="width: 200px;" name="beginDate" realvalue=""/>
+  <{$lang.endDate}>：<input id="sdate" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.endDate}>" style="width: 200px;" name="endDate" realvalue=""/>
+  <input name="submit" type="submit" class="submit"  value="<{$lang.search}>" />
+  </form>
+</div>
+		<table class="tableContent">
+		<thead>
+			<tr>
+              <th><{$lang.cid}></th>
+              <th><{$lang.equip_title}></th>
+              <th><{$lang.equip_id}></th>
+              <th><{$lang.ch_equip_id}></th>
+              <th><{$lang.data}></th>
+              <th><{$lang.created}></th>
+              <th><{$lang.retrieveEquip}></th>
+            </tr>
+		</thead>
+		<tbody>
+        <{section name="ii" loop=$dataList}>
+		<tr>
+			<td><{$dataList[ii].cid}></td>
+			<td><{$dataList[ii].equip_title}></td>
+			<td><{$dataList[ii].equip_id}></td>
+			<td><{$dataList[ii].ch_equip_id}></td>
+			<td><{$dataList[ii].data}></td>
+			<td><{$dataList[ii].created}></td>
+			<td>
+				<{if $dataList[ii].is_retrieve == 0}>
+					<a href="javascript:void(0);" onclick="RQ('./?act=Notice.retrieveEquip&server_id=<{$smarty.request.server_id}>&roleId=<{$dataList[ii].cid}>&roleName=<{$smarty.post.roleName}>&chEquipId=<{$dataList[ii].ch_equip_id}>&equipId=<{$dataList[ii].equip_id}>&equipTitle=<{$dataList[ii].equip_title}>',retrieveEquip,'',0);"><{$lang.retrieve}></a>
+				<{else}>
+					<{$lang.retrieved}>
+				<{/if}>
+			</td>
+        </tr>
+		<{/section}>
+		</tbody>
+		</table>
+
+<div class="pages"><{$pages}></div>
+  </div>
+</div>

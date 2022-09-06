@@ -1,0 +1,37 @@
+<div id="bodyTitle"><{$lang.remainGoldSearch}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  <div class="bodyContentBody">
+  <div class="bodyContentHead" style="text-align:center">
+	<form method="post" id="myform" name="myform" action="?act=Log.getRemainGold" onsubmit="pageGo(1);return false;">
+		&nbsp;<{$lang.SelectServers}>：<{include file="Common_server.list.html"}> &nbsp;
+		<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+		&nbsp;&nbsp;&nbsp;<input type="submit" class="submit" name="search" id="search" value="<{$lang.search}>" />
+	</form>
+	</div>
+		<table width="98%" class="tableContent" align="center" id="myTable">
+			<thead>
+			<tr>
+			  <th><{$lang.remainGoldId}></th>
+			  <th><{$lang.ServerName}></th>
+              <th><{$lang.rechargeGold}></th>
+              <th><{$lang.gameGold}></th>
+              <th><{$lang.allGold}></th>
+			</tr>
+		</thead>
+		<tbody>
+        <{foreach key=k item=v from=$dataList}>
+		<tr align="center">
+			<td><{$v.id}></td>
+			<td><{$v.server_name}></td>
+			<td><{$v.voucher_gold}></td>
+			<td><{$v.game_gold}></td>
+			<td><{$v.total_gold}></td>
+		</tr>
+        <{foreachelse}>
+		<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+		<{/foreach}>
+		</tbody>
+		</table>
+  </div>
+
+</div>

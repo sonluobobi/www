@@ -1,0 +1,22 @@
+<div align="center">
+<br><br><strong><{$lang.ch_base_storages}></strong><br>
+<table width="98%" class="tableContent" align="center">
+	<tr>
+		<th><{$lang.order_by}></th>
+		<th><{$lang.equip_title}></th>
+		<th><{$lang.equip_id}></th>
+		<th><{$lang.ch_equip_id}></th>
+		<th><{$lang.stack_num}></th>
+	</tr>
+    <{if $data}>
+	<{foreach from=$data key=k item=v}>
+	<tr>
+		<td><{$v.order_by}></td>
+		<td><{$v.title}></td>
+		<td><{$v.equip_id}></td>
+		<td><{$v.ch_equip_id}></td>
+		<td><{$v.stack_num}></td>
+	</tr>
+	<{/foreach}>
+	<{/if}>
+</table>

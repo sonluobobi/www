@@ -1,0 +1,26 @@
+<?php
+$_LANG['ClewText'] = '本服务器列表非即时刷新，请点击要查看的服务器后边的“更新缓存”更新数据';
+$_LANG['NotExistServer'] = '暂无服务器';
+$_LANG['NotConnect'] = '无法连接';
+$_LANG['Run'] = '运行中';
+$_LANG['ServerName'] = '服务器名称';
+$_LANG['RunState'] = '运行状态';
+$_LANG['RegistPer'] = '注册帐号数';
+$_LANG['OnlinePer'] = '在线角色数';
+$_LANG['isAddicted'] = '是否开启防沉迷';
+$_LANG['isChat'] = '是否开启聊天室';
+$_LANG['isShop'] = '是否开启商城';
+$_LANG['reflushCache'] = '刷新缓存';
+$_LANG['closeServer'] = '删除服务器';
+$_LANG['payUser'] = '冲值用户';
+$_LANG['lastLoginIp'] = '最后登录IP';
+$_LANG['lastLoginTime'] = '最后登录时间';
+$_LANG['block'] = '封禁';
+$_LANG['pay'] = '付费';
+$_LANG['free'] = '免费';
+$_LANG['timeRange'] = '时间范围';
+$_LANG['singleIPloginNum'] = '单个IP登陆数量';
+$_LANG['userLoginNum'] = '登录用户数';
+$_LANG['email'] = '邮件地址';
+$_LANG['openSet'] = '设置';
+$_LANG['is_weihu'] = '正常维护';

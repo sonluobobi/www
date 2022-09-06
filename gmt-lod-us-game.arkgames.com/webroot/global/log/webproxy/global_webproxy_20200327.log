@@ -1,0 +1,45 @@
+113.108.187.157 -- [2020-03-27 14:50:58] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+113.108.187.157 -- [2020-03-27 14:50:58] -- global_webproxy -- backendGM-- response => {"retmsg":"请先退出军团","data":[],"retcode":1}
+113.108.187.157 -- [2020-03-27 14:50:58] -- global_webproxy -- backendGM-- result => array (
+  'retmsg' => '请先退出军团',
+  'data' => 
+  array (
+  ),
+  'retcode' => 1,
+) ---- end
+113.108.187.157 -- [2020-03-27 14:51:01] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+113.108.187.157 -- [2020-03-27 14:51:01] -- global_webproxy -- backendGM-- response => {"retmsg":"请先退出军团","data":[],"retcode":1}
+113.108.187.157 -- [2020-03-27 14:51:01] -- global_webproxy -- backendGM-- result => array (
+  'retmsg' => '请先退出军团',
+  'data' => 
+  array (
+  ),
+  'retcode' => 1,
+) ---- end
+113.108.187.157 -- [2020-03-27 14:51:35] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+113.108.187.157 -- [2020-03-27 14:51:36] -- global_webproxy -- backendGM-- response => {"retmsg":"请先退出军团","data":[],"retcode":1}
+113.108.187.157 -- [2020-03-27 14:51:36] -- global_webproxy -- backendGM-- result => array (
+  'retmsg' => '请先退出军团',
+  'data' => 
+  array (
+  ),
+  'retcode' => 1,
+) ---- end
+113.108.187.157 -- [2020-03-27 14:52:45] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+113.108.187.157 -- [2020-03-27 14:52:45] -- global_webproxy -- backendGM-- response => {"retmsg":"执行完毕","data":[],"retcode":1}
+113.108.187.157 -- [2020-03-27 14:52:45] -- global_webproxy -- backendGM-- result => array (
+  'retmsg' => '执行完毕',
+  'data' => 
+  array (
+  ),
+  'retcode' => 1,
+) ---- end
+113.108.187.157 -- [2020-03-27 14:53:41] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+113.108.187.157 -- [2020-03-27 14:53:41] -- global_webproxy -- backendGM-- response => {"retmsg":"角色不在线，不可操作gm指令","data":[],"retcode":1}
+113.108.187.157 -- [2020-03-27 14:53:41] -- global_webproxy -- backendGM-- result => array (
+  'retmsg' => '角色不在线，不可操作gm指令',
+  'data' => 
+  array (
+  ),
+  'retcode' => 1,
+) ---- end

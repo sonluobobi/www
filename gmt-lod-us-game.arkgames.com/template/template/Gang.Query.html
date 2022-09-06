@@ -1,0 +1,15 @@
+
+&nbsp;<{$lang.SelectServers}>：<{include file="Common_server.list.html"}> &nbsp;
+<{$lang.selectUserType}>：<select id="user_type" name="user_type">
+<{assign var='t' value=$smarty.post.user_type}>
+	<option value="0" <{if $t == '0'}>selected="true"<{/if}>><{$lang.plaseClew}></option>
+	<option value="2" <{if $t == '2'}>selected="true"<{/if}>><{$lang.roleId}></option>			
+	<option value="3" <{if $t == '3'}>selected="true"<{/if}>><{$lang.roleName}></option>
+	<option value="4" <{if $t == '4'}>selected="true"<{/if}>><{$lang.gangName}></option>			
+</select>
+<input id="user_value" name="user_value" type="text" value="<{$smarty.post.user_value}>" />
+&nbsp;<{include file="Page.Show.html"}>
+
+
+
+

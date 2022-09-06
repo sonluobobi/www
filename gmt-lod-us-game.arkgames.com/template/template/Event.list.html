@@ -1,0 +1,55 @@
+<div id="bodyTitle"><{$lang.activityEventInfoList}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  	<div class="bodyContentBody">
+  	<div id="bodyContentHead" class="bodyContentHead" style="text-align:left">
+  	<form method="POST" name="myform" id="myform" action="./?act=Npc.ActivityEvent" onsubmit="pageGo(1);return false;">
+  	<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+	<{$lang.eventId}>: <input type="text" name="event_id" value="<{$smarty.post.event_id}>" />
+	&nbsp;&nbsp;			
+  	<{include file="Page.Show.html"}>					
+	<br />
+  	<{$lang.beginDate}>：<input id="begTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:00'})" value="<{$smarty.post.begTime}>" style="width: 200px;" name="begTime" realvalue=""/> 
+  	<{$lang.endDate}>：<input id="endTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:00'})" value="<{$smarty.post.endTime}>" style="width: 200px;" name="endTime" realvalue=""/> 
+	&nbsp;&nbsp;
+	  <!-- p 为分页页码 -->
+  	<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+  	<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+  </form>
+</div>
+<table width="98%" class="tableContent" align="center">
+    <thead>
+    <tr align="center">
+	<th>id</th>
+	<th><{$lang.eventId}></th>
+	<th><{$lang.accept_times}></th>
+	<th><{$lang.accept_interval}></th>		
+	<th><{$lang.accept_level}></td>	
+	<th><{$lang.createdDate}></td>	
+	<th><{$lang.updateDate}></td>	
+	<th><{$lang.handler}></td>	
+	</tr>
+    </thead>
+    <tbody>
+    <{foreach key=k item=v from=$dataList}>
+    <tr align="center">
+	<td><{$v.id}></td>
+	<td><{$v.event_id}></td>
+	<td><{$v.accept_times}></td>	
+	<td><{$v.accept_interval}></td>	
+	<td><{if $v.accept_level}><{foreach from=$v.accept_level item=level}><{$level.0}>-<{$level.1}><br /><{/foreach}><{/if}></td>		
+	<td><{$v.created}></td>		
+	<td><{$v.updated}></td>		
+	<td>
+	<a href="javascript:void(0);" onclick="RQ('./?act=Npc.editActivityEvent&server_id=<{$smarty.post.server_id}>&data_id=<{$v.id}>',pt.writeBody)" ><{$lang.modify}></a>
+		<{$lang.drop}>
+	</td>		
+	</tr>
+	<{foreachelse}>
+	<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+    <{/foreach}>
+    </tbody>
+</table>
+<div class="pages"><{$pages}></div>
+</div>
+</div>
+<div id="listForm" style="display:none"></div>

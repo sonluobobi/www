@@ -1,0 +1,61 @@
+<div id="bodyTitle"><{$lang.BreakPetSearch}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  	<div class="bodyContentBody">
+  	<div class="bodyContentHead" style="text-align:left">
+	<form method="POST" name="myform" id="myform" action="./?act=Player.getPetInfo" onsubmit="pageGo(1);return false;">
+		<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+		<{include file="User_Type.Select.html"}>
+    	<{include file="Page.Show.html"}>
+	  	<br />
+  		<{$lang.breakTime}>：<{include file="Date.Select.html"}> &nbsp;&nbsp;		
+	  	
+  		<!-- p 为分页页码 -->
+	  	<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+  		&nbsp;&nbsp;
+  		<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+  	</form>
+</div>
+<table width="98%" class="tableContent" align="center">
+    <thead>
+        <tr align="center">
+            <th><{$lang.passportId}></th>
+            <th><{$lang.roleId}></th>
+            <th><{$lang.roleName}></th>
+            <th><{$lang.petName}></th>
+            <th><{$lang.level}></th>
+            <th><{$lang.fight_capacity}></th>
+            <th><{$lang.kill_force}></th>
+            <th><{$lang.addi_harm_perc}></th>
+            <th><{$lang.reduce_harm}></th>
+            <th><{$lang.luck}></th>
+            <th><{$lang.douzhi}></th>
+            <th><{$lang.breakTime}></th>
+        </tr>
+    </thead>
+    <tbody>
+    <{foreach key=k item=v from=$list}>
+        <tr align="center">
+            
+            <td><{$v.player_id}></td>
+            <td><{$v.character_id}></td>
+            <td><{$v.character_nick}></td>
+            <td><{$v.nick}></td>
+            <td><{$v.level}></td>
+            <td><{$v.fight_capacity}></td>
+            <td><{$v.chaos_kill_force}></td>
+            <td><{$v.chaos_addi_harm}></td>
+            <td><{$v.chaos_reduce_harm}></td>
+            <td><{$v.chaos_luck}></td>
+            <td><{$v.chaos_douzhi}></td>
+            <td><{$v.updated}></td>
+         </tr>
+	<{foreachelse}>
+	<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+    <{/foreach}>
+    </tbody>
+</table>
+<{if $list}>
+<div class="pages"><{$pages}></div>
+<{/if}>
+</div>
+</div>

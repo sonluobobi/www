@@ -1,0 +1,32 @@
+
+
+
+<{if $dataList['gen_date']}>
+<div class="bodyContentHead" style="color:red;">
+	<{$lang.gen_date}> : <{$dataList['gen_date']}>
+</div>
+<{/if}>
+
+<table width="98%" class="tableContent" align="center" id="myTable">
+  	<thead>
+		<tr>
+			<!-- 字段标题 -->
+			<{foreach key=k item=v from=$titles}>
+			<th ><{$lang.$v}></th>		
+			<{/foreach}>
+        </tr>
+	</thead>
+	<tbody>
+		<{if $dataList['toplist']}>
+			<{assign var="toplist_data" value=$dataList['toplist']}>
+	        <{section name="ii" loop=$toplist_data}>
+		        <tr align="center">
+				<{foreach key=j item=f from=$fields}>
+				<td><{$toplist_data[ii].$f}></td>
+				<{/foreach}>
+       			</tr>
+			<{/section}>
+		<{/if}>
+	</tbody>
+</table>
+

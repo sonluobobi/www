@@ -1,0 +1,51 @@
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+<div class="bodyContentHead" style="text-align:left">
+<iframe id="iframeload" name="iframeload" src="/img/1.gif" style="width:0px; height:0px; display:none" frameborder="0" scrolling="no">
+</iframe>	
+<form id="subform" name="subform" method="post" action="./?act=Player.userBlockGag" >  
+<table align="center" cellspacing="1" cellpadding="0" class="userTable" style="width:80%;" id="tbl">  
+<tr>  
+<td align="right"><{$lang.SelectServers}>：</td>  
+<td align="left">
+<{include file="Common_server.list.html"}>
+</td>
+</tr>
+<tr>  
+	<td align="right">角色ID：</td>  
+	<td align="left"><input type="text" name="roleId" value="<{$roleId}>" id="roleId" style="width:200px" /></td>  
+</tr>
+ 
+<tr>
+	<td align="right">类型：</td>  
+	<td align="left"><select name="type" id="type" >  
+						<option value="1" <{if $type == '1'}>selected="true"<{/if}>>封号</option>  
+						<option value="2" <{if $type == '2'}>selected="true"<{/if}>>禁言</option>  
+					</select>
+	</td>  
+</tr>
+
+<tr>
+	<td align="right"><{$lang.beginDate}>：</td>  
+	<td align="left"><input type="text" name="beginTime" style="width:200px" value="<{$begTime}>" id="beginTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate" >
+	</td>  
+</tr>  
+<tr>  
+	<td align="right"><{$lang.endDate}>：</td>  <td align="left"><input type="text" name="endTime" style="width:200px" value="<{$endTime}>" id="endTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate" >
+	</td>  
+</tr>  
+
+<tr>  
+	<td align="right"><{$lang.reason}>：</td>  
+	<td align="left">
+	<textarea id="reason" name="reason" rows="6" cols="40"><{$reason}></textarea>
+	</td>  
+</tr>  
+
+</table>  
+<div style="width:50%;margin:auto;padding:20px;">  
+<input name="submit" type="submit" class="submit" value="<{$lang.Submit}>"  />&nbsp;&nbsp;
+<input name="reset" type="reset" class="submit" value="<{$lang.Reset}>" />&nbsp;&nbsp;
+</div> 
+</form> 
+</div>
+</div>

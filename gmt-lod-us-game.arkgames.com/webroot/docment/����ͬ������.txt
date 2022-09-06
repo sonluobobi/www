@@ -1,0 +1,4 @@
+1 * * * * phpÃüÁîÂ·¾¶ GMTÄ¿Â¼/index.php sync
+
+Àı£º
+1 * * * * /usr/bin/php /data/app/www/mf.gmt.kunlun.com/webroot/index.php sync

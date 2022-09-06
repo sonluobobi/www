@@ -1,0 +1,51 @@
+<div align="center">
+<form id="subform" name="subform" method="post" action="./?act=Player.getEquipFlowDetail">
+<strong><{$lang.equipFlowDetail}></strong><br>
+<table width="98%" class="tableContent" align="center">
+	<thead>
+	<tr>
+      <th><{$lang.equip_title}></th>
+      <th><{$lang.equip_id}></th>
+      <th><{$lang.equipNum}></th>
+      <th><{$lang.sourceNick}></th>
+      <th><{$lang.sourceCid}></th>
+      <th><{$lang.sourcePid}></th>
+	  <th><{$lang.sourceDirect}></th>
+      <th><{$lang.op_id}></th>
+	  <th><{$lang.awardSource}></th>
+	  <th><{$lang.targetNick}></th>
+      <th><{$lang.targetCid}></th>
+      <th><{$lang.targetPid}></th>
+	  <th><{$lang.scene_id}></th>
+	  <th><{$lang.created}></th>
+    </tr>
+	</thead>
+	<tbody>
+        <{section name="ii" loop=$dataList}>
+		<tr>
+	          <td><{$dataList[ii].equip_title}></td>
+	          <td><{$dataList[ii].equip_id}></td>
+	          <td><{$dataList[ii].equip_num}></td>
+	          <td><{$dataList[ii].master_nick}></td>
+	          <td><{$dataList[ii].master_cid}></td>
+			  <td><{$dataList[ii].master_pid}></td>
+			  <td>	
+			  	<{if $dataList[ii].is_get == 1}> <{$lang.sourceGet}>
+			  	<{else}><{$lang.sourceLose}>
+			  	<{/if}>
+			  	
+			  </td>
+			  <td><{$dataList[ii].op_title}></td>
+			  <td><{$dataList[ii].reward_module_title}></td>
+			  <td><{$dataList[ii].slave_nick}></td>
+	          <td><{$dataList[ii].slave_cid}></td>
+			  <td><{$dataList[ii].slave_pid}></td>
+			  <td><{$dataList[ii].scene_id}></td>
+			  <td><{$dataList[ii].created}></td>
+        </tr>
+		<{/section}>
+	</tbody>
+</table>
+</form>
+
+</div>

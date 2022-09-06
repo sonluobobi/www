@@ -1,0 +1,14 @@
+
+<{include file="Base.Query.html"}>
+
+<br><br>
+<{$lang.wishing_tree_date_int}>：<input id="dateInt" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<{if $smarty.post.dateInt}><{$smarty.post.dateInt}><{/if}>" style="width: 200px;" name="dateInt" realvalue=""/> 
+&nbsp;&nbsp;
+<{$lang.wishing_tree_op_type}>：<select name="op_type" id="op_type">
+<{assign var='s' value=$smarty.request.op_type}>
+	<option value=""><{$lang.please_select}></option>
+	<{foreach key=k item=i from=$lang.wishing_tree_op_type_map}>
+		<option value="<{$k}>" <{if $s == $k}>selected="true"<{/if}>><{$i}>
+	<{/foreach}>
+</select>
+

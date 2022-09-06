@@ -1,0 +1,56 @@
+<div  id="bodyTitle"><{$lang.gameServerList}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+<div class="bodyContentHead">
+<form method="POST" name="myform" id="myform" action="./?act=Service.GetServerList" onsubmit="pageGo(1);return false;">
+	  <!-- p 为分页页码 -->
+  	<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+</form>
+<table class="tableContent">
+			<tr> 
+              <th><{$lang.server}></th>
+              <th><{$lang.ServerName}></th>
+              <th><{$lang.RunState}></th>
+              <th><{$lang.DateTime}></th>
+              <th><{$lang.RegistPer}></th>
+			  <th><{$lang.OnlinePer}></th>
+          </tr>
+		<tbody>
+		<{if $dataList}>
+		<{foreach from=$dataList item=Server key=key}>
+		<{if $Server.recode}>
+		<tr bgcolor="<{if $Server.recode}>#DDDDDD<{else}>#FFFFFF<{/if}>">
+          <td><{$Server.server_id}></td>
+		  <td><{$Server.Server_name}></td>
+          <td><strong style="color:red;"><{$lang.NotConnect}></strong></td>
+          <td></td>
+		  <td></td>
+		  <td></td>
+        </tr>
+		 <{else}>
+		 <tr bgcolor="<{if  $Server.recode}>#DDDDDD<{else}>#FFFFFF<{/if}>">
+          <td><{$Server.server_id}></td>
+		  <td><{$Server.Server_name}></td>
+          <td><strong style="color:green;"><{$lang.Run}></strong></td>
+           <td><{$Server.cur_date}>
+           	<{if $Server.is_weihu}>
+           		<strong style="color:red;">(<{$lang.is_weihu}>)</strong>
+           	<{/if}>
+           </td>
+		  <td><{$Server.registerCount}></td>
+		  <td><{$Server.online}></td>
+      </tr>
+		 <{/if}>
+		   <{/foreach}>
+		  <{else}>
+		  <tr>
+		  <td colspan="9" align="center"><{$lang.NotExistServer}></td>
+		  </tr>
+		 <{/if}>
+		</tbody>
+		</table>
+<{if $dataList}>
+<div class="pages"><{$pages}></div>
+<{/if}>
+
+</div>
+</div>

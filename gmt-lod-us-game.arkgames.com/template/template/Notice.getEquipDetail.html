@@ -1,0 +1,19 @@
+<div  id="bodyTitle"><{$lang.getEquipDetail}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  <div class="bodyContentBody">
+  <div class="bodyContentHead" style="text-align:center">
+  <form name="myform" id="myform" action="?act=Notice.getEquipDetail" method="post" onsubmit="FS('myform',pt.writeBody); return false;" >
+ 	<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+	<{include file="Page.Show.html"}>
+	<input id="p" name="p" type="hidden" value="1" />
+	<{$lang.equipTitle}>：<input type="text" name="equipTitle" value="<{$smarty.post.equipTitle}>" />
+	<{$lang.equipId}>：<input type="text" name="equipId" value="<{$smarty.post.equipId}>" />
+  <input name="submit" type="submit" class="submit"  value="<{$lang.search}>" />
+  </form>
+</div>
+
+	<{include file="Notice.equipDetail.html"}>
+
+<div class="pages"><{$pages}></div>
+  </div>
+</div>

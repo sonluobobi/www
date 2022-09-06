@@ -1,0 +1,63 @@
+<div id="bodyTitle"><{$lang.voucherLogQuery}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  <div class="bodyContentBody">
+  <div class="bodyContentHead" style="text-align:center">
+	<form method="post" id="myform" name="myform" action="?act=Log.LogVoucherList" onsubmit="pageGo(1);return false;">
+		&nbsp;<{$lang.SelectServers}>：<{include file="Common_server.list.html"}> &nbsp;
+		<{$lang.selectUserType}>：<select id="user_type" name="user_type">
+		<{assign var='t' value=$smarty.post.user_type}>
+			<option value="0" <{if $t == '0'}>selected="true"<{/if}>><{$lang.plaseClew}></option>
+			<option value="1" <{if $t == '1'}>selected="true"<{/if}>><{$lang.accountId}></option>
+						
+		</select>
+		<input id="user_value" name="user_value" type="text" value="<{$smarty.post.user_value}>" />
+		&nbsp;<{include file="Page.Show.html"}>
+		<br><br>
+		<{$lang.beginDate}>：<input id="begTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{if $smarty.post.begTime}><{$smarty.post.begTime}><{else}><{$smarty.now|date_format:'%Y-%m-%d'}> 00:00:00<{/if}>" style="width: 200px;" name="begTime" realvalue=""/> 
+		<{$lang.endDate}>：<input type="text" class="Wdate" name="endTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width: 200px;" value="<{if $smarty.post.endTime}><{$smarty.post.endTime}><{else}><{$smarty.now|date_format:'%Y-%m-%d'}> 23:59:59<{/if}>" realvalue="" />
+<!-- p 为分页页码 -->
+<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+		&nbsp;&nbsp;&nbsp;<input type="submit" class="submit" name="search" id="search" value="<{$lang.search}>" />
+	</form>
+	</div>
+		<table width="98%" class="tableContent" align="center" id="myTable">
+  <thead>
+			<tr>
+              <th><{$lang.voucher_id}></th>
+              <th><{$lang.voucher_history_id}></th>
+              <th>history_id_ext</th>
+			  <th><{$lang.voucher_player_id}></th>
+			  <!-- 
+			  <th><{$lang.voucher_character_id}></th>
+			   -->
+			  <th><{$lang.voucher_account}></th>
+			  <th><{$lang.voucher_order_amount}></th>
+			  <th><{$lang.voucher_order_coins}></th>
+			  <th><{$lang.voucher_ip}></th>
+			  <th><{$lang.voucher_vouch_time}></th>
+			  <th><{$lang.voucher_created}></th>
+          </tr>
+		</thead>
+		<tbody>
+        <{section name="ii" loop=$dataList}>
+		<tr align="center">
+			<td><{$dataList[ii].id}></td>
+			<td><{$dataList[ii].history_id}></td>
+			<td><{$dataList[ii].history_id_ext}></td>
+			<td><{$dataList[ii].player_id}></td>
+			<!--  
+			<td><{$dataList[ii].character_id}></td>
+			-->
+			<td><{$dataList[ii].account}></td>
+			<td><{$dataList[ii].order_amount}></td>
+			<td><{$dataList[ii].order_coins}></td>
+			<td><{$dataList[ii].ip}></td>
+			<td><{$dataList[ii].vouch_time}></td>
+			<td><{$dataList[ii].created}></td>
+        </tr>
+		<{/section}>
+		</tbody>
+		</table>
+  </div>
+<div class="pages"><{$pages}></div>
+</div>

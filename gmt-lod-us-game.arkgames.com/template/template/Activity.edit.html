@@ -1,0 +1,78 @@
+<div id="bodyTitle">
+<{if $smarty.get.id > 0}>
+	<{$lang.activityExpEdit}>
+<{else}>
+	<{$lang.activityExpAdd}>
+<{/if}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+<div class="bodyContentHead" style="text-align:left">
+<form id="subform" name="subform" onsubmit="FS('subform',pt.writeBody); return false;" method="post" action="./?act=Activity.setActivity">  
+<table align="center" cellspacing="1" cellpadding="0" class="userTable" style="width:80%;" id="tbl">  
+<tr>  
+<td align="right"><{$lang.ServerName}>：</td>  
+<td align="left">
+<{if $smarty.get.id > 0}>
+<{$server_text}>
+<input type="hidden" id="id" name="id" value="<{$data.0.id}>" />
+<input type="hidden" id="server_id" name="server_id" value="<{$smarty.get.server_id}>" /> 
+<{else}>
+<{include file="Common_server.list.html"}>
+<{/if}>
+</td>
+</tr>
+<tr>  
+	<td align="right"><{$lang.activityTitle}>：</td>  
+	<td align="left"><input type="text" name="title" value="<{$data.0.title}>" id="title" style="width:200px" /></td>  
+</tr>
+<tr>
+	<td align="right"><{$lang.exp_type}>：</td>  
+	<td align="left"><select name="expType" id="expType">
+				 <{foreach key=k item=v from=$lang.expArray}>
+                                <option value="<{$k}>" <{if $data.0.exp_type == $k}>selected="true"<{/if}>><{$v}></option>
+                                <{/foreach}> 
+					</select>
+	</td>  
+</tr>
+<tr>
+	<td align="right"><{$lang.expRatio}>：</td>
+	<td align="left"><input type="text" name="expRatio" value="<{$data.0.exp_ratio}>" id="expRatio" style="width:200px" /></td>
+</tr>
+<tr>
+	<td align="right"><{$lang.beginDate}>：</td>  
+	<td align="left"><input type="text" name="begTime" style="width:200px" value="<{$data.0.begTime}>" id="begTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate" >
+	</td>  
+</tr>  
+<tr>  
+	<td align="right"><{$lang.endDate}>：</td>  <td align="left"><input type="text" name="endTime" style="width:200px" value="<{$data.0.endTime}>" id="endTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate" >
+	</td>  
+</tr>  
+<tr>  
+	<td align="right"><{$lang.activityStatus}>：</td>  
+	<td align="left">
+		<input type="radio" name="status" <{if $data.0.status == '0' || $data.0.status == ''}>checked="checked"<{/if}> value="0" /><{$lang.activityNormal}> &nbsp;
+		<input type="radio" name="status" <{if $data.0.status == '1'}>checked="checked"<{/if}> value="1" /><{$lang.activityCancel}>&nbsp;
+	</td>  
+</tr>
+<tr>  
+        <td align="right"><{$lang.activityAuthor}>：</td>
+        <td align="left"><input type="text" name="activityAuthor" value="<{$data.0.author}>" id="activityAuthor" style="width:200px" /></td>
+</tr>
+<tr>  
+        <td align="right"><{$lang.activityCanceler}>：</td>
+        <td align="left"><input type="text" name="activityCanceler" value="<{$data.0.canceler}>" id="activityCanceler" style="width:200px" /></td>
+</tr> 
+<tr>  
+	<td align="right"><{$lang.activityContent}>：</td>  
+	<td align="left">
+	<textarea id="activityContent" name="activityContent" rows="6" cols="40"><{$data.0.content}></textarea>
+	</td>  
+</tr>  
+</table>  
+<div style="width:50%;margin:auto;padding:20px;">  
+<input name="submit" type="submit" class="submit" value="<{$lang.Submit}>" />&nbsp;&nbsp;
+<input name="reset" type="reset" class="submit" value="<{$lang.Reset}>" />&nbsp;&nbsp;
+</div> 
+</form> 
+</div>
+</div>

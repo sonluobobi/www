@@ -1,0 +1,35 @@
+
+&nbsp;<{$lang.SelectServers}>：<{include file="Common_server.list.html"}> &nbsp;
+<{if $query_user_type}>
+<{$lang.selectUserType}>：<select id="user_type" name="user_type">
+<{assign var='t' value=$smarty.post.user_type}>
+	<option value="1" <{if $t == '1'}>selected="true"<{/if}>><{$lang.pid}></option>
+	<option value="2" <{if $t == '2'}>selected="true"<{/if}>><{$lang.roleId}></option>			
+</select>
+<input id="user_value" name="user_value" type="text" value="<{$smarty.post.user_value}>" />
+<{/if}>
+
+&nbsp;
+<{$lang.gold_type}>：<select id="gold_type" name="gold_type">
+<{assign var='g' value=$smarty.post.gold_type}>
+	<option value=""><{$lang.search_all}></option>
+	<option value="7" <{if $g == '7'}>selected="true"<{/if}>><{$lang.tili}></option>
+	<option value="8" <{if $g == '8'}>selected="true"<{/if}>><{$lang.naili}></option>			
+	<option value="9" <{if $g == '9'}>selected="true"<{/if}>><{$lang.shouhun}></option>			
+</select>
+
+<{if $query_date_config}>
+<br><br>
+ <{section name="qdc" loop=$query_date_config}>
+ 	<{if $query_date_config[qdc] == 'beginDate'}>
+	<{$lang.beginDate}>：<input id="beginDate" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{if $smarty.post.beginDate}><{$smarty.post.beginDate}><{else}><{$smarty.now|date_format:'%Y-%m-%d'}> 00:00:00<{/if}>" style="width: 200px;" name="beginDate" realvalue=""/> 
+	<{/if}>
+	&nbsp;
+	<{if $query_date_config[qdc] == 'endDate'}>
+	<{$lang.endDate}>：<input type="text" class="Wdate" name="endDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width: 200px;" value="<{if $smarty.post.endDate}><{$smarty.post.endDate}><{else}><{$smarty.now|date_format:'%Y-%m-%d'}> 23:59:59<{/if}>" realvalue="" />
+	<{/if}>
+<{/section}>
+<{/if}>
+&nbsp;<{include file="Page.Show.html"}>
+
+

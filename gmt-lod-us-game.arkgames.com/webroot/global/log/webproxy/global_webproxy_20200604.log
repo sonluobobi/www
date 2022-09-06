@@ -1,0 +1,9 @@
+114.247.64.211 -- [2020-06-04 09:42:55] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+114.247.64.211 -- [2020-06-04 09:42:55] -- global_webproxy -- backendGM-- response => {"retmsg":"角色不在线，不可操作gm指令","data":[],"retcode":1}
+114.247.64.211 -- [2020-06-04 09:42:55] -- global_webproxy -- backendGM-- result => array (
+  'retmsg' => '角色不在线，不可操作gm指令',
+  'data' => 
+  array (
+  ),
+  'retcode' => 1,
+) ---- end

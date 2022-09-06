@@ -1,0 +1,52 @@
+<div id="bodyTitle">
+<{if $smarty.get.id > 0}>
+	<{$lang.noticeEditTitle}>
+<{else}>
+	短信添加
+<{/if}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+<div class="bodyContentHead" style="text-align:left">
+<iframe id="iframeload" name="iframeload" src="/img/1.gif" style="width:0px; height:0px; display:none" frameborder="0" scrolling="no">
+</iframe>
+<form id="subform" name="subform" method="post" action="./?act=Notice.sendPropsEquip" target="iframeload">
+<table align="center" cellspacing="1" cellpadding="0" class="userTable" style="width:80%;" id="tbl">
+<tr>
+<td align="right"><{$lang.ServerName}>：</td>
+<td align="left">
+<{if $smarty.get.id > 0}>
+<span id='servername'><{$server_text}></span>
+<input type="hidden" id="id" name="id" value="<{$id}>" />
+<input type="hidden" id="server_ids[]" name="server_ids[]" value="<{$server_id}>" />
+<{else}>
+<{include file="Common_server.Checkbox.html"}>
+<{/if}>
+</td>
+</tr>
+<tr>
+	<td align="right"><{$lang.title}>：</td>
+	<td align="left"><input type="text" name="push_title" value="<{$title}>" id="title" style="width:200px" /></td>
+</tr>
+	<tr>
+		<td align="right">发送时间：</td>
+		<td align="left"><input type="text" name="begTime" style="width:200px" value="<{$begTime}>" id="begTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate" >
+		</td>
+	</tr>
+<tr>
+	<td></td>
+	<td><font color="red"><strong><{$lang.contentNotice}></strong></font></td>
+</tr>
+<tr>
+	<td>默认内容：</td>
+	<td align="left">
+	<textarea id="contents" name="contents" rows="6" cols="40"><{$content}></textarea>
+	</td>
+</table>
+<div style="width:50%;margin:auto;padding:20px;">
+<input name="submit" type="submit"  value="<{$lang.Submit}>" />&nbsp;&nbsp;
+</div>
+</form>
+</div>
+</div>
+
+

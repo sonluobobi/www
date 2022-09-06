@@ -1,0 +1,25 @@
+
+<table width="98%" class="tableContent" align="center" id="myTable">
+  	<thead>
+		<tr>
+			<!-- 字段标题 -->
+			<{foreach key=k item=v from=$titles}>
+			<th ><{$lang.$v}></th>		
+			<{/foreach}>
+
+			<th><{$lang.handler}></td>
+        </tr>
+	</thead>
+	<tbody>
+        <{section name="ii" loop=$dataList}>
+		<tr align="center">
+			<{foreach key=j item=f from=$fields}>
+			<td><{$dataList[ii].$f}></td>
+			<{/foreach}>
+
+			<td><a href="javascript:void(0);" onclick="RQ('./?act=Search.ActivityList&server_id=<{$smarty.request.server_id}>&act_id=<{$dataList[ii].id}>&search=search',getChDetail,'',0);"><{$lang.activityitem_list}></a></td>
+        </tr>
+		<{/section}>
+	</tbody>
+</table>
+

@@ -1,0 +1,32 @@
+<div id="bodyTitle"><{$lang.systemHandleManage}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+<div class="bodyContentHead" id="userActionList">
+<div style="height:30px"><a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionAdd',pt.writeBody)">[添加首级操作]</a></div>
+<{section name=ii loop=$menuTree}>
+<div style="height:20px;height:30px;"><b><{$menuTree[ii].ActRoot.acttitle}></b>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionEdit&id=<{$menuTree[ii].ActRoot.id}>',pt.writeBody)">修改</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionDel&id=<{$menuTree[ii].ActRoot.id}>',pt.writeBody)"><font color="#FF0000">删除</font></a></a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionAdd&pid=<{$menuTree[ii].ActRoot.id}>',pt.writeBody)">添加子类</a></div>
+	<{section name=mm loop=$menuTree[ii].ActFirst}>
+
+		<{assign var="id" value=$menuTree[ii].ActFirst[mm].id}>
+
+		<{if $menuTree[ii].ActSecond[$id] neq ""}>
+			<div style="padding-left:20px;height:30px;"><i><b><{$menuTree[ii].ActFirst[mm].acttitle}></b></i>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionEdit&id=<{$menuTree[ii].ActFirst[mm].id}>',pt.writeBody)">修改</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionDel&id=<{$menuTree[ii].ActFirst[mm].id}>',pt.writeBody)"><font color="#FF0000">删除</font></a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionAdd&pid=<{$menuTree[ii].ActFirst[mm].id}>',pt.writeBody)">添加子类</a></div>
+
+			<{section name=nn loop=$menuTree[ii].ActSecond[$id]}>
+				<div style="padding-left:40px; height:25px"><{$menuTree[ii].ActSecond[$id][nn].acttitle}>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionEdit&id=<{$menuTree[ii].ActSecond[$id][nn].id}>',pt.writeBody)">修改</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionDel&id=<{$menuTree[ii].ActSecond[$id][nn].id}>',pt.writeBody)"><font color="#FF0000">删除</font></a>
+				<{assign var="itt" value=$menuTree[ii].ActSecond[$id][nn].id}>
+				<{if $menuItem[$itt] neq ""}><{section name=itti loop=$menuItem[$itt]}>
+				&nbsp;&nbsp; <{$menuItem[$itt][itti].acttitle}>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionEdit&id=<{$menuItem[$itt][itti].id}>',pt.writeBody)">修改</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionDel&id=<{$menuItem[$itt][itti].id}>',pt.writeBody)"><font color="#FF0000">删除</font></a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionAdd&pid=<{$menuItem[$itt][itti].id}>',pt.writeBody)">添加子类</a>
+				<{/section}><{/if}></div>
+			<{/section}>
+
+		<{else}>
+			<div style="padding-left:20px; height:30px;"><i><b><{$menuTree[ii].ActFirst[mm].acttitle}></b></i>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionEdit&id=<{$menuTree[ii].ActFirst[mm].id}>',pt.writeBody)">修改</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionDel&id=<{$menuTree[ii].ActFirst[mm].id}>',pt.writeBody)"><font color="#FF0000">删除</font></a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionAdd&pid=<{$menuTree[ii].ActFirst[mm].id}>',pt.writeBody)">添加子类</a>
+			<{assign var="it" value=$menuTree[ii].ActFirst[mm].id}>
+			<{if $menuItem[$it] neq ""}><{section name=iti loop=$menuItem[$it]}>
+				&nbsp;&nbsp; <{$menuItem[$it][iti].acttitle}>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionEdit&id=<{$menuItem[$it][iti].id}>',pt.writeBody)">修改</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionDel&id=<{$menuItem[$it][iti].id}>',pt.writeBody)"><font color="#FF0000">删除</font></a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionAdd&pid=<{$menuItem[$it][iti].id}>',pt.writeBody)">添加子类</a>
+			<{/section}><{/if}></div>
+		<{/if}>
+
+	<{/section}>
+<{/section}>
+</div></div>

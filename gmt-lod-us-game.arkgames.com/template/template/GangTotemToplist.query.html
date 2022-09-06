@@ -1,0 +1,11 @@
+
+<{include file="Base.Query.html"}>
+
+<br><br>
+<{$lang.gang_totem_toplist_type_id}>：<select name="type_id" id="type_id">
+<{assign var='s' value=$smarty.request.type_id}>
+	<{foreach key=k item=i from=$lang.gang_totem_toplist_type_id_map}>
+		<option value="<{$k}>" <{if $s == $k}>selected="true"<{/if}>><{$i}>
+	<{/foreach}>
+</select>
+

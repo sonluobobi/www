@@ -1,0 +1,54 @@
+<div id="bodyTitle"><{$lang.chBaseTitle}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  	<div class="bodyContentBody">
+  	<div class="bodyContentHead" style="text-align:left">
+	<form method="POST" name="myform" id="myform" action="./?act=Player.getChBase" onsubmit="pageGo(1);return false;">
+		<{$lang.SelectServers}>(servers)：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+		<{include file="User_Type.Select.html"}>
+    	<{include file="Page.Show.html"}>
+	  	
+  		<!-- p 为分页页码 -->
+	  	<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+  		&nbsp;&nbsp;
+  		<input name="search" type="submit" class="submit" value="<{$lang.search}>(search)" />
+  	</form>
+</div>
+<table width="98%" class="tableContent" align="center">
+    <thead>
+    <tr align="center">
+	<th><{$lang.passportId}></th>
+	<th><{$lang.roleId}></th>
+	<th><{$lang.roleName}></th>
+	<th><{$lang.createTime}></th>
+	<th><{$lang.ch_base_stat}></td>
+	</tr>
+    </thead>
+    <tbody>
+    <{foreach key=k item=v from=$list}>
+    <tr align="center">
+	<td><{$v.player_id}></td>
+	<td><{$v.id}></td>
+	<td><{$v.nick}></td>
+	<td><{$v.created}></td>
+	<td>
+		<a href="javascript:void(0);" onclick="RQ('./?act=Player.getChBase&server_id=<{$smarty.request.server_id}>&roleId=<{$v.id}>&op_type=1',getChDetail,'',0);"><{$lang.ch_base_baoshi}></a>&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="RQ('./?act=Player.getChBase&server_id=<{$smarty.request.server_id}>&roleId=<{$v.id}>&op_type=2',getChDetail,'',0);"><{$lang.ch_base_zhuangbei}></a>&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="RQ('./?act=Player.getChBase&server_id=<{$smarty.request.server_id}>&roleId=<{$v.id}>&op_type=3',getChDetail,'',0);"><{$lang.ch_base_baowu}></a>&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="RQ('./?act=Player.getChBase&server_id=<{$smarty.request.server_id}>&roleId=<{$v.id}>&op_type=5',getChDetail,'',0);"><{$lang.ch_base_fuwen}></a>&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="RQ('./?act=Player.getChBase&server_id=<{$smarty.request.server_id}>&roleId=<{$v.id}>&op_type=6',getChDetail,'',0);"><{$lang.ch_base_shenge}></a>&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="RQ('./?act=Player.getChBase&server_id=<{$smarty.request.server_id}>&roleId=<{$v.id}>&op_type=7',getChDetail,'',0);"><{$lang.ch_base_counter}></a>&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="RQ('./?act=Player.getChBase&server_id=<{$smarty.request.server_id}>&roleId=<{$v.id}>&op_type=8',getChDetail,'',0);"><{$lang.ch_base_storages}></a>&nbsp;&nbsp;
+	</td>
+	</tr>
+	<{foreachelse}>
+	<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+    <{/foreach}>
+    </tbody>
+</table>
+<{if $list}>
+<div>
+</div>
+<div class="pages"><{$pages}></div>
+<{/if}>
+</div>
+</div>

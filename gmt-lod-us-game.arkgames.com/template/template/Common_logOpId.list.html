@@ -1,0 +1,7 @@
+<select name="op_id" id="op_id">
+<{assign var='s' value=$smarty.request.op_id}>
+	<option value=""><{$lang.op_id_title}></option>
+	<{foreach key=k item=i from=$lang.op_id_ex}>
+		<option value="<{$k}>" <{if $s == $k}>selected="true"<{/if}>><{$i}>
+	<{/foreach}>
+</select>

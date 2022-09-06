@@ -1,0 +1,55 @@
+114.247.64.211 -- [2020-06-02 17:28:22] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+114.247.64.211 -- [2020-06-02 17:28:22] -- global_webproxy -- backendGM-- response => {"retmsg":"角色不在线，不可操作gm指令","data":[],"retcode":1}
+114.247.64.211 -- [2020-06-02 17:28:22] -- global_webproxy -- backendGM-- result => array (
+  'retmsg' => '角色不在线，不可操作gm指令',
+  'data' => 
+  array (
+  ),
+  'retcode' => 1,
+) ---- end
+114.247.64.211 -- [2020-06-02 17:28:58] -- global_webproxy -- t999.sm2.kunlun.com--backendGM---by  ---- begin -----
+114.247.64.211 -- [2020-06-02 17:28:58] -- global_webproxy -- backendGM-- response => <html>
+<head><title>403 Forbidden</title></head>
+<body bgcolor="white">
+<center><h1>403 Forbidden</h1></center>
+<hr><center>nginx/1.14.0</center>
+</body>
+</html>
+
+114.247.64.211 -- [2020-06-02 17:28:58] -- global_webproxy --  ---- end
+114.247.64.211 -- [2020-06-02 17:29:07] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+114.247.64.211 -- [2020-06-02 17:29:07] -- global_webproxy -- backendGM-- response => {"retmsg":"角色不在线，不可操作gm指令","data":[],"retcode":1}
+114.247.64.211 -- [2020-06-02 17:29:07] -- global_webproxy -- backendGM-- result => array (
+  'retmsg' => '角色不在线，不可操作gm指令',
+  'data' => 
+  array (
+  ),
+  'retcode' => 1,
+) ---- end
+114.247.64.211 -- [2020-06-02 17:46:34] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+114.247.64.211 -- [2020-06-02 17:46:34] -- global_webproxy -- backendGM-- response => {"retmsg":"执行完毕","data":[],"retcode":1}
+114.247.64.211 -- [2020-06-02 17:46:34] -- global_webproxy -- backendGM-- result => array (
+  'retmsg' => '执行完毕',
+  'data' => 
+  array (
+  ),
+  'retcode' => 1,
+) ---- end
+114.247.64.211 -- [2020-06-02 17:47:11] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+114.247.64.211 -- [2020-06-02 17:47:11] -- global_webproxy -- backendGM-- response => {"retmsg":"执行完毕","data":[],"retcode":1}
+114.247.64.211 -- [2020-06-02 17:47:11] -- global_webproxy -- backendGM-- result => array (
+  'retmsg' => '执行完毕',
+  'data' => 
+  array (
+  ),
+  'retcode' => 1,
+) ---- end
+114.247.64.211 -- [2020-06-02 17:48:18] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+114.247.64.211 -- [2020-06-02 17:48:18] -- global_webproxy -- backendGM-- response => {"retmsg":"执行完毕","data":[],"retcode":1}
+114.247.64.211 -- [2020-06-02 17:48:18] -- global_webproxy -- backendGM-- result => array (
+  'retmsg' => '执行完毕',
+  'data' => 
+  array (
+  ),
+  'retcode' => 1,
+) ---- end

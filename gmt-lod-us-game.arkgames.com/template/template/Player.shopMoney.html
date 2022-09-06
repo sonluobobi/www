@@ -1,0 +1,61 @@
+<div id="bodyTitle"><{$lang.RoleMallDataList}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  	<div class="bodyContentBody">
+  	<div id="bodyContentHead" class="bodyContentHead" style="text-align:left">
+  	<form method="POST" name="myform" id="myform" action="./?act=Player.shopMoney" onsubmit="pageGo(1);return false;">
+  	<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+	<{$lang.userType}> : <select id="opType" name="opType">
+        		<option value="1" <{if $t == '1'}>selected="true"<{/if}>>PassportId</option>
+       	 		<option value="2" <{if $t == '2'}>selected="true"<{/if}>><{$lang.roleId}></option>
+        		<option value="3" <{if $t == '3'}>selected="true"<{/if}>><{$lang.roleName}></option>
+						 </select>
+	<input id="opValue" name="opValue" value="<{$smarty.post.opValue}>" />					 
+	&nbsp;&nbsp;			
+  	<{include file="Page.Show.html"}>					
+	  <!-- p 为分页页码 -->
+  	<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+  	<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+  </form>
+</div>
+<table width="98%" class="tableContent" align="center">
+    <thead>
+    <tr align="center">
+	<th><{$lang.faction_id}></th>
+	<th><{$lang.faction_name}></th>
+	<th><{$lang.createTime}></th>
+	<th><{$lang.factionKing}></th>		
+	<th><{$lang.factionGold}></td>	
+	<th><{$lang.factionMaterial}></td>	
+	<th><{$lang.factionCohesion}></td>
+	<th><{$lang.factionFighting}></td>	
+	<th><{$lang.factionMemCount}></td>	
+	</tr>
+    </thead>
+    <tbody>
+    <{foreach key=k item=v from=$data}>
+    <tr align="center">
+	<td><{$v.id}></td>
+	<td><{$v.name}></td>
+	<td><{$v.createTime}></td>	
+	<td><{$v.creater}></td>	
+	<td><{$v.gold}></td>		
+	<td><{$v.material}></td>		
+	<td><{$v.cohesion}></td>		
+	<td><{$v.fighting}></td>		
+	<td><{$v.mem_count}></td>		
+	</tr>
+	<{foreachelse}>
+	<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+    <{/foreach}>
+    </tbody>
+</table>
+<{if $list}>
+<div>
+&nbsp;&nbsp;
+<input type="button" onclick="delNotice('<{$lang.nocheck}>','<{$lang.confirmNoticeDel}>')" value="<{$lang.allDrop}>" />
+</div>
+<div class="pages"><{$pages}></div>
+<{/if}>
+</div>
+</div>
+<div id="listForm" style="display:none"></div>

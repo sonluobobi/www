@@ -1,0 +1,53 @@
+<html style="background-color: buttonface; color: buttontext;">
+<head>
+<meta http-equiv="content-type" content="text/xml; charset=gb2312" />
+<title>test</title>
+<link rel="stylesheet" type="text/css" media="all" href="skins/aqua/theme.css" title="win2k-cold-1" />
+<script type="text/javascript" src="calendar.js"></script>
+<script type="text/javascript" src="lang/calendar-cn.js"></script>
+<script type="text/javascript" src="calendar-setup.js"></script>
+</head>
+<body>
+
+<span id="dateFlat"></span>
+<input type="text" id="selectChange" value=""/>
+<input type="text" id="selectNowDate" value="2008-05-05"/>
+<a href="javascript:void(0)" id="selectNowDateBt">click<a>
+
+<script type="text/javascript">
+function writeChange()
+{
+}
+DT = new Date;
+/*
+$this->pctrl->jseval(null, '
+Calendar.setup({
+  inputField : "selectNowDate",
+  ifFormat : "%Y-%m-%d",
+  button : "selectNowDateButton",
+  align :	"Bl",
+  onUpdate : function(cal){KQ(\'/auditorias/roomShow/\'+$(\'selectNowDate\').value)}});');
+*/
+/*
+Calendar.setup({
+	flat			:	'dateFlat',
+	flatCallback	:	function(cal){alert(1)},
+  firstDay    : 1,
+  inputField  :	"selectNowDate",     // id of the input field
+  ifFormat		:	"%Y-%m-%d",      // format of the input field
+  button      :	"selectNowDateBt",  // trigger for the calendar (button ID)
+  align       :	"Bl"
+});
+*/
+
+Calendar.setup({
+	flat			   : 'dateFlat',
+	flatCallback : function(cal){alert(1)},
+  firstDay     : 1,
+  ifFormat :   "%Y-%m-%d",
+  date			   : DT
+});
+
+</script>
+</body>
+</html>

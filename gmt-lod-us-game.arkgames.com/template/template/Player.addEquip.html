@@ -1,0 +1,33 @@
+<div id="bodyTitle">直接添加到包裹,无需审核</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  	<div class="bodyContentBody">
+  	<div class="bodyContentHead" style="text-align:left">
+	<form method="POST" name="myform" id="myform" action="./?act=Player.addEquip" onsubmit="pageGo(1);return false;">
+		<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+		<{$lang.selectUserType}>：
+		<select id="user_type" name="user_type">
+			<{assign var='t' value=$smarty.post.user_type}>
+			<option value="1" <{if $t == '1'}>selected="true"<{/if}>><{$lang.roleId}></option>
+			<option value="2" <{if $t == '2'}>selected="true"<{/if}>><{$lang.roleName}></option>			
+		</select>
+		:<input id="user_value" name="user_value" type="text" value="<{$smarty.post.user_value}>" />&nbsp;&nbsp;
+		道具ID:<input id="equip_id" name="equip_id" type="text" value="<{$smarty.post.equip_id}>" />&nbsp;&nbsp;
+		道具数量:<input id="equip_num" name="equip_num" type="text" value="<{$smarty.post.equip_num}>" />&nbsp;&nbsp;
+		
+	  	<!-- p 为分页页码 -->
+	  	<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+  		&nbsp;&nbsp;
+  		<input name="search" type="submit" class="submit" value="<{$lang.Submit}>" />
+  	</form>
+</div>
+
+<{if $list}>
+<div>
+&nbsp;&nbsp;
+<input type="button" onclick="subBlockGag('<{$lang.nocheck}>',1)" value="<{$lang.block}>" />&nbsp;&nbsp;
+<input type="button" onclick="subBlockGag('<{$lang.nocheck}>',2)" value="<{$lang.gag}>" />
+</div>
+<div class="pages"><{$pages}></div>
+<{/if}>
+</div>
+</div>

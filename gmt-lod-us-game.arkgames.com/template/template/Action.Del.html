@@ -1,0 +1,16 @@
+<div  id="bodyTitle"><{$lang.systemHandleDel}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+<div class="bodyContentHead">
+	<form id="myform" method="post" action="?act=Action.ActionSaveDel" onsubmit="FS('myform',pt.writeBody); return false;"><table width="100%">
+    <tr><td colspan="3"><input type="hidden" name="id" value="<{$action->id}>"></td></tr>
+    <tr><td colspan="3" align="left">此操作为<b>不</b>可逆操作,您确定要删除<font color="#FF0000"><{$action->acttile}><{if $isfather}>及下属操作<{/if}></font>吗?</td></tr>
+    
+
+    </table>
+	</form>
+
+	<table><tr><td style="padding-left: 60px;">
+		<a class="button" href="javascript: void(0);" onclick="FS('myform',pt.writeBody)"><b><b><b>确定删除</b></b></b></a>
+	</td></tr></table>
+</div>
+</div>

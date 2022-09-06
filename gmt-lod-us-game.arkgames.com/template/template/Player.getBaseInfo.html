@@ -1,0 +1,44 @@
+<div id="bodyTitle"><{$lang.playerBaseInfoTitle}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  	<div class="bodyContentBody">
+  	<div class="bodyContentHead" style="text-align:left">
+	<form method="POST" name="myform" id="myform" action="./?act=Player.getBaseInfo" onsubmit="pageGo(1);return false;">
+		<{$lang.SelectServers}>(servers)：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+		<{include file="User_Type.Select.html"}>
+    	<{include file="Page.Show.html"}>
+	  	
+  		<!-- p 为分页页码 -->
+	  	<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+  		&nbsp;&nbsp;
+  		<input name="search" type="submit" class="submit" value="<{$lang.search}>(search)" />
+  	</form>
+</div>
+<table width="98%" class="tableContent" align="center">
+    <thead>
+    <tr align="center">
+	<th><{$lang.passportId}>(UID)</th>
+	<th><{$lang.passportName}>(login way and username)</th>
+	<th><{$lang.roleId}>(character id)</th>
+	<th><{$lang.roleName}>(ign)</th>
+	</tr>
+    </thead>
+    <tbody>
+    <{foreach key=k item=v from=$list}>
+    <tr align="center">
+	<td><{$v.player_id}></td>
+	<td><{$v.account}></td>
+	<td><{$v.character_id}></td>
+	<td><{$v.nick}></td>
+	</tr>
+	<{foreachelse}>
+	<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+    <{/foreach}>
+    </tbody>
+</table>
+<{if $list}>
+<div>
+</div>
+<div class="pages"><{$pages}></div>
+<{/if}>
+</div>
+</div>

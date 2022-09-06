@@ -1,0 +1,145 @@
+<div id="bodyTitle">
+<{if $smarty.get.data_id > 0}>
+	<{$lang.activityEventEdit}>
+<{else}>
+	<{$lang.activityEventAdd}>
+<{/if}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+<div class="bodyContentHead" style="text-align:left">
+	<div class="downDocment">
+		<font size='1'><{$lang.awardHelpTitle}></font><br />
+		<{foreach from=$lang.awardHelpList item=help}>
+			<{$help}><br />
+		<{/foreach}>
+	</div>
+<iframe id="iframeload" name="iframeload" src="/img/1.gif" style="width:0px; height:0px; display:none" frameborder="0" scrolling="no">
+</iframe>	
+<form id="subform" name="subform" method="post" action="./?act=Npc.modifyActivityEvent" target="iframeload">  
+<table align="center" cellspacing="1" cellpadding="0" class="userTable" style="width:80%;" id="gallery-table">  
+<tr>  
+<td align="right"><{$lang.ServerName}>：</td>  
+<td align="left">
+<{include file="Common_server.list.html"}>
+</td>
+</tr>
+<tr>  
+	<td align="right" width="200"><{$lang.eventId}>：</td>  
+	<td align="left"><input type="text" name="event_id" value="<{$event_id}>" id="event_id" style="width:200px" /></td>  
+</tr>
+<tr>  
+	<td align="right"><{$lang.accept_times}>：</td>  
+	<td align="left"><input type="text" name="accept_times" value="<{$accept_times}>" id="accept_times" style="width:200px" /></td>  
+</tr>
+<tr>  
+	<td align="right"><{$lang.accept_interval}>(<{$lang.seccond}>)：</td>  
+	<td align="left"><input type="text" name="accept_interval" value="<{$accept_interval}>" id="accept_interval" style="width:200px" /></td>  
+</tr>
+	<{if $accept_level}>
+		<{foreach name=parent from=$accept_level key=kp item=op}>
+		<tr>
+        <td align="right"><{$lang.awardOption}>：</td>
+         <td>
+		<{if $smarty.foreach.parent.first}> <a href="javascript:;" onclick="addImg(this,'gallery-table')">[+]</a>
+		<{else}> <a href="javascript:;" onclick="removeImg(this,'gallery-table')">[-]</a>
+		<{/if}>
+              <{$lang.lowLevel}> <input type="text" name="levels1[][min]" value="<{$op.0}>" size="30" /><{$lang.HighLevel}> <input type="text" name="levels2[][max]" size="10" value="<{$op.1}>" />
+		<br>
+		<table cellspacing="0" cellpadding="0" id="galleryson<{$kp}>" >
+		<{if $items.$kp}>
+		<{foreach name=itemson from=$items.$kp key=$km item=tm}>
+		<{if $tm.2 == ''}>
+		<{assign var='bool' value='false'}>
+		<{elseif $tm.2 == 1}>
+		<{assign var='bool' value='true'}>
+		<{/if}>
+                <tr>
+                <td>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+		<{if $smarty.foreach.itemson.first}><a href="javascript:;" onclick="addImg2(this,'galleryson<{$kp}>')">[+]</a>
+		<{else}> <a href="javascript:;" onclick="removeImg2(this,'galleryson<{$kp}>')">[-]</a>
+		<{/if}>
+              <{$lang.awardGoodsId}> <input type="text" name="items[<{$kp}>][][id]" value="<{$tm.0}>" size="10" /><{$lang.awardGoodsNum}> <input type="text" name="items[<{$kp}>][][amount]" size="10" value="<{$tm.1}>" />
+             <{$lang.isBind}> <select name="items[<{$kp}>][][is_bind]">
+                        <option  value=""><{$lang.plaseClew}></option>
+                <{foreach from=$lang.awardBinds key=k item=bind}>
+                        <option value="<{$k}>" <{if $k == $bool}>selected="true"<{/if}>><{$bind}></option>
+                <{/foreach}>
+                </select>
+                </td>
+                </tr>
+		<{/foreach}>
+		<{/if}>
+		<{if $prize.$kp}>
+                <{foreach name=prizeson from=$prize.$kp key=$pm item=pr}>
+		<tr>
+                <td>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+		<{if $smarty.foreach.prizeson.first && ! $items.$kp}><a href="javascript:;" onclick="addImg2(this,'galleryson<{$kp}>')">[+]</a>
+                <{else}> <a href="javascript:;" onclick="removeImg2(this,'galleryson<{$kp}>')">[-]</a>
+                <{/if}>
+              <{$lang.awardGoodsId}> <input type="text" name="items[<{$kp}>][][id]" value="<{$pr.0}>" size="10" /><{$lang.awardGoodsNum}> <input type="text" name="items[<{$kp}>][][amount]" size="10" value="<{$pr.1}>" />
+             <{$lang.isBind}> <select name="items[<{$kp}>][][is_bind]">
+                        <option  value=""><{$lang.plaseClew}></option>
+                <{foreach from=$lang.awardBinds key=k item=bind}>
+                        <option value="<{$k}>" <{if $k == $pr.2}>selected="true"<{/if}>><{$bind}></option>
+                <{/foreach}>
+                </select>
+                </td>
+                </tr>
+                <{/foreach}>
+                <{/if}>
+		<{if !$items.$kp && !$prize.$kp}>
+			<tr>
+                <td>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="javascript:;" onclick="addImg2(this,'galleryson<{$kp}>')">[+]</a>
+              <{$lang.awardGoodsId}> <input type="text" name="items[<{$kp}>][][id]" value="<{$pr.0}>" size="10" /><{$lang.awardGoodsNum}> <input type="text" name="items[<{$kp}>][][amount]" size="10" value="<{$pr.1}>" />
+             <{$lang.isBind}> <select name="items[<{$kp}>][][is_bind]">
+                        <option  value=""><{$lang.plaseClew}></option>
+                <{foreach from=$lang.awardBinds key=k item=bind}>
+                        <option value="<{$k}>" <{if $k == $pr.2}>selected="true"<{/if}>><{$bind}></option>
+                <{/foreach}>
+                </select>
+                </td>
+                </tr>		
+		<{/if}>
+                </table>
+
+        </td>
+        </tr>
+		<{/foreach}>
+	<{else}>
+	<tr>
+	<td align="right"><{$lang.awardOption}>：</td>
+         <td>
+              <a href="javascript:;" onclick="addImg(this,'gallery-table')">[+]</a>
+              <{$lang.lowLevel}> <input type="text" name="levels1[][min]" size="10" /><{$lang.HighLevel}> <input type="text" name="levels2[][max]" size="10" />
+<br>
+		<table cellspacing="0" cellpadding="0" id="galleryson1" >
+		<tr>
+		<td>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:;" onclick="addImg2(this,'galleryson1')">[+]</a>
+              <{$lang.awardGoodsId}> <input type="text" name="items[1][][id]" size="10" /><{$lang.awardGoodsNum}> <input type="text" name="items[1][][amount]" size="10" />
+             <{$lang.isBind}> <select name="items[1][][is_bind]">
+			<option  value=""><{$lang.plaseClew}></option>
+                <{foreach from=$lang.awardBinds key=k item=bind}>
+                        <option value="<{$k}>" <{if $k == $display}>selected="true"<{/if}>><{$bind}></option>   
+                <{/foreach}>
+                </select>
+		</td>
+		</tr>
+		</table>
+        </td>
+	</tr>
+	<{/if}>
+</table>  
+<div style="width:50%;margin:auto;padding:20px;">  
+<input type="hidden" id="data_id" name="data_id" value="<{$id}>" />
+<input name="submit" type="submit" class="submit" value="<{$lang.Submit}>" />&nbsp;&nbsp;
+<input name="reset" type="reset" class="submit" value="<{$lang.Reset}>" />&nbsp;&nbsp;
+</div> 
+</form> 
+</div>
+</div>

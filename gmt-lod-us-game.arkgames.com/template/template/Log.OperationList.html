@@ -1,0 +1,48 @@
+<div  id="bodyTitle"><{$lang.SystemUserLogManage}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  <div class="bodyContentBody">
+  <div class="bodyContentHead" style="text-align:center">
+  <form name="myform" id="myform" action="?act=Log.LogOperationList" method="post" onsubmit="FS('myform',pt.writeBody); return false;" >
+ 	<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+ 	<{$lang.ActkeyTitle}>：<{include file="Common_actkey.list.html"}>&nbsp;&nbsp;
+	<{$lang.ManageName}>：<input type="text" name="fullname" value="<{$smarty.post.fullname}>" />
+  <{include file="Page.Show.html"}>
+  <br><br>
+    <{$lang.beginDate}>：<input id="sdate" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.beginDate}>" style="width: 200px;" name="beginDate" realvalue=""/>
+  <{$lang.endDate}>：<input id="sdate" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.endDate}>" style="width: 200px;" name="endDate" realvalue=""/>
+  <input id="p" name="p" type="hidden" value="1" />
+  <input name="submit" type="submit" class="submit"  value="<{$lang.search}>" />
+  </form>
+</div>
+		<table class="tableContent">
+		<thead>
+			<tr>
+              <th width="6%"><{$lang.servers}></th>
+              <th width="6%"><{$lang.logActtitle}></th>
+              <th width="6%"><{$lang.affectObj}></th>
+			  <th width="25%"><{$lang.handleContent}></th>
+		      <th width="10%"><{$lang.handPerson}></th>
+			  <th width="8%"><{$lang.handUser}></th>
+			  <th width="8%">IP</th>
+              <th width="13%"><{$lang.DateTime}></th>
+            </tr>
+		</thead>
+		<tbody>
+        <{section name="ii" loop=$dataList}>
+		<tr>
+          <td><{$dataList[ii].serverName}></td>
+          <td><{$dataList[ii].acttitle}></td>
+          <td><{$dataList[ii].affectObj}></td>
+		  <td title="<{$dataList[ii].content}>"><{$dataList[ii].content|mb_substr:0:100}></td>
+		  <td><{$dataList[ii].fullname}></td>
+		  <td><{$dataList[ii].username}></td>
+		  <td><{$dataList[ii].ip}></td>
+          <td><{$dataList[ii].logDate}></td>
+        </tr>
+		<{/section}>
+		</tbody>
+		</table>
+
+<div class="pages"><{$pages}></div>
+  </div>
+</div>

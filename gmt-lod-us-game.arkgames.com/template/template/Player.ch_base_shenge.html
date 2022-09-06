@@ -1,0 +1,27 @@
+<div align="center">
+<table width="98%" class="tableContent" align="center">
+	<tr>
+		<th><{$lang.pet_id}></th>
+		<th><{$lang.pet_name}></th>
+		<th><{$lang.petShenGeTitle}></th>
+		<th><{$lang.pet_shenge_avatar_type}></th>
+		<th><{$lang.level}></th>
+	</tr>
+	<{if $data}>
+    <{foreach from=$data key=k item=v}>
+	<tr>
+		<td><{$v.pet_id}></td>
+		<td><{$v.pet_name}></td>
+		<td><{$v.pet_shenge_title}></td>
+		<td>
+			<{if $lang.pet_shenge_avatar_type_map[$v.num]}>
+				<{$lang.pet_shenge_avatar_type_map[$v.num]}>
+			<{else}>
+				<{$v.num}>
+			<{/if}>
+		</td>
+		<td><{$v.level}></td>
+	</tr>
+	<{/foreach}>
+	<{/if}>
+</table>

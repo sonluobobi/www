@@ -1,0 +1,16 @@
+<div id="bodyTitle">
+<{$lang.serviceMailReportIPSet}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+  		<div class="bodyContentHead" style="text-align:left">
+  			<form method="POST" name="myform" id="myform" action="./?act=Service.mailReportIPAdd" onsubmit="FS('myform',pt.writeBody);return false;">
+  			<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+  			<{$lang.timeRange}>:<input type='text' name='time_range'>&nbsp;&nbsp;
+			<{$lang.singleIPloginNum}>:<input type='text' name='ip_count'>&nbsp;&nbsp;
+			<{$lang.email}>:<input type='text' name='mail_adr'>&nbsp;&nbsp;
+			<input name="add" type="submit" class="submit" value="<{$lang.add}>" />
+  			</form>
+		</div>
+	</div>
+</div>

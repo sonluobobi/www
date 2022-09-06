@@ -1,0 +1,55 @@
+<div id="bodyTitle">
+<{$lang.tools_shift_role_title}>
+</div>
+
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+	<div class="bodyContentHead" style="text-align:left">
+		<font color="red"><strong><{$lang.tools_restore_title_desc}></strong></font><br />
+		<form method="POST" name="myform" id="myform" action="./?act=Tools.shiftRole" onsubmit="pageGo(1);return false;">
+	  	<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;&nbsp;&nbsp;
+		<{$lang.tools_shift_role_from_cid}>: <input id="cid" name="cid" value="<{$smarty.post.cid}>" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<{$lang.tools_shift_role_to_pid}>: <input id="pid" name="pid" value="<{$smarty.post.pid}>" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+  		&nbsp;&nbsp;
+		<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+		</form>
+	</div>
+	</div>
+</div>
+<{if $retmsg}>
+<div id="bodyTitle">
+<{$retmsg}>
+</div>
+<{/if}>
+<{if $data}>
+<table width="98%" class="tableContent" align="center">
+	<tr>
+		<th><{$lang.roleId}></th>
+		<th><{$lang.pid}></th>
+		<th><{$lang.roleName}></th>
+		<th><{$lang.tools_shift_role_to_pid}></th>
+		<th><{$lang.tools_shift_role_to_pid_cnt}></th>
+		<th><{$lang.handler}></td>	
+	</tr>
+    <{foreach from=$data key=k item=v}>
+	<tr>
+		<td><{$v.id}></td>
+		<td><{$v.player_id}></td>
+		<td><{$v.nick}></td>
+		<td><font color="red"><strong><{$v.to_pid}></strong></font></td>
+		<td><font color="red"><strong><{$v.to_pid_cnt}></strong></font></td>
+		<td>
+		<{if $v.in_ban == 1}>
+			<a href="javascript:void(0);" onclick="undoBlockGag('<{$lang.nocheck}>',1,<{$v.id}>)"><{$lang.undoBlock}></a> 
+			<{if $v.to_pid_cnt < 4 and $v.player_id != $v.to_pid}>
+				&nbsp;&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Tools.shiftRole&type=1&server_id=<{$smarty.request.server_id}>&pid=<{$v.to_pid}>&cid=<{$v.id}>',setGm,'',0);"><{$lang.tools_shift_role_handle}><font color="red"><strong><{$v.to_pid}></strong></font></a>
+			<{/if}>
+		<{else}>
+			<a href="javascript:void(0);" onclick="subBlockGag('<{$lang.nocheck}>',1,<{$v.id}>)"><{$lang.block}></a> 
+		<{/if}>
+		</td>
+	</tr>
+	<{/foreach}>
+</table>
+<{/if}>

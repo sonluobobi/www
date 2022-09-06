@@ -1,0 +1,123 @@
+<div id="bodyTitle">
+<{if $smarty.get.id > 0}>
+	<{$lang.noticeEditTitle}>
+<{else}>
+	<{$lang.noticeAddTitle}>
+<{/if}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+<div class="bodyContentHead" style="text-align:left">
+<iframe id="iframeload" name="iframeload" src="/img/1.gif" style="width:0px; height:0px; display:none" frameborder="0" scrolling="no">
+</iframe>	
+<form id="subform" name="subform" method="post" action="./?act=Notice.add" target="iframeload">  
+<table align="center" cellspacing="1" cellpadding="0" class="userTable" style="width:80%;" id="tbl">  
+<tr>  
+<td align="right"><{$lang.ServerName}>：</td>  
+<td align="left">
+<{if $smarty.get.id > 0}>
+<span id='servername'><{$server_text}></span>
+<input type="hidden" id="id" name="id" value="<{$id}>" />
+<input type="hidden" id="server_ids[]" name="server_ids[]" value="<{$server_id}>" /> 
+<{else}>
+<{include file="Common_server.Checkbox.html"}>
+<{/if}>
+</td>
+</tr>
+<tr>  
+	<td align="right"><{$lang.title}>：</td>  
+	<td align="left"><input type="text" name="title" value="<{$title}>" id="title" style="width:200px" /></td>  
+</tr>
+<tr>  
+	<td align="right"><{$lang.sender}>：</td>  <td align="left"><input type="text" name="author" id="author"  readonly style="width:100px" value=" <{$smarty.session.infoUser.fullname}>">	</td>  
+</tr>  
+<tr>
+	<td align="right"><{$lang.noticeType}>：</td>  
+	<td align="left"><select name="type" id="type" onchange="changePopNotice(this.value,'NoticeDIV')">  
+						<option value="1" <{if $type == '1'}>selected="true"<{/if}>><{$lang.scrollNotice}></option>  
+						<!-- 
+						<option value="0"><{$lang.Select}></option>  
+						<option value="2" <{if $type == '2'}>selected="true"<{/if}>><{$lang.talkNotice}></option>  
+						<option value="3" <{if $type == '3'}>selected="true"<{/if}>><{$lang.scrollAndTalkNotice}></option> 
+						-->  
+					</select>
+	</td>  
+</tr>
+<tr>
+<td align="left" colspan="2"><font color="red"><strong><{$lang.timeNotice}></strong></font></td> 
+</tr>
+<tr>
+	<td align="right"><{$lang.beginDate}>：</td>  
+	<td align="left"><input type="text" name="begTime" style="width:200px" value="<{$begTime}>" id="begTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate" >
+	</td>  
+</tr>  
+<tr>  
+	<td align="right"><{$lang.endDate}>：</td>  <td align="left"><input type="text" name="endTime" style="width:200px" value="<{$endTime}>" id="endTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate" >
+	</td>  
+</tr>  
+<tr style="display:none" id="NoticeDIV">  
+	<td align="right"><{$lang.picUrl}>：</td>  <td align="left"><input type="text" name="pictureUrl" style="width:200px" value="<{$pictureUrl}>" id="pictureUrl"/></td>  
+</tr> 
+
+<tr>
+	<td align="right"><{$lang.cycle}>：</td>  
+	<td align="left"><select name="cycle" id="cycle" onchange="changePopNotice(this.value,'NoticeDIV')">  
+						<option value="15" <{if $cycle == '15'}>selected="true"<{/if}>><{$lang.second_15}></option>  
+						<option value="30" <{if $cycle == '30'}>selected="true"<{/if}>><{$lang.second_30}></option>  
+						<option value="60" <{if $cycle == '60'}>selected="true"<{/if}>><{$lang.second_60}></option>  
+						<option value="110" <{if $cycle == '110'}>selected="true"<{/if}>>110秒</option>
+						<option value="170" <{if $cycle == '170'}>selected="true"<{/if}>>170秒</option>
+						<option value="300" <{if $cycle == '300'}>selected="true"<{/if}>>300秒</option>
+						<option value="360" <{if $cycle == '360'}>selected="true"<{/if}>>6分钟</option>
+						<option value="420" <{if $cycle == '420'}>selected="true"<{/if}>>7分钟</option>
+						<option value="480" <{if $cycle == '480'}>selected="true"<{/if}>>8分钟</option>
+						<option value="540" <{if $cycle == '540'}>selected="true"<{/if}>>9分钟</option>
+						<option value="600" <{if $cycle == '600'}>selected="true"<{/if}>>10分钟</option>
+						<option value="900" <{if $cycle == '900'}>selected="true"<{/if}>>15分钟</option>
+						<option value="1200" <{if $cycle == '1200'}>selected="true"<{/if}>>20分钟</option>
+					    <option value="1800" <{if $cycle == '1800'}>selected="true"<{/if}>>30分钟</option>
+                        <option value="2400" <{if $cycle == '2400'}>selected="true"<{/if}>>40分钟</option>
+                        <option value="3600" <{if $cycle == '3600'}>selected="true"<{/if}>>1小时</option>
+                        <option value="5436" <{if $cycle == '5436'}>selected="true"<{/if}>>1.51小时</option>
+                        <option value="7560" <{if $cycle == '7560'}>selected="true"<{/if}>>2.1小时</option>
+                        <option value="9036" <{if $cycle == '9036'}>selected="true"<{/if}>>2.51小时</option>
+                        <option value="11160" <{if $cycle == '11160'}>selected="true"<{/if}>>3.1小时</option>
+                        <option value="12636" <{if $cycle == '12636'}>selected="true"<{/if}>>3.51小时</option>
+					</select>
+	</td>
+</tr>
+
+<tr>  
+	<td align="right"><{$lang.tollgate_id}>：</td>  
+	<td align="left"><input type="text" name="tollgate_id" value="<{$tollgate_id}>" id="tollgate_id" style="width:200px" /></td>  
+</tr>
+
+<tr>
+	<td></td>
+	<td><font color="red"><strong><{$lang.contentNotice}></strong></font></td>
+</tr>
+<tr>  
+	<td>默认内容：</td>
+	<td align="left">
+	<textarea id="contents" name="contents" rows="6" cols="40"><{$content}></textarea>
+	</td>  
+</tr>
+	<tr>
+	<td align="right"><{$lang.status}>：</td>  
+	<td align="left">
+		<input type="radio" name="status" <{if $status == '1' || $status == ''}>checked="checked"<{/if}> value="1" /><{$lang.normal}> &nbsp;
+		<input type="radio" name="status" <{if $status == '2'}>checked="checked"<{/if}> value="2" /><{$lang.pause}>&nbsp;
+	</td>  
+</tr>  
+</table>
+	<div style="width:50%;margin:auto;">
+		<button  type="button" onclick="adding()">新增一行</button>&nbsp;&nbsp;
+	</div>
+<div style="width:50%;margin:auto;padding:20px;">  
+<input name="submit" type="button" class="button" value="<{$lang.Submit}>" onclick="noticeAdd('sadasd')" />&nbsp;&nbsp;
+<input name="reset" type="reset" class="submit" value="<{$lang.Reset}>" />&nbsp;&nbsp;
+</div>
+</form> 
+</div>
+</div>
+
+

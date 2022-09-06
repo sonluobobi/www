@@ -1,0 +1,40 @@
+<div id="bodyTitle">
+<{$lang.serviceGetIPLoginCount}>	
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+  		<div class="bodyContentHead" style="text-align:left">
+  			<form id="myform" name="myform" action="./?act=Service.getIPLoginCount" onsubmit="FS('myform',pt.writeBody); return false;" method="post">
+			<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+			<{$lang.timeRange}>:<input type='text' name='time_range' value='<{$smarty.post.time_range}>'>&nbsp;&nbsp;
+                        <{$lang.singleIPloginNum}>:<input type='text' name='ip_count'  value='<{$smarty.post.ip_count}>'>&nbsp;&nbsp;
+                        ip:<input type='text' name='ip' value='<{$smarty.post.ip}>'>&nbsp;&nbsp;
+			<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+  			</form>
+		</div>
+		<table width="98%" class="tableContent" align="center">
+    		<thead>
+    			<tr align="center">
+				<th><{$lang.No}></th>
+				<th>ip</th>
+				<th><{$lang.userLoginNum}></th>
+				<th><{$lang.handler}></th>
+			</tr>
+    		</thead>
+    		<tbody>
+			<{if $dataList}>
+    			<{foreach key=k item=v from=$dataList}>
+    			<tr align="center">
+			<td><{$v.no}></td>
+			<td><{$v.ip}></td>
+			<td><{$v.count}></td>
+			<td><a href="javascript:RQ('./?act=Service.getUserList',pt.writeBody,'user_type=2&lastLoginIp=<{$v.ip}>&server_id=<{$smarty.post.server_id}>&begTime=<{$start}>&endTime=<{$end}>')">详情</a></td>
+			</tr>
+			<{/foreach}>
+			<{else}>
+			<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+    			<{/if}>
+    		</tbody>
+		</table>
+	</div>
+</div>

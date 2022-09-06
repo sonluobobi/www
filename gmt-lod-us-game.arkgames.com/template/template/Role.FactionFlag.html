@@ -1,0 +1,61 @@
+<div id="bodyTitle">
+<{$lang.roleGetFactionFlag}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+  		<div class="bodyContentHead" style="text-align:left">
+  			<form id="myform" name="myform" action="./?act=Role.getFactionFlag" onsubmit="pageGo(1); return false;" method="post">
+			<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+			<select  name='opt_type'>
+				<option value='1' <{if $smarty.post.opt_type==1}>selected=selected<{/if}>><{$lang.faction_id}></option>	
+				<option value='2' <{if $smarty.post.opt_type==2}>selected=selected<{/if}>><{$lang.faction_name}></option>
+			</select>
+			&nbsp;&nbsp;
+                     	<input type='text' name='opt_value'  value='<{$smarty.post.opt_value}>'>&nbsp;&nbsp;
+			<{$lang.mapId}>:<select name='map_id'>
+                                <{foreach key=k item=v from=$cache.map}>
+                                        <option value='<{$k}>' <{if $k==$smarty.post.map_id}>selected=selected<{/if}> ><{$v}></option>
+                                <{/foreach}>
+                        </select>
+			<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+			<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+  			</form>
+		</div>
+		<table width="98%" class="tableContent" align="center">
+    		<thead>
+    			<tr align="center">
+				<th><{$lang.server}></th>
+				<th><{$lang.flagName}></th>
+				<th><{$lang.inFaction}></th>
+				<th><{$lang.inMap}></th>
+                                <th><{$lang.inCoordinate}></th>
+                                <th><{$lang.placer}></th>
+				<th><{$lang.remainingSurvivalTime}></th>
+                                <th><input type='button' onclick="deleteFactionFlag('')" value='<{$lang.allDrop}>'></th>
+			</tr>
+    		</thead>
+    		<tbody>
+			<{if $data}>
+			<{foreach key=k item=v from=$data}>
+    			<tr align="center">
+				<td><{$v.servername}></td>
+				<td><{$v.name}></td>
+				<td><{$v.factionname}></td>
+				<td><{$v.mapname}></td>
+                                <td><{$v.x}>,<{$v.y}></td>
+				<td><{$v.ownername}></td>
+                                <td><{$v.remainTime}></td>
+				<td>
+					<a onclick="deleteFactionFlag('<{$v.server_id}>_<{$v.factionid}>_<{$v.mapid}>_<{$v.x}>_<{$v.y}>')" href="javascript:void(0);"><{$lang.drop}></a>
+					<input type="hidden" name="select[]" value="<{$v.server_id}>_<{$v.factionid}>_<{$v.mapid}>_<{$v.x}>_<{$v.y}>">
+				</td>
+			</tr>
+			<{/foreach}>
+			<{else}>
+			<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+    			<{/if}>
+    		</tbody>
+		</table>
+		<div class="pages"><{$pages}></div>
+	</div>
+</div>

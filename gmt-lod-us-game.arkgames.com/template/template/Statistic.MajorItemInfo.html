@@ -1,0 +1,47 @@
+<div id="bodyTitle">
+<{$lang.statisticGetMajorItemInfo}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+  		<div class="bodyContentHead" style="text-align:left">
+  			<form id="myform" name="myform" action="./?act=Statistic.getMajorItemInfo" onsubmit="FS('myform',pt.writeBody); return false;" method="post">
+			<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+                     	<{$lang.taskDate}>：<{include file="Date.Select.html"}> &nbsp;&nbsp;
+			<{$lang.resourcesId}>：<select name='itemEntry'>
+				<{foreach key=k item=v from=$cache.entry}>
+					<option value='<{$k}>' <{if $k==$smarty.post.itemEntry}>selected=selected<{/if}> ><{$v}></option>
+				<{/foreach}>
+			</select>&nbsp;&nbsp;
+			<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+  			</form>
+		</div>
+		<table width="98%" class="tableContent" align="center">
+    		<thead>
+    			<tr align="center">
+				<th><{$lang.taskDate}></th>
+				<th><{$lang.server}></th>
+				<th><{$lang.resourcesName}></th>
+				<th><{$lang.resourcesId}></th>
+				<th><{$lang.outputChannels}></th>
+				<th><{$lang.outputNum}></th>
+			</tr>
+    		</thead>
+    		<tbody>
+			<{if $data}>
+			<{foreach key=k item=v from=$data}>
+    			<tr align="center">
+				<td><{$smarty.post.begTime}>-<{$smarty.post.endTime}></td>
+				<td><{$v.servername}></td>
+				<td><{$v.entry_name}></td>
+				<td><{$v.entry_id}></td>
+                                <td><{$v.note}></td>
+				<td><{$v.sum}></td>
+			</tr>
+			<{/foreach}>
+			<{else}>
+			<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+    			<{/if}>
+    		</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,43 @@
+<div id="bodyTitle"><{$lang.playerDataTitle}></div>
+<table width="98%" class="tableContent" align="center">
+	<thead>
+    		<tr align="center">
+			<th><input id="checkAll" name="checkAll" type="checkbox" value="" onclick="checkAlls();"/></th>
+			<th><{$lang.roleName}></th>
+			<th><{$lang.payUser}></th>
+			<th><{$lang.lastLoginTime}></th>
+			<th><{$lang.lastLoginIp}></th>
+		</tr>
+    	</thead>
+    	<tbody>
+    		<{foreach key=k item=v from=$list}>
+    		<tr align="center">
+			<td><input name="select[]" id="select[]" type="checkbox" value="<{$v.roleId}>" onclick="checkOne()"/></td>
+			<td><{$v.roleName}></td>
+			<td><{if $v.isPay == 1}><{$lang.pay}><{else}><{$lang.free}><{/if}></td>
+			<td><{$v.lastLoginTime}></td>	
+			<td><{$v.lastLoginIp}></td>	
+     		</tr>
+		<{foreachelse}>
+		<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+		<{/foreach}>
+	</tbody>
+</table>
+<{if $list}>
+<div>
+	<input type="button" value="封禁" onclick="subBlockGag('请选择要操作的选项',1)">	
+</div>
+<div class="pages">
+	<{$pages}>
+	<form id="myform" name="myform" action="./?act=Service.getUserList" onsubmit="FS('myform',pt.writeBody); return false;" method="post">
+	<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+	<input id="user_type" name="user_type" type="hidden" value="<{$smarty.post.user_type}>" />
+	<input id="lastLoginIp" name="lastLoginIp" type="hidden" value="<{$smarty.post.lastLoginIp}>" />
+	<input id="server_id" name="server_id" type="hidden" value="<{$smarty.post.server_id}>" />
+	<input id="server_id" name="begTime" type="hidden" value="<{$smarty.post.begTime}>" />
+	<input id="server_id" name="endTime" type="hidden" value="<{$smarty.post.endTime}>" />	
+	</form>
+</div>
+<{/if}>
+</div>
+</div>

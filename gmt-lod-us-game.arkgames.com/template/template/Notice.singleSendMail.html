@@ -1,0 +1,13 @@
+<div align="center">
+<form id="subform" name="subform" method="post" action="./?act=Notice.sendMail">
+<{$lang.title}>：<input type="text" name="title" value="" id="title" style="width:200px" />
+<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<{$lang.receiver}>： <input type="text" name="roleName" value="<{$smarty.get.roleName}>" id="roleName" style="width:200px" disabled="disabled" />
+<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<{$lang.content}> : <textarea name="content_mail" id="content_mail" rows="4" cols="21"></textarea>	
+<input type="hidden" id="server_ids[]" name="server_ids[]" value="<{$smarty.get.server_id}>">
+<input type="hidden" id="rids" name="rids" value="<{$smarty.get.roleId}>" />
+<input type="hidden" id="receiverType" name="receiverType" value="1"/>
+<input type="hidden" id="single" name="single" value="1"/>
+</form>
+</div>

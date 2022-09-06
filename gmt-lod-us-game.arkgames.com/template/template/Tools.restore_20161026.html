@@ -1,0 +1,88 @@
+<div id="bodyTitle">
+<{$lang.tools_restore_title}>
+</div>
+
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+	<div class="bodyContentHead" style="text-align:left">
+		<font color="red"><strong><{$lang.tools_restore_title_desc}></strong></font><br />
+		<form method="POST" name="myform" id="myform" action="./?act=Tools.restore" onsubmit="pageGo(1);return false;">
+	  	<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;&nbsp;&nbsp;
+		<{$lang.roleId}>: <input id="cid" name="cid" value="<{$smarty.post.cid}>" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<{$lang.accountId}>: <input id="pid" name="pid" value="<{$smarty.post.pid}>" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+  		&nbsp;&nbsp;
+		<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+		</form>
+	
+	<{if $data.cid}>
+		<{if $data.in_ban == 1}>
+		<a href="javascript:void(0);" onclick="undoBlockGag('<{$lang.nocheck}>',1,<{$data.cid}>)"><{$lang.undoBlock}></a> 
+		<{else}>
+		<a href="javascript:void(0);" onclick="subBlockGag('<{$lang.nocheck}>',1,<{$data.cid}>)"><{$lang.block}></a> 
+		<{/if}>
+	<{/if}>
+	</div>
+	</div>
+</div>
+<{if $data.in_ban == 1}>
+<div id="bodyTitle">
+<{$lang.tools_restore_vip_title}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+	<div class="bodyContentHead">
+		<font color="red"><strong><{$lang.error_vip_change}></strong></font><br />
+		<{$lang.vip}>: <{$data.vip}>&nbsp;&nbsp;&nbsp;&nbsp;
+		<{$lang.restore_vip}>: <input id="vip" name="vip" value="" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="restoreVip(<{$data.cid}>, <{$data.pid}>, <{$data.vip}>);"><{$lang.handler}></a>
+	</div>
+	</div>
+</div>
+
+<div id="bodyTitle">
+<{$lang.tools_restore_gold}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+	<div class="bodyContentHead">
+		<{$lang.restore_order_id}>: <input id="order_id" name="order_id" size="40" value="" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="restoreOrderId(<{$data.cid}>, <{$data.pid}>);"><{$lang.handler}></a>
+	</div>
+	</div>
+</div>
+
+<div id="bodyTitle">
+<{$lang.tools_restore_equip_title}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+	<div class="bodyContentHead">
+		<{$lang.equip_id}>: <input id="equip_id" name="equip_id" size="40" value="" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<{$lang.equip_num}>: <input id="equip_num" name="equip_num" value="" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="restoreEquip(<{$data.cid}>, <{$data.pid}>);"><{$lang.handler}></a>
+	</div>
+	</div>
+</div>
+
+<{/if}>
+
+<{if $data}>
+<br><br><strong><{$lang.itemsDetail}></strong><br>
+<table width="98%" class="tableContent" align="center">
+	<tr>
+		<th><{$lang.equip_title}></th>
+		<th><{$lang.equip_id}></th>
+		<th><{$lang.equip_num}></th>
+	</tr>
+	<{if $data.chitems}>
+    <{foreach from=$data.chitems key=k item=v}>
+	<tr>
+		<td><{$v.title}></td>
+		<td><{$v.equip_id}></td>
+		<td><{$v.stack_num}></td>
+	</tr>
+	<{/foreach}>
+	<{/if}>
+</table>
+<{/if}>

@@ -1,0 +1,57 @@
+<div  id="bodyTitle"><{$lang.baoWuChipTitle}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  <div class="bodyContentBody">
+  <div class="bodyContentHead" style="text-align:center">
+	<form method="POST" name="myform" id="myform" action="./?act=Player.getBaoWuChipList" onsubmit="pageGo(1);return false;">
+
+ 	<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+	<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+	<{include file="User_Type.Select.html"}>
+	<{$lang.chip_equip_id}>：<input type="text" name="equipId" value="<{$smarty.post.equipId}>" />
+	<{$lang.chip_equip_title}>：<input type="text" name="equipTitle" value="<{$smarty.post.equipTitle}>" />
+  <br><br>
+	<{$lang.op_id}>：<{include file="Common_logOpId.list.html"}>&nbsp;&nbsp;
+    <{$lang.beginDate}>：<input id="sdate" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.beginDate}>" style="width: 200px;" name="beginDate" realvalue=""/>
+  <{$lang.endDate}>：<input id="sdate" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.endDate}>" style="width: 200px;" name="endDate" realvalue=""/>
+	<{include file="Page.Show.html"}>
+  <input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+  </form>
+</div>
+		<table class="tableContent">
+		<thead>
+			<tr>
+              <th><{$lang.get_cid}></th>
+              <th><{$lang.get_pid}></th>
+              <th><{$lang.get_nick}></th>
+              <th><{$lang.op_id}></th>
+              <th><{$lang.lost_cid}></th>
+              <th><{$lang.lost_pid}></th>
+              <th><{$lang.lost_nick}></th>
+			  <th><{$lang.chip_equip_id}></th>
+			  <th><{$lang.chip_equip_title}></th>
+			  <th><{$lang.chip_equip_num}></th>
+			  <th><{$lang.created}></th>
+            </tr>
+		</thead>
+		<tbody>
+        <{section name="ii" loop=$dataList}>
+		<tr>
+	          <td><{$dataList[ii].get_cid}></td>
+	          <td><{$dataList[ii].get_pid}></td>
+	          <td><{$dataList[ii].get_nick}></td>
+			  <td><{$dataList[ii].op_title}></td>
+	          <td><{$dataList[ii].lost_cid}></td>
+	          <td><{$dataList[ii].lost_pid}></td>
+			  <td><{$dataList[ii].lost_nick}></td>
+			  <td><{$dataList[ii].chip_equip_id}></td>
+			  <td><{$dataList[ii].chip_equip_title}></td>
+	          <td><{$dataList[ii].chip_equip_num}></td>
+			  <td><{$dataList[ii].created}></td>
+        </tr>
+		<{/section}>
+		</tbody>
+		</table>
+
+	<div class="pages"><{$pages}></div>
+</div>
+</div>

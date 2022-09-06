@@ -1,0 +1,10 @@
+ -- [2020-09-03 16:24:53] -- cai -- in_1234
+ -- [2020-09-03 16:24:53] -- cai -- INSERT INTO `gm_queue` (`interfaceName`,`serverList`,`dataResult`,`status`,`queueDate`,`serverGroup`,`productId`) VALUES (:interfaceName, :serverList, :dataResult, :status, :queueDate, :serverGroup, :productId)
+ -- [2020-09-03 16:28:05] -- cai -- in_call_1
+ -- [2020-09-03 16:28:05] -- cai -- "Rest_Awards"
+ -- [2020-09-03 16:28:05] -- cai -- "t0.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-09-03 16:28:05] -- cai -- {"uid":"","expire":1601606918,"cid":"54542","title":"\u6d4b\u8bd5","content":"1","reason":"1","author":"sanxiao","gift":"W10=","record":{"id":"189","interfaceName":"Rest_Awards","serverList":"2150777","dataResult":"a:8:{s:3:\"uid\";s:0:\"\";s:6:\"expire\";i:1601606918;s:3:\"cid\";s:5:\"54542\";s:5:\"title\";s:6:\"\u6d4b\u8bd5\";s:7:\"content\";s:1:\"1\";s:6:\"reason\";s:1:\"1\";s:6:\"author\";s:7:\"sanxiao\";s:4:\"gift\";s:4:\"W10=\";}","description":"","serverGroup":"2150","productId":"2150","queueDate":"2020-09-02 10:49:04","status":"0"}}
+ -- [2020-09-03 16:28:05] -- cai -- in_call_1
+ -- [2020-09-03 16:28:05] -- cai -- "Rest_Awards"
+ -- [2020-09-03 16:28:05] -- cai -- "t0.sm2.kunlun.com\/platform\/index.php"
+ -- [2020-09-03 16:28:05] -- cai -- {"uid":"","expire":1601713479,"cid":"54542","title":"\u0414\u043e\u0431\u0440\u043e \u043f\u043e\u0436\u0430\u043b\u043e\u0432\u0430\u0442\u044c!","content":"1","reason":"1","author":"sanxiao","gift":"W10=","record":{"id":"190","interfaceName":"Rest_Awards","serverList":"2150777","dataResult":"a:8:{s:3:\"uid\";s:0:\"\";s:6:\"expire\";i:1601713479;s:3:\"cid\";s:5:\"54542\";s:5:\"title\";s:32:\"\u0414\u043e\u0431\u0440\u043e \u043f\u043e\u0436\u0430\u043b\u043e\u0432\u0430\u0442\u044c!\";s:7:\"content\";s:1:\"1\";s:6:\"reason\";s:1:\"1\";s:6:\"author\";s:7:\"sanxiao\";s:4:\"gift\";s:4:\"W10=\";}","description":"","serverGroup":"2150","productId":"2150","queueDate":"2020-09-03 16:24:53","status":"0"}}

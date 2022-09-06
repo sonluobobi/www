@@ -1,0 +1,46 @@
+<div  id="bodyTitle"><{$lang.systemHandleUpdate}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+<div class="bodyContentHead">
+
+	<form method="post"  id="myform" action="?act=Action.ActionSaveEdit" onsubmit="FS('myform',pt.writeBody); return false;" >
+	<table width="100%">
+    <tr>
+	<td colspan="3">
+	<{if $isadd == 0}><input type="hidden" name="id" value="<{$action->id}>"><{else}><input type="hidden" name="pid" value="<{$pid}>"><{/if}><input type="hidden" name="isadd" value="<{$isadd|default:0}>">
+	</td>
+	</tr>
+    <{if $isadd == 0}>
+	<tr>
+	<td width="120" align="right">ID：</td>
+	<td align="left" colspan="2"><{$action->id}></td>
+	</tr>
+	<{/if}>
+    <tr>
+	<td width="120" align="right">上级菜单：</td>
+	<td align="left" colspan="2"><{$upname}></td>
+	</tr>
+    <tr>
+	<td align="right">排序：</td>
+	<td align="left" colspan="2">
+    <input type="text" class="input" name="orderid" value="<{$action->orderid}>">
+	</td>
+	</tr>
+    <tr><td align="right">动作类型：</td><td align="left" colspan="2">
+    <input type="radio" class="myCheckBox" name="acttype" value="-1"  <{if $action->acttype == '-1'}>checked="checked"<{/if}> > -1 <input type="radio" class="myRadio" name="acttype" value="0"  <{if $action->acttype == '0'}>checked="checked"<{/if}> > 0 <input type="radio" class="myCheckBox" name="acttype" value="1"  <{if $action->acttype == '1'}>checked="checked"<{/if}> > 1</td></tr>
+    <tr><td align="right">图标：</td><td align="left" colspan="2">
+	<select name="actico"><{foreach item=v key=k from=$acticodb}><option value="<{$v}>"<{if $action->actico == $v}> selected="selected"<{/if}>><{$k}></option><{/foreach}></select></td></tr>
+    <tr><td align="right">URL：</td><td align="left" colspan="2">
+    <input type="text" class="input" name="actcode" value="<{$action->actcode}>"></td></tr>
+    <tr><td align="right">名称：</td><td align="left" colspan="2">
+    <input type="text" class="input" name="acttitle" value="<{$action->acttitle}>"></td></tr>
+    <tr><td align="right">是否显示在列表中：</td><td align="left" colspan="2">
+     <input type="radio" class="myCheckBox" name="actdisplay" value="block"  <{if $action->actdisplay == 'block'}>checked="checked"<{/if}> > 是 <input type="radio" class="myCheckBox" name="actdisplay" value="none"  <{if $action->actdisplay == 'none'}>checked="checked"<{/if}> > 否</td></tr>
+
+    </table>
+
+	<table><tr><td style="padding-left: 60px;">
+	<input type="submit" name="submit" class="submit" value="<{if $isadd == 0}>修改<{else}>添加<{/if}>" />
+	</td></tr></table>
+	</form>
+
+</div></div>

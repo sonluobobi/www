@@ -1,0 +1,29 @@
+<div class="bodyContent">
+	<div class="bodyContentHead">
+		<b><font color="red">用户的信息</font></b><br />
+	</div>
+	<div class="bodyContentBody">
+		<table class="tableContent">
+		<thead>
+			<tr>
+			  <th></th>
+			  <th style="height:25px;">ID</th>
+			  <th>用户名</th>
+			  <th>登录名</th>
+			  <th>创建时间</th>
+			</tr>
+		</thead>
+		<tbody>
+		<{section name="ii" loop=$userList}>
+			<tr>
+			  <td>&nbsp; &nbsp; &nbsp;</td>
+			  <td><{$userList[ii]->id}></td>
+			  <td><{$userList[ii]->userName}></td>
+			  <td><{$userList[ii]->loginName}></td>
+			  <td><{$userList[ii]->created}></td>
+			</tr>                                                 
+		<{/section}>
+		</tbody>
+		</table>
+	</div>
+</div>

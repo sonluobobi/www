@@ -1,0 +1,10 @@
+<select name="consumerServerId" id="consumerServerId">
+<{assign var='s' value=$smarty.request.consumerServerId}>
+	<option value=""><{$lang.consumer_service_id_title}></option>
+    <{if $consumberServerId_all == true}>
+	<option value="9999" <{if $s == 9999}>selected="true"<{/if}>><{$lang.selectAll}></option>
+    <{/if}>
+	<{foreach key=k item=i from=$lang.consumer_service_id_ex}>
+		<option value="<{$k}>" <{if $s == $k}>selected="true"<{/if}>><{$i}>
+	<{/foreach}>
+</select>

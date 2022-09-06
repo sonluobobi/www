@@ -1,0 +1,122 @@
+<div id="bodyTitle"><{$lang.sendPropsTitle}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<iframe id="iframeload" name="iframeload" src="/img/1.gif" style="width:0px; height:0px; display:none" frameborder="0" scrolling="no"></iframe>
+	<div class="bodyContentHead">
+
+		<form  method="post"  target="iframeload"  id="myform" action="./?act=Notice.sendPropsEquip" enctype="multipart/form-data" >
+			<input type="hidden" value="9900000" name="MAX_FILE_SIZE"/>
+			<table align="center" cellspacing="1" cellpadding="0" class="userTable" style="width:80%;" id="tbl">
+				<tr>
+					<td align="right"><{$lang.memo}>：</td>
+					<td align="left"><font color="red"><{$lang.notice_brief}></font></td>
+				</tr>
+				<tr>
+					<td align="right"><{$lang.SelectServers}>：</td>
+					<td align="left"><{include file="Common_server.list.html"}></td>
+				</tr>
+				<tr>
+					<td align="right"><{$lang.receiverType}>：</td>
+					<td align="left">
+						<select id="receiverType" name="receiverType">
+							<option value="1" selected="selected"><{$lang.roleId}></option>
+							<!--option value="2"><{$lang.roleName}></option-->
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right"><{$lang.receiver}>：</td>
+					<td align="left">
+						<input id="type" name="type" type="radio" value="1" checked="checked" onclick="changeSendType(this.value,'<{$lang.inputCaption}>')"/>
+						<{$lang.input}> &nbsp;
+						<input id="type" name="type" type="radio" value="2" onclick="changeSendType(this.value,'<{$lang.uploadCaption}>')"/>
+						<{$lang.upload}>
+						<br />
+						<input type="text" id="rids" name="rids" value="" style="width:250px"/>
+						<input type="file" id="excleFile" name="excleFile"  value=""  style="display:none">
+						<!--input type="submit" class="submit" name="is_check_role_name"  value="<{$lang.checkRoleName}>"-->
+						<span id="caption"><{$lang.inputCaption}></span>
+					</td>
+				</tr>
+				<{section name=total loop=4}>
+				<tr>
+					<td align="right">&nbsp;<{$lang.equipInfo}><{$smarty.section.total.index+1}>:&nbsp;&nbsp;</td>
+					<td>&nbsp;&nbsp;<{$lang.equip_id}>&nbsp;&nbsp;<input type="text" name="equip_id[]" id="equip_id_<{$smarty.section.total.index+1}>" size="20" value="" />
+						&nbsp;&nbsp;<{$lang.equip_num}>&nbsp;&nbsp;<input type="text" name="equip_num[]" id="equip_num_<{$smarty.section.total.index+1}>" size="20" value="" /></td>
+				</tr>
+				<{/section}>
+				<{section name=total loop=4}>
+				<tr>
+					<td align="right">&nbsp;资源道具<{$smarty.section.total.index+1}>:&nbsp;&nbsp;</td>
+					<td>&nbsp;&nbsp;资源道具&nbsp;&nbsp;<input type="text" name="resou_id[]" id="equip_id_<{$smarty.section.total.index+1}>" size="20" value="" />
+						&nbsp;&nbsp;<{$lang.equip_num}>&nbsp;&nbsp;<input type="text" name="resou_num[]" id="equip_num_<{$smarty.section.total.index+1}>" size="20" value="" /></td>
+				</tr>
+				<{/section}>
+
+				<tr>
+					<td align="right"><{$lang.expire}>：</td>  <td align="left"><input type="text" name="endTime" style="width:200px" value="<{$endTime}>" id="endTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate" >
+				</td>
+				</tr>
+				<tr>
+					<td align="right">邮件类型：</td>
+					<td align="left">
+						<input id="topType" name="topType" type="radio" value="0" checked="checked" />
+						普通邮件 &nbsp;
+						<input id="topType" name="topType" type="radio" value="1" />
+						置顶邮件
+						<input id="topType" name="topType" type="radio" value="2" />
+						问卷邮件
+					</td>
+				</tr>
+
+				<tr>
+					<td align="right">通关章节：</td>
+					<td align="left"><input type="text" name="chapter" value="<{$chapter}>" id="chapter" style="width:200px" /></td>
+				</tr>
+
+				<tr>
+					<td align="right">主堡等级：</td>
+					<td align="left"><input type="text" name="castle" value="<{$castle}>" id="castle" style="width:200px" /></td>
+				</tr>
+
+
+				<tr>
+					<td align="right"><{$lang.title}>：</td>
+					<td align="left"><input type="text" name="title" value="<{$title}>" id="title" style="width:200px" /></td>
+				</tr>
+				<tr>
+					<td align="right"><{$lang.memo}>：</td>
+					<td align="left"><font color="red">1、请勿使用单双引号'或者" 2、超链接使用  &lt;color=blue1&gt;&lt;link id=show_web|http://www.baidu.com&gt;描述&lt;/link&gt;&lt;/color&gt; 3、
+						问卷邮件格式 &lt;color=blue1&gt;&lt;link id=question&id=b6ec354&gt;点击填写问卷&lt;/link&gt;&lt;/color&gt; 4、问卷日期20210421,20210504 5、问卷前置f8ff5e4,2433ee4用逗号隔开</font></td>
+				</tr>
+				<tr>
+					<td align="right"><{$lang.content}>：</td>
+					<td align="left">
+						<textarea id="contents" name="content" rows="8" cols="80"><{$content}></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td align="right"><{$lang.reason}>：</td>
+					<td align="left">
+						<textarea id="reason" name="reason" rows="6" cols="40"><{$reason}></textarea>
+					</td>
+				</tr>
+				<!--
+                <tr>
+                     <td align="right"><{$lang.awardNum}>：</td>
+                     <td align="left"><input type="text" value="" id="awardNum" name="awardNum"></td>
+                     <textarea id="contents" name="content" rows="8" cols="80"><{$content}></textarea>
+                    </tr>
+                <tr>
+                -->
+				<tr>
+					<td></td>
+					<td><input type="submit" class="submit"  value="<{$lang.Submit}>"></td>
+				</tr>
+			</table>
+		</form>
+		<div style="width:50%;margin:auto;">
+			<button  type="button" onclick="addEquipEn()">新增多语言内容</button>&nbsp;&nbsp;
+		</div>
+	</div>
+</div>
+

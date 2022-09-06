@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-CN">
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title><{$lang.app_name}> | <{$lang.cp_home}></title>
+	<link rel="stylesheet" href="/css/style.css" type="text/css" />
+	<script type="text/javascript" src="/js/mootools-1.2.1-core.js"></script>
+	<script type="text/javascript" src="/js/mootools-1.2-more.js"></script>
+	<script type="text/javascript" src="/js/core.js?ver=1.2"></script>
+	<script type="text/javascript" src="/js/calendar/calendar.js"></script>
+	<script type="text/javascript" src="/js/calendar/calendar-setup.js"></script>
+	<script type="text/javascript" src="/js/calendar/lang/cn_utf8.js"></script>
+	<script type="text/javascript" src="/js/my97/WdatePicker.js"></script>
+	<script type="text/javascript" src="/js/fckeditor/fckeditor.js"></script>	
+	<script type="text/javascript" src="/js/gmtfunc.js"></script>
+	<style type="text/css">@import url("/js/calendar/skins/aqua/theme.css");</style>	
+  </head>
+  <body>
+	<div class="header">
+		<img class="logo" src="/img/logo.gif">
+		<span class="link">
+		您好 <{$smarty.session.infoUser.fullname}>
+		&nbsp;|&nbsp; 
+		<a href="?act=Login.quit">退出登录</a>&nbsp;&nbsp;&nbsp;
+		<br /><br /><br />
+		</span>
+	</div>
+	<div class="bar" id="nowDayTime" rev="-" rel="<{$theTime.nowDateTime}>"><{$theTime.nowDateTime}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+	<div class="body">
+		<div class="bodyLeft">
+			<div>
+				<b class="round_border">
+					<b class="round_border_layer3"></b>
+					<b class="round_border_layer2"></b>
+					<b class="round_border_layer1"></b>
+				</b>
+				<div class="round_border_content">
+				<!-- Menu 1  Begin -->
+				<{section name=ii loop=$menuTree}>
+					<a class="menuLink" href="javascript:void(0);"><div class="menuImage0 <{$menuTree[ii].ActRoot.actico}>"><{$menuTree[ii].ActRoot.acttitle}></div></a>
+					<{if !empty($menuTree[ii].ActFirst)}> <!-- neq ""} > -->
+					<div class="menuDiv" style="display:<{$menuTree[ii].ActRoot.actdisplay}>">
+						<{section name=mm loop=$menuTree[ii].ActFirst}>
+							<{assign var="id" value=$menuTree[ii].ActFirst[mm].id}>
+							<{if !empty($menuTree[ii].ActSecond[$id])}> <!-- neq ""} > -->
+								<{section name=tt loop=$menuTree[ii].ActSecond[$id]}>
+                                                                        <!--if $menuTree[ii].ActSecond[$id][tt].actcode|substr:7|in_array:$smarty.session.userRank-->
+																		<{if $menuTree[ii].ActSecond[$id][tt].actkey|in_array:$smarty.session.userRank}>
+                                                                        <{assign var="status" value=$menuTree[ii].ActSecond[$id][tt].actcode}>
+                                                                        <{/if}> 
+                                                                <{/section}>
+							<{if $status}>
+							<a class="menuLink" href="javascript:void(0);"><div class="menuImage1 menuRight"><{$menuTree[ii].ActFirst[mm].acttitle}></div></a>
+							<div class="menuDiv" style="display:<{$menuTree[ii].ActFirst[mm].actdisplay}>">
+								<{section name=nn loop=$menuTree[ii].ActSecond[$id]}>
+<!--									if $menuTree[ii].ActSecond[$id][nn].actcode|substr:7|in_array:$smarty.session.userRank-->
+									<{if $menuTree[ii].ActSecond[$id][nn].actkey|in_array:$smarty.session.userRank}>
+								<{if $menuTree[ii].ActSecond[$id][nn].acttype!=-1}><a class="menuLink" href="javascript:void(0);" onclick="RQ('<{$menuTree[ii].ActSecond[$id][nn].actcode}>&actkey=<{$menuTree[ii].ActSecond[$id][nn].actkey}>',pt.writeBody)"><div class="menuImage2"><{$menuTree[ii].ActSecond[$id][nn].acttitle}></div></a><{/if}>
+									<{/if}>
+								<{/section}>
+							</div>
+								<{/if}>
+                                                        <{assign var="status" value=''}>
+							<{else}>
+<!--								if $menuTree[ii].ActFirst[mm].actcode|substr:7|in_array:$smarty.session.userRank-->
+								<{if $menuTree[ii].ActFirst[mm].actkey|in_array:$smarty.session.userRank}>
+							<a class="menuLink" href="javascript:void(0);" onclick="RQ('<{$menuTree[ii].ActFirst[mm].actcode}>&actkey=<{$menuTree[ii].ActFirst[mm].actkey}>',pt.writeBody)"><div class="menuImage1"><{$menuTree[ii].ActFirst[mm].acttitle}></div></a>
+								<{/if}>
+							<{/if}>
+						<{/section}>
+					</div>
+					<{/if}>
+				<{/section}>
+				<!-- Menu 1  End -->
+				</div>
+				<b class="round_border">
+					<b class="round_border_layer1"></b>
+					<b class="round_border_layer2"></b>
+					<b class="round_border_layer3"></b>
+				</b>
+			</div>
+			<div style="margin-top: 15px">
+				<b class="round_border">
+					<b class="round_border_layer3"></b>
+					<b class="round_border_layer2"></b>
+					<b class="round_border_layer1"></b>
+				</b>
+				<div class="round_border_content">
+
+					<!-- Menu 2  Begin -->
+					<{section name=ii loop=$setupTree}>
+					<div class="menu0"><{$setupTree[ii].ActRoot.acttitle}></div>
+						<{section name=mm loop=$setupTree[ii].ActFirst}>
+<!--							if $setupTree[ii].ActFirst[mm].actcode|substr:7|in_array:$smarty.session.userRank-->
+							<{if $setupTree[ii].ActFirst[mm].actkey|in_array:$smarty.session.userRank}>
+							<a class="menuLink" href="javascript:void(0);" onclick="RQ('<{$setupTree[ii].ActFirst[mm].actcode}>&actkey=<{$setupTree[ii].ActFirst[mm].actkey}>',pt.writeBody)"><div class="menuImage1 <{$setupTree[ii].ActFirst[mm].actico}>" style="display:<{$setupTree[ii].ActFirst[mm].actdisplay}>"><{$setupTree[ii].ActFirst[mm].acttitle}></div></a>
+							<{/if}>
+						<{/section}>
+					<{/section}>
+					<!-- Menu 2  End -->
+
+					</div>
+				<b class="round_border">
+					<b class="round_border_layer1"></b>
+					<b class="round_border_layer2"></b>
+					<b class="round_border_layer3"></b>
+				</b>
+			</div>
+		</div>
+		<div class="bodyRight">
+			<div>
+				<b class="round_border">
+					<b class="round_border_layer3"></b>
+					<b class="round_border_layer2"></b>
+					<b class="round_border_layer1"></b>
+				</b>
+				<div class="round_border_content">
+					<b class="controlbar_border">
+						<b class="controlbar_border_layer3"></b>
+						<b class="controlbar_border_layer2"></b>
+						<b class="controlbar_border_layer1"></b>
+					</b>
+					<div class="controlbar_border_content">
+						<div class="floatLeft">
+							<a id="ctrlBarDumpAct" class="button menu floatLeft" href="javascript:pt.buttonToggle('ctrlBarDump', 'div.ctrlBar');"><b><b><b style="color:#888">导出</b></b></b></a>
+							<a class="button email floatLeft" href="javascript:void(0);"><b><b><b style="color:#888">站内信</b></b></b></a>
+						</div>
+						<div class="floatRight">
+						  <a class="button ptmain floatLeft" href="./"><b><b><b>回到首页</b></b></b></a>
+						</div>
+
+						<div class="ctrlBar" id="ctrlBarDump">
+							<div class="dumpBody">
+								<a class="imglink bgdcsv" href="javascript:void(0)" onClick="downloadExcel()">EXCEL</a>
+							</div>
+						</div>
+
+					</div>
+					<b class="controlbar_border">
+						<b class="controlbar_border_layer1"></b>
+						<b class="controlbar_border_layer2"></b>
+						<b class="controlbar_border_layer3"></b>
+					</b>
+					
+					<div style="position: relative; height: 0px; top: 4px; right: 5px; float: right;">
+					<div id="linkReload" href="javascript:void(0);" class="jumpReload" style="background-image: url('img/jump_flush_1.png');"></div>
+					<div id="linkNext" href="javascript:void(0);" class="jumpNext" style="background-image: url('img/jump_right_0.png');"></div>
+					<div id="linkPre" href="javascript:void(0);" class="jumpPrev" style="background-image: url('img/jump_left_0.png');"></div>
+					</div>
+					
+					<div id="bodyContents">
+					<!-- bodyContents Begin -->
+						<div id="bodyTitle">欢迎登录</div>
+						<div class="bodyContent" id="bodyContentAuthCtrl" style="border-top: 2px solid #666;">
+							<div class="bodyContentHead">
+								<br /><b>IE6下效果较差</b>，傲游 和 TT 等类型浏览器，可能会屏蔽弹出层。 建议使用 Firefox
+								</div>
+						</div>
+						
+					<!-- bodyContents End -->
+					</div>
+					<div id="bodyContentFoot"></div>
+					<b class="controlbar_border">
+						<b class="controlbar_border_layer2"></b>
+						<b class="controlbar_border_layer3"></b>
+					</b>
+				</div>
+				<b class="round_border">
+					<b class="round_border_layer1"></b>
+					<b class="round_border_layer2"></b>
+					<b class="round_border_layer3"></b>
+				</b>
+			</div>
+			<div style="margin-top: 15px">
+				<b class="round_border">
+					<b class="round_border_layer3"></b>
+					<b class="round_border_layer2"></b>
+					<b class="round_border_layer1"></b>
+				</b>
+				<div id="debug"></div>
+				<div class="round_border_content">
+							<a href="javascript: void(0);"><b><b><b>调试 显示/隐藏</b></b></b></a>
+							<br /><span id="debugDiv" style="display: none;"></span></div>
+				<b class="round_border">
+					<b class="round_border_layer1"></b>
+					<b class="round_border_layer2"></b>
+					<b class="round_border_layer3"></b>
+				</b>
+			</div>
+		</div>
+	</div>
+
+	<div class="foot">&copy; 2010  Power By KunLun.com<br /><br /></div>
+	<div id="pageMask"></div>
+	<div id="pageLoad" onclick="pt.pageLoading('none');">Loading...</div>
+
+	<div id="pageAlert" class="popDiv" style="width: 400px; z-index:999">
+	  <center>
+		<div id="pageAlertHead" class="popHead">提示信息</div>
+		<div id="pageAlert_popBody" class="popBody"></div>
+		<table><tr><td><a class="button" id="pageAlert_popOk" href="javascript:void(0);"><b><b><b>确　定</b></b></b></a></td></tr></table>
+		<div style="height:10px;"></div>
+	  </center>
+	</div>
+
+	<div id="pageConfirm" class="popDiv" style="width: 400px;">
+	  <center>
+		<div id="pageConfirmHead" class="popHead">提示信息</div>
+		<div id="pageConfirm_popBody" class="popBody"></div>
+		<table><tr><td>
+			  <a class="button" id="pageConfirm_popOk" href="javascript:void(0);"><b><b><b>确　定</b></b></b></a>
+			  &nbsp;　&nbsp;　&nbsp;　&nbsp;　&nbsp;　&nbsp;
+			  <a class="button" id="pageConfirm_popNo" href="javascript:void(0);"><b><b><b>取　消</b></b></b></a>
+		</td></tr></table>
+		<div style="height:10px;"></div>
+	  </center>
+	</div>
+
+	<div id="passPopCtrl" class="popDiv" align="center">
+		<div id="passPopCtrlHeader" class="popHead"> 用户修改密码 </div>
+		<a class="button popCancel"><b><b><b>X</b></b></b></a>
+		<div id="gamePopBody" class="popBody">
+			<form id="edpassform" method="post" action="/auths/changePassword">
+			&nbsp;&nbsp;
+			用户名: <input type="text" name="real_name" class="input" style="width:80px" value="<{$userSession.real_name}>" readonly/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			新密码: <input type="password" name="password" class="input" style="width:110px" value="" />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			重复密码: <input type="password" name="repassword" class="input" style="width:110px" value="" />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" class="submit" value="修改密码" onclick="KQ('edpassform');"/>
+			</form>
+		</div>
+	</div>
+
+	<input type="hidden" id="mainActFormAct" value="/portals/defaults" />
+	<form id="mainActForm">
+	<input type="hidden" name="bgtm" value="<{$theTime.begin}>" />
+	<input type="hidden" name="edtm" value="<{$theTime.end}>" />
+	</form>
+	<div id="debug"></div>
+  </body>
+  <script language="javascript">
+  <!--
+  window.addEvent('domready', function(){
+	 new PageInit();
+  });
+  
+  //-->
+  -->
+  </script>
+</html>

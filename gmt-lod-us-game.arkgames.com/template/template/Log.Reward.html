@@ -1,0 +1,83 @@
+<div id="bodyTitle"><{$lang.awardDesc}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  <div class="bodyContentBody">
+  <div class="bodyContentHead" style="text-align:center">
+	<form method="post" id="myform" name="myform" action="?act=Log.getRewardList" onsubmit="pageGo(1);return false;">
+		&nbsp;<{$lang.SelectServers}>：<{include file="Common_server.list.html"}> &nbsp;
+		<{$lang.selectUserType}>：<select id="user_type" name="user_type">
+		<{assign var='t' value=$smarty.post.user_type}>
+			<option value="0" <{if $t == '0'}>selected="true"<{/if}>><{$lang.plaseClew}></option>
+			<option value="1" <{if $t == '1'}>selected="true"<{/if}>><{$lang.pid}></option>
+			<option value="2" <{if $t == '2'}>selected="true"<{/if}>><{$lang.roleId}></option>			
+			<option value="3" <{if $t == '3'}>selected="true"<{/if}>><{$lang.roleName}></option>			
+		</select>
+		<input id="user_value" name="user_value" type="text" value="<{$smarty.post.user_value}>" />
+		&nbsp;<{$lang.awardStatus}>：<select name="status" id="status">
+		<{assign var='status_val' value=$smarty.request.status}>
+			<option value=""><{$lang.plaseClew}></option>
+			<option value="1" <{if $status_val == '1'}>selected="true"<{/if}>><{$lang.status_get}></option>
+			<option value="2" <{if $status_val == '2'}>selected="true"<{/if}>><{$lang.status_no_get}></option>	
+		</select>
+
+		&nbsp;<{include file="Page.Show.html"}>
+		<br><br>
+		<{$lang.module_id}>：<{include file="Common_logModuleId.list.html"}>&nbsp;&nbsp;
+		<{$lang.beginDate}>：<input id="begTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.post.begTime}>" style="width: 200px;" name="begTime" realvalue=""/> 
+		<{$lang.endDate}>：<input type="text" class="Wdate" name="endTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width: 200px;" value="<{$smarty.post.endTime}>" realvalue="" />
+<!-- p 为分页页码 -->
+<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+		&nbsp;&nbsp;&nbsp;<input type="submit" class="submit" name="search" id="search" value="<{$lang.search}>" />
+	</form>
+	</div>
+		<table width="98%" class="tableContent" style="text-align:left" id="myTable">
+  <thead>
+			<tr style="text-align:left">
+			  <th><{$lang.handler}></th>
+              <th style="text-align:left"><{$lang.pid}></th>
+              <th><{$lang.roleId}></th>
+              <th><{$lang.roleName}></th>
+			  <th><{$lang.awardRes}></th>
+			  <th><{$lang.awardStatus}></th>
+			  <th><{$lang.awardTime}></th>
+			  <th><{$lang.updated}></th>
+			  <th><{$lang.expire}></th>
+          </tr>
+		</thead>
+		<tbody>
+        <{foreach key=k item=v from=$dataList}>
+		<tr style="text-align:left">
+			<td>
+				<{if $v.has_expire == 1 and $v.status != 1}>
+				<a href="javascript:void(0);" onclick="rewardExtendExpire(<{$v.id}>, <{$v.character_id}>, '<{$v.nick}>', 1);"><{$lang.extend_expire}></a>
+			  	<{/if}>
+			  	<{if $v.mid == 22 and $v.status != 1}>
+				&nbsp;&nbsp;<a href="javascript:void(0);" onclick="rewardExtendExpire(<{$v.id}>, <{$v.character_id}>, '<{$v.nick}>', 2);"><{$lang.drop}></a>
+			  	<{/if}>
+			</td>
+			<td><{$v.player_id}></td>
+			<td><{$v.character_id}></td>
+			<td><{$v.nick}></td>
+			<td><{$v.module_id}></td>
+			<td>	
+			  	<{if $v.status == 1}> <{$lang.status_get}>
+			  	<{else}><{$lang.status_no_get}>
+			  	<{/if}>
+			</td>
+
+			<td><{$v.timestamp}></td>
+			<td><{$v.updated}></td>
+			<td><{$v.expire}></td>
+			</tr>
+			<tr style="text-align:left">
+			<td></td>
+			<td><{$lang.awardContent}></td>
+			<td colspan="7"><{$v.incomes}></td>
+        </tr>
+        <{foreachelse}>
+		<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+		<{/foreach}>
+		</tbody>
+		</table>
+  </div>
+<div class="pages"><{$pages}></div>
+</div>

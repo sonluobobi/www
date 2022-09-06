@@ -1,0 +1,54 @@
+<div id="bodyTitle"><{$lang.toplist_title_global_fc}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  <div class="bodyContentBody">
+  <div class="bodyContentHead" style="text-align:center">
+	<form method="post" id="myform" name="myform" action="?act=Toplist.GlobalFC" onsubmit="pageGo(1);return false;">
+		<{$lang.stat_date}>：<input id="stat_date" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<{if $smarty.post.stat_date}><{$smarty.post.stat_date}><{else}><{$smarty.now|date_format:'%Y-%m-%d'}><{/if}>" style="width: 200px;" name="stat_date" realvalue=""/> 
+		<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+		&nbsp;&nbsp;&nbsp;<input type="submit" class="submit" name="search" id="search" value="<{$lang.search}>" />
+	</form>
+	</div>
+	<div class="bodyContentHead" style="color:red;">
+		<{$lang.toplist_desc_global_fc}>
+	</div>
+		<table width="98%" class="tableContent" align="center" id="myTable">
+  <thead>
+			<tr>
+              <th><{$lang.rank}></th>
+              <th><{$lang.roleId}></th>
+			  <th><{$lang.pid}></th>
+			  <th><{$lang.roleName}></th>
+			  <th>unique_key</th>
+			  <th><{$lang.level}></th>
+			  <th><{$lang.toplist_history_higher}><{$lang.fight_capacity}></th>
+
+			  <!--th><{$lang.gang_id}></th>
+			  <th><{$lang.gangName}></th>
+			  <th><{$lang.gang_level}></th-->
+
+			  <th><{$lang.server}></th>
+          </tr>
+		</thead>
+		<tbody>
+        <{section name="ii" loop=$dataList}>
+		<tr align="center">
+			<td><{$dataList[ii].rank}></td>
+			<td><{$dataList[ii].cid}></td>
+			<td><{$dataList[ii].player_id}></td>
+			<td><{$dataList[ii].ch_nick}></td>
+			<td><{$dataList[ii].unique_key}></td>
+			<td><{$dataList[ii].level}></td>
+			<td><{$dataList[ii].fc}></td>
+
+			<!--td><{$dataList[ii].gang_id}></td>
+			<td><{$dataList[ii].gang_title}></td>
+			<td><{$dataList[ii].gang_level}></td-->
+
+			<td><{$dataList[ii].server_id}></td>
+			
+        </tr>
+		<{/section}>
+		</tbody>
+		</table>
+  </div>
+</div>

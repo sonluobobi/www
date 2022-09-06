@@ -1,0 +1,77 @@
+<div  id="bodyTitle"><{$lang.roleDetailInfo}></div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+ <div class="bodyContentBody">
+<div class="bodyContentHead" style="text-align:left">
+<form method="POST" id="myform" name="myform" action="?act=Role.getRoleInfo"  onsubmit="pageGo(1);return false;">
+<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+<{$lang.userType}>：
+<select name="typeSelect">
+	<option value="1" <{if $smarty.post.typeSelect == '1'}>selected="true"<{/if}> ><{$lang.roleName}></option>
+	<option value="2" <{if $smarty.post.typeSelect == '2'}>selected="true"<{/if}> ><{$lang.roleId}></option>
+	<option value="3" <{if $smarty.post.typeSelect == '3'}>selected="true"<{/if}> ><{$lang.userId}></option>
+	<option value="4" <{if $smarty.post.typeSelect == '4'}>selected="true"<{/if}> ><{$lang.passPortName}></option>
+</select>
+<input type="text" name="typeValue" value="<{$smarty.post.typeValue}>" />
+<{include file="Page.Show.html"}>
+<!-- p 为分页页码 -->
+<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+<input type="submit" class="submit" name="search" id="search" value="<{$lang.search}>" />
+</form>
+</div>
+<table width="98%" class="tableContent" align="center">
+    <thead>
+    <tr align="center">
+	<th width="10%"><{$lang.roleId}></th>
+	<th><{$lang.userId}></th>	
+	<th><{$lang.passPortName}></th>
+	<th><{$lang.roleName}></th>
+	<th><{$lang.roleLevel}></th>
+	<th><{$lang.experience}></th>
+	<th><{$lang.roleGender}></th>
+	<th><{$lang.roleSchool}></th>
+	<th><{$lang.rolePotential}></th>
+	<th><{$lang.roleNowHp}></th>
+	<th><{$lang.roleMaxHp}></th>
+	<th><{$lang.roleNowMp}></th>
+	<th><{$lang.roleMaxMp}></th>
+	<th><{$lang.roleTitle}></th>
+	<th><{$lang.roleEnergy}></th>
+	<th><{$lang.roleMoney}></th>
+	<th><{$lang.roleReservefunds}></th>
+	<th><{$lang.roleNormalGinger}></th>
+	<th><{$lang.roleEfficientGinger}></th>
+	<th><{$lang.handler}></th>
+	</tr>
+    </thead>
+    <tbody>
+	<{if $data}>
+    <{foreach from=$data key=k item=v}>
+    <tr align="center">
+	<td><{$v.id}></td>
+	<td><{$v.account_id}></td>
+	<td><{$v.accountName}></td>
+	<td><{$v.name}></td>
+	<td><{$v.level}></td>
+	<td><{$v.experience}></td>
+	<td><{$lang.roleGenderType[$v.gender]}></td>
+	<td><{$v.school}></td>
+	<td><{$v.potential}></td>
+	<td><{$v.hp}></td>
+	<td><{$v.maxhp}></td>
+	<td><{$v.mp}></td>
+	<td><{$v.maxmp}></td>
+	<td><{$v.title}></td>
+	<td><{$v.energy}></td>
+	<td><{$v.money}></td>
+	<td><{$v.reservefunds}></td>
+	<td><{$v.normalGinger}></td>
+	<td><{$v.efficientGinger}></td>
+	<td><a href="javascript:void(0);" onclick="RQ('./?act=Role.getRoleAllInfo&server_id=<{$smarty.post.server_id}>&roleId=<{$v.id}>',pt.writeBody)"><{$lang.detail}></a></td>
+	</tr>
+    <{/foreach}>
+    </tbody>
+	<{/if}>
+</table>
+<div class="pages"><{$pages}></div>
+</div>
+</div>

@@ -1,0 +1,177 @@
+<div id="bodyTitle"><{$lang.noticeListTitle}></div>
+
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+<div class="bodyContentHead" style="text-align:left">
+<iframe id="iframeload" name="iframeload" src="/img/1.gif" style="width:0px; height:0px; display:none" frameborder="0" scrolling="no">
+</iframe>	
+<form id="subform" name="subform" method="post" action="./?act=Notice.add" target="iframeload">  
+<table align="center" cellspacing="1" cellpadding="0" class="userTable" style="width:80%;" id="tbl">  
+<tr>  
+<td align="right"><{$lang.ServerName}>：</td>  
+<td align="left">
+<{if $smarty.get.id > 0}>
+<span id='servername'><{$server_text}></span>
+<input type="hidden" id="id" name="id" value="<{$id}>" />
+<input type="hidden" id="server_ids[]" name="server_ids[]" value="<{$server_id}>" /> 
+<{else}>
+<{include file="Common_server.Checkbox.html"}>
+<{/if}>
+</td>
+</tr>
+<tr>  
+	<td align="right"><{$lang.title}>：</td>  
+	<td align="left"><input type="text" name="title" value="<{$title}>" id="title" style="width:200px" /></td>  
+</tr>
+<tr>  
+	<td align="right"><{$lang.sender}>：</td>  <td align="left"><input type="text" name="author" id="author"  readonly style="width:100px" value=" <{$smarty.session.infoUser.fullname}>">	</td>  
+</tr>  
+<tr>
+	<td align="right"><{$lang.noticeType}>：</td>  
+	<td align="left"><select name="type" id="type" onchange="changePopNotice(this.value,'NoticeDIV')">  
+						<option value="1" <{if $type == '1'}>selected="true"<{/if}>><{$lang.scrollNotice}></option> 
+						<!--
+						<option value="0"><{$lang.Select}></option>  
+						<option value="2" <{if $type == '2'}>selected="true"<{/if}>><{$lang.talkNotice}></option>  
+						<option value="3" <{if $type == '3'}>selected="true"<{/if}>><{$lang.scrollAndTalkNotice}></option> 
+						--> 
+					</select>
+	</td>  
+</tr>
+<tr>
+<td align="left" colspan="2"><font color="red"><strong><{$lang.timeNotice}></strong></font></td> 
+</tr>
+<tr>
+	<td align="right"><{$lang.beginDate}>：</td>  
+	<td align="left"><input type="text" name="begTime" style="width:200px" value="<{$begTime}>" id="begTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate" >
+	</td>  
+</tr>  
+<tr>  
+	<td align="right"><{$lang.endDate}>：</td>  <td align="left"><input type="text" name="endTime" style="width:200px" value="<{$endTime}>" id="endTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="Wdate" >
+	</td>  
+</tr>  
+<tr style="display:none" id="NoticeDIV">  
+	<td align="right"><{$lang.picUrl}>：</td>  <td align="left"><input type="text" name="pictureUrl" style="width:200px" value="<{$pictureUrl}>" id="pictureUrl"/></td>  
+</tr> 
+
+<tr>
+	<td align="right"><{$lang.cycle}>：</td>  
+	<td align="left"><select name="cycle" id="cycle" onchange="changePopNotice(this.value,'NoticeDIV')">  
+						<option value="15" <{if $cycle == '15'}>selected="true"<{/if}>><{$lang.second_15}></option>  
+						<option value="30" <{if $cycle == '30'}>selected="true"<{/if}>><{$lang.second_30}></option>  
+						<option value="60" <{if $cycle == '60'}>selected="true"<{/if}>><{$lang.second_60}></option>  
+						<option value="110" <{if $cycle == '110'}>selected="true"<{/if}>>110秒</option>
+						<option value="170" <{if $cycle == '170'}>selected="true"<{/if}>>170秒</option>
+						<option value="300" <{if $cycle == '300'}>selected="true"<{/if}>>300秒</option>
+					    <option value="1800" <{if $cycle == '1800'}>selected="true"<{/if}>>30分钟</option>
+                        <option value="2400" <{if $cycle == '2400'}>selected="true"<{/if}>>40分钟</option>
+                        <option value="3600" <{if $cycle == '3600'}>selected="true"<{/if}>>1小时</option>
+                        <option value="5436" <{if $cycle == '5436'}>selected="true"<{/if}>>1.51小时</option>
+                        <option value="7560" <{if $cycle == '7560'}>selected="true"<{/if}>>2.1小时</option>
+                        <option value="9036" <{if $cycle == '9036'}>selected="true"<{/if}>>2.51小时</option>
+                        <option value="11160" <{if $cycle == '11160'}>selected="true"<{/if}>>3.1小时</option>
+                        <option value="12636" <{if $cycle == '12636'}>selected="true"<{/if}>>3.51小时</option>
+					</select>
+	</td>  
+</tr>
+
+<tr>  
+	<td align="right"><{$lang.tollgate_id}>：</td>  <td align="left"><input type="text" name="tollgate_id" style="width:200px" value="<{$tollgate_id}>" id="tollgate_id"/></td>  
+</tr>
+<tr>
+	<td></td>
+	<td><font color="red"><strong><{$lang.contentNotice}></strong></font></td>
+</tr>
+<tr>  
+	<td align="right"><{$lang.content}>：</td>  
+	<td align="left">
+	<textarea id="contents" name="contents" rows="6" cols="40"><{$content}></textarea>
+	</td>  
+</tr>  
+<tr>  
+	<td align="right"><{$lang.status}>：</td>  
+	<td align="left">
+		<input type="radio" name="status" <{if $status == '1' || $status == ''}>checked="checked"<{/if}> value="1" /><{$lang.normal}> &nbsp;
+		<input type="radio" name="status" <{if $status == '2'}>checked="checked"<{/if}> value="2" /><{$lang.pause}>&nbsp;
+	</td>  
+</tr>  
+</table>  
+<div style="width:50%;margin:auto;padding:20px;">  
+<input name="submit" type="button" class="button" value="<{$lang.Submit}>" onclick="noticeAdd('sadasd')" />&nbsp;&nbsp;
+<input name="reset" type="reset" class="button" value="<{$lang.Reset}>" />&nbsp;&nbsp;
+</div> 
+</form> 
+</div>
+</div>
+
+
+
+
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+  	<div class="bodyContentBody">
+  	<div id="bodyContentHead" class="bodyContentHead" style="text-align:left">
+  	
+  	<form method="POST" name="myform" id="myform" action="./?act=Notice.manage<{$type|capitalize}>" onsubmit="pageGo(1);return false;">
+  	
+  	标题:<input id="title" name="title" value="<{$smarty.post.title}>" />	&nbsp;&nbsp;			
+	<{$lang.beginDate}>：<input id="begTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{if $smarty.post.begTime}><{$smarty.post.begTime}><{/if}>" style="width: 200px;" name="begTime" realvalue=""/> 
+  	<{$lang.endDate}>：<input id="endTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{if $smarty.post.endTime}><{$smarty.post.endTime}><{/if}>" style="width: 200px;" name="endTime" realvalue=""/> 
+	&nbsp;&nbsp;<{include file="Page.Show.html"}>
+	&nbsp;&nbsp;
+	  <!-- p 为分页页码 -->
+  	<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+  	<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+  </form>
+</div>
+<table width="98%" class="tableContent" align="center">
+    <thead>
+    <tr align="center">
+	<th><input id="checkAll" name="checkAll" type="checkbox" value="" onclick="checkAlls();"/></th>
+	<th><{$lang.notice}>ID</th>
+	<th><{$lang.notice}><{$lang.title}></th>
+	<th><{$lang.period}></th>
+	<th><{$lang.tollgate_id}></th>
+	<th>游戏服</td>
+	<th><{$lang.author}></th>		
+	<th><{$lang.noticeType}></td>	
+	<th><{$lang.status}></td>
+	<th><{$lang.putTime}></td>
+	<th><{$lang.handler}></td>	
+	</tr>
+    </thead>
+    <tbody>
+    <{foreach key=k item=v from=$list}>
+    <tr align="center">
+	<td><input name="select[]" id="select[]" type="checkbox" value="<{$v.id}>" onclick="checkOne()"/></td>
+	<td><{$v.id}></td>
+	<td><{$v.title}></td>
+	<td><font color=blue><{$v.begTime}>—<{$v.endTime}></font></td>
+	<td><{$v.tollgate_id}></td>
+	<td><{$v.server_names}></td>	
+	<td><{$v.author}></td>	
+	<td><{if $v.type == '1'}><{$lang.scrollNotice}><{elseif $v.type == '2'}><{$lang.talkNotice}><{elseif $v.type == '3'}><{$lang.scrollAndTalkNotice}><{/if}></td>
+	<td><{if $v.status == '1'}><{$lang.normal}><{elseif $v.status == '2'}><{$lang.pause}><{/if}></td>
+	<td><{$v.created}></td>			
+	<td>
+		<a href="javascript:void(0);" onclick="editLocalNotice(<{$v.id}>,'<{$v.title}>')"><{$lang.modify}></a>
+		&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="deleteNotice('<{$lang.nocheck}>','<{$lang.confirmNoticeDel}>',<{$v.id}>)"><{$lang.drop}></a>
+	</td>	
+	</tr>
+	<{foreachelse}>
+	<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+    <{/foreach}>
+    </tbody>
+</table>
+<{if $list}>
+<div>
+&nbsp;&nbsp;
+<input type="button" onclick="deleteNotice('<{$lang.nocheck}>','<{$lang.confirmNoticeDel}>')" value="<{$lang.allDrop}>" />
+</div>
+<div class="pages"><{$pages}></div>
+<{/if}>
+</div>
+</div>
+<div id="listForm" style="display:none"></div>
+<script type="text/javascript">
+
+</script>

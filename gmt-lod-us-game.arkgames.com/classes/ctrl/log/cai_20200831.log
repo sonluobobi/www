@@ -1,0 +1,2 @@
+ -- [2020-08-31 17:12:39] -- cai -- in_1234
+ -- [2020-08-31 17:12:39] -- cai -- INSERT INTO `gm_queue` (`interfaceName`,`serverList`,`dataResult`,`status`,`queueDate`,`serverGroup`,`productId`) VALUES (:interfaceName, :serverList, :dataResult, :status, :queueDate, :serverGroup, :productId)

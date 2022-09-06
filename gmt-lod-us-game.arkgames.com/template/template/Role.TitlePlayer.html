@@ -1,0 +1,46 @@
+<div id="bodyTitle">
+<{$lang.roleGetTitlePlayer}>
+</div>
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+	<div class="bodyContentBody">
+  		<div class="bodyContentHead" style="text-align:left">
+  			<form id="myform" name="myform" action="./?act=Role.getTitlePlayer" onsubmit="pageGo(1); return false;" method="post">
+			<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+			<{$lang.roleTitle}>:<select name='title_id'>
+                                <{foreach key=k item=v from=$cache.titlePlayer}>
+                                        <option value='<{$k}>' <{if $k==$smarty.post.title_id}>selected=selected<{/if}> ><{$v}></option>
+                                <{/foreach}>
+                        </select>
+			<input id="p" name="p" type="hidden" value="<{$smarty.post.p|default:1}>" />
+			<input name="search" type="submit" class="submit" value="<{$lang.search}>" />
+  			</form>
+		</div>
+		<table width="98%" class="tableContent" align="center">
+    		<thead>
+    			<tr align="center">
+				<th><{$lang.roleId}></th>
+				<th><{$lang.roleName}></th>
+				<th><{$lang.accountId}></th>
+				<th><{$lang.accountName}></th>
+                                <th><{$lang.roleLevel}></th>
+			</tr>
+    		</thead>
+    		<tbody>
+			<{if $data}>
+			<{foreach key=k item=v from=$data}>
+    			<tr align="center">
+				<td><{$v.id}></td>
+				<td><{$v.name}></td>
+				<td><{$v.account_id}></td>
+				<td><{$v.accountName}></td>
+                                <td><{$v.level}></td>
+			</tr>
+			<{/foreach}>
+			<{else}>
+			<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+    			<{/if}>
+    		</tbody>
+		</table>
+		<div class="pages"><{$pages}></div>
+	</div>
+</div>

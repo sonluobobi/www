@@ -1,0 +1,36 @@
+113.108.187.157 -- [2019-12-31 09:43:24] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+113.108.187.157 -- [2019-12-31 09:43:24] -- global_webproxy -- backendGM-- response => Connection refused(stream_socket_client error), errno=111
+113.108.187.157 -- [2019-12-31 09:43:24] -- global_webproxy --  ---- end
+113.108.187.157 -- [2019-12-31 09:43:35] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+113.108.187.157 -- [2019-12-31 09:43:35] -- global_webproxy -- backendGM-- response => Connection refused(stream_socket_client error), errno=111
+113.108.187.157 -- [2019-12-31 09:43:35] -- global_webproxy --  ---- end
+113.108.187.157 -- [2019-12-31 09:43:43] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+113.108.187.157 -- [2019-12-31 09:43:43] -- global_webproxy -- backendGM-- response => Connection refused(stream_socket_client error), errno=111
+113.108.187.157 -- [2019-12-31 09:43:43] -- global_webproxy --  ---- end
+113.108.187.157 -- [2019-12-31 09:46:15] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+113.108.187.157 -- [2019-12-31 09:46:15] -- global_webproxy -- backendGM-- response => {"retmsg":"执行完毕","data":[],"retcode":1}
+113.108.187.157 -- [2019-12-31 09:46:15] -- global_webproxy -- backendGM-- result => array (
+  'retmsg' => '执行完毕',
+  'data' => 
+  array (
+  ),
+  'retcode' => 1,
+) ---- end
+113.108.187.157 -- [2019-12-31 16:59:28] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+113.108.187.157 -- [2019-12-31 16:59:28] -- global_webproxy -- backendGM-- response => {"retmsg":"执行完毕","data":[],"retcode":1}
+113.108.187.157 -- [2019-12-31 16:59:28] -- global_webproxy -- backendGM-- result => array (
+  'retmsg' => '执行完毕',
+  'data' => 
+  array (
+  ),
+  'retcode' => 1,
+) ---- end
+113.108.187.157 -- [2019-12-31 18:20:03] -- global_webproxy -- t0.sm2.kunlun.com--backendGM---by  ---- begin -----
+113.108.187.157 -- [2019-12-31 18:20:03] -- global_webproxy -- backendGM-- response => {"retmsg":"执行完毕","data":[],"retcode":1}
+113.108.187.157 -- [2019-12-31 18:20:03] -- global_webproxy -- backendGM-- result => array (
+  'retmsg' => '执行完毕',
+  'data' => 
+  array (
+  ),
+  'retcode' => 1,
+) ---- end
