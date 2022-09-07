@@ -1,0 +1,179 @@
+{module_header}
+<style type="text/css">
+.labelbox {
+ display:block;
+ float:left;
+ width:160px;
+ border-bottom:1px solid #BBE4FD;
+ margin-bottom:4px;
+}
+
+</style>
+<script type="text/javascript">
+jQuery(function($) 
+{
+	$(".dateSelect").datepicker({
+	dateFormat: 'yy-mm-dd', showOn: 'button', buttonImage: 'images/calendar.gif', buttonImageOnly: true
+	});
+
+	function update_status()
+	{
+		$(".type-reward").autocomplete("equip_api.php?opt=equip", {
+			width: 200,
+			max: 30,
+			autoFill: true,
+			matchContains: false
+		});
+
+		$('.drop-row').click(function(){
+			$(this).parent().parent().remove();
+		});
+	}
+
+	update_status();
+
+	count_reward = 1;
+
+	<!-- BEGIN day_map -->
+	$('#btnAddReward_{day_num}').click(function() {
+		rs_reward_txt = '<tr class="bg_0"><td>';
+		rs_reward_txt = rs_reward_txt + '&nbsp;道具id:<input type="text" class="type-reward" name="reward_equip_ids_{day_num}[]" id="reward_equip_ids_{day_num}_'+count_reward+'" size="40">'+
+		  	'&nbsp;道具数量:<input type="text" class="onlynum" name="reward_equip_nums_{day_num}[]" id="reward_equip_nums_{day_num}_'+count_reward+'" size="10" value="1" onblur = "checkEmpty(this)">'
+		  	;
+		
+		rs_reward_txt = rs_reward_txt + '<a href="#" class="drop-row"><img src="images/b_drop.png" border="0" alt="" /></a>';
+		rs_reward_txt = rs_reward_txt +'</td></tr>';
+		
+		$('#addReward_{day_num}').before(rs_reward_txt);
+		count_reward = count_reward + 1;
+		update_status();
+	});
+	<!-- END day_map -->
+});
+
+</script>
+<table width="98%" border="0" cellspacing="1" cellpadding="8">
+	<tr class="tableHeader">
+	<td width="10%">&nbsp;&nbsp;配置其他数据 -- {sort_id_title}&nbsp;&nbsp; -- <strong><font color="red" size="3">{distance_day}天签到<font></strong></td>
+	</tr>
+</table>
+
+<!-- IF sign_style_id_map -->
+
+<form action="backend_activity.php" method="POST" name="FrmAdd" onsubmit="return checkForm();">
+
+<input type="hidden" name="id" id="id" value="{id}"></input>
+<input type="hidden" name="method" value="saveOtherData"></input>
+
+<table width="98%" border="0" cellspacing="1" cellpadding="8">
+	<tr class="bg_0">
+		<td align="right" >&nbsp;客户端样式&nbsp;</td>
+		<td>&nbsp;<select name="style_id" id="style_id">
+		<!-- BEGIN sign_style_id_map -->
+			<!-- IF hit=="1" -->
+			<option value="{id}" selected="selected">{title}</option>
+			<!-- ELSE -->
+			<option value="{id}">{title}</option>
+			<!-- ENDIF hit -->
+		<!-- END sign_style_id_map --></select>
+		</td>
+	</tr>
+	<tr class="bg_1">
+		<td align="right" >&nbsp;领奖类型&nbsp;</td>
+		<td>&nbsp;<select name="award_type" id="award_type">
+		<!-- BEGIN sign_award_type_map -->
+			<!-- IF hit=="1" -->
+			<option value="{id}" selected="selected">{title}</option>
+			<!-- ELSE -->
+			<option value="{id}">{title}</option>
+			<!-- ENDIF hit -->
+		<!-- END sign_award_type_map --></select>
+		</td>
+	</tr>
+	
+	<!-- BEGIN award_equips -->
+	<tr id="reward-record-{day_num}" class="bg_1" >
+		<td colspan="4">
+		<fieldset style="margin:4px;padding:4px;">
+		<legend>第{day_num}天奖励</legend>
+		<table width="100%" cellspacing="1" cellpadding="1">
+		  <!-- BEGIN day_equips -->
+		  <tr class="bg_0"><td>
+		  &nbsp;道具id:<input type="text" class="type-reward" name="reward_equip_ids_{day_num}[]" value="{equip_id}" id="reward_equip_ids_{day_num}_{ROWCNT}" size="40">&nbsp;道具数量:<input type="text" class="onlynum" name="reward_equip_nums_{day_num}[]" id="reward_equip_nums_{day_num}_{ROWCNT}" value="{equip_num}" size="10"><a href="#" class="drop-row"><img src="images/b_drop.png" border="0" alt="" /></a>
+		  </td></tr>
+		  <!-- END day_equips -->
+		  <tr id="addReward_{day_num}"><td align="right"><input type="button" name="btnAddReward_{day_num}" id="btnAddReward_{day_num}" value="增加奖励" /></td></tr>
+		</table>
+		</fieldset>
+		</td>
+	</tr>
+	<!-- END award_equips -->
+
+	<tr class="bg_0">
+		<td colspan="4" align="center"><input type="submit" value="保 存" class="button_small" /> </td>	
+	</tr>
+	
+</table>
+
+
+</form>
+
+<!-- ELSE -->
+<table width="98%" border="0" cellspacing="1" cellpadding="8">
+	<tr class="bg_1">
+		<td align="right" width="5%">备注&nbsp;</td>
+		<td>
+			<strong><font color="red" size="3">
+			<span>还没有配置 客户端样式 列表</span><br/>
+			</font></strong>
+		</td>
+	</tr>
+</table>
+
+<!-- ENDIF sign_style_id_map -->
+
+{module_footer}
+<script language="javascript">
+function isIE()
+{
+	if (window.navigator.userAgent.toLowerCase().indexOf("msie")>=1) 
+	    return true; 
+	else 
+	    return false; 
+}
+function getInnerText(obj)
+{
+	if(isIE())
+	{
+		return obj.innerText;
+	}
+	return obj.textContent;
+}
+function checkEmpty(input)
+{
+	if(input.value == '')
+	{
+		input.value = '我爱昆仑';
+		var info_id = input.id + '_intro';
+		var info = document.getElementById(info_id);
+		if(info != null)
+		{
+			alert(getInnerText(info)+' 不能为空!');
+		}else
+		{
+			input.value = '不能为空';
+		}
+		input.focus();		
+		input.select();
+		return false;
+	}
+	return true;
+}
+
+
+function checkForm()
+{
+	return true;
+}
+
+</script>

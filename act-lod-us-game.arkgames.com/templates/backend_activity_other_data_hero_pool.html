@@ -1,0 +1,168 @@
+{module_header}
+<style type="text/css">
+.labelbox {
+ display:block;
+ float:left;
+ width:160px;
+ border-bottom:1px solid #BBE4FD;
+ margin-bottom:4px;
+}
+
+</style>
+
+<script type="text/javascript">
+jQuery(function($) 
+{
+	$(".dateSelect").datetimepicker({
+		timeFormat: "HH:mm:ss",
+		dateFormat: "yy-mm-dd"
+	});
+});
+
+</script>
+
+<table width="98%" border="0" cellspacing="1" cellpadding="8">
+	<tr class="tableHeader">
+	<td width="10%">&nbsp;&nbsp;配置其他数据 -- {sort_id_title}&nbsp;&nbsp;</td>
+	</tr>
+</table>
+<table width="98%" border="0" cellspacing="1" cellpadding="8">
+	<tr class="bg_1">
+		<td align="right" width="5%">备注&nbsp;</td>
+		<td>
+			<strong><font color="red" size="3">
+			<span>保存后,自动以记录中最小开始时间、最大结束时间更新为记录的开始结束时间,使其包含抽奖池中配置的时间范围 </span><br/>
+			</font></strong>
+		</td>
+	</tr>
+</table>
+
+<form action="backend_activity.php" method="POST" name="FrmAdd" onsubmit="return checkForm();">
+
+<input type="hidden" name="id" id="id" value="{id}"></input>
+<input type="hidden" name="method" value="saveOtherData"></input>
+
+<table width="98%" border="0" cellspacing="1" cellpadding="8">
+
+	<tr id="reward-record" class="bg_1" >
+		<td colspan="4">
+		<fieldset style="margin:4px;padding:4px;">
+		<legend>抽奖池列表<font color="red" size="3">结束时间必须大于当前时间，且抽将池子id不能重复</font></legend>
+		<table width="100%" cellspacing="1" cellpadding="1">
+		  <!-- BEGIN data_list -->
+		  <tr class="bg_0"><td>
+		  开始时间:<input type="text" class="onlynum dateSelect" id="data1{ROWCNT}9" name="data1[]" value="{data1}" size="20"  />&nbsp;结束时间:<input type="text" class="onlynum dateSelect" id="data2{ROWCNT}9" name="data2[]" value="{data2}" size="20"  />&nbsp;抽将池子id:<input type="text" class="onlynum data3" name="data3[]" id="data3{ROWCNT}9" value="{data3}" size="10">
+		  </td></tr>
+		  <!-- END data_list -->
+		</table>
+		</fieldset>
+		</td>
+	</tr>
+
+	<tr class="bg_0">
+		<td colspan="4" align="center"><input type="submit" value="保 存" class="button_small" /> </td>	
+	</tr>
+	
+</table>
+
+</form>
+{module_footer}
+<script language="javascript">
+function isIE()
+{
+	if (window.navigator.userAgent.toLowerCase().indexOf("msie")>=1) 
+	    return true; 
+	else 
+	    return false; 
+}
+function getInnerText(obj)
+{
+	if(isIE())
+	{
+		return obj.innerText;
+	}
+	return obj.textContent;
+}
+function checkEmpty(input)
+{
+	if(input.value == '')
+	{
+		input.value = '我爱昆仑';
+		var info_id = input.id + '_intro';
+		var info = document.getElementById(info_id);
+		if(info != null)
+		{
+			alert(getInnerText(info)+' 不能为空!');
+		}else
+		{
+			input.value = '不能为空';
+		}
+		input.focus();		
+		input.select();
+		return false;
+	}
+	return true;
+}
+
+function compareDate(s1,s2){
+  return ((new Date(s1.replace(/-/g,"\/")))>(new Date(s2.replace(/-/g,"\/"))));
+}
+
+function checkForm()
+{
+	var elements = document.querySelectorAll('.data3');
+	var pool_id_map = new Object();
+
+	for(var i= 0; i< elements.length; i ++){
+
+        var value = trim(elements[i].value);
+        if (value != '')
+        {
+        	if (!isNumeric(value))
+        	{
+        		alert('抽将池子id '+value+', 必须为正整数');
+        		return false;
+        	}
+
+        	if (pool_id_map[value])
+        	{
+        		alert('抽将池子id '+value+' 重复');
+        		return false;
+        	}
+
+        	pool_id_map[value] = 1;
+        }
+	}
+
+	var data1_arr = document.getElementsByName('data1[]');
+    var data2_arr = document.getElementsByName('data2[]');
+    var data_size = data1_arr.length;
+    var curTime = Date.parse(new Date());
+    
+    for(var k=0;k<data_size;k++)
+    {
+        var tmp_data1_value = data1_arr[k].value;
+        var tmp_data2_value = data2_arr[k].value;
+
+        if(tmp_data1_value != '' &&  tmp_data2_value != '')
+        {
+        	var start_time = Date.parse(new Date(tmp_data1_value));
+        	var end_time = Date.parse(new Date(tmp_data2_value));
+        	if (end_time < start_time)
+        	{
+	            alert("开始时间 "+tmp_data1_value+", 不能大于结束时间 "+tmp_data2_value);
+	            return false;
+        	}
+
+        	if (end_time < curTime)
+        	{
+        		alert("结束时间 "+tmp_data2_value + ", 不能小于当前时间");
+	            return false;
+        	}
+        }
+    }
+		
+	return true;
+}
+
+</script>

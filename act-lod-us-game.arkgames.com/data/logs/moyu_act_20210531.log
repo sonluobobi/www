@@ -1,0 +1,51 @@
+------------------------------------- START -----------------------------------------------
+url = http://s3-sanxiao-ru2.game.koramgame.com/webproxy.php?act=activity 
+-------------------------------------------------------------
+s3-sanxiao-ru2.game.koramgame.com
+2021-05-31 09:47:13
+result=>'{"retmsg":"发布成功.","retcode":0}'
+result_decode=>array (
+  'retmsg' => '发布成功.',
+  'retcode' => 0,
+)
+retmsg==>OK
+-------------------------------------------------------------
+
+------------------------------------- START -----------------------------------------------
+url = http://t0-sanxiao-ru2.game.koramgame.com/webproxy.php?act=activity 
+url = http://t1-sanxiao-ru2.game.koramgame.com/webproxy.php?act=activity 
+-------------------------------------------------------------
+t0-sanxiao-ru2.game.koramgame.com
+2021-05-31 09:58:31
+result=>'{"retmsg":"发布成功.","retcode":0}'
+result_decode=>array (
+  'retmsg' => '发布成功.',
+  'retcode' => 0,
+)
+retmsg==>OK
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+t1-sanxiao-ru2.game.koramgame.com
+2021-05-31 09:58:31
+result=>'{"retmsg":"发布成功.","retcode":0}'
+result_decode=>array (
+  'retmsg' => '发布成功.',
+  'retcode' => 0,
+)
+retmsg==>OK
+-------------------------------------------------------------
+
+------------------------------------- START -----------------------------------------------
+url = http://s3-sanxiao-ru2.game.koramgame.com/webproxy.php?act=activity 
+-------------------------------------------------------------
+s3-sanxiao-ru2.game.koramgame.com
+2021-05-31 09:58:34
+result=>'{"retmsg":"发布成功.","retcode":0}'
+result_decode=>array (
+  'retmsg' => '发布成功.',
+  'retcode' => 0,
+)
+retmsg==>OK
+-------------------------------------------------------------
+

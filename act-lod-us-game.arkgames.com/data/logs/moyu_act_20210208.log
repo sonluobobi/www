@@ -1,0 +1,37 @@
+------------------------------------- START -----------------------------------------------
+url = http://t0-sanxiao-ru2.game.koramgame.com/webproxy.php?act=activity 
+url = http://t1-sanxiao-ru2.game.koramgame.com/webproxy.php?act=activity 
+url = http://t99-sanxiao-ru2.game.koramgame.com/webproxy.php?act=activity 
+-------------------------------------------------------------
+t0-sanxiao-ru2.game.koramgame.com
+2021-02-08 12:15:31
+result=>'{"retmsg":"发布成功.","retcode":0}'
+result_decode=>array (
+  'retmsg' => '发布成功.',
+  'retcode' => 0,
+)
+retmsg==>OK
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+t1-sanxiao-ru2.game.koramgame.com
+2021-02-08 12:15:31
+result=>'{"retmsg":"发布成功.","retcode":0}'
+result_decode=>array (
+  'retmsg' => '发布成功.',
+  'retcode' => 0,
+)
+retmsg==>OK
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+t99-sanxiao-ru2.game.koramgame.com
+2021-02-08 12:15:31
+result=>'{"retmsg":"发布成功.","retcode":0}'
+result_decode=>array (
+  'retmsg' => '发布成功.',
+  'retcode' => 0,
+)
+retmsg==>OK
+-------------------------------------------------------------
+

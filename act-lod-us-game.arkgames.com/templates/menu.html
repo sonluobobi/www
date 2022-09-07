@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>menuset</title>
+<style type='text/css'>
+body{
+	background:#cccccc;
+}
+a {
+	color: #000000;
+	text-decoration:none;
+}
+</style>	
+</head>
+<body>
+<table><tr><td><img src="images/logo.jpg"></td></tr></table>
+<script language='JavaScript' src='./js/menutree/menutree.js'></script>
+<script language='JavaScript'>
+addtree('<B>活动管理系统—{platform_name}</B>');
+addtree('-*运营活动');
+addtree('--*活动管理');
+addtree('---*活动列表', 'backend_activity.php', 'main');
+
+addtree('--*激活码管理');
+addtree('---*生成激活码', 'act_code_make.php', 'main');
+addtree('---*激活码', 'activity_code_manage.php', 'main');
+addtree('---*激活码批次', 'activity_code_batch.php', 'main');
+addtree('---*激活码使用率统计', 'act_code_use_stat.php', 'main');
+
+
+addtree('--*游戏道具信息', 'game_equip.php?method=list', 'main');
+addtree('-其他');
+addtree('--*退出系统', 'logout.php', '_top');
+
+createtree();
+
+</script>
+</body></html>
+ 

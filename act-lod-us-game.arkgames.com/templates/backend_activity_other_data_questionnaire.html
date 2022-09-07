@@ -1,0 +1,81 @@
+{module_header}
+<style type="text/css">
+.labelbox {
+ display:block;
+ float:left;
+ width:160px;
+ border-bottom:1px solid #BBE4FD;
+ margin-bottom:4px;
+}
+
+</style>
+
+<table width="98%" border="0" cellspacing="1" cellpadding="8">
+	<tr class="tableHeader">
+	<td width="10%">&nbsp;&nbsp;配置其他数据 -- {sort_id_title}&nbsp;&nbsp;</td>
+	</tr>
+</table>
+<form action="backend_activity.php" method="POST" name="FrmAdd" onsubmit="return checkForm();">
+
+<input type="hidden" name="id" id="id" value="{id}"></input>
+<input type="hidden" name="method" value="saveOtherData"></input>
+
+<table width="98%" border="0" cellspacing="1" cellpadding="8">
+
+	<tr class="bg_1">
+		<td align="right">&nbsp;问卷编码&nbsp;</td>
+		<td colspan="4">&nbsp;<input type="text" name="survey" id="survey" size="50" value="{survey}"></td>
+	</tr>
+
+	<tr class="bg_0">
+		<td colspan="4" align="center"><input type="submit" value="保 存" class="button_small" /> </td>	
+	</tr>
+	
+</table>
+
+</form>
+{module_footer}
+<script language="javascript">
+function isIE()
+{
+	if (window.navigator.userAgent.toLowerCase().indexOf("msie")>=1) 
+	    return true; 
+	else 
+	    return false; 
+}
+function getInnerText(obj)
+{
+	if(isIE())
+	{
+		return obj.innerText;
+	}
+	return obj.textContent;
+}
+function checkEmpty(input)
+{
+	if(input.value == '')
+	{
+		input.value = '我爱昆仑';
+		var info_id = input.id + '_intro';
+		var info = document.getElementById(info_id);
+		if(info != null)
+		{
+			alert(getInnerText(info)+' 不能为空!');
+		}else
+		{
+			input.value = '不能为空';
+		}
+		input.focus();		
+		input.select();
+		return false;
+	}
+	return true;
+}
+
+
+function checkForm()
+{
+	return true;
+}
+
+</script>

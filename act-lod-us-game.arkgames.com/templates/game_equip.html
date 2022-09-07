@@ -1,0 +1,127 @@
+{module_header}
+<script type="text/javascript">
+jQuery(function($)
+{
+	$('.server-list').tooltip
+	(
+		{
+			bodyHandler: function() 
+			{ 
+        		return $(this).parent().find(".server").html(); 
+	    	}, 
+	    	showURL: false 
+		}
+	);
+
+	$('#auto_sync').click
+	(
+			function() 
+			{
+				$('#msg').text('正在执行同步...');
+				$('#msg').show();	
+					
+				$.ajax
+				({
+					type: "POST",
+					url: "game_equip.php",
+					data: "method=auto_sync",
+					success: function(msg) 
+					{
+						var myDate=new Date();
+						var dateString =" " + myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate() + 
+										" " + myDate.getHours() + ":" + myDate.getMinutes() + ":" + myDate.getSeconds();
+						if (msg=='') 
+						{
+							$('#msg').text("同步失败 !" + dateString);
+						} else 
+						{
+							$('#msg').text(msg + dateString);
+						}
+						
+						$('#msg').fadeOut(10000); 
+					}
+				});
+			}
+	);
+
+});
+
+</script>
+<style type="text/css">
+#msg { padding:4px; margin-left:20px; background:#f6a828; color:#fff;}
+</style>
+<table width="98%" border="0" cellspacing="1" cellpadding="8">
+	<tr class="tableHeader">
+	<td width="8%">&nbsp;&nbsp;更新游戏道具信息</td>
+	</tr>
+</table>
+
+<form action="game_equip.php" method="POST" enctype="multipart/form-data" name="update">
+<input type="hidden" name="method" value="update"></input>
+<table width="98%" border="0" cellspacing="1" cellpadding="8">
+	<tr class="bg_0">
+		<td align="center" width="50%" colspan="2">
+		
+			&nbsp;&nbsp;上传道具CSV文件：<input type="file" name="file" id="file"></input>
+			
+			&nbsp;&nbsp;<input type="submit" name="update_equip" id="update_equip" class="button_small"  value="更 新" />
+		</td>
+	</tr>
+	<tr class="bg_1">
+		<td align="right" width="10%"><input class="button_big" type="button" style="width:180px;" id="auto_sync" value="从游戏服获取道具列表" />&nbsp;&nbsp;操作结果&nbsp;</td>
+		<td>
+			<strong><font color="red" size="3"><span id="msg" style="display:block;">{msg}</span></font></strong>
+		</td>
+	</tr>
+</table>
+</form>
+
+<table width="98%" border="0" cellspacing="1" cellpadding="8">
+	<tr class="tableHeader"><td>&nbsp;&nbsp;搜索(道具名称支持模糊搜索)</td></tr>
+</table>
+<form action="game_equip.php" method="POST" name="FrmSearch">
+	<input type="hidden" name="method" value="search"></input>
+		
+	<table width="98%" border="0" cellspacing="1" cellpadding="8">		
+		<tr class="bg_0" >
+			<td width="15%">&nbsp;&nbsp;道具ID:&nbsp;<input type="text" class="onlynum" name="equip_id" id="equip_id" value="{equip_id}" size="14"></td>
+			
+			<td width="23%">&nbsp;&nbsp;道具名称:&nbsp;<input type="text" name="equip_title" id="equip_title" value="{equip_title}" size="30"></td>	
+			
+			<td>				
+				&nbsp;&nbsp;<input type="submit" id="subSearch" class="button_small" value=" 查 询 ">
+				&nbsp;&nbsp;<input type="button" name="btnFresh" class="button_small" value="刷新本页" onclick="window.location.href='game_equip.php?method=list';">
+			</td>
+		</tr>
+	</table>
+</form>
+
+<table width="98%" border="0" cellspacing="1" cellpadding="8">
+	<tr class="tableHeader" align="center">
+		<td width="10%">道具ID</td>
+		<td width="10%">道具名称</td>
+		<td width="5%">堆叠数</td>
+		<td width="5%">品阶颜色</td>
+		<td width="5%">是否跟踪</td>
+		<td width="60%">介绍</td>
+		
+	</tr>
+	<!-- BEGIN equip_list -->
+	<tr class="bg_{ROWBIT}">
+		<td align="center">{id}</td>
+		<td align="center">{title}</td>
+		<td align="center">{stack_num}</td>
+		<td align="center">{quality}</td>
+		<td align="center">{need_trace}</td>
+		<td align="center">{intro}</td>
+		
+	</tr>
+	<!-- END equip_list -->
+</table>
+<table width="98%" border="0" cellspacing="1" cellpadding="3" class="pageNav">
+	<tr>
+		<td>共 <strong>{total}</strong>, 显示 <strong>{from} - {to}</strong></td>
+		<td align="right">{pagenav}</td>
+	</tr>
+</table>
+{module_footer}

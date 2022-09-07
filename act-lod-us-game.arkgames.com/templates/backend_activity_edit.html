@@ -1,0 +1,244 @@
+{module_header}
+<style type="text/css">
+.labelbox {
+ display:block;
+ float:left;
+ width:160px;
+ border-bottom:1px solid #BBE4FD;
+ margin-bottom:4px;
+}
+
+</style>
+<script type="text/javascript">
+jQuery(function($) 
+{
+	$(".dateSelect").datetimepicker({
+		timeFormat: "HH:mm:ss",
+		dateFormat: "yy-mm-dd"
+	});
+});
+
+</script>
+<table width="98%" border="0" cellspacing="1" cellpadding="8">
+	<tr class="tableHeader">
+	<td width="10%">&nbsp;&nbsp;{title} -- 编辑 &nbsp;&nbsp;</td>
+	</tr>
+</table>
+<form action="backend_activity.php" method="POST" name="FrmAdd" onsubmit="return checkForm();">
+
+<input type="hidden" name="id" id="id" value="{id}"></input>
+<input type="hidden" name="method" value="save"></input>
+
+<table width="98%" border="0" cellspacing="1" cellpadding="8">
+	<tr class="bg_1">
+		<td align="right" >&nbsp;活动类型&nbsp;</td>
+		<td>&nbsp;<select name="sort_id" id="sort_id">
+		<!-- BEGIN act_sort_id_map --><option value="{id}">{title}</option><!-- END act_sort_id_map -->
+		</select>
+		</td>
+	</tr>
+	<tr class="bg_0">
+		<td align="right">&nbsp;标题&nbsp;</td>
+		<td>&nbsp;<input type="text" name="caption" id="caption" size="40" value="{caption}" maxlength="40"></td>
+	</tr>
+	<tr class="bg_1">
+		<td align="right">&nbsp;开始时间&nbsp;</td>
+		<td>&nbsp;<input type="text" class="onlynum dateSelect" id="begin_date" name="begin_date" value="{begin_date}" size="20"  readonly="readonly"/> <font color="red" size="3">(开始时间变动，则为全新活动)</font>
+		</td>
+	</tr>
+	<tr class="bg_0">
+		<td align="right">&nbsp;结束时间&nbsp;</td>
+		<td>&nbsp;<input type="text" class="onlynum dateSelect" readonly="readonly" id="end_date" name="end_date" value="{end_date}" size="20"/>
+		</td>
+	</tr>
+
+	<tr class="bg_0">
+		<td align="right">&nbsp;角色等级下限&nbsp;</td>
+		<td>&nbsp;<input type="text" name="character_level_min" id="character_level_min" size="20" value="{character_level_min}" ></td>
+	</tr>
+
+	<tr class="bg_1">
+		<td align="right">&nbsp;角色等级上限&nbsp;</td>
+		<td>&nbsp;<input type="text" name="character_level_max" id="character_level_max" size="20" value="{character_level_max}" ></td>
+	</tr>
+	<tr class="bg_0">
+		<td align="right">&nbsp;说明&nbsp;</td>
+		<td>&nbsp;<textarea name="brief" id="brief" rows="8" cols="80">{brief}</textarea></td>
+	</tr>
+	<tr class="tableHeader">
+		<td  colspan="2">
+			<label style="width:100px;">选择服务器</label>
+		</td>
+	</tr>
+	<!-- BEGIN serv_list -->
+		<tr class="bg_{ROWBIT}">
+			<td>
+				<label class="labelbox"><input type="checkbox"     id="id_{server_name}" name="{server_name}" value="{server_name}" class="serverBox" onclick="selectServerItem(this)" />{title}</label>
+			</td>
+			<td>
+				<!-- BEGIN server_ids -->
+					<!-- IF hit=="1" -->
+						<label class="labelbox"><input type="checkbox" checked="checked" id="id_{parent.server_name}_{serv_id}" name="server_ids[]" value="{serv_id}" class="serverBox"  onclick="selectServer(this)"/>{serv_name}</label>
+					<!-- ELSE -->
+						<label class="labelbox"><input type="checkbox"  id="id_{parent.server_name}_{serv_id}" name="server_ids[]" value="{serv_id}" class="serverBox"  onclick="selectServer(this)"/>{serv_name}</label>
+					<!-- ENDIF hit -->
+
+				<!-- END server_ids -->
+			</td>		
+		</tr>
+	<!-- END serv_list -->
+	
+	<tr class="bg_0">
+		<td colspan="4" align="center"><input type="submit" value="保 存" class="button_small" /> </td>	
+	</tr>
+	
+</table>
+
+</form>
+{module_footer}
+<script language="javascript">
+function isIE()
+{
+	if (window.navigator.userAgent.toLowerCase().indexOf("msie")>=1) 
+	    return true; 
+	else 
+	    return false; 
+}
+function getInnerText(obj)
+{
+	if(isIE())
+	{
+		return obj.innerText;
+	}
+	return obj.textContent;
+}
+function checkEmpty(input)
+{
+	if(input.value == '')
+	{
+		input.value = '我爱昆仑';
+		var info_id = input.id + '_intro';
+		var info = document.getElementById(info_id);
+		if(info != null)
+		{
+			alert(getInnerText(info)+' 不能为空!');
+		}else
+		{
+			input.value = '不能为空';
+		}
+		input.focus();		
+		input.select();
+		return false;
+	}
+	return true;
+}
+
+function selectServerItem(box)
+{
+	var id = box.id;
+	var boxs = document.getElementsByTagName('input');
+	var len = boxs.length;
+	for(var i=0;i<len;++i)
+	{
+		var sub_id = boxs[i].id;
+	
+		if((sub_id.indexOf(id,0) == 0 && sub_id.length == id.length) || sub_id.indexOf(id+'_',0) == 0)
+		{
+			boxs[i].checked = box.checked;
+		}
+		
+	}
+	
+	if(!box.checked)
+	{
+		document.getElementById('selectAll').checked = false;
+	}	
+	
+}
+
+function selectServer(obj) {
+	if(!obj.checked) 
+	{
+		jQuery('#selectAll').attr('checked', false);
+		var tmp_id = obj.id;
+		currentIdArr = tmp_id.split('_');
+		var type_id = currentIdArr[0]+"_"+currentIdArr[1];
+		jQuery('#'+type_id).attr('checked', false);
+	}
+	else 
+	{
+		var root = this;
+		root.isAll = '';
+		jQuery('.serverBox').each(function (index) {
+			if(!jQuery(this).attr('checked')) {
+				root.isAll = 'noooo';
+				//alert(root.isAll);
+				return false;
+			}
+		});
+		if(root.isAll=='') jQuery('#selectAll').attr('checked', true);
+	}
+}
+
+function checkForm()
+{
+	var begin_date = new Date($F("begin_date").replace(/-/g,"/"));
+    var end_date = new Date($F('end_date').replace(/-/g,"/"));
+
+	if (begin_date > end_date)
+	{
+		alert("开始时间不能超过结束时间!");
+		Field.focus('end_date');
+		Field.select('end_date');
+		return false
+	}
+
+	var character_level_max = parseInt($F("character_level_max"));
+
+	if (character_level_max < 0)
+	{
+		alert("角色等级上限必须为正整数!");
+		Field.focus('character_level_max');
+		Field.select('character_level_max');
+		return false;
+	}
+
+	var character_level_min = parseInt($F("character_level_min"));
+	if (character_level_min < 0)
+	{
+		alert("角色等级下限必须为正整数!");
+		Field.focus('character_level_min');
+		Field.select('character_level_min');
+		return false;
+	}
+
+	if (character_level_min > 0 && character_level_max >0 && character_level_max < character_level_min)
+	{
+		alert("角色等级下限不能大于角色等级上限!");
+		Field.focus('character_level_min');
+		Field.select('character_level_min');
+		return false;
+	}
+
+	var server_ids = '';
+	var boxs = document.getElementsByName('server_ids[]');
+	var len = boxs.length;
+	for(var i=0;i<len;++i)
+	{
+		if(boxs[i].checked == true)
+		{
+			server_ids += boxs[i].value + ',';
+		}
+	}
+
+
+	if ('' == server_ids)
+	{
+		alert("请选择服务器！");
+		return false;
+	}
+		
+	return true;
+}
+
+</script>
