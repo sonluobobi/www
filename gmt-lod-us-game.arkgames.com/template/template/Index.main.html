@@ -22,9 +22,13 @@
 		您好 <{$smarty.session.infoUser.fullname}>
 		&nbsp;|&nbsp; 
 		<a href="?act=Login.quit">退出登录</a>&nbsp;&nbsp;&nbsp;
-		<br /><br /><br />
+		<br /><br />
+		现在时区是cst：中国标准时间
+		<br />
+		<div id="time">111</div>
 		</span>
 	</div>
+
 	<div class="bar" id="nowDayTime" rev="-" rel="<{$theTime.nowDateTime}>"><{$theTime.nowDateTime}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
 	<div class="body">
 		<div class="bodyLeft">
@@ -245,7 +249,17 @@
   window.addEvent('domready', function(){
 	 new PageInit();
   });
-  
+
+  change() ;
+
+  function change(){
+
+	  var today ;
+	  today = new Date() ;
+	  timeString = today.toLocaleString() ;
+	  document.getElementById("time") .innerHTML = timeString;
+	  setTimeout("change () ;",1000);
+  }
   //-->
   -->
   </script>

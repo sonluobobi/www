@@ -1,6 +1,6 @@
 <?php if(!defined('SMARTY_DIR')) exit('no direct access allowed'); ?>
-<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F1167306794";a:2:{i:0;s:36:"../template/template/Index.main.html";i:1;i:1565169627;}}}'); ?>
-<?php /* Smarty version Smarty3-b5, created on 2020-01-02 18:20:48
+<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F1167306794";a:2:{i:0;s:36:"../template/template/Index.main.html";i:1;i:1665219632;}}}'); ?>
+<?php /* Smarty version Smarty3-b5, created on 2022-10-08 12:06:04
          compiled from "../template/template/Index.main.html" */ ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-CN">
@@ -29,9 +29,13 @@
 
 		&nbsp;|&nbsp; 
 		<a href="?act=Login.quit">退出登录</a>&nbsp;&nbsp;&nbsp;
-		<br /><br /><br />
+		<br /><br />
+		现在时区是cst：中国标准时间
+		<br />
+		<div id="time">111</div>
 		</span>
 	</div>
+
 	<div class="bar" id="nowDayTime" rev="-" rel="<?php echo $_smarty_tpl->getVariable('theTime')->value['nowDateTime'];?>
 "><?php echo $_smarty_tpl->getVariable('theTime')->value['nowDateTime'];?>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
@@ -412,7 +416,17 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['mm']['last']       = ($_smar
   window.addEvent('domready', function(){
 	 new PageInit();
   });
-  
+
+  change() ;
+
+  function change(){
+
+	  var today ;
+	  today = new Date() ;
+	  timeString = today.toLocaleString() ;
+	  document.getElementById("time") .innerHTML = timeString;
+	  setTimeout("change () ;",1000);
+  }
   //-->
   -->
   </script>
