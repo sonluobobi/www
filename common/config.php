@@ -1,5 +1,5 @@
 <?php
-//公用配置文件
+//公用配置文件1
 date_default_timezone_set('Europe/Moscow');
 
 //产品id
