@@ -70,6 +70,9 @@ class AuthCtrl extends CtrlBase {
 			$internal_account[$auth] = '';
 			unset($internal_account[$auth]);
 		}
+		
+		unset($internal_account['jiancheng']);
+	    unset($internal_account['liujianzhu']);
 
 		//echo '<pre>';print_r($this->_LANG);exit;
 		$type = isset($_REQUEST['type']) ? trim($_REQUEST['type']) : '';

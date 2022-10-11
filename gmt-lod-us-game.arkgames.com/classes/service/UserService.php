@@ -140,24 +140,24 @@ class UserService extends ServersAbs {
 	}
 	
 	/**
-	 * 添加用户
+	 * 修改用户密码
 	 * @param Int $id
 	 */
 	public function updatePassword()
 	{
 	    
-	    if( $_SESSION['infoUser']['loginId'] != $_POST['name'])
+	    if(empty($_POST['name']))
+	    {
+	        $_POST['name'] = $_SESSION['infoUser']['loginId'];
+	    }
+	    
+	    
+	    if($_SESSION['infoUser']['loginId'] != 'zlcs' and  $_SESSION['infoUser']['loginId'] != $_POST['name'])
 	    {
 	        common\Functions::alertFunc('只可以修改自己账号密码');
 	    	exit();
 	    }
 	    
-	    
-	    if(empty($_POST['name']))
-	    {
-	        common\Functions::alertFunc('请输入用户名');
-	    	exit();
-	    }
 	    
 	    if(empty($_POST['password']) or empty($_POST['password2']))
 	    {

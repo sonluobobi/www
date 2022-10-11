@@ -1,6 +1,6 @@
 <?php if(!defined('SMARTY_DIR')) exit('no direct access allowed'); ?>
-<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F3463462285";a:2:{i:0;s:45:"../template/template/User.updatePassword.html";i:1;i:1665385439;}}}'); ?>
-<?php /* Smarty version Smarty3-b5, created on 2022-10-10 10:08:13
+<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F3463462285";a:2:{i:0;s:45:"../template/template/User.updatePassword.html";i:1;i:1665470838;}}}'); ?>
+<?php /* Smarty version Smarty3-b5, created on 2022-10-11 09:53:35
          compiled from "../template/template/User.updatePassword.html" */ ?>
 <div  id="bodyTitle">添加用户账号</div>
 <div class="bodyContent"  style="border-top: 2px solid #666;">
@@ -12,19 +12,15 @@
     <table align="left" cellspacing="1" cellpadding="0" class="userTable" style="width:80%;" id="tbl">
 
     <tr>
-      <td align="right">用户名字：</td>
+      <td align="right">用户名字(不传是修改自己账号)：</td>
       <td align="left"><input type="name" name="name" id="name" style="width:200px" /></td>
-    </tr>
-     <tr >
-      <td align="right">用户旧密码：</td>
-      <td align="left"><input type="oldpassword" name="oldpassword" id="password" style="width:200px" /></td>
     </tr>
     <tr >
       <td align="right">用户新密码：</td>
       <td align="left"><input type="password" name="password" id="password" style="width:200px" /></td>
     </tr>
     <tr >
-      <td align="right">重复输入密码：</td>
+      <td align="right">重复输入新密码：</td>
       <td align="left"><input type="password2" name="password2" id="password2" style="width:200px" /></td>
     </tr>
     </table>

@@ -138,7 +138,14 @@ class LoginCtrl extends CtrlBase {
 				{
 					$do_auth_tools = true;
 				}
-
+				
+				
+				if(!file_exists($auth_file))
+				{
+				    $auth_file = INCLUDE_PATH . '/data/cache/cache_auth_test1.php';
+				}
+				
+				
 				if (file_exists($auth_file))
 				{
 					$actions = require $auth_file;
