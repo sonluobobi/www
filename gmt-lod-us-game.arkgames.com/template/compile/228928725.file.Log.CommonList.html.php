@@ -1,6 +1,6 @@
 <?php if(!defined('SMARTY_DIR')) exit('no direct access allowed'); ?>
-<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F3871195603";a:2:{i:0;s:40:"../template/template/Log.CommonList.html";i:1;i:1434357610;}}}'); ?>
-<?php /* Smarty version Smarty3-b5, created on 2020-09-28 18:32:33
+<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F3871195603";a:2:{i:0;s:40:"../template/template/Log.CommonList.html";i:1;i:1665299759;}}}'); ?>
+<?php /* Smarty version Smarty3-b5, created on 2022-10-09 10:16:02
          compiled from "../template/template/Log.CommonList.html" */ ?>
 <div  id="bodyTitle"><?php echo $_smarty_tpl->getVariable('lang')->value['systemLogManage'];?>
 </div>

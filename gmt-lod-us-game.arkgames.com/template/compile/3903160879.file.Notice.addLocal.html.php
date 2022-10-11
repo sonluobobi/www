@@ -1,6 +1,6 @@
 <?php if(!defined('SMARTY_DIR')) exit('no direct access allowed'); ?>
-<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:9:"F19742711";a:2:{i:0;s:41:"../template/template/Notice.addLocal.html";i:1;i:1578893985;}}}'); ?>
-<?php /* Smarty version Smarty3-b5, created on 2020-01-13 14:31:29
+<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:9:"F19742711";a:2:{i:0;s:41:"../template/template/Notice.addLocal.html";i:1;i:1662457797;}}}'); ?>
+<?php /* Smarty version Smarty3-b5, created on 2022-10-11 05:46:13
          compiled from "../template/template/Notice.addLocal.html" */ ?>
 <div id="bodyTitle">
 <?php if ($_GET['id']>0){?>

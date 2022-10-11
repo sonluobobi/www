@@ -19,7 +19,7 @@
 	<div class="header">
 		<img class="logo" src="/img/logo.gif">
 		<span class="link">
-		您好 <{$smarty.session.infoUser.fullname}>
+		您好2 <{$smarty.session.infoUser.fullname}>
 		&nbsp;|&nbsp; 
 		<a href="?act=Login.quit">退出登录</a>&nbsp;&nbsp;&nbsp;
 		<br /><br />
@@ -154,11 +154,28 @@
 					
 					<div id="bodyContents">
 					<!-- bodyContents Begin -->
-						<div id="bodyTitle">欢迎登录</div>
+						<!--<div id="bodyTitle">欢迎登录</div>
 						<div class="bodyContent" id="bodyContentAuthCtrl" style="border-top: 2px solid #666;">
 							<div class="bodyContentHead">
 								<br /><b>IE6下效果较差</b>，傲游 和 TT 等类型浏览器，可能会屏蔽弹出层。 建议使用 Firefox
 								</div>
+						</div>-->
+
+						<div id="passPopCtrl" class="popDiv" align="center">
+							<div id="passPopCtrlHeader" class="popHead"> 用户修改密码 </div>
+							<a class="button popCancel"><b><b><b>X</b></b></b></a>
+							<div id="gamePopBody" class="popBody">
+								<form id="edpassform" method="post" action="/auths/changePassword">
+									&nbsp;&nbsp;
+									用户名: <input type="text" name="real_name" class="input" style="width:80px" value="<{$userSession.real_name}>" readonly/>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									新密码: <input type="password" name="password" class="input" style="width:110px" value="" />
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									重复密码: <input type="password" name="repassword" class="input" style="width:110px" value="" />
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="button" class="submit" value="修改密码" onclick="KQ('edpassform');"/>
+								</form>
+							</div>
 						</div>
 						
 					<!-- bodyContents End -->

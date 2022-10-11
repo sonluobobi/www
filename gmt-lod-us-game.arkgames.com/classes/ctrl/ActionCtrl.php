@@ -46,6 +46,7 @@ class ActionCtrl extends CtrlBase{
 	 */
 	public function ActionList(){
 		$ActionInfo = $this->ActionServers->getActionList();
+		
 		return new smarty\SmartyView("Action.List.html", array("menuTree" => $ActionInfo));
 	}
 	/**

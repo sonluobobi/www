@@ -1,0 +1,41 @@
+<div id="bodyTitle">用户列表</div>
+
+<div class="bodyContent"  style="border-top: 2px solid #666;">
+<div class="bodyContentHead" style="text-align:left">
+	
+<table width="98%" class="tableContent" align="center">
+    <thead>
+    <tr align="center">
+	<th>用户名</th>		
+	<th><{$lang.handler}></td>	
+	</tr>
+    </thead>
+    <tbody>
+    <{foreach key=k item=v from=$list}>
+    <tr align="center">
+	<td><{$k}></td>	
+	<td>
+		<a href="javascript:void(0);" onclick="deleteUser('删除','确定要删除此用户吗','<{$k}>')"><{$lang.drop}></a>
+	</td>	
+	</tr>
+	<{foreachelse}>
+	<tr align="center"><td colspan="10"><{$lang.noResult}></td></tr>
+    <{/foreach}>
+    </tbody>
+</table>
+<{if $list}>
+<div>
+&nbsp;&nbsp;
+</div>
+<div class="pages"><{$pages}></div>
+<{/if}>
+</div>
+</div>
+<div id="listForm" style="display:none"></div>
+<script type="text/javascript">
+reload = function(time) {
+    time = time *1000;
+     setTimeout('document.location.reload()',time);
+}
+
+</script>

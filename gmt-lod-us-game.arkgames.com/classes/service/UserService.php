@@ -11,6 +11,10 @@
 
 namespace service;
 
+
+
+
+
 use entity;
 
 use dao;
@@ -82,4 +86,140 @@ class UserService extends ServersAbs {
 	{
 		return  $this->userDao->load($id);
 	}
+	
+	
+	/**
+	 * 添加用户
+	 * @param Int $id
+	 */
+	public function addUsers()
+	{
+	    if(empty($_POST['name']))
+	    {
+	        common\Functions::alertFunc('请输入用户名');
+	    	exit();
+	    }
+	    
+	    if(empty($_POST['password']) or empty($_POST['password2']))
+	    {
+	        common\Functions::alertFunc('请输入用户密码');
+	    	exit();
+	    }
+	    
+	     if($_POST['password'] != $_POST['password2'])
+	    {
+	        common\Functions::alertFunc('用户密码不一致');
+	    	exit();
+	    }
+	    
+	    //保存进文档
+	    
+	    include  ACCOUNT_PATH.'account.add.php';
+	    
+	    if(isset($common_account_add[$_POST['name']]))
+	    {
+	        common\Functions::alertFunc('此用户名已存在');
+	    	exit();
+	    }
+	    
+	    
+	    $common_account_add[$_POST['name']] = md5($_POST['password']);
+	    
+	    
+	  
+	    
+					$content = "<?php \r\n ";
+					$content .= '$common_account_add = ' . var_export($common_account_add,true)."\r\n";
+					$content .= "?> ";
+					
+	    $ret = file_put_contents(ACCOUNT_PATH.'account.add.php', $content);
+	    
+	   //$ret = file_get_contents('/data/zlcs/www/common/account.add.php');
+	    
+		return  1;
+	}
+	
+	/**
+	 * 添加用户
+	 * @param Int $id
+	 */
+	public function updatePassword()
+	{
+	    
+	    if( $_SESSION['infoUser']['loginId'] != $_POST['name'])
+	    {
+	        common\Functions::alertFunc('只可以修改自己账号密码');
+	    	exit();
+	    }
+	    
+	    
+	    if(empty($_POST['name']))
+	    {
+	        common\Functions::alertFunc('请输入用户名');
+	    	exit();
+	    }
+	    
+	    if(empty($_POST['password']) or empty($_POST['password2']))
+	    {
+	        common\Functions::alertFunc('请输入用户密码');
+	    	exit();
+	    }
+	    
+	     if($_POST['password'] != $_POST['password2'])
+	    {
+	        common\Functions::alertFunc('用户密码不一致');
+	    	exit();
+	    }
+	    
+	     
+	    
+	    //保存进文档
+	    
+	    include  ACCOUNT_PATH.'account.add.php';
+	    
+	    if(!isset($common_account_add[$_POST['name']]))
+	    {
+	        common\Functions::alertFunc('没有此用户名');
+	    	exit();
+	    }
+	    
+
+	    $common_account_add[$_POST['name']] = md5($_POST['password']);
+	    
+	    
+	  
+	    
+					$content = "<?php \r\n ";
+					$content .= '$common_account_add = ' . var_export($common_account_add,true)."\r\n";
+					$content .= "?> ";
+					
+	    $ret = file_put_contents(ACCOUNT_PATH.'account.add.php', $content);
+	    
+	   //$ret = file_get_contents('/data/zlcs/www/common/account.add.php');
+	    
+		return  1;
+	}
+	
+	
+	/**
+	删除用户
+	 */ 
+	public function deleteuser($user_name)
+	{
+	    
+	    include  ACCOUNT_PATH.'account.add.php';
+	    
+	  
+	    unset($common_account_add[$user_name]);
+	    
+					$content = "<?php \r\n ";
+					$content .= '$common_account_add = ' . var_export($common_account_add,true)."\r\n";
+					$content .= "?> ";
+					
+	    $ret = file_put_contents(ACCOUNT_PATH.'account.add.php', $content);
+	  
+	}
+	
+	
+	
 }

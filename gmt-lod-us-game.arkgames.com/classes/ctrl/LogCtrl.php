@@ -70,6 +70,8 @@ class LogCtrl extends CtrlBase{
 	 */
 	public function LogCommonList(){
 		$Result = $this->LogService->GetLogConmon();
+		
+	
 		return new smarty\SmartyView("Log.CommonList.html", array("dataList" => $Result['list'],'pages'=>$Result['pages']));
 	}
 	/**

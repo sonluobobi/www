@@ -2,13 +2,22 @@
 //公共用户配置
 $_CONFIG_ACCOUNT = array();
 
-$common_account_all['sanxiao'] = md5('kunlunmoyu');
-$common_account_all['zlcs'] = md5('kunlunzl');
+define('ACCOUNT_PATH','/data/zlcs/www/common/');
+
+include ACCOUNT_PATH.'account.add.php';
+
+
+$common_account_all = $common_account_add;
+//$common_account_all['sanxiao2'] = md5('kunlunmoyu');
+//$common_account_all['zlcs'] = md5('kunlunzl');
+$common_account_all['liujianzhu'] = md5('123456');
+$common_account_all['jiancheng'] = md5('123456');
+
 
 $platform_account_map = array();
 //全大区公用账号列表
-$platform_account_map['all'] = array('sanxiao', 'jianzhu','zlcs'); 
-
+//$platform_account_map['all'] = array('sanxiao2', 'jianzhu','zlcs','liujianzhu'); 
+$platform_account_map['all'] = array_keys($common_account_all);
 
 //***********************不同大区，不同后台账号配置列表
 //国内安卓

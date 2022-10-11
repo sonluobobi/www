@@ -1,6 +1,6 @@
 <?php if(!defined('SMARTY_DIR')) exit('no direct access allowed'); ?>
-<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F3832905231";a:2:{i:0;s:42:"../template/template/Player.DataQuery.html";i:1;i:1662373312;}}}'); ?>
-<?php /* Smarty version Smarty3-b5, created on 2022-09-05 13:21:58
+<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F3832905231";a:2:{i:0;s:42:"../template/template/Player.DataQuery.html";i:1;i:1662457797;}}}'); ?>
+<?php /* Smarty version Smarty3-b5, created on 2022-10-09 10:22:22
          compiled from "../template/template/Player.DataQuery.html" */ ?>
 <div id="bodyTitle"><?php echo $_smarty_tpl->getVariable('lang')->value['playerDataTitle'];?>
 </div>

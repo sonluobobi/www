@@ -1,6 +1,6 @@
 <?php if(!defined('SMARTY_DIR')) exit('no direct access allowed'); ?>
-<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F3447151315";a:2:{i:0;s:46:"../template/template/Notice.SendPropsList.html";i:1;i:1578384509;}}}'); ?>
-<?php /* Smarty version Smarty3-b5, created on 2020-01-11 14:26:02
+<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F3447151315";a:2:{i:0;s:46:"../template/template/Notice.SendPropsList.html";i:1;i:1662457797;}}}'); ?>
+<?php /* Smarty version Smarty3-b5, created on 2022-10-09 12:10:54
          compiled from "../template/template/Notice.SendPropsList.html" */ ?>
 <div  id="bodyTitle"><?php echo $_smarty_tpl->getVariable('lang')->value['SendPropsList'];?>
 </div>

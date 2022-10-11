@@ -1,48 +1,12 @@
 <?php if(!defined('SMARTY_DIR')) exit('no direct access allowed'); ?>
-<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F2234821268";a:2:{i:0;s:37:"../template/template/Auth.action.html";i:1;i:1662457797;}}}'); ?>
-<?php /* Smarty version Smarty3-b5, created on 2022-10-09 11:04:38
-         compiled from "../template/template/Auth.action.html" */ ?>
-<div id="bodyTitle"><?php echo $_smarty_tpl->getVariable('lang')->value['ActionAuth'];?>
+<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F4204400232";a:2:{i:0;s:37:"../template/template/Action.List.html";i:1;i:1665299892;}}}'); ?>
+<?php /* Smarty version Smarty3-b5, created on 2022-10-09 10:20:58
+         compiled from "../template/template/Action.List.html" */ ?>
+<div id="bodyTitle"><?php echo $_smarty_tpl->getVariable('lang')->value['systemHandleManage'];?>
 </div>
 <div class="bodyContent"  style="border-top: 2px solid #666;">
 <div class="bodyContentHead" id="userActionList">
-<form id="subform" name="subform" onsubmit="FS('subform',pt.writeBody); return false;" method="post" action="./?act=Auth.action"> 
-<div style="height:30px">
-<?php echo $_smarty_tpl->getVariable('lang')->value['accountName'];?>
- :<select name="account" id="account" onchange="auth_load(this)">
-	<option value=""><?php echo $_smarty_tpl->getVariable('lang')->value['plaseClew'];?>
-</option>
-	<?php unset($_smarty_tpl->tpl_vars['smarty']->value['section']['i']);
-$_smarty_tpl->tpl_vars['smarty']->value['section']['i']['name'] = 'i';
-$_smarty_tpl->tpl_vars['smarty']->value['section']['i']['loop'] = is_array($_loop=$_smarty_tpl->getVariable('internal_account')->value) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
-$_smarty_tpl->tpl_vars['smarty']->value['section']['i']['show'] = true;
-$_smarty_tpl->tpl_vars['smarty']->value['section']['i']['max'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['loop'];
-$_smarty_tpl->tpl_vars['smarty']->value['section']['i']['step'] = 1;
-$_smarty_tpl->tpl_vars['smarty']->value['section']['i']['start'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['step'] > 0 ? 0 : $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['loop']-1;
-if ($_smarty_tpl->tpl_vars['smarty']->value['section']['i']['show']) {
-    $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['total'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['loop'];
-    if ($_smarty_tpl->tpl_vars['smarty']->value['section']['i']['total'] == 0)
-        $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['show'] = false;
-} else
-    $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['total'] = 0;
-if ($_smarty_tpl->tpl_vars['smarty']->value['section']['i']['show']):
-
-            for ($_smarty_tpl->tpl_vars['smarty']->value['section']['i']['index'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['start'], $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['iteration'] = 1;
-                 $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['iteration'] <= $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['total'];
-                 $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['index'] += $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['step'], $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['iteration']++):
-$_smarty_tpl->tpl_vars['smarty']->value['section']['i']['rownum'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['iteration'];
-$_smarty_tpl->tpl_vars['smarty']->value['section']['i']['index_prev'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['index'] - $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['step'];
-$_smarty_tpl->tpl_vars['smarty']->value['section']['i']['index_next'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['index'] + $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['step'];
-$_smarty_tpl->tpl_vars['smarty']->value['section']['i']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['i']['iteration'] == 1);
-$_smarty_tpl->tpl_vars['smarty']->value['section']['i']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['i']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['i']['total']);
-?>
-	<option value="<?php echo $_smarty_tpl->getVariable('internal_account')->value[$_smarty_tpl->getVariable('smarty')->value['section']['i']['index']];?>
-" ><?php echo $_smarty_tpl->getVariable('internal_account')->value[$_smarty_tpl->getVariable('smarty')->value['section']['i']['index']];?>
-</option>
-    <?php endfor; endif; ?>
-</select>
-
-</div>
+<div style="height:30px"><a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionAdd',pt.writeBody)">[添加首级操作]</a></div>
 <?php unset($_smarty_tpl->tpl_vars['smarty']->value['section']['ii']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['ii']['name'] = 'ii';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['ii']['loop'] = is_array($_loop=$_smarty_tpl->getVariable('menuTree')->value) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
@@ -66,12 +30,12 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['ii']['index_prev'] = $_smart
 $_smarty_tpl->tpl_vars['smarty']->value['section']['ii']['index_next'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['ii']['index'] + $_smarty_tpl->tpl_vars['smarty']->value['section']['ii']['step'];
 $_smarty_tpl->tpl_vars['smarty']->value['section']['ii']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['ii']['iteration'] == 1);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['ii']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['ii']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['ii']['total']);
- $_smarty_tpl->assign("root_it",$_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActRoot']['id'],null,null);?>
+?>
 <div style="height:20px;height:30px;"><b><?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActRoot']['acttitle'];?>
-</b>&nbsp;&nbsp;<input  id="<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActRoot']['id'];?>
-" pid="<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActRoot']['pid'];?>
-" type="checkbox" name="actions[]" value="<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActRoot']['actkey'];?>
-" onclick="do_check(this);"/></div>
+</b>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionEdit&id=<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActRoot']['id'];?>
+',pt.writeBody)">修改</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionDel&id=<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActRoot']['id'];?>
+',pt.writeBody)"><font color="#FF0000">删除</font></a></a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionAdd&pid=<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActRoot']['id'];?>
+',pt.writeBody)">添加子类</a></div>
 	<?php unset($_smarty_tpl->tpl_vars['smarty']->value['section']['mm']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['mm']['name'] = 'mm';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['mm']['loop'] = is_array($_loop=$_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActFirst']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
@@ -101,10 +65,10 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['mm']['last']       = ($_smar
 
 		<?php if ($_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActSecond'][$_smarty_tpl->getVariable('id')->value]!=''){?>
 			<div style="padding-left:20px;height:30px;"><i><b><?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActFirst'][$_smarty_tpl->getVariable('smarty')->value['section']['mm']['index']]['acttitle'];?>
-</b></i>&nbsp;&nbsp;<input type="checkbox" id="<?php echo $_smarty_tpl->getVariable('id')->value;?>
-" name="actions[]" pid="<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActRoot']['id'];?>
-" value="<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActFirst'][$_smarty_tpl->getVariable('smarty')->value['section']['mm']['index']]['actkey'];?>
-" onclick="do_check(this);"/></div>
+</b></i>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionEdit&id=<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActFirst'][$_smarty_tpl->getVariable('smarty')->value['section']['mm']['index']]['id'];?>
+',pt.writeBody)">修改</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionDel&id=<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActFirst'][$_smarty_tpl->getVariable('smarty')->value['section']['mm']['index']]['id'];?>
+',pt.writeBody)"><font color="#FF0000">删除</font></a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionAdd&pid=<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActFirst'][$_smarty_tpl->getVariable('smarty')->value['section']['mm']['index']]['id'];?>
+',pt.writeBody)">添加子类</a></div>
 
 			<?php unset($_smarty_tpl->tpl_vars['smarty']->value['section']['nn']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['nn']['name'] = 'nn';
@@ -131,10 +95,9 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['nn']['first']      = ($_smar
 $_smarty_tpl->tpl_vars['smarty']->value['section']['nn']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['nn']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['nn']['total']);
 ?>
 				<div style="padding-left:40px; height:25px"><?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActSecond'][$_smarty_tpl->getVariable('id')->value][$_smarty_tpl->getVariable('smarty')->value['section']['nn']['index']]['acttitle'];?>
-&nbsp;&nbsp;<input type="checkbox" name="actions[]" id="<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActSecond'][$_smarty_tpl->getVariable('id')->value][$_smarty_tpl->getVariable('smarty')->value['section']['nn']['index']]['id'];?>
-" pid="<?php echo $_smarty_tpl->getVariable('id')->value;?>
-" value="<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActSecond'][$_smarty_tpl->getVariable('id')->value][$_smarty_tpl->getVariable('smarty')->value['section']['nn']['index']]['actkey'];?>
-" onclick="do_check(this);"/>
+&nbsp;&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionEdit&id=<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActSecond'][$_smarty_tpl->getVariable('id')->value][$_smarty_tpl->getVariable('smarty')->value['section']['nn']['index']]['id'];?>
+',pt.writeBody)">修改</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionDel&id=<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActSecond'][$_smarty_tpl->getVariable('id')->value][$_smarty_tpl->getVariable('smarty')->value['section']['nn']['index']]['id'];?>
+',pt.writeBody)"><font color="#FF0000">删除</font></a>
 				<?php $_smarty_tpl->assign("itt",$_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActSecond'][$_smarty_tpl->getVariable('id')->value][$_smarty_tpl->getVariable('smarty')->value['section']['nn']['index']]['id'],null,null);?>
 				<?php if ($_smarty_tpl->getVariable('menuItem')->value[$_smarty_tpl->getVariable('itt')->value]!=''){ unset($_smarty_tpl->tpl_vars['smarty']->value['section']['itti']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['itti']['name'] = 'itti';
@@ -161,29 +124,51 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['itti']['first']      = ($_sm
 $_smarty_tpl->tpl_vars['smarty']->value['section']['itti']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['itti']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['itti']['total']);
 ?>
 				&nbsp;&nbsp; <?php echo $_smarty_tpl->getVariable('menuItem')->value[$_smarty_tpl->getVariable('itt')->value][$_smarty_tpl->getVariable('smarty')->value['section']['itti']['index']]['acttitle'];?>
-&nbsp;&nbsp;<input id="<?php echo $_smarty_tpl->getVariable('menuItem')->value[$_smarty_tpl->getVariable('itt')->value][$_smarty_tpl->getVariable('smarty')->value['section']['itti']['index']]['id'];?>
-" pid="<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActSecond'][$_smarty_tpl->getVariable('id')->value][$_smarty_tpl->getVariable('smarty')->value['section']['nn']['index']]['id'];?>
-" type="checkbox" name="actions[]" value="<?php echo $_smarty_tpl->getVariable('menuItem')->value[$_smarty_tpl->getVariable('itt')->value][$_smarty_tpl->getVariable('smarty')->value['section']['itti']['index']]['actkey'];?>
-"  onclick="do_check(this);"/>
+&nbsp;&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionEdit&id=<?php echo $_smarty_tpl->getVariable('menuItem')->value[$_smarty_tpl->getVariable('itt')->value][$_smarty_tpl->getVariable('smarty')->value['section']['itti']['index']]['id'];?>
+',pt.writeBody)">修改</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionDel&id=<?php echo $_smarty_tpl->getVariable('menuItem')->value[$_smarty_tpl->getVariable('itt')->value][$_smarty_tpl->getVariable('smarty')->value['section']['itti']['index']]['id'];?>
+',pt.writeBody)"><font color="#FF0000">删除</font></a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionAdd&pid=<?php echo $_smarty_tpl->getVariable('menuItem')->value[$_smarty_tpl->getVariable('itt')->value][$_smarty_tpl->getVariable('smarty')->value['section']['itti']['index']]['id'];?>
+',pt.writeBody)">添加子类</a>
 				<?php endfor; endif;  }?></div>
 			<?php endfor; endif; ?>
 
 		<?php }else{ ?>
 			<div style="padding-left:20px; height:30px;"><i><b><?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActFirst'][$_smarty_tpl->getVariable('smarty')->value['section']['mm']['index']]['acttitle'];?>
-</b></i>&nbsp;&nbsp;<input type="checkbox" name="actions[]" pid="<?php echo $_smarty_tpl->getVariable('root_it')->value;?>
-" value="<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActFirst'][$_smarty_tpl->getVariable('smarty')->value['section']['mm']['index']]['actkey'];?>
-"  onclick="do_check(this);"/>
-			</div>
+</b></i>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionEdit&id=<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActFirst'][$_smarty_tpl->getVariable('smarty')->value['section']['mm']['index']]['id'];?>
+',pt.writeBody)">修改</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionDel&id=<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActFirst'][$_smarty_tpl->getVariable('smarty')->value['section']['mm']['index']]['id'];?>
+',pt.writeBody)"><font color="#FF0000">删除</font></a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionAdd&pid=<?php echo $_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActFirst'][$_smarty_tpl->getVariable('smarty')->value['section']['mm']['index']]['id'];?>
+',pt.writeBody)">添加子类</a>
+			<?php $_smarty_tpl->assign("it",$_smarty_tpl->getVariable('menuTree')->value[$_smarty_tpl->getVariable('smarty')->value['section']['ii']['index']]['ActFirst'][$_smarty_tpl->getVariable('smarty')->value['section']['mm']['index']]['id'],null,null);?>
+			<?php if ($_smarty_tpl->getVariable('menuItem')->value[$_smarty_tpl->getVariable('it')->value]!=''){ unset($_smarty_tpl->tpl_vars['smarty']->value['section']['iti']);
+$_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['name'] = 'iti';
+$_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['loop'] = is_array($_loop=$_smarty_tpl->getVariable('menuItem')->value[$_smarty_tpl->getVariable('it')->value]) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['show'] = true;
+$_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['max'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['loop'];
+$_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['step'] = 1;
+$_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['start'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['step'] > 0 ? 0 : $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['loop']-1;
+if ($_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['show']) {
+    $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['total'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['loop'];
+    if ($_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['total'] == 0)
+        $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['show'] = false;
+} else
+    $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['total'] = 0;
+if ($_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['show']):
+
+            for ($_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['index'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['start'], $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['iteration'] = 1;
+                 $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['iteration'] <= $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['total'];
+                 $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['index'] += $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['step'], $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['iteration']++):
+$_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['rownum'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['iteration'];
+$_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['index_prev'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['index'] - $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['step'];
+$_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['index_next'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['index'] + $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['step'];
+$_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['iteration'] == 1);
+$_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['iti']['total']);
+?>
+				&nbsp;&nbsp; <?php echo $_smarty_tpl->getVariable('menuItem')->value[$_smarty_tpl->getVariable('it')->value][$_smarty_tpl->getVariable('smarty')->value['section']['iti']['index']]['acttitle'];?>
+&nbsp;&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionEdit&id=<?php echo $_smarty_tpl->getVariable('menuItem')->value[$_smarty_tpl->getVariable('it')->value][$_smarty_tpl->getVariable('smarty')->value['section']['iti']['index']]['id'];?>
+',pt.writeBody)">修改</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionDel&id=<?php echo $_smarty_tpl->getVariable('menuItem')->value[$_smarty_tpl->getVariable('it')->value][$_smarty_tpl->getVariable('smarty')->value['section']['iti']['index']]['id'];?>
+',pt.writeBody)"><font color="#FF0000">删除</font></a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="RQ('./?act=Action.ActionAdd&pid=<?php echo $_smarty_tpl->getVariable('menuItem')->value[$_smarty_tpl->getVariable('it')->value][$_smarty_tpl->getVariable('smarty')->value['section']['iti']['index']]['id'];?>
+',pt.writeBody)">添加子类</a>
+			<?php endfor; endif;  }?></div>
 		<?php }?>
 
 	<?php endfor; endif;  endfor; endif; ?>
-
-<div style="width:50%;margin:auto;padding:20px;">  
-<input name="submit" type="submit" class="submit" value="<?php echo $_smarty_tpl->getVariable('lang')->value['Submit'];?>
-" />&nbsp;&nbsp;
-<input name="reset" type="reset" class="submit" value="<?php echo $_smarty_tpl->getVariable('lang')->value['Reset'];?>
-" />&nbsp;&nbsp;
-</div> 
-
-</form>
 </div></div>

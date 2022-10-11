@@ -1,6 +1,6 @@
 <?php
 //Kunlun Gmtools cache file
-//Created on 2022-09-05 12:43:49
+//Created on 2022-10-11 05:03:55
 
 $init['serverCount'] = 3;
 $init['serverList'] = array(

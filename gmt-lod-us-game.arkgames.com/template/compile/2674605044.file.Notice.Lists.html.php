@@ -1,6 +1,6 @@
 <?php if(!defined('SMARTY_DIR')) exit('no direct access allowed'); ?>
-<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:10:"F681425707";a:2:{i:0;s:38:"../template/template/Notice.Lists.html";i:1;i:1578894416;}}}'); ?>
-<?php /* Smarty version Smarty3-b5, created on 2020-01-13 13:57:53
+<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:10:"F681425707";a:2:{i:0;s:38:"../template/template/Notice.Lists.html";i:1;i:1662457797;}}}'); ?>
+<?php /* Smarty version Smarty3-b5, created on 2022-10-10 10:38:01
          compiled from "../template/template/Notice.Lists.html" */ ?>
 <div id="bodyTitle"><?php echo $_smarty_tpl->getVariable('lang')->value['noticeListTitle'];?>
 </div>

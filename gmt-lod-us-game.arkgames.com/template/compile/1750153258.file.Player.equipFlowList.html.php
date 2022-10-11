@@ -1,6 +1,6 @@
 <?php if(!defined('SMARTY_DIR')) exit('no direct access allowed'); ?>
-<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F1582733416";a:2:{i:0;s:46:"../template/template/Player.equipFlowList.html";i:1;i:1584771890;}}}'); ?>
-<?php /* Smarty version Smarty3-b5, created on 2020-03-21 14:24:54
+<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F1582733416";a:2:{i:0;s:46:"../template/template/Player.equipFlowList.html";i:1;i:1662457797;}}}'); ?>
+<?php /* Smarty version Smarty3-b5, created on 2022-10-09 10:22:28
          compiled from "../template/template/Player.equipFlowList.html" */ ?>
 <div  id="bodyTitle"><?php echo $_smarty_tpl->getVariable('lang')->value['equipFlowTitle'];?>
 </div>

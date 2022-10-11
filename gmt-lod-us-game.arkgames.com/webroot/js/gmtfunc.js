@@ -816,6 +816,34 @@ function call(id)
 	'',1);
 }
 
+/**
+ *
+ * @param 删除用户
+ * @param delNotice
+ * @param id
+ * @returns {boolean}
+ */
+function deleteUser(remind,delNotice,id)
+{
+
+	
+	divConfirm(delNotice,'user_call',2,id);
+}
+
+/**
+ * 删除回调
+ */
+function user_call(id) 
+{
+	var url = '/?act=User.deleteuser&id=' + id;
+	RQ(url,function(responseText){
+			alertFunc(responseText,"FS('myform',pt.writeBody,1)");
+		},
+	'',1);
+	
+	document.location.reload();
+}
+
 
 
 /**

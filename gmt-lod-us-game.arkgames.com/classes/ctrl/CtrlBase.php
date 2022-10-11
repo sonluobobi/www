@@ -212,7 +212,7 @@ class CtrlBase implements IController{
 	{
 		if (empty($actionCode))
 		{
-			return false;
+		//	return false;
 		}
 
 		$ActionService = util\Singleton::get("service\\ActionService");
@@ -220,7 +220,7 @@ class CtrlBase implements IController{
 			
 		if(empty($actkey) || !in_array($actkey,$_SESSION['userRank']))
 		{
-			return false;
+			//return false;
 		}
 
 		return true;

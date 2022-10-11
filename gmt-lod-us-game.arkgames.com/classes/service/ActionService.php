@@ -120,7 +120,9 @@ class ActionService extends ServersAbs {
 		//dongchen--20111216-start
 		$userDao = util\Singleton::get("dao\\UserDao");
         $user =  $userDao->fetchUmUserInfoNew($_SESSION['infoUser']['userName'],$_SESSION['infoUser']['passWord']);
+        
         $umInfo=common\Functions::findUmOneResources('gmt_action_'.$id, $user['menu']);
+    
 		//dongchen--20111216-end
 		return $this->ActionDao->fetchActionSaveDel($id,$umInfo);//dongchen--20111216
 	}

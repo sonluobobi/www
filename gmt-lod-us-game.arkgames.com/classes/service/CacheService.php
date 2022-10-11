@@ -108,6 +108,7 @@ class CacheService extends ServersAbs{
 				$contents .= ");\r\n";
 			}
 		}
+	
 		$this->writetocache('menu',$contents);
 	}
 	// 写入缓存文件

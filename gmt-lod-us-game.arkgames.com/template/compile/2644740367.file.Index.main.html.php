@@ -1,6 +1,6 @@
 <?php if(!defined('SMARTY_DIR')) exit('no direct access allowed'); ?>
-<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F1167306794";a:2:{i:0;s:36:"../template/template/Index.main.html";i:1;i:1665219632;}}}'); ?>
-<?php /* Smarty version Smarty3-b5, created on 2022-10-08 12:06:04
+<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F1167306794";a:2:{i:0;s:36:"../template/template/Index.main.html";i:1;i:1665283534;}}}'); ?>
+<?php /* Smarty version Smarty3-b5, created on 2022-10-09 05:45:39
          compiled from "../template/template/Index.main.html" */ ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-CN">
@@ -25,7 +25,7 @@
 	<div class="header">
 		<img class="logo" src="/img/logo.gif">
 		<span class="link">
-		您好 <?php echo $_SESSION['infoUser']['fullname'];?>
+		您好2 <?php echo $_SESSION['infoUser']['fullname'];?>
 
 		&nbsp;|&nbsp; 
 		<a href="?act=Login.quit">退出登录</a>&nbsp;&nbsp;&nbsp;
@@ -318,11 +318,29 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['mm']['last']       = ($_smar
 					
 					<div id="bodyContents">
 					<!-- bodyContents Begin -->
-						<div id="bodyTitle">欢迎登录</div>
+						<!--<div id="bodyTitle">欢迎登录</div>
 						<div class="bodyContent" id="bodyContentAuthCtrl" style="border-top: 2px solid #666;">
 							<div class="bodyContentHead">
 								<br /><b>IE6下效果较差</b>，傲游 和 TT 等类型浏览器，可能会屏蔽弹出层。 建议使用 Firefox
 								</div>
+						</div>-->
+
+						<div id="passPopCtrl" class="popDiv" align="center">
+							<div id="passPopCtrlHeader" class="popHead"> 用户修改密码 </div>
+							<a class="button popCancel"><b><b><b>X</b></b></b></a>
+							<div id="gamePopBody" class="popBody">
+								<form id="edpassform" method="post" action="/auths/changePassword">
+									&nbsp;&nbsp;
+									用户名: <input type="text" name="real_name" class="input" style="width:80px" value="<?php echo $_smarty_tpl->getVariable('userSession')->value['real_name'];?>
+" readonly/>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									新密码: <input type="password" name="password" class="input" style="width:110px" value="" />
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									重复密码: <input type="password" name="repassword" class="input" style="width:110px" value="" />
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="button" class="submit" value="修改密码" onclick="KQ('edpassform');"/>
+								</form>
+							</div>
 						</div>
 						
 					<!-- bodyContents End -->
