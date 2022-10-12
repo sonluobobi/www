@@ -130,7 +130,7 @@ class UserService extends ServersAbs {
 	    
 					$content = "<?php \r\n ";
 					$content .= '$common_account_add = ' . var_export($common_account_add,true)."\r\n";
-					$content .= "?> ";
+					$content .= "?>";
 					
 	    $ret = file_put_contents(ACCOUNT_PATH.'account.add.php', $content);
 	    
