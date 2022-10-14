@@ -93,15 +93,19 @@ class NoticeCtrl extends CtrlBase
 	 */
 	public function lists()
 	{
-		$result = $this->NoticeService->serviceLists();
+	
 		/**
 		 * $_POST['d'] 值为1时表示用户点击下载按钮
 		 */
 		if($_POST['d'] == 1)
 		{
+		   	$result = $this->NoticeService->serviceLists();
 			$filename = Context::getCurrentTime().'_palyer';
 			common\PhpExcel::downloadExcel($filename,'GameUserList',$result['list'],'xls');
 		}else{
+		    
+		    $result = $this->NoticeService->getNowNoticeList();
+		    
 			return new smarty\SmartyView("Notice.Lists.html",array('list' => $result['list'],'pages' => $result['pages'],'begTime'=>date('Y-m-d 00:00:00'),'endTime'=>date('Y-m-d 23:59:59')));	
 		}
 	}
@@ -120,6 +124,7 @@ class NoticeCtrl extends CtrlBase
 		*/
 		if ($_GET['id'])
 		{
+		    
 			$info = array();
 			if (isset($_GET['type']) && $_GET['type'] == 'local' )
 			{
@@ -137,6 +142,7 @@ class NoticeCtrl extends CtrlBase
 		}
 		else
 		{
+		   
 			return new smarty\SmartyView("Notice.manage.html",array('list' => $result['list'],'pages' => $result['pages'],'begTime'=>date('Y-m-d 00:00:00'),'endTime'=>date('Y-m-d 23:59:59')));
 		}
 	}

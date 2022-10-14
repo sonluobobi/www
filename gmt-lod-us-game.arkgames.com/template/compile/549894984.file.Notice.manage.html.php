@@ -1,6 +1,6 @@
 <?php if(!defined('SMARTY_DIR')) exit('no direct access allowed'); ?>
-<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:10:"F907903629";a:2:{i:0;s:39:"../template/template/Notice.manage.html";i:1;i:1662457797;}}}'); ?>
-<?php /* Smarty version Smarty3-b5, created on 2022-10-10 10:38:02
+<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:10:"F907903629";a:2:{i:0;s:39:"../template/template/Notice.manage.html";i:1;i:1665718660;}}}'); ?>
+<?php /* Smarty version Smarty3-b5, created on 2022-10-14 06:37:43
          compiled from "../template/template/Notice.manage.html" */ ?>
 <div id="bodyTitle"><?php echo $_smarty_tpl->getVariable('lang')->value['noticeListTitle'];?>
 </div>
@@ -175,15 +175,11 @@ ID</th>
 </th>
 	<th><?php echo $_smarty_tpl->getVariable('lang')->value['period'];?>
 </th>
-	<th><?php echo $_smarty_tpl->getVariable('lang')->value['tollgate_id'];?>
-</th>
-	<th>游戏服</td>
+	<th>语言</th>
 	<th><?php echo $_smarty_tpl->getVariable('lang')->value['author'];?>
 </th>		
-	<th><?php echo $_smarty_tpl->getVariable('lang')->value['noticeType'];?>
-</td>	
-	<th><?php echo $_smarty_tpl->getVariable('lang')->value['status'];?>
-</td>
+	<th>按钮</td>	
+	<th>按钮地址</td>
 	<th><?php echo $_smarty_tpl->getVariable('lang')->value['putTime'];?>
 </td>
 	<th><?php echo $_smarty_tpl->getVariable('lang')->value['handler'];?>
@@ -205,24 +201,23 @@ if (count($_from) > 0){
 </td>
 	<td><?php echo $_smarty_tpl->getVariable('v')->value['title'];?>
 </td>
-	<td><font color=blue><?php echo $_smarty_tpl->getVariable('v')->value['begTime'];?>
+	<td width=300 ><font color=blue><?php echo $_smarty_tpl->getVariable('v')->value['begTime'];?>
 —<?php echo $_smarty_tpl->getVariable('v')->value['endTime'];?>
 </font></td>
-	<td><?php echo $_smarty_tpl->getVariable('v')->value['tollgate_id'];?>
+	<td><?php echo $_smarty_tpl->getVariable('v')->value['contents_language'];?>
 </td>
-	<td><?php echo $_smarty_tpl->getVariable('v')->value['server_names'];?>
-</td>	
 	<td><?php echo $_smarty_tpl->getVariable('v')->value['author'];?>
 </td>	
-	<td><?php if ($_smarty_tpl->getVariable('v')->value['type']=='1'){ echo $_smarty_tpl->getVariable('lang')->value['scrollNotice']; }elseif($_smarty_tpl->getVariable('v')->value['type']=='2'){ echo $_smarty_tpl->getVariable('lang')->value['talkNotice']; }elseif($_smarty_tpl->getVariable('v')->value['type']=='3'){ echo $_smarty_tpl->getVariable('lang')->value['scrollAndTalkNotice']; }?></td>
-	<td><?php if ($_smarty_tpl->getVariable('v')->value['status']=='1'){ echo $_smarty_tpl->getVariable('lang')->value['normal']; }elseif($_smarty_tpl->getVariable('v')->value['status']=='2'){ echo $_smarty_tpl->getVariable('lang')->value['pause']; }?></td>
+	<td width=50><?php if ($_smarty_tpl->getVariable('v')->value['button_show']=='1'){?>显示<?php }elseif($_smarty_tpl->getVariable('v')->value['type']=='2'){?>隐藏<?php }elseif($_smarty_tpl->getVariable('v')->value['type']=='3'){ echo $_smarty_tpl->getVariable('lang')->value['scrollAndTalkNotice']; }?></td>
+	<td><?php echo $_smarty_tpl->getVariable('v')->value['button_url'];?>
+</td>	
 	<td><?php echo $_smarty_tpl->getVariable('v')->value['created'];?>
 </td>			
 	<td>
-		<a href="javascript:void(0);" onclick="editLocalNotice(<?php echo $_smarty_tpl->getVariable('v')->value['id'];?>
+		<!--<a href="javascript:void(0);" onclick="editLocalNotice(<?php echo $_smarty_tpl->getVariable('v')->value['id'];?>
 ,'<?php echo $_smarty_tpl->getVariable('v')->value['title'];?>
 ')"><?php echo $_smarty_tpl->getVariable('lang')->value['modify'];?>
-</a>
+</a>-->
 		&nbsp;&nbsp;
 		<a href="javascript:void(0);" onclick="deleteNotice('<?php echo $_smarty_tpl->getVariable('lang')->value['nocheck'];?>
 ','<?php echo $_smarty_tpl->getVariable('lang')->value['confirmNoticeDel'];?>

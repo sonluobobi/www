@@ -41,13 +41,7 @@ class NoticeService extends ServersAbs
 	{
 		if($_POST)
 		{
-			if(!isset($_POST['server_ids']))
-			{
-				//file_put_contents("/home/xingzeng.jiang/www/t1.jd.kunlun.com/gmt/cyz.log", "!!!!!!!!!!!!!!!!!\r\n",FILE_APPEND);
-				echo $this->_LANG['SelectServers'];
-				exit();
-			}
-
+			
 			if(empty($_POST['title']))
 			{
 				echo $this->_LANG['notitle'];
@@ -60,11 +54,6 @@ class NoticeService extends ServersAbs
 				exit();
 			}
 
-			if(empty($_POST['type']))
-			{
-				echo $this->_LANG['noChangeType'];
-				exit();
-			}
 
 			if(empty($_POST['begTime']) || empty($_POST['endTime']))
 			{
@@ -73,20 +62,13 @@ class NoticeService extends ServersAbs
 			}
 			
 			
-
-			if(!empty($_POST['cycle'])&&!is_numeric($_POST['cycle']))
-            {
-                echo $this->_LANG['noticeCycleError'];
-                exit();
-            }
-
 			if(empty($_POST['contents']))
 			{
 				echo $this->_LANG['noContent'];
 				exit();
 			}
 
-            $_POST['content'] = trim($_POST['contents']);
+            $_POST['content'] = trim($_POST['contents']);  
 			if(common\Functions::get_str_len($_POST['content'])>500)
 			{
                 //echo $this->_LANG['noticeContentError'];
@@ -142,50 +124,42 @@ class NoticeService extends ServersAbs
            // $content = htmlspecialchars($_POST['content'],ENT_QUOTES);
           
             	
-            $tollgate_id = isset($_POST['tollgate_id']) ?  intval(trim($_POST['tollgate_id'])) : 0;
+            //$tollgate_id = isset($_POST['tollgate_id']) ?  intval(trim($_POST['tollgate_id'])) : 0;
 
-			$cn_ary = [];
-			$cn_ary['default'] = 'en';
-			$cn_ary['en'] = $content;
+		
 			
-			for($i = 1;$i<= 100;$i++)
-			{
-				if(isset($_POST['contents_cn_'.$i]) && isset($_POST['contents_'.$i]))
-				{
-					$cn_ary[$_POST['contents_cn_'.$i]] = $_POST['contents_'.$i];
-				}
-			}
+			
 			
 			
 
 			$RestParm = array(
 					'title'      =>  $_POST['title'], //标题
-					'type'     	 =>  $_POST['type'],  //公告类型,
 					'author'     	 =>  $_POST['author'], //发起人
 					'begTime'     =>  $_POST['begTime'], //有效时间
 					'endTime'    =>  $_POST['endTime'],  //结束时间
-					'tollgate_id' => $tollgate_id, //关卡id
-					'content'    =>  json_encode($cn_ary), //内容
-					'cycle' 	 =>  $_POST['cycle'], //间隔
-					'pictureUrl' =>  $_POST['pictureUrl'], //地址？看起来没有用到
-					'status'     =>  $_POST['status'], //状态
-					'ext' 		 =>  '',
+					'content'    =>  json_encode($content), //内容
+					'button_show' => $_POST['button_show'], //1显示2不显示
+					'status'   => 1,//状态(1.正常 2.删除)
+                    'button_title' => $_POST['button_title'],
+                    'button_url' => $_POST['button_url'],
+                    'contents_language' => $_POST['contents_language'],
+                    
 				);
 			if(!empty($_POST['id'])) $RestParm['id'] = $_POST['id'];
 			
 			$arr_server_name = array();
 			
-			if ($_POST['act'] == "edit" && $_POST['server_id_str'])
+			/*if ($_POST['act'] == "edit" && $_POST['server_id_str'])
 			{
 				$server_id_str = $_POST['server_id_str'];
 				$_POST['server_ids'] = explode(',', $server_id_str);
 				file_put_contents("/tmp/liao_data.log", var_export($_POST['server_ids'],true));
-			}
+			}*/
 			
 			//添加本地公告
 			foreach ($_POST['server_ids'] as $sid)
 			{
-				$arr_server_name[] = common\Functions::getServerUrl($sid,'serverName');
+				//$arr_server_name[] = common\Functions::getServerUrl($sid,'serverName');
 			}
 			
 			 
@@ -199,20 +173,17 @@ class NoticeService extends ServersAbs
 				if ($max_id) {
 					$arr_param['id'] = $max_id+1;
 				}else {
-					$arr_param['id'] = 100000; //避免跟旧版本的数据产生冲突
+					$arr_param['id'] = 1000000; //避免跟旧版本的数据产生冲突
 				}
 			}
 			
-			
-			
+		
 			$arr_param['platform']     = $_SESSION['gupFlag'];
-			$arr_param['server_names'] = implode(',', $arr_server_name);
-			$arr_param['server_ids']   = implode(',', $_POST['server_ids']);
+			//$arr_param['server_names'] = implode(',', $arr_server_name);
+			//$arr_param['server_ids']   = implode(',', $_POST['server_ids']);
 				
-			//$last_insert_id = $this->NoticeDao->addLocalNotice($arr_param); //添加到本地的公告
+			$last_insert_id = $this->NoticeDao->addLocalNotice($arr_param); //添加到本地的公告
 			
-		    	
-								
 			//编辑
 			if(!empty($_POST['id']))
 			{
@@ -247,10 +218,9 @@ class NoticeService extends ServersAbs
 				$serverReturn = $this->NoticeDao->setNotice($server_url.RESTSUFFIX,$RestParm);
 			}*/
 
-
-
-
-			
+           $new_conetent = self::change_content($content);
+           
+        
 		   $new_RestParm['msg'][] = array(
 				'id'      =>  5, //标题
 				'title'      =>  $_POST['title'], //标题
@@ -259,41 +229,22 @@ class NoticeService extends ServersAbs
 				'maxVersion'     	 =>  '', //发起人
 				'startTime'     =>  strtotime($_POST['begTime']) - 18000, //有效时间
 				'endTime'    =>  strtotime($_POST['endTime'])- 18000,  //结束时间
-				'content'    =>  $content, //内容
+				'content'    =>  $new_conetent, //内容
+				'button_show' => $_POST['button_show'], //1显示0不显示
+                'button_title' => $_POST['button_title'],
+                'button_url' => $_POST['button_url'],
+				
 			);
-			file_put_contents('/www/wwwroot/lod-us-game.arkgames.com/cfg/notice/notice_en.txt',json_encode($new_RestParm,JSON_UNESCAPED_UNICODE));
-
-
-			for($i = 1;$i<= 100;$i++)
-			{
-				if(isset($_POST['contents_cn_'.$i]) && isset($_POST['contents_'.$i]))
-				{
-					//$cn_ary[$_POST['contents_cn_'.$i]] = $_POST['contents_'.$i];
-
-					$new_RestParm = [];
-
-					$new_RestParm['msg'][] = array(
-						'id'      =>  5, //标题
-						'title'      =>  $_POST['title'], //标题
-						'language'     	 =>  0,  //公告类型,
-						'minVersion'     	 =>  '', //发起人
-						'maxVersion'     	 =>  '', //发起人
-						'startTime'     =>  strtotime($_POST['begTime'])- 18000, //有效时间
-						'endTime'    =>  strtotime($_POST['endTime'])- 18000,  //结束时间
-						'content'    =>  $_POST['contents_'.$i], //内容
-					);
-					file_put_contents('/www/wwwroot/lod-us-game.arkgames.com/cfg/notice/notice_'.$_POST['contents_cn_'.$i].'.txt',json_encode($new_RestParm,JSON_UNESCAPED_UNICODE));
-				}
-			}
+			file_put_contents('/www/wwwroot/lod-us-game.arkgames.com/cfg/notice/notice_'.$_POST['contents_language'].'.txt',json_encode($new_RestParm,JSON_UNESCAPED_UNICODE));
 
 			//如果是国外的服，调用sh脚本
 
-			if(in_array(4391903,$_POST['server_ids']) or in_array(4390903,$_POST['server_ids']))
+			/*if(in_array(4391903,$_POST['server_ids']) or in_array(4390903,$_POST['server_ids']))
 			{
 
 				//exec('rsync  -rltpDvP --password-file /tmp/password.txt /data/zlcs/www/common/data/act/test/ rsync://zlcs-lodweb@lod-us-game.arkgames.com/zlcs-lodweb/cfg/notice',$out,$k);
 				file_put_contents('/www/wwwroot/lod-us-game.arkgames.com/cfg/b.txt',111);
-			}
+			}*/
 
 			
 			//var_dump($new_RestParm);
@@ -303,6 +254,67 @@ class NoticeService extends ServersAbs
 			return $serverReturn;
 		}
 	}
+	
+	/**
+	 * 改变公告内容成为客户端需要的格式
+	 */
+	public function change_content($old_content)
+	{
+	    $new_content = [];
+	    $content_ary =  explode('"<"/image">"',$old_content);
+	    
+	    if(count($content_ary) > 1)
+	    {
+	        
+	        foreach($content_ary  as $key => $val)
+	        {
+	            $content_ary_val =  explode('"<"image">"',$val);
+	            
+	            if(count($content_ary_val) > 1)
+	            {
+	                
+	                if(!empty($content_ary_val[0]))
+	                {
+	                    $new_content[] = [
+	                    'type' => 1 ,
+	                    'txt' => $content_ary_val[0],
+	                    ];
+	                }
+	                
+	                if(!empty($content_ary_val[1]))
+	                {
+    	                $new_content[] = [
+    	                    'type' => 2 ,
+    	                    'txt' => $content_ary_val[1],
+    	                    ];    
+	                }
+	            }
+	            else
+	            {
+	                if(!empty($content_ary_val[1]))
+	                {
+	                    $new_content[] = [
+	                    'type' => 1 ,
+	                    'txt' => $content_ary_val[0],
+	                    ];
+	                }
+	                
+	            }
+	            
+	        }
+	    }else
+	    {
+	        $new_content[] = [
+	                    'type' => 1 ,
+	                    'txt' => $old_content,
+	                    ];
+	    }
+	    
+	    return $new_content;
+	    
+	}
+	
+	
 
 
 	/**
@@ -645,6 +657,27 @@ class NoticeService extends ServersAbs
 		
 		return $this->result;
 	}
+	
+	/**
+	 * 获取所有本地正在生效公告列表
+	 */
+	public function getNowNoticeList()
+	{
+		$this->list = $this->NoticeDao->getNowNoticeList();
+		if ($this->list) {
+			$pageNums = count($this->list);
+		}else {
+			$pageNums = 0;
+		}
+		
+		$this->result['list'] = &$this->list;
+		$subPages = new common\SubPages($this->pagecount,$pageNums,$this->pageCurrent);
+		$this->result['pages'] = $subPages->show_SubPages();
+		
+		return $this->result;
+	}
+	
+	
 	
 	public function getNoticeById($id)
 	{

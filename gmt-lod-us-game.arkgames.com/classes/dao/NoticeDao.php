@@ -64,6 +64,25 @@ class NoticeDao
 	}
 	
 	/**
+	 * 获取所有本地正在生效的公告
+	 * @param unknown_type $platform
+	 */
+	public function getNowNoticeList()
+	{
+		$where = " 1 ";
+
+ 		$now_date = date('Y-m-d h:i:s', time());
+
+
+		$where .= " AND endTime >= '{$now_date}'";
+
+		
+		$notice_list = $this->pdoHelper->fetchAll($where,null,'*','id DESC');
+
+		return $notice_list;
+	}
+	
+	/**
 	 * 获取所有本地公告
 	 * @param unknown_type $platform
 	 */

@@ -129,11 +129,10 @@
 	<th><{$lang.notice}>ID</th>
 	<th><{$lang.notice}><{$lang.title}></th>
 	<th><{$lang.period}></th>
-	<th><{$lang.tollgate_id}></th>
-	<th>游戏服</td>
+	<th>语言</th>
 	<th><{$lang.author}></th>		
-	<th><{$lang.noticeType}></td>	
-	<th><{$lang.status}></td>
+	<th>按钮</td>	
+	<th>按钮地址</td>
 	<th><{$lang.putTime}></td>
 	<th><{$lang.handler}></td>	
 	</tr>
@@ -144,15 +143,14 @@
 	<td><input name="select[]" id="select[]" type="checkbox" value="<{$v.id}>" onclick="checkOne()"/></td>
 	<td><{$v.id}></td>
 	<td><{$v.title}></td>
-	<td><font color=blue><{$v.begTime}>—<{$v.endTime}></font></td>
-	<td><{$v.tollgate_id}></td>
-	<td><{$v.server_names}></td>	
+	<td width=300 ><font color=blue><{$v.begTime}>—<{$v.endTime}></font></td>
+	<td><{$v.contents_language}></td>
 	<td><{$v.author}></td>	
-	<td><{if $v.type == '1'}><{$lang.scrollNotice}><{elseif $v.type == '2'}><{$lang.talkNotice}><{elseif $v.type == '3'}><{$lang.scrollAndTalkNotice}><{/if}></td>
-	<td><{if $v.status == '1'}><{$lang.normal}><{elseif $v.status == '2'}><{$lang.pause}><{/if}></td>
+	<td width=50><{if $v.button_show == '1'}>显示<{elseif $v.type == '2'}>隐藏<{elseif $v.type == '3'}><{$lang.scrollAndTalkNotice}><{/if}></td>
+	<td><{$v.button_url}></td>	
 	<td><{$v.created}></td>			
 	<td>
-		<a href="javascript:void(0);" onclick="editLocalNotice(<{$v.id}>,'<{$v.title}>')"><{$lang.modify}></a>
+		<!--<a href="javascript:void(0);" onclick="editLocalNotice(<{$v.id}>,'<{$v.title}>')"><{$lang.modify}></a>-->
 		&nbsp;&nbsp;
 		<a href="javascript:void(0);" onclick="deleteNotice('<{$lang.nocheck}>','<{$lang.confirmNoticeDel}>',<{$v.id}>)"><{$lang.drop}></a>
 	</td>	

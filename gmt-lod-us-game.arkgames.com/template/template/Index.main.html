@@ -271,10 +271,12 @@
 
   function change(){
 
-	  var today ;
-	  today = new Date() ;
-	  timeString = today.toLocaleString() ;
-	  document.getElementById("time") .innerHTML = timeString;
+	  var myDate = new Date();
+	  var date1 = new Date().getTime();
+	  myDate.setTime(date1 - 0);
+	  //timeString = today.toLocaleString() ;
+	  var top_time=myDate.getFullYear()+"年"+(myDate.getMonth()+1)+"月"+myDate.getDate()+"日 "+myDate.getHours()+"点"+myDate.getMinutes()+"分"+myDate.getSeconds()+"秒";
+	  document.getElementById("time") .innerHTML = top_time;
 	  setTimeout("change () ;",1000);
   }
   //-->

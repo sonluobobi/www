@@ -1,6 +1,6 @@
 <?php if(!defined('SMARTY_DIR')) exit('no direct access allowed'); ?>
-<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F1167306794";a:2:{i:0;s:36:"../template/template/Index.main.html";i:1;i:1665283534;}}}'); ?>
-<?php /* Smarty version Smarty3-b5, created on 2022-10-09 05:45:39
+<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F1167306794";a:2:{i:0;s:36:"../template/template/Index.main.html";i:1;i:1665547159;}}}'); ?>
+<?php /* Smarty version Smarty3-b5, created on 2022-10-12 11:53:18
          compiled from "../template/template/Index.main.html" */ ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-CN">
@@ -439,10 +439,12 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['mm']['last']       = ($_smar
 
   function change(){
 
-	  var today ;
-	  today = new Date() ;
-	  timeString = today.toLocaleString() ;
-	  document.getElementById("time") .innerHTML = timeString;
+	  var myDate = new Date();
+	  var date1 = new Date().getTime();
+	  myDate.setTime(date1 - 0);
+	  //timeString = today.toLocaleString() ;
+	  var top_time=myDate.getFullYear()+"年"+(myDate.getMonth()+1)+"月"+myDate.getDate()+"日 "+myDate.getHours()+"点"+myDate.getMinutes()+"分"+myDate.getSeconds()+"秒";
+	  document.getElementById("time") .innerHTML = top_time;
 	  setTimeout("change () ;",1000);
   }
   //-->
