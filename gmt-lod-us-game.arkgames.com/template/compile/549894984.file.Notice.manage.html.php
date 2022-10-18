@@ -1,6 +1,6 @@
 <?php if(!defined('SMARTY_DIR')) exit('no direct access allowed'); ?>
-<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:10:"F907903629";a:2:{i:0;s:39:"../template/template/Notice.manage.html";i:1;i:1665718660;}}}'); ?>
-<?php /* Smarty version Smarty3-b5, created on 2022-10-14 06:37:43
+<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:10:"F907903629";a:2:{i:0;s:39:"../template/template/Notice.manage.html";i:1;i:1665991697;}}}'); ?>
+<?php /* Smarty version Smarty3-b5, created on 2022-10-17 16:34:09
          compiled from "../template/template/Notice.manage.html" */ ?>
 <div id="bodyTitle"><?php echo $_smarty_tpl->getVariable('lang')->value['noticeListTitle'];?>
 </div>
@@ -9,7 +9,7 @@
 <div class="bodyContentHead" style="text-align:left">
 <iframe id="iframeload" name="iframeload" src="/img/1.gif" style="width:0px; height:0px; display:none" frameborder="0" scrolling="no">
 </iframe>	
-<form id="subform" name="subform" method="post" action="./?act=Notice.add" target="iframeload">  
+<!--<form id="subform" name="subform" method="post" action="./?act=Notice.add" target="iframeload">  
 <table align="center" cellspacing="1" cellpadding="0" class="userTable" style="width:80%;" id="tbl">  
 <tr>  
 <td align="right"><?php echo $_smarty_tpl->getVariable('lang')->value['ServerName'];?>
@@ -42,14 +42,14 @@
 	<td align="left"><select name="type" id="type" onchange="changePopNotice(this.value,'NoticeDIV')">  
 						<option value="1" <?php if ($_smarty_tpl->getVariable('type')->value=='1'){?>selected="true"<?php }?>><?php echo $_smarty_tpl->getVariable('lang')->value['scrollNotice'];?>
 </option> 
-						<!--
+					
 						<option value="0"><?php echo $_smarty_tpl->getVariable('lang')->value['Select'];?>
 </option>  
 						<option value="2" <?php if ($_smarty_tpl->getVariable('type')->value=='2'){?>selected="true"<?php }?>><?php echo $_smarty_tpl->getVariable('lang')->value['talkNotice'];?>
 </option>  
 						<option value="3" <?php if ($_smarty_tpl->getVariable('type')->value=='3'){?>selected="true"<?php }?>><?php echo $_smarty_tpl->getVariable('lang')->value['scrollAndTalkNotice'];?>
 </option> 
-						--> 
+						 
 					</select>
 	</td>  
 </tr>
@@ -136,7 +136,7 @@
 <input name="reset" type="reset" class="button" value="<?php echo $_smarty_tpl->getVariable('lang')->value['Reset'];?>
 " />&nbsp;&nbsp;
 </div> 
-</form> 
+</form> -->
 </div>
 </div>
 
@@ -214,7 +214,7 @@ if (count($_from) > 0){
 	<td><?php echo $_smarty_tpl->getVariable('v')->value['created'];?>
 </td>			
 	<td>
-		<!--<a href="javascript:void(0);" onclick="editLocalNotice(<?php echo $_smarty_tpl->getVariable('v')->value['id'];?>
+	<!--	<a href="javascript:void(0);" onclick="editLocalNotice(<?php echo $_smarty_tpl->getVariable('v')->value['id'];?>
 ,'<?php echo $_smarty_tpl->getVariable('v')->value['title'];?>
 ')"><?php echo $_smarty_tpl->getVariable('lang')->value['modify'];?>
 </a>-->

@@ -20,20 +20,25 @@
 </tr>
 <tr> 
 	<td align="right">语言：</td>  
-	<td align="left"><select name="contents_language" id="contents_language" > <option value="cn" >cn </option> ' +
-		'<option value="en" >en </option> ' +
-		'<option value="ru" >ru </option> ' +
-		'<option value="de" >de </option> ' +
-		'<option value="fr" >fr </option> ' +
-		'<option value="it" >it </option> ' +
-		'<option value="pt" >pt </option> ' +
-		'<option value="es" >es </option> ' +
-		'<option value="tr" >tr </option> ' +
+	<td align="left"><select name="contents_language" id="contents_language" value = "<{$contents_language}>" > 
+	     <option value="cn" <{if $contents_language == 'cn'}> selected="selected"<{/if}>>cn </option> ' +
+		'<option value="en" <{if $contents_language == 'en'}> selected="selected"<{/if}> >en </option> ' +
+		'<option value="ru" <{if $contents_language == 'ru'}> selected="selected"<{/if}> >ru </option> ' +
+		'<option value="de" <{if $contents_language == 'de'}> selected="selected"<{/if}> >de </option> ' +
+		'<option value="fr" <{if $contents_language == 'fr'}> selected="selected"<{/if}> >fr </option> ' +
+		'<option value="it" <{if $contents_language == 'it'}> selected="selected"<{/if}> >it </option> ' +
+		'<option value="pt" <{if $contents_language == 'pt'}> selected="selected"<{/if}> >pt </option> ' +
+		'<option value="es" <{if $contents_language == 'es'}> selected="selected"<{/if}> >es </option> ' +
+		'<option value="tr" <{if $contents_language == 'tr'}> selected="selected"<{/if}> >tr </option> ' +
 		'</select>'</td> 
 </tr>		
 <tr>  
 	<td align="right"><{$lang.title}>：</td>  
 	<td align="left"><input type="text" name="title" value="<{$title}>" id="title" style="width:200px" /></td>  
+</tr>
+<tr>  
+	<td align="right">副标题：</td>  
+	<td align="left"><input type="text" name="second_title" value="<{$second_title}>" id="second_title" style="width:200px" /></td> 
 </tr>
 <tr>  
 	<td align="right"><{$lang.sender}>：</td>  <td align="left"><input type="text" name="author" id="author"  readonly style="width:100px" value=" <{$smarty.session.infoUser.fullname}>">	</td>  
@@ -55,8 +60,8 @@
 					<td align="right"><{$lang.memo}>：</td>
 					<td align="left"><font color="red">
 					 1.图片（文件发前端上传）
-                    "<"image">"文件名"<"/image">"
-                    示例： "<"image">"gonggao1012"<"/image">"<br />
+                    &ltimage&gt文件名&lt/image&gt
+                    示例： &ltimage&gtgonggao1012&lt/image&gt<br />
                     2.超链接
                     &ltlink _ id=链接&gt&ltcolor=色值&gt文案&lt/color&gt&lt/link&gt
                     示例： &ltlink _ id=https://discord.gg/XEFA98Zrsu&gt&ltcolor=#ff6100&gt加入discord&lt/color&gt&lt/link&gt<br />
@@ -64,13 +69,13 @@
                     \n<br />
                     4.文字颜色
                     &ltcolor=色值&gt文案&lt/color&gt
-                    示例：&ltcolor=#ff6100&gt加入discord&lt/color&gt  
+                    示例：&ltcolor=#ff6100&gt加入discord&lt/color&gt 
 					</font></td>
 				</tr>
 <tr>  
 	<td>内容：</td>
 	<td align="left">
-	<textarea id="contents" name="contents" rows="6" cols="40"><{$content}></textarea>
+	<textarea id="contents" name="contents" rows="15" cols="80"><{$content}></textarea>
 	</td>  
 </tr>
 </tr>
@@ -94,7 +99,7 @@
 </table>
 <div style="width:50%;margin:auto;padding:20px;">  
 <input name="submit" type="button" class="button" value="<{$lang.Submit}>" onclick="noticeAdd('sadasd')" />&nbsp;&nbsp;
-<input name="reset" type="reset" class="submit" value="<{$lang.Reset}>" />&nbsp;&nbsp;
+<!--<input name="reset" type="reset" class="submit" value="<{$lang.Reset}>" />&nbsp;&nbsp;-->
 </div>
 </form> 
 </div>

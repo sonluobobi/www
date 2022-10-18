@@ -39,11 +39,12 @@ class NoticeCtrl extends CtrlBase
 	{
 		if($_GET['id'])
 		{
-			$info = $this->NoticeService->serviceGetOne();
+		    //编辑公告
+			/*$info = $this->NoticeService->serviceGetOne();
 			$info['server_id'] = $_GET['server_id'];
 			$serverInfo = common\Functions::getServerUrl($_GET['server_id']);
-			$info['server_text'] = $serverInfo['server_text'];
-
+			$info['server_text'] = $serverInfo['server_text'];*/
+			$info = $this->NoticeService->serviceNoticeOne($_GET['id']);
 			if (!empty($info['begTime']) && is_numeric($info['begTime'])) $info['begTime'] = date('Y-m-d H:i:s', $info['begTime']);
 			if (!empty($info['endTime']) && is_numeric($info['endTime'])) $info['endTime'] = date('Y-m-d H:i:s', $info['endTime']);
 
@@ -53,19 +54,28 @@ class NoticeCtrl extends CtrlBase
 		elseif($_GET['confirm'])
 		{
 			global $init;
-			foreach($init['serverList'] as $k => $v)
+			/*foreach($init['serverList'] as $k => $v)
                 	{
 				$servername[$v['Server_id']]=$v['Server_name'];
-			}
+			}*/
+			
+		
 			$smarty = new smarty\SmartyView("Notice.Confirm.html");
                         $title =  $this->_LANG['noticeAddConfirm'];
+                        $mask_title = '11222233';
+                        
                         $remind = array('remind' => $this->_LANG['blockGagNotice'],'servername'=>$servername);
+                        
+                     
                         $json = view\JSONView::showJson($title,$smarty->fetch(),$remind);
 		}
 		elseif($_POST)
 		{
+		    //添加公告
 			$result = $this->NoticeService->ServiceAdd();
-			echo $result['retmsg'];
+			
+		
+			echo '添加成功';
 		}else{
 			return new smarty\SmartyView("Notice.Add.html",array('begTime'=>date('Y-m-d 00:00:00'),'endTime'=>date('Y-m-d 23:59:59')));
 		}
@@ -99,6 +109,7 @@ class NoticeCtrl extends CtrlBase
 		 */
 		if($_POST['d'] == 1)
 		{
+		    
 		   	$result = $this->NoticeService->serviceLists();
 			$filename = Context::getCurrentTime().'_palyer';
 			common\PhpExcel::downloadExcel($filename,'GameUserList',$result['list'],'xls');
@@ -106,7 +117,7 @@ class NoticeCtrl extends CtrlBase
 		    
 		    $result = $this->NoticeService->getNowNoticeList();
 		    
-			return new smarty\SmartyView("Notice.Lists.html",array('list' => $result['list'],'pages' => $result['pages'],'begTime'=>date('Y-m-d 00:00:00'),'endTime'=>date('Y-m-d 23:59:59')));	
+			return new smarty\SmartyView("Notice.Lists.html",array('list' => $result['list'],'pages' => $result['pages'],'begTime'=>date('Y-m-d 00:00:00'),'endTime'=>date('Y-m-d 23:59:59'),'nowdate'=>date('Y-m-d H:i:s')));	
 		}
 	}
 	
@@ -117,10 +128,10 @@ class NoticeCtrl extends CtrlBase
 	 */
 	public function manage()
 	{
-		$result = $this->NoticeService->getLocalNoticeList();
+		$result = $this->NoticeService->getHistroyNoticeList();  
 		
 		/**
-		 * $_POST['d'] 值为1时表示用户点击下载按钮
+		 * $_POST['d'] 值为1时表示用户点击下载按钮   
 		*/
 		if ($_GET['id'])
 		{
@@ -165,10 +176,11 @@ class NoticeCtrl extends CtrlBase
 	 */
 	public function del()
 	{
-		if(!empty($_GET['id']) && !empty($_GET['server_id']))
+		if(!empty($_GET['id']))
 		{
 			$result = $this->NoticeService->ServiceDel();
-			echo $result['retmsg'];
+			echo '删除成功';
+		
 		}else{
 			throw new \Exception($this->_LANG['delErrorPop']);
 		}
@@ -181,8 +193,9 @@ class NoticeCtrl extends CtrlBase
 			$arr_id = explode(',', $_GET['id']);
 			if (is_array($arr_id) && count($arr_id) > 0)
 			{
+			  
 				$result = $this->NoticeService->deleteNotice($_GET['id']);
-				echo $result['retmsg'];
+				echo '删除成功';
 			}
 			else {
 				throw new \Exception($this->_LANG['delErrorPop']);
@@ -193,6 +206,22 @@ class NoticeCtrl extends CtrlBase
 			throw new \Exception($this->_LANG['delErrorPop']);
 		}
 	}
+	
+	//置顶公告
+	public function topNotice()
+	{
+		if(!empty($_GET['id']) )
+		{
+		
+		    $result = $this->NoticeService->topNotice($_GET['id']);
+			echo '置顶成功';
+		}
+		else{
+			throw new \Exception('置顶发生错误');
+		}
+	}
+	
+	
 	
 	/*
 	 * 开始或者暂停公告

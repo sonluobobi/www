@@ -660,9 +660,10 @@ function editLocalNotice(id,title)
  */
 function editNotice(id,title) 
 {
-	alert(id+"title="+title);
+	//alert(id+"title="+title);
 	var html = $('bodyContentHead').innerHTML
-	var server_id = $('server_id').value;
+	//var server_id = $('server_id').value;
+	var server_id = "";
 	var url = '/?act=Notice.add&server_id=' + server_id + '&id=' + id + '&title=' + title;
 	RQ(url,function(responseText){
 		pt.writeBody(responseText);		
@@ -690,6 +691,41 @@ function delNotice(remind,delNotice,id)
 	divConfirm(delNotice,'call',2,id);
 
 }
+
+
+/**
+ * 置顶公告操作
+ * 参数: remind 提示语；id 要删除的id，为空为多选删除
+ */
+function topNotice(remind,delNotice,id) 
+{
+	var id = id;
+	if(id == '' || id == null)
+	{
+		id = getCheckValue();
+	}
+	if(id == '')
+	{
+		debug(remind);
+		return false;
+	}
+	divConfirm(delNotice,'top_notice_call',2,id);
+
+}
+
+/**
+ * 置顶回调
+ */
+function top_notice_call(id) 
+{
+	var url = '/?act=Notice.topNotice&id=' + id;
+	RQ(url,function(responseText){
+			alertFunc(responseText,"FS('myform',pt.writeBody,1)");
+		},
+	'',1);
+}
+
+
 
 /**
  * 开始公告操作
@@ -795,7 +831,7 @@ function deleteNotice(remind,delNotice,id)
  */
 function notice_call(id) 
 {
-	var url = '/?act=Notice.deleteNotice&id=' + id;
+	var url = '/?act=Notice.deleteNotice&id=' + id;  
 	RQ(url,function(responseText){
 			alertFunc(responseText,"FS('myform',pt.writeBody,1)");
 		},
@@ -808,8 +844,8 @@ function notice_call(id)
  */
 function call(id) 
 {
-	var server_id = $('server_id').value;
-	var url = '/?act=Notice.del&server_id=' + server_id +'&id=' + id;
+	//var server_id = $('server_id').value;
+	var url = '/?act=Notice.del&id=' + id;
 	RQ(url,function(responseText){
 			alertFunc(responseText,"FS('myform',pt.writeBody,1)");
 		},
@@ -1447,23 +1483,28 @@ function callbackNoticeAdd(responseJson)
         $('pageConfirmHead').set("html", responseJson['title']);
         $('pageConfirm_popBody').set("html", responseJson['body']);
         pt.pagePoping("pageConfirm");
-	$('mask_serverName').innerHTML=server_ids?server_ids:$('servername').innerHTML;
+	//$('mask_serverName').innerHTML=server_ids?server_ids:$('servername').innerHTML;
         $('mask_title').innerHTML=$('title').value;
+         $('mask_second_title').innerHTML=$('second_title').value;
         $('mask_author').innerHTML=$('author').value;
         $('mask_begTime').innerHTML=$('begTime').value;
         $('mask_endTime').innerHTML=$('endTime').value;
-         $('mask_tollgate_id').innerHTML=$('tollgate_id').value;
-        $('mask_cycle').innerHTML=$('cycle').value;
-        $('mask_pictureUrl').innerHTML=$('pictureUrl').value;
-        $('mask_status'+status1).style.display='';
+        $('mask_contents_language').innerHTML=$('contents_language').value;
+         $('mask_button_title').innerHTML=$('button_title').value;
+          $('mask_button_url').innerHTML=$('button_url').value;
+        //$('mask_tollgate_id').innerHTML=$('tollgate_id').value;
+        //$('mask_cycle').innerHTML=$('cycle').value;
+        //$('mask_pictureUrl').innerHTML=$('pictureUrl').value;
+        //$('mask_status'+status1).style.display='';
         $('mask_content').innerHTML=$('contents').value;
-		//var oEditor = FCKeditorAPI.GetInstance('content') ;
-		// alert(oEditor.GetHTML());
+	    //var oEditor = FCKeditorAPI.GetInstance('content') ;
+		 //alert(oEditor.GetHTML());
+		
         //$('mask_content').innerHTML=oEditor.GetHTML();
-		//$('content').value = oEditor.GetHTML();
-	if($('type').value){
+	//	$('content').value = oEditor.GetHTML();
+/*	if($('type').value){
         	$('mask_d'+$('type').value).style.display='';
-	}
+	}*/
 }
 
 

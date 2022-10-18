@@ -1,6 +1,6 @@
 <?php
 //公用配置文件
-date_default_timezone_set('Europe/Moscow');
+date_default_timezone_set('Asia/Shang');
 
 //产品id
 $common_product_id = 4390;

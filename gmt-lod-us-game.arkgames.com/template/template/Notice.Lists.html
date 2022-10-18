@@ -3,7 +3,7 @@
   	<div class="bodyContentBody">
   	<div id="bodyContentHead" class="bodyContentHead" style="text-align:left">
   	<form method="POST" name="myform" id="myform" action="./?act=Notice.lists<{$type|capitalize}>" onsubmit="pageGo(1);return false;">
-  	<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;
+  <!--	<{$lang.SelectServers}>：<{include file="Common_server.list.html"}>&nbsp;&nbsp;-->
 	<{$lang.consType}> : <select id="opType" name="opType">
 							<option value=""><{$lang.Select}></option>
 							<option value="1" <{if $smarty.post.opType == '1'}>selected="true"<{/if}>><{$lang.title}></option>
@@ -14,15 +14,15 @@
 	<{$lang.notice}>ID:
 	<input id="id" name="id" value="<{$smarty.post.id}>" />
 	&nbsp;&nbsp;
-	<{$lang.noticeType}> : <select id="type" name="type">
+<!--	<{$lang.noticeType}> : <select id="type" name="type">
 							<option value=""><{$lang.Select}></option>
 							<option value="1" <{if $smarty.post.type == '1'}>selected="true"<{/if}>><{$lang.scrollNotice}></option>
 							<option value="2" <{if $smarty.post.type == '2'}>selected="true"<{/if}>><{$lang.talkNotice}></option>
 							<option value="3" <{if $smarty.post.type == '3'}>selected="true"<{/if}>><{$lang.scrollAndTalkNotice}></option>							
 						 </select>
-	&nbsp;&nbsp;						 
+	&nbsp;&nbsp;	-->					 
   	<{include file="Page.Show.html"}>					
-	<br />
+<!--	<br />-->
   	<{$lang.beginDate}>：<input id="begTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{if $smarty.post.begTime}><{$smarty.post.begTime}><{/if}>" style="width: 200px;" name="begTime" realvalue=""/> 
   	<{$lang.endDate}>：<input id="endTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{if $smarty.post.endTime}><{$smarty.post.endTime}><{/if}>" style="width: 200px;" name="endTime" realvalue=""/> 
 	&nbsp;&nbsp;
@@ -36,32 +36,38 @@
     <tr align="center">
 	<th><input id="checkAll" name="checkAll" type="checkbox" value="" onclick="checkAlls();"/></th>
 	<th><{$lang.notice}>ID</th>
+	<th>语言</th>
 	<th><{$lang.notice}><{$lang.title}></th>
+	
+	<th>内容</th>
 	<th><{$lang.period}></th>
-	<th><{$lang.tollgate_id}></th>
+	
 	<th><{$lang.author}></th>		
 	<th><{$lang.putTime}></td>	
-	<th><{$lang.noticeType}></td>	
+	
 	<th><{$lang.status}></td>
 	<th><{$lang.handler}></td>	
 	</tr>
     </thead>
     <tbody>
     <{foreach key=k item=v from=$list}>
-    <tr align="center">
+    <tr align="center" height="150">
 	<td><input name="select[]" id="select[]" type="checkbox" value="<{$v.id}>" onclick="checkOne()"/></td>
 	<td><{$v.id}></td>
+	<td><{$v.contents_language}></td>
 	<td><{$v.title}></td>
-	<td><{$v.begTime}>/<{$v.endTime}></td>
-	<td><{$v.tollgate_id}></td>		
+	<td width="300" ><{$v.content}></td>	
+	<td width="150"><{$v.begTime}><br/><{$v.endTime}></td>
+		
 	<td><{$v.author}></td>	
-	<td><{$v.putTime}></td>		
-	<td><{if $v.type == '1'}><{$lang.scrollNotice}><{elseif $v.type == '2'}><{$lang.talkNotice}><{elseif $v.type == '3'}><{$lang.scrollAndTalkNotice}><{/if}></td>
-	<td><{if $v.status == '1'}><{$lang.normal}><{elseif $v.status == '2'}><{$lang.pause}><{/if}></td>	
+	<td><{$v.created}></td>		
+	<td><{if $v.begTime <= $nowdate}><font color=green>生效<{else}><font color=red>未生效<{/if}></td>	
 	<td>
 		<a href="javascript:void(0);" onclick="editNotice(<{$v.id}>,'<{$v.title}>')"><{$lang.modify}></a>
 		&nbsp;&nbsp;
 		<a href="javascript:void(0);" onclick="delNotice('<{$lang.nocheck}>','<{$lang.confirmNoticeDel}>',<{$v.id}>)"><{$lang.drop}></a>
+		&nbsp;&nbsp;
+		<a href="javascript:void(0);" onclick="topNotice('<{$lang.nocheck}>','是否要置顶改公告',<{$v.id}>)">置顶</a>
 	</td>	
 	</tr>
 	<{foreachelse}>
@@ -70,14 +76,16 @@
     </tbody>
 </table>
 <{if $list}>
-<div>
+<!--<div>
 &nbsp;&nbsp;
 <input type="button" onclick="delNotice('<{$lang.nocheck}>','<{$lang.confirmNoticeDel}>')" value="<{$lang.allDrop}>" />
 &nbsp;&nbsp;<input type="button" onclick="startNotice('<{$lang.nocheck}>','<{$lang.confirmNoticeStart}>')" value="<{$lang.allStart}>" />
 &nbsp;&nbsp;<input type="button" onclick="pauseNotice('<{$lang.nocheck}>','<{$lang.confirmNoticePause}>')" value="<{$lang.allPause}>" />
-</div>
+</div>-->
 <div class="pages"><{$pages}></div>
 <{/if}>
 </div>
 </div>
 <div id="listForm" style="display:none"></div>
+<script type="text/javascript">
+</script>

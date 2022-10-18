@@ -35,7 +35,7 @@ class NoticeService extends ServersAbs
 	}
 
 	/**
-	 * 公告添加
+	 * 公告添加（添加和修改）
 	 */
 	public function serviceAdd()
 	{
@@ -53,11 +53,23 @@ class NoticeService extends ServersAbs
 				echo $this->_LANG['noticeTitleError'];
 				exit();
 			}
+			
+			if(empty($_POST['second_title']))
+			{
+				echo $this->_LANG['notitle'];
+				exit();
+			}
+
+			$_POST['second_title'] = trim($_POST['second_title']);
+			if(common\Functions::get_str_len($_POST['second_title'])>100){
+				echo $this->_LANG['noticeTitleError'];
+				exit();
+			}
 
 
 			if(empty($_POST['begTime']) || empty($_POST['endTime']))
 			{
-				echo $this->_LANG['noChangeTime'];
+				echo $this->_LANG['noChangeTime'];  //
 				exit();
 			}
 			
@@ -69,13 +81,21 @@ class NoticeService extends ServersAbs
 			}
 
             $_POST['content'] = trim($_POST['contents']);  
+            
+            
+            if (get_magic_quotes_gpc())
+			{
+				$content = htmlspecialchars_decode(stripslashes($_POST['content']));
+			}else{
+				$content = htmlspecialchars_decode($_POST['content']) ;
+			}
 			if(common\Functions::get_str_len($_POST['content'])>500)
 			{
                 //echo $this->_LANG['noticeContentError'];
                 //exit();
              }
 
-             $content = $_POST['content'];
+             //$content = $_POST['content'];
 
 			/*
 			if (get_magic_quotes_gpc())
@@ -127,15 +147,42 @@ class NoticeService extends ServersAbs
             //$tollgate_id = isset($_POST['tollgate_id']) ?  intval(trim($_POST['tollgate_id'])) : 0;
 
 		
+			//检查对应语言的公告，是否超过限制 添加的时候，这里查询的
 			
+			if(empty($_POST['id']))
+			{
+			    //添加本地公告
+			    
+			    $result = $this->NoticeDao->getNowNoticeList($_POST['contents_language']);
 			
+    			if(count($result) >= 6 and empty($_POST['id']))
+    			{
+    			    echo '公告列表列队已满，删除后继续添加';
+    				exit();
+    			}
+			    
+			}
+			else
+			{
+			    //修改本地公告
+			    $result =  $this->NoticeDao->getLocalNoticeId($_POST['id']);
+			    
+			     if($result['contents_language'] != $_POST['contents_language'])
+			    {
+			        
+			        echo '不能修改公告语言，删除公告，新增新语言公告';
+			        exit();
+			    }
+			    
+			}
 			
-			
+		
 
 			$RestParm = array(
 					'title'      =>  $_POST['title'], //标题
-					'author'     	 =>  $_POST['author'], //发起人
-					'begTime'     =>  $_POST['begTime'], //有效时间
+					'second_title'  =>  $_POST['second_title'], //标题
+					'author'     =>  $_POST['author'], //发起人
+					'begTime'    =>  $_POST['begTime'], //有效时间
 					'endTime'    =>  $_POST['endTime'],  //结束时间
 					'content'    =>  json_encode($content), //内容
 					'button_show' => $_POST['button_show'], //1显示2不显示
@@ -167,7 +214,7 @@ class NoticeService extends ServersAbs
 			$arr_param = $RestParm;
 			
 			
-			if(empty($_POST['id']))
+		/*	if(empty($_POST['id']))
 			{
 				$max_id = $this->NoticeDao->getMaxNoticeId();
 				if ($max_id) {
@@ -175,7 +222,7 @@ class NoticeService extends ServersAbs
 				}else {
 					$arr_param['id'] = 1000000; //避免跟旧版本的数据产生冲突
 				}
-			}
+			}*/
 			
 		
 			$arr_param['platform']     = $_SESSION['gupFlag'];
@@ -218,24 +265,28 @@ class NoticeService extends ServersAbs
 				$serverReturn = $this->NoticeDao->setNotice($server_url.RESTSUFFIX,$RestParm);
 			}*/
 
-           $new_conetent = self::change_content($content);
+            
+
+            self:: addtxt($_POST['contents_language']);
+          /* $new_conetent = self::change_content($content);
            
         
+          
 		   $new_RestParm['msg'][] = array(
 				'id'      =>  5, //标题
 				'title'      =>  $_POST['title'], //标题
 				'language'     	 =>  0,  //公告类型,
 				'minVersion'     	 =>  '', //发起人
 				'maxVersion'     	 =>  '', //发起人
-				'startTime'     =>  strtotime($_POST['begTime']) - 18000, //有效时间
-				'endTime'    =>  strtotime($_POST['endTime'])- 18000,  //结束时间
+				'startTime'     =>  strtotime($_POST['begTime']), //有效时间
+				'endTime'    =>  strtotime($_POST['endTime']),  //结束时间
 				'content'    =>  $new_conetent, //内容
 				'button_show' => $_POST['button_show'], //1显示0不显示
                 'button_title' => $_POST['button_title'],
                 'button_url' => $_POST['button_url'],
 				
 			);
-			file_put_contents('/www/wwwroot/lod-us-game.arkgames.com/cfg/notice/notice_'.$_POST['contents_language'].'.txt',json_encode($new_RestParm,JSON_UNESCAPED_UNICODE));
+			file_put_contents('/www/wwwroot/lod-us-game.arkgames.com/cfg/notice/notice_'.$_POST['contents_language'].'.txt',json_encode($new_RestParm,JSON_UNESCAPED_UNICODE));*/
 
 			//如果是国外的服，调用sh脚本
 
@@ -255,47 +306,108 @@ class NoticeService extends ServersAbs
 		}
 	}
 	
+	
+	
+	//从数据库查询对应语言的公告生成文件
+	public function addtxt($contents_language)
+	{
+	    //查询对应的语言数据
+	    $result = $this->NoticeDao->getAddNoticeList($contents_language);
+	    $new_RestParm['msg'] = [];
+	    
+	   
+	    
+	    foreach($result as $value)
+	    {
+	         $new_conetent = self::change_content(json_decode($value['content'],true));
+           
+        
+		   $new_RestParm['msg'][] = array(
+				'id'      =>  $value['id'], //标题
+				'title'      =>  $value['title'], //标题
+				'second_title'      =>  $value['second_title'], //二级标题
+				'language'     	 =>  0,  //公告类型,
+				'minVersion'     	 =>  '', //发起人
+				'maxVersion'     	 =>  '', //发起人
+				'startTime'     =>  strtotime($value['begTime']), //有效时间
+				'endTime'    =>  strtotime($value['endTime']),  //结束时间
+				'content'    =>  $new_conetent, //内容
+				'button_show' => intval($value['button_show']), //1显示0不显示
+                'button_title' => $value['button_title'],
+                'button_url' => $value['button_url'],
+				
+			);
+	    }
+	    
+	    if($contents_language)
+	    {
+	        	file_put_contents('/www/wwwroot/lod-us-game.arkgames.com/cfg/notice/'.COMFIG_PRODUCT_ID.'/notice_'.$contents_language.'.txt',json_encode($new_RestParm,JSON_UNESCAPED_UNICODE));
+	    }
+	} 
+	
+	
+	//从数据库获取一条记录
+	public function serviceNoticeOne($id)
+	{
+	   
+	   $notice =  $this->NoticeDao->getLocalNoticeId($id);
+	   
+	   $notice['content'] = json_decode($notice['content'],true);
+	   
+	   return $notice;
+	}
+	
+	
+	
 	/**
 	 * 改变公告内容成为客户端需要的格式
 	 */
 	public function change_content($old_content)
 	{
 	    $new_content = [];
-	    $content_ary =  explode('"<"/image">"',$old_content);
+	    $content_ary =  explode('</image>',$old_content);
+	    
+	    
+	   
 	    
 	    if(count($content_ary) > 1)
 	    {
 	        
 	        foreach($content_ary  as $key => $val)
 	        {
-	            $content_ary_val =  explode('"<"image">"',$val);
+	            $content_ary_val =  explode('<image>',$val);
+	            
 	            
 	            if(count($content_ary_val) > 1)
 	            {
 	                
 	                if(!empty($content_ary_val[0]))
 	                {
+	                    
 	                    $new_content[] = [
 	                    'type' => 1 ,
-	                    'txt' => $content_ary_val[0],
+	                    'txt' => trim($content_ary_val[0]),
 	                    ];
 	                }
 	                
 	                if(!empty($content_ary_val[1]))
 	                {
+	                  
     	                $new_content[] = [
     	                    'type' => 2 ,
-    	                    'txt' => $content_ary_val[1],
+    	                    'txt' => trim($content_ary_val[1]),
     	                    ];    
 	                }
 	            }
 	            else
 	            {
-	                if(!empty($content_ary_val[1]))
+	               
+	                if(!empty($content_ary_val[0]))
 	                {
+	                      
 	                    $new_content[] = [
 	                    'type' => 1 ,
-	                    'txt' => $content_ary_val[0],
+	                    'txt' => trim($content_ary_val[0]),
 	                    ];
 	                }
 	                
@@ -306,7 +418,7 @@ class NoticeService extends ServersAbs
 	    {
 	        $new_content[] = [
 	                    'type' => 1 ,
-	                    'txt' => $old_content,
+	                    'txt' => trim($old_content),
 	                    ];
 	    }
 	    
@@ -644,6 +756,7 @@ class NoticeService extends ServersAbs
 	 */
 	public function getLocalNoticeList()
 	{
+	   
 		$this->list = $this->NoticeDao->getLocalNoticeList();
 		if ($this->list) {
 			$pageNums = count($this->list);
@@ -663,7 +776,22 @@ class NoticeService extends ServersAbs
 	 */
 	public function getNowNoticeList()
 	{
-		$this->list = $this->NoticeDao->getNowNoticeList();
+	    /*$RestParm = array(
+								'id'       =>  $_POST['id'],
+								'type'     =>  $_POST['type'],
+								'opType'   =>  $_POST['opType'],
+								'opValue'  =>  $_POST['opValue'],
+								'begTime'   =>  $_POST['begTime'],
+								'endTime'  =>  $_POST['endTime'],
+								'page'     =>  $this->pageCurrent,
+								'pagecount' =>  $this->pagecount
+							);*/
+	    
+	    
+	    
+		$this->list = $this->NoticeDao->getUpdateNoticeList();
+		
+		
 		if ($this->list) {
 			$pageNums = count($this->list);
 		}else {
@@ -676,6 +804,43 @@ class NoticeService extends ServersAbs
 		
 		return $this->result;
 	}
+	
+	
+	/**
+	 * 获取本地历史公告列表
+	 */
+	public function getHistroyNoticeList()
+	{
+	    /*$RestParm = array(
+								'id'       =>  $_POST['id'],
+								'type'     =>  $_POST['type'],
+								'opType'   =>  $_POST['opType'],
+								'opValue'  =>  $_POST['opValue'],
+								'begTime'   =>  $_POST['begTime'],
+								'endTime'  =>  $_POST['endTime'],
+								'page'     =>  $this->pageCurrent,
+								'pagecount' =>  $this->pagecount
+							);*/
+	    
+	    
+	    
+		$this->list = $this->NoticeDao->getHistroyNoticeList();
+		
+		
+		if ($this->list) {
+			$pageNums = count($this->list);
+		}else {
+			$pageNums = 0;
+		}
+		
+		$this->result['list'] = &$this->list;
+		$subPages = new common\SubPages($this->pagecount,$pageNums,$this->pageCurrent);
+		$this->result['pages'] = $subPages->show_SubPages();
+		
+		return $this->result;
+	}
+	
+	
 	
 	
 	
@@ -732,19 +897,55 @@ class NoticeService extends ServersAbs
 	 */
 	public function serviceDel()
 	{
-		$RestParm = array(
+		/*$RestParm = array(
 						'id'  =>  $_GET['id'],
-					);
-		$ActionService = util\Singleton::get("service\\ActionService");
-		$action = $ActionService->getActionByActionCodeFromCache('./?act='.$_GET['act']);
-		LogCtrl::CallOperationLogs($_GET['server_id'],'',$_GET['server_id'],$action['actkey'],$action['acttitle'],$this->_LANG['notice'].'id : '.$_GET['id']);
-		$server_url = common\Functions::getServerUrl($_GET['server_id'],'server');
-		if($server_url == false) throw new \Exception($this->_LANG['SelectServers']);
-		$serverReturn = $this->NoticeDao->deleteNotice($server_url.RESTSUFFIX,$RestParm);
+					);*/
+		//$ActionService = util\Singleton::get("service\\ActionService");
+		//$action = $ActionService->getActionByActionCodeFromCache('./?act='.$_GET['act']);
+		//LogCtrl::CallOperationLogs($_GET['server_id'],'',$_GET['server_id'],$action['actkey'],$action['acttitle'],$this->_LANG['notice'].'id : '.$_GET['id']);
+		//$server_url = common\Functions::getServerUrl($_GET['server_id'],'server');
+		//if($server_url == false) throw new \Exception($this->_LANG['SelectServers']);
+		//$serverReturn = $this->NoticeDao->deleteNotice($server_url.RESTSUFFIX,$RestParm);
 		
-		$this->NoticeDao->deleteLocalNotice($_GET['id']);
+		$result = $this->NoticeDao->getLocalNoticeId($_GET['id']);
 		
-		return $serverReturn;
+		
+	    $this->NoticeDao->deleteLocalNotice($_GET['id']);
+		
+		self:: addtxt($result['contents_language']);
+		
+		
+		return '删除成功';
+	}
+	
+	/**
+	 * 置顶公告
+	 */
+	public function topNotice($id)
+	{
+		/*$RestParm = array(
+						'id'  =>  $_GET['id'],
+					);*/
+		//$ActionService = util\Singleton::get("service\\ActionService");
+		//$action = $ActionService->getActionByActionCodeFromCache('./?act='.$_GET['act']);
+		//LogCtrl::CallOperationLogs($_GET['server_id'],'',$_GET['server_id'],$action['actkey'],$action['acttitle'],$this->_LANG['notice'].'id : '.$_GET['id']);
+		//$server_url = common\Functions::getServerUrl($_GET['server_id'],'server');
+		//if($server_url == false) throw new \Exception($this->_LANG['SelectServers']);
+		//$serverReturn = $this->NoticeDao->deleteNotice($server_url.RESTSUFFIX,$RestParm);
+		
+		//$result = $this->NoticeDao->getLocalNoticeId($_GET['id']);
+		
+		
+	     
+	    
+	    $result = $this->NoticeDao->getLocalNoticeId($_GET['id']);
+	    
+	    $this->NoticeDao->topNotice($id);
+		
+		self:: addtxt($result['contents_language']);
+		
+		
+		return '置顶成功';
 	}
 	
 	/**
@@ -756,7 +957,7 @@ class NoticeService extends ServersAbs
 	public function deleteNotice($id_str)
 	{
 		$ActionService = util\Singleton::get("service\\ActionService");
-		$action = $ActionService->getActionByActionCodeFromCache('./?act='.$_GET['act']);
+	/*	$action = $ActionService->getActionByActionCodeFromCache('./?act='.$_GET['act']);
 		
 		$arr_notice = $this->NoticeDao->getNoticeById($id_str);
 		
@@ -780,7 +981,7 @@ class NoticeService extends ServersAbs
 				}
 				
 			}
-		}
+		}*/
 				
 		$this->NoticeDao->deleteLocalNotice($id_str);
 		

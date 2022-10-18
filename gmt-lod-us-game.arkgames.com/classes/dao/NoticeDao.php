@@ -38,10 +38,11 @@ class NoticeDao
 			$where .= " AND platform = '{$_SESSION['gupFlag']}'";
 		}
 		
-		if ($_POST['title'])
-		{
-			$where .= " AND title LIKE '%{$_POST['title']}%'";
-		}
+		
+		
+		
+		
+		
 		
 		if ($_POST['begTime'])
 		{
@@ -64,23 +65,186 @@ class NoticeDao
 	}
 	
 	/**
-	 * 获取所有本地正在生效的公告
+	 * 获取所有本地正在生效的公告(分语言,公告列表展示用)
 	 * @param unknown_type $platform
 	 */
-	public function getNowNoticeList()
+	public function getNowNoticeList($language = 1)
 	{
 		$where = " 1 ";
 
- 		$now_date = date('Y-m-d h:i:s', time());
-
-
+ 		$now_date = date('Y-m-d H:i:s', time());
+ 		
+ 		
+ 		//var_dump($_POST);
+ 		//die();
+ 		
 		$where .= " AND endTime >= '{$now_date}'";
+		
+		if($language != 1)
+		{
+		    $where .= " AND contents_language = '{$language}'";
+		} 
 
+        //var_dump($where);
 		
 		$notice_list = $this->pdoHelper->fetchAll($where,null,'*','id DESC');
 
 		return $notice_list;
 	}
+	
+	/**
+	 * 获取历史的公告
+	 * @param unknown_type $platform
+	 */
+	public function getHistroyNoticeList($language = 1)
+	{
+		$where = " 1 ";
+
+ 		$now_date = date('Y-m-d H:i:s', time());
+ 		
+ 		
+ 		//var_dump($_POST);
+ 		//die();
+ 		
+		$where .= " AND endTime <= '{$now_date}'";
+		
+		if($language != 1)
+		{
+		    $where .= " AND contents_language = '{$language}'";
+		} 
+
+        //var_dump($where);
+		
+		$notice_list = $this->pdoHelper->fetchAll($where,null,'*','id DESC');
+
+		return $notice_list;
+	}
+	
+	
+	
+	/**
+	 * 获取所有本地正在生效的公告(生成公告文件用)
+	 * @param unknown_type $platform
+	 */
+	public function getAddNoticeList($language = 1)
+	{
+		$where = " 1 ";
+
+ 		$now_date = date('Y-m-d H:i:s', time());
+ 		
+ 		
+ 		//var_dump($_POST);
+ 		//die();
+ 		
+		$where .= " AND endTime >= '{$now_date}'";
+		
+		if($language != 1)
+		{
+		    $where .= " AND contents_language = '{$language}'";
+		} 
+
+        //var_dump($where);
+		
+		$notice_list = $this->pdoHelper->fetchAll($where,null,'*','sort asc,id DESC ');
+		
+		//var_dump($where);
+
+		return $notice_list;
+	}
+	
+	/**
+	 * 查询修改生效的公告,公告列表用
+	 * @param unknown_type $platform
+	 */
+	public function getUpdateNoticeList()
+	{
+		$where = " 1 ";
+
+ 		$now_date = date('Y-m-d H:i:s', time());
+ 		
+ 		
+ 		//var_dump($_POST);
+ 		//die();
+ 		
+ 		if ($_POST['opType'] == 2 and  $_POST['opValue'])
+		{
+			$where .= " AND content LIKE '%{$_POST['opValue']}%'";
+		}
+		
+		if ($_POST['opType'] == 1 and  $_POST['opValue'])
+		{
+			$where .= " AND title LIKE '%{$_POST['opValue']}%'";
+		}
+		
+		if ($_POST['id'])
+		{
+			$where .= " AND id LIKE '%{$_POST['id']}%'";
+		}
+		
+		
+		if ($_POST['begTime'])
+		{
+			$where .= " AND begTime >= '{$_POST['begTime']}'";
+		}
+		
+		if ($_POST['endTime'])
+		{
+			$where .= " AND begTime <= '{$_POST['endTime']}'";
+		}
+
+
+        $where .= " AND endTime >= '{$now_date}'";
+
+        
+        //var_dump($where);
+		
+		$notice_list = $this->pdoHelper->fetchAll($where,null,'*','id DESC');
+		
+		
+		foreach ($notice_list as $key => $val)
+		{
+		    $notice_list[$key]['content'] = json_decode($notice_list[$key]['content'],true);
+		}
+		
+
+		return $notice_list;
+	}
+	
+	/**
+	 * 获取本地一条公告
+	 * @param unknown_type $platform
+	 */
+	public function getLocalNoticeId($id)
+	{
+		$sql = "select * from gm_notice where id = '{$id}'";
+		$notice = $this->pdoHelper->fetchOneRecord($sql);
+
+		return $notice;
+	}
+	
+	
+		/**
+	 * 置顶公告
+	 * @param unknown_type $platform
+	 */
+	public function topNotice($id)
+	{
+	    //查询出最小的排序
+		$sql = "select MIN(sort) as min_sort from gm_notice ";
+		$notice = $this->pdoHelper->fetchOneRecord($sql);
+		
+		$sort = $notice['min_sort'] - 1;
+		
+		//$ql = "update gm_notice set sort = {$sort} where id = '{$id}'";
+		
+	    $where .= " id = '{$id}'";
+	    $data['sort'] = $sort;
+		$ret = $this->pdoHelper->update(array_keys($data),$data,$where);
+		
+        $this->pdoHelper->fetchOneRecord($sql);
+		return $notice;
+	}
+	
 	
 	/**
 	 * 获取所有本地公告

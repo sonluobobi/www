@@ -4,7 +4,7 @@
 <div class="bodyContentHead" style="text-align:left">
 <iframe id="iframeload" name="iframeload" src="/img/1.gif" style="width:0px; height:0px; display:none" frameborder="0" scrolling="no">
 </iframe>	
-<form id="subform" name="subform" method="post" action="./?act=Notice.add" target="iframeload">  
+<!--<form id="subform" name="subform" method="post" action="./?act=Notice.add" target="iframeload">  
 <table align="center" cellspacing="1" cellpadding="0" class="userTable" style="width:80%;" id="tbl">  
 <tr>  
 <td align="right"><{$lang.ServerName}>：</td>  
@@ -29,11 +29,11 @@
 	<td align="right"><{$lang.noticeType}>：</td>  
 	<td align="left"><select name="type" id="type" onchange="changePopNotice(this.value,'NoticeDIV')">  
 						<option value="1" <{if $type == '1'}>selected="true"<{/if}>><{$lang.scrollNotice}></option> 
-						<!--
+					
 						<option value="0"><{$lang.Select}></option>  
 						<option value="2" <{if $type == '2'}>selected="true"<{/if}>><{$lang.talkNotice}></option>  
 						<option value="3" <{if $type == '3'}>selected="true"<{/if}>><{$lang.scrollAndTalkNotice}></option> 
-						--> 
+						 
 					</select>
 	</td>  
 </tr>
@@ -99,7 +99,7 @@
 <input name="submit" type="button" class="button" value="<{$lang.Submit}>" onclick="noticeAdd('sadasd')" />&nbsp;&nbsp;
 <input name="reset" type="reset" class="button" value="<{$lang.Reset}>" />&nbsp;&nbsp;
 </div> 
-</form> 
+</form> -->
 </div>
 </div>
 
@@ -150,7 +150,7 @@
 	<td><{$v.button_url}></td>	
 	<td><{$v.created}></td>			
 	<td>
-		<!--<a href="javascript:void(0);" onclick="editLocalNotice(<{$v.id}>,'<{$v.title}>')"><{$lang.modify}></a>-->
+	<!--	<a href="javascript:void(0);" onclick="editLocalNotice(<{$v.id}>,'<{$v.title}>')"><{$lang.modify}></a>-->
 		&nbsp;&nbsp;
 		<a href="javascript:void(0);" onclick="deleteNotice('<{$lang.nocheck}>','<{$lang.confirmNoticeDel}>',<{$v.id}>)"><{$lang.drop}></a>
 	</td>	
