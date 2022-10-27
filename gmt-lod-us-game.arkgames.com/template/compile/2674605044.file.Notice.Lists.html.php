@@ -1,6 +1,6 @@
 <?php if(!defined('SMARTY_DIR')) exit('no direct access allowed'); ?>
-<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:10:"F681425707";a:2:{i:0;s:38:"../template/template/Notice.Lists.html";i:1;i:1666078782;}}}'); ?>
-<?php /* Smarty version Smarty3-b5, created on 2022-10-18 15:40:26
+<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:10:"F681425707";a:2:{i:0;s:38:"../template/template/Notice.Lists.html";i:1;i:1666258721;}}}'); ?>
+<?php /* Smarty version Smarty3-b5, created on 2022-10-20 17:39:49
          compiled from "../template/template/Notice.Lists.html" */ ?>
 <div id="bodyTitle"><?php echo $_smarty_tpl->getVariable('lang')->value['noticeListTitle'];?>
 </div>
@@ -26,7 +26,11 @@
 	<?php echo $_smarty_tpl->getVariable('lang')->value['notice'];?>
 ID:
 	<input id="id" name="id" value="<?php echo $_POST['id'];?>
-" />
+" />  
+		&nbsp;&nbsp;			
+	语言:
+	<input id="language" name="language" value="<?php echo $_POST['language'];?>
+" />  
 	&nbsp;&nbsp;
 <!--	<?php echo $_smarty_tpl->getVariable('lang')->value['noticeType'];?>
  : <select id="type" name="type">
@@ -68,11 +72,9 @@ ID</th>
 	<th><?php echo $_smarty_tpl->getVariable('lang')->value['period'];?>
 </th>
 	
-	<th><?php echo $_smarty_tpl->getVariable('lang')->value['author'];?>
-</th>		
-	<th><?php echo $_smarty_tpl->getVariable('lang')->value['putTime'];?>
-</td>	
+	<th>作者&发布时间</th>		
 	
+	<th>最后发布者</th>
 	<th><?php echo $_smarty_tpl->getVariable('lang')->value['status'];?>
 </td>
 	<th><?php echo $_smarty_tpl->getVariable('lang')->value['handler'];?>
@@ -103,9 +105,11 @@ if (count($_from) > 0){
 </td>
 		
 	<td><?php echo $_smarty_tpl->getVariable('v')->value['author'];?>
+<br/><?php echo $_smarty_tpl->getVariable('v')->value['created'];?>
 </td>	
-	<td><?php echo $_smarty_tpl->getVariable('v')->value['created'];?>
-</td>		
+	<td><?php echo $_smarty_tpl->getVariable('v')->value['last_author'];?>
+<br/><?php echo $_smarty_tpl->getVariable('v')->value['update'];?>
+</td>	
 	<td><?php if ($_smarty_tpl->getVariable('v')->value['begTime']<=$_smarty_tpl->getVariable('nowdate')->value){?><font color=green>生效<?php }else{ ?><font color=red>未生效<?php }?></td>	
 	<td>
 		<a href="javascript:void(0);" onclick="editNotice(<?php echo $_smarty_tpl->getVariable('v')->value['id'];?>

@@ -13,7 +13,7 @@ use framework\data\pdo;
 
 class NoticeDao 
 {
-	private $pdoHelper;
+	private $pdoHelper; 
 	private $pdo;
 	
 	function __construct() 
@@ -85,6 +85,7 @@ class NoticeDao
 		    $where .= " AND contents_language = '{$language}'";
 		} 
 
+
         //var_dump($where);
 		
 		$notice_list = $this->pdoHelper->fetchAll($where,null,'*','id DESC');
@@ -103,8 +104,9 @@ class NoticeDao
  		$now_date = date('Y-m-d H:i:s', time());
  		
  		
- 		//var_dump($_POST);
- 		//die();
+ 	    
+ 		
+ 		
  		
 		$where .= " AND endTime <= '{$now_date}'";
 		
@@ -112,10 +114,27 @@ class NoticeDao
 		{
 		    $where .= " AND contents_language = '{$language}'";
 		} 
+		
+		
+		if ($_POST['title'])
+		{
+		    
+			$where .= " AND title LIKE '%{$_POST['title']}%'";
+		}
+ 		
+ 		if ($_POST['content1'])
+		{
+		    
+			$where .= " AND content LIKE '%{$_POST['content1']}%'";
+		}
 
-        //var_dump($where);
 		
 		$notice_list = $this->pdoHelper->fetchAll($where,null,'*','id DESC');
+		
+		foreach ($notice_list as $key => $val)
+		{
+		    $notice_list[$key]['content'] = json_decode($notice_list[$key]['content'],true);
+		}
 
 		return $notice_list;
 	}
@@ -168,11 +187,18 @@ class NoticeDao
  		
  		if ($_POST['opType'] == 2 and  $_POST['opValue'])
 		{
-			$where .= " AND content LIKE '%{$_POST['opValue']}%'";
+		    $opValue = json_encode($_POST['opValue']);
+		    
+		    $opValue = str_replace("\\","\\\\\\\\",$opValue);
+		    
+		    $opValue = trim($opValue,'"');
+		    
+			$where .= " AND content LIKE '%{$opValue}%'";
 		}
 		
 		if ($_POST['opType'] == 1 and  $_POST['opValue'])
 		{
+		    
 			$where .= " AND title LIKE '%{$_POST['opValue']}%'";
 		}
 		
@@ -180,6 +206,14 @@ class NoticeDao
 		{
 			$where .= " AND id LIKE '%{$_POST['id']}%'";
 		}
+		
+		
+		if ($_POST['language'])
+		{
+			$where .= " AND contents_language = '{$_POST['language']}'";
+		}
+		
+		
 		
 		
 		if ($_POST['begTime'])
@@ -194,11 +228,13 @@ class NoticeDao
 
 
         $where .= " AND endTime >= '{$now_date}'";
+        
+       //var_dump($where); 
 
         
         //var_dump($where);
 		
-		$notice_list = $this->pdoHelper->fetchAll($where,null,'*','id DESC');
+		$notice_list = $this->pdoHelper->fetchAll($where,null,'*','contents_language asc,sort asc,id DESC ');
 		
 		
 		foreach ($notice_list as $key => $val)

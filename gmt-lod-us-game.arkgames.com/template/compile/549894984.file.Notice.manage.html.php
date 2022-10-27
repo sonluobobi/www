@@ -1,9 +1,8 @@
 <?php if(!defined('SMARTY_DIR')) exit('no direct access allowed'); ?>
-<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:10:"F907903629";a:2:{i:0;s:39:"../template/template/Notice.manage.html";i:1;i:1665991697;}}}'); ?>
-<?php /* Smarty version Smarty3-b5, created on 2022-10-17 16:34:09
+<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:10:"F907903629";a:2:{i:0;s:39:"../template/template/Notice.manage.html";i:1;i:1666582022;}}}'); ?>
+<?php /* Smarty version Smarty3-b5, created on 2022-10-24 11:27:07
          compiled from "../template/template/Notice.manage.html" */ ?>
-<div id="bodyTitle"><?php echo $_smarty_tpl->getVariable('lang')->value['noticeListTitle'];?>
-</div>
+<div id="bodyTitle">历史公告列表</div>
 
 <div class="bodyContent"  style="border-top: 2px solid #666;">
 <div class="bodyContentHead" style="text-align:left">
@@ -151,7 +150,9 @@
 " onsubmit="pageGo(1);return false;">
   	
   	标题:<input id="title" name="title" value="<?php echo $_POST['title'];?>
-" />	&nbsp;&nbsp;			
+" />	&nbsp;&nbsp;
+    内容:<input id="content1" name="content1" value="<?php echo $_POST['content'];?>
+" />	&nbsp;&nbsp;
 	<?php echo $_smarty_tpl->getVariable('lang')->value['beginDate'];?>
 ：<input id="begTime" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<?php if ($_POST['begTime']){ echo $_POST['begTime']; }?>" style="width: 200px;" name="begTime" realvalue=""/> 
   	<?php echo $_smarty_tpl->getVariable('lang')->value['endDate'];?>
@@ -171,16 +172,18 @@
 	<th><input id="checkAll" name="checkAll" type="checkbox" value="" onclick="checkAlls();"/></th>
 	<th><?php echo $_smarty_tpl->getVariable('lang')->value['notice'];?>
 ID</th>
+<th>语言</th>
 	<th><?php echo $_smarty_tpl->getVariable('lang')->value['notice']; echo $_smarty_tpl->getVariable('lang')->value['title'];?>
 </th>
+	
+	<th>内容</th>
 	<th><?php echo $_smarty_tpl->getVariable('lang')->value['period'];?>
 </th>
-	<th>语言</th>
-	<th><?php echo $_smarty_tpl->getVariable('lang')->value['author'];?>
-</th>		
-	<th>按钮</td>	
-	<th>按钮地址</td>
-	<th><?php echo $_smarty_tpl->getVariable('lang')->value['putTime'];?>
+	
+	<th>作者&发布时间</th>		
+	
+	<th>最后发布者</th>
+	<th><?php echo $_smarty_tpl->getVariable('lang')->value['status'];?>
 </td>
 	<th><?php echo $_smarty_tpl->getVariable('lang')->value['handler'];?>
 </td>	
@@ -194,25 +197,28 @@ if (count($_from) > 0){
     foreach ($_from as $_smarty_tpl->tpl_vars['v']->key => $_smarty_tpl->tpl_vars['v']->value){
  $_smarty_tpl->tpl_vars['k']->value = $_smarty_tpl->tpl_vars['v']->key;
 ?>
-    <tr align="center">
+    <tr align="center" height="150">
 	<td><input name="select[]" id="select[]" type="checkbox" value="<?php echo $_smarty_tpl->getVariable('v')->value['id'];?>
 " onclick="checkOne()"/></td>
 	<td><?php echo $_smarty_tpl->getVariable('v')->value['id'];?>
 </td>
-	<td><?php echo $_smarty_tpl->getVariable('v')->value['title'];?>
-</td>
-	<td width=300 ><font color=blue><?php echo $_smarty_tpl->getVariable('v')->value['begTime'];?>
-—<?php echo $_smarty_tpl->getVariable('v')->value['endTime'];?>
-</font></td>
 	<td><?php echo $_smarty_tpl->getVariable('v')->value['contents_language'];?>
 </td>
+	<td><?php echo $_smarty_tpl->getVariable('v')->value['title'];?>
+</td>
+	<td width="400" ><?php echo $_smarty_tpl->getVariable('v')->value['content'];?>
+</td>	
+	<td width="150"><?php echo $_smarty_tpl->getVariable('v')->value['begTime'];?>
+<br/><?php echo $_smarty_tpl->getVariable('v')->value['endTime'];?>
+</td>
+		
 	<td><?php echo $_smarty_tpl->getVariable('v')->value['author'];?>
+<br/><?php echo $_smarty_tpl->getVariable('v')->value['created'];?>
 </td>	
-	<td width=50><?php if ($_smarty_tpl->getVariable('v')->value['button_show']=='1'){?>显示<?php }elseif($_smarty_tpl->getVariable('v')->value['type']=='2'){?>隐藏<?php }elseif($_smarty_tpl->getVariable('v')->value['type']=='3'){ echo $_smarty_tpl->getVariable('lang')->value['scrollAndTalkNotice']; }?></td>
-	<td><?php echo $_smarty_tpl->getVariable('v')->value['button_url'];?>
+	<td><?php echo $_smarty_tpl->getVariable('v')->value['last_author'];?>
+<br/><?php echo $_smarty_tpl->getVariable('v')->value['update'];?>
 </td>	
-	<td><?php echo $_smarty_tpl->getVariable('v')->value['created'];?>
-</td>			
+	<td>过期</td>		
 	<td>
 	<!--	<a href="javascript:void(0);" onclick="editLocalNotice(<?php echo $_smarty_tpl->getVariable('v')->value['id'];?>
 ,'<?php echo $_smarty_tpl->getVariable('v')->value['title'];?>
@@ -234,7 +240,7 @@ if (count($_from) > 0){
 </table>
 <?php if ($_smarty_tpl->getVariable('list')->value){?>
 <div>
-&nbsp;&nbsp;
+&nbsp;&nbsp; 
 <input type="button" onclick="deleteNotice('<?php echo $_smarty_tpl->getVariable('lang')->value['nocheck'];?>
 ','<?php echo $_smarty_tpl->getVariable('lang')->value['confirmNoticeDel'];?>
 ')" value="<?php echo $_smarty_tpl->getVariable('lang')->value['allDrop'];?>

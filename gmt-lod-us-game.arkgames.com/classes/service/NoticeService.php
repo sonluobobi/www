@@ -147,6 +147,21 @@ class NoticeService extends ServersAbs
             //$tollgate_id = isset($_POST['tollgate_id']) ?  intval(trim($_POST['tollgate_id'])) : 0;
 
 		
+		
+		    $RestParm = array(
+					'title'      =>  $_POST['title'], //标题
+					'second_title'  =>  $_POST['second_title'], //标题
+					'begTime'    =>  $_POST['begTime'], //有效时间
+					'endTime'    =>  $_POST['endTime'],  //结束时间
+					'content'    =>  json_encode($content), //内容
+					'button_show' => $_POST['button_show'], //1显示2不显示
+					'status'   => 1,//状态(1.正常 2.删除)
+                    'button_title' => $_POST['button_title'],
+                    'button_url' => $_POST['button_url'],
+                    'contents_language' => $_POST['contents_language'],
+				);
+		
+		
 			//检查对应语言的公告，是否超过限制 添加的时候，这里查询的
 			
 			if(empty($_POST['id']))
@@ -160,7 +175,11 @@ class NoticeService extends ServersAbs
     			    echo '公告列表列队已满，删除后继续添加';
     				exit();
     			}
-			    
+    			
+    			//var_dump($_POST);
+			    $RestParm['author'] = $_POST['author'];
+			     $RestParm['last_author'] = $_POST['author'];
+			     $RestParm['update'] = date('Y-m-d H:i:s');
 			}
 			else
 			{
@@ -174,24 +193,15 @@ class NoticeService extends ServersAbs
 			        exit();
 			    }
 			    
+			    $RestParm['author'] = $result['author'];
+			    $RestParm['created'] = $result['created'];
+			     $RestParm['last_author'] = $_POST['author'];
+			      $RestParm['update'] = date('Y-m-d H:i:s');
+			      $RestParm['sort'] = $result['sort'];
+			    
 			}
 			
-		
-
-			$RestParm = array(
-					'title'      =>  $_POST['title'], //标题
-					'second_title'  =>  $_POST['second_title'], //标题
-					'author'     =>  $_POST['author'], //发起人
-					'begTime'    =>  $_POST['begTime'], //有效时间
-					'endTime'    =>  $_POST['endTime'],  //结束时间
-					'content'    =>  json_encode($content), //内容
-					'button_show' => $_POST['button_show'], //1显示2不显示
-					'status'   => 1,//状态(1.正常 2.删除)
-                    'button_title' => $_POST['button_title'],
-                    'button_url' => $_POST['button_url'],
-                    'contents_language' => $_POST['contents_language'],
-                    
-				);
+				
 			if(!empty($_POST['id'])) $RestParm['id'] = $_POST['id'];
 			
 			$arr_server_name = array();

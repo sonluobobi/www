@@ -114,7 +114,7 @@ class NoticeCtrl extends CtrlBase
 			$filename = Context::getCurrentTime().'_palyer';
 			common\PhpExcel::downloadExcel($filename,'GameUserList',$result['list'],'xls');
 		}else{
-		    
+		   
 		    $result = $this->NoticeService->getNowNoticeList();
 		    
 			return new smarty\SmartyView("Notice.Lists.html",array('list' => $result['list'],'pages' => $result['pages'],'begTime'=>date('Y-m-d 00:00:00'),'endTime'=>date('Y-m-d 23:59:59'),'nowdate'=>date('Y-m-d H:i:s')));	
@@ -148,13 +148,15 @@ class NoticeCtrl extends CtrlBase
 				
 		elseif($_POST['d'] == 1)
 		{
+		    echo 1;
 			$filename = Context::getCurrentTime().'_manage';
 			common\PhpExcel::downloadExcel($filename,'NoticeList',$result['list'],'xls');
 		}
 		else
 		{
+		    
 		   
-			return new smarty\SmartyView("Notice.manage.html",array('list' => $result['list'],'pages' => $result['pages'],'begTime'=>date('Y-m-d 00:00:00'),'endTime'=>date('Y-m-d 23:59:59')));
+			return new smarty\SmartyView("Notice.manage.html",array('list' => $result['list'],'content' => '','pages' => $result['pages'],'begTime'=>date('Y-m-d 00:00:00'),'endTime'=>date('Y-m-d 23:59:59')));
 		}
 	}
 	

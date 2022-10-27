@@ -1,6 +1,6 @@
 <?php if(!defined('SMARTY_DIR')) exit('no direct access allowed'); ?>
-<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F3342341623";a:2:{i:0;s:36:"../template/template/Notice.Add.html";i:1;i:1666081721;}}}'); ?>
-<?php /* Smarty version Smarty3-b5, created on 2022-10-18 16:28:45
+<?php $_smarty_tpl->decodeProperties('a:1:{s:15:"file_dependency";a:1:{s:11:"F3342341623";a:2:{i:0;s:36:"../template/template/Notice.Add.html";i:1;i:1666580233;}}}'); ?>
+<?php /* Smarty version Smarty3-b5, created on 2022-10-24 10:57:15
          compiled from "../template/template/Notice.Add.html" */ ?>
 <div id="bodyTitle">
 <?php if ($_GET['id']>0){?>
@@ -80,15 +80,12 @@
 					<td align="right"><?php echo $_smarty_tpl->getVariable('lang')->value['memo'];?>
 ：</td>
 					<td align="left"><font color="red">
-					 1.图片（文件发前端上传）
-                    &ltimage&gt文件名&lt/image&gt
+					 1.图片（文件发前端上传。图片尺寸：宽度不低于1240；最佳尺寸：1240-600） &ltimage&gt文件名&lt/image&gt 示例： &ltimage&gtgonggao1012&lt/image&gt
                     示例： &ltimage&gtgonggao1012&lt/image&gt<br />
                     2.超链接
                     &ltlink _ id=链接&gt&ltcolor=色值&gt文案&lt/color&gt&lt/link&gt
                     示例： &ltlink _ id=https://discord.gg/XEFA98Zrsu&gt&ltcolor=#ff6100&gt加入discord&lt/color&gt&lt/link&gt<br />
-                    3.换行
-                    \n<br />
-                    4.文字颜色
+                    3.文字颜色
                     &ltcolor=色值&gt文案&lt/color&gt
                     示例：&ltcolor=#ff6100&gt加入discord&lt/color&gt 
 					</font></td>

@@ -1,7 +1,6 @@
 <?php 
  $common_account_add = array (
   'zlcs' => 'c863d0017475d6fb7a1bb87ce7f4015b',
-  'zhanlong001' => 'c863d0017475d6fb7a1bb87ce7f4015b',
-  'zhanlong003' => '733d7be2196ff70efaf6913fc8bdcabf',
+  'rodtest1' => 'e6ce33c9e360545c576f958fc4c3a69a',
 )
 ?>
